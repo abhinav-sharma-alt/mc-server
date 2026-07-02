@@ -1,27 +1,33 @@
-FROM pufferpanel/pufferpanel:latest
+FROM alpine:3.19
 
-# Switch to root to install dependencies and manipulate system directories
+# 1. Install dependencies, Java 17 (for Minecraft), and ngrok
 USER root
+RUN apk update && apk add --no-cache \
+    curl \
+    unzip \
+    openjdk17-jre-headless \
+    git \
+    openssl
 
-# Install curl and unzip
-RUN apk update && apk add --no-cache curl unzip
-
-# Download and install ngrok
+# 2. Download and install ngrok
 RUN curl -sSL -o /tmp/ngrok.zip https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-linux-amd64.zip && \
     unzip /tmp/ngrok.zip -d /usr/local/bin && \
     rm /tmp/ngrok.zip
 
+# 3. Download the standalone PufferPanel Linux binary
+RUN mkdir -p /pufferpanel && \
+    curl -sSL -o /pufferpanel/pufferpanel https://github.com/PufferPanel/PufferPanel/releases/latest/download/pufferpanel_linux_amd64 && \
+    chmod +x /pufferpanel/pufferpanel
+
+# Configure standard environmental paths
 ENV PUFFER_PANEL_WEB_PORT=7860
 EXPOSE 7860
 
-# Custom startup script
+# 4. Bootstrap configurations cleanly bypassing Docker definitions
 CMD ["/bin/sh", "-c", "\
-    # 1. Create a dummy/mock Docker socket to bypass the hardcoded crash check \
-    mkdir -p /var/run && \
-    touch /var/run/docker.sock && \
+    mkdir -p /etc/pufferpanel /var/lib/pufferpanel/servers /var/log/pufferpanel; \
     \
-    # 2. Create default configuration \
-    mkdir -p /etc/pufferpanel && \
+    # Create config missing any mention of docker nodes \
     echo '{\
       \"panel\": {\"web\": {\"host\": \"0.0.0.0:7860\"}},\
       \"daemon\": {\
@@ -30,18 +36,16 @@ CMD ["/bin/sh", "-c", "\
       }\
     }' > /etc/pufferpanel/config.json; \
     \
-    # 3. Add PufferPanel admin user \
+    # Add the local user profile \
     /pufferpanel/pufferpanel user add --name admin --email admin@hf.space --password Password123! --admin true || true; \
     \
-    # 4. Start ngrok TCP tunnel if an Authtoken is provided \
+    # Start ngrok tunnel \
     if [ -n \"$NGROK_AUTHTOKEN\" ]; then \
-        echo 'Starting ngrok TCP tunnel for Minecraft on port 25565...'; \
+        echo 'Starting ngrok TCP tunnel...'; \
         ngrok config add-authtoken \"$NGROK_AUTHTOKEN\"; \
         ngrok tcp 25565 --log=stdout & \
-    else \
-        echo 'WARNING: NGROK_AUTHTOKEN not found. Server won\'t be accessible externally.'; \
     fi; \
     \
-    # 5. Run PufferPanel \
-    /pufferpanel/pufferpanel run \
+    # Launch the panel directly \
+    exec /pufferpanel/pufferpanel run \
 "]
