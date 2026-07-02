@@ -1,7 +1,7 @@
 FROM debian:bookworm-slim
 
 RUN apt-get update && apt-get install -y \
-    curl gnupg apt-transport-https ca-certificates \
+    curl gnupg apt-transport-https ca-certificates procps \
     && curl -fsSL https://packagecloud.io/pufferpanel/pufferpanel/gpgkey | gpg --dearmor -o /etc/apt/keyrings/pufferpanel.gpg \
     && printf "X-Repolib-Name: PufferPanel\nTypes: deb\nURIs: https://packagecloud.io/pufferpanel/pufferpanel/any/\nSuites: any\nComponents: main\nSigned-By: /etc/apt/keyrings/pufferpanel.gpg\n" \
        > /etc/apt/sources.list.d/pufferpanel.sources \
@@ -14,12 +14,15 @@ RUN curl -sSL https://ngrok-agent.s3.amazonaws.com/ngrok.asc \
     | tee /etc/apt/sources.list.d/ngrok.list \
     && apt-get update && apt-get install -y ngrok
 
-RUN mkdir -p /etc/pufferpanel /var/lib/pufferpanel \
-    && chmod -R 777 /etc/pufferpanel /var/lib/pufferpanel
+# Pre-create internal data paths and a dummy docker socket to prevent boot crashes
+RUN mkdir -p /etc/pufferpanel /var/lib/pufferpanel /var/run \
+    && touch /var/run/docker.sock \
+    && chmod -R 777 /etc/pufferpanel /var/lib/pufferpanel /var/run
 
 COPY tunnels.yml /app/tunnels.yml
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
-EXPOSE 8080
+# Force Hugging Face's mandatory web container port
+EXPOSE 7860
 ENTRYPOINT ["/entrypoint.sh"]
