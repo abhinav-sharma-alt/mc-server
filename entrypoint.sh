@@ -3,6 +3,8 @@ set -e
 
 ngrok config add-authtoken "$NGROK_AUTHTOKEN"
 
+export PUFFERPANEL_PANEL_SETTINGS_MASTERURL="https://${NGROK_DOMAIN}"
+
 pufferpanel runService --workDir /etc/pufferpanel &
 PUFFER_PID=$!
 
