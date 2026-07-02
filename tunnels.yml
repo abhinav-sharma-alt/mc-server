@@ -1,0 +1,11 @@
+version: "3"
+tunnels:
+  panel:
+    addr: 8080
+    proto: http
+  gameserver:
+    addr: 25565      # change to whatever port your game actually uses
+    proto: tcp
+  sftp:
+    addr: 5657
+    proto: tcp
