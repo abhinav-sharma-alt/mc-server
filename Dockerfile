@@ -1,13 +1,15 @@
 FROM pufferpanel/pufferpanel:latest
 
-# Install curl
+# Switch to root to install dependencies
 USER root
-RUN apk update && apk add --no-cache curl
 
-# Download ngrok, extract it safely, and make it executable
-RUN curl -sSL -o /tmp/ngrok.tgz https://bin.equinox.io/c/bPf3oKqgD2j/ngrok-v3-stable-linux-amd64.tgz && \
-    tar -xzf /tmp/ngrok.tgz -C /usr/local/bin && \
-    rm /tmp/ngrok.tgz
+# Install curl and unzip (Alpine package manager)
+RUN apk update && apk add --no-cache curl unzip
+
+# Download the official ngrok Linux AMD64 zip binary directly from their CDN
+RUN curl -sSL -o /tmp/ngrok.zip https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-linux-amd64.zip && \
+    unzip /tmp/ngrok.zip -d /usr/local/bin && \
+    rm /tmp/ngrok.zip
 
 # Set mandatory web port for Hugging Face UI
 ENV PUFFER_PANEL_WEB_PORT=7860
