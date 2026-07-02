@@ -4,34 +4,37 @@ set -e
 # Authenticate ngrok
 ngrok config add-authtoken "$NGROK_AUTHTOKEN"
 
-mkdir -p /etc/pufferpanel
+mkdir -p /etc/pufferpanel /var/lib/pufferpanel
 
-# Generate PufferPanel configuration
-if [ ! -f /etc/pufferpanel/config.json ]; then
-  echo '{"panel":{"web":{"host":"0.0.0.0:7860"},"webauthn":{"id":"huggingface.co","name":"HuggingFace Space","origin":"https://huggingface.co"}},"daemon":{"data":{"servers":"/var/lib/pufferpanel/servers"},"sftp":{"host":"0.0.0.0:5657"}}}' > /etc/pufferpanel/config.json
-fi
+# 1. FORCE A FRESH DATABASE SLATE
+# PufferPanel stores users in a local SQLite file (pufferpanel.db).
+# Wiping it forces the app to rebuild the schema clean on boot.
+echo "Clearing old database records to reset credentials..."
+rm -f /var/lib/pufferpanel/pufferpanel.db
+rm -f /etc/pufferpanel/.admin_created
 
-# Run PufferPanel directly
+# 2. Generate clean configuration
+echo '{"panel":{"web":{"host":"0.0.0.0:7860"},"webauthn":{"id":"huggingface.co","name":"HuggingFace Space","origin":"https://huggingface.co"}},"daemon":{"data":{"servers":"/var/lib/pufferpanel/servers"},"sftp":{"host":"0.0.0.0:5657"}}}' > /etc/pufferpanel/config.json
+
+# 3. Start PufferPanel background service
 pufferpanel run &
 PUFFER_PID=$!
 
-sleep 5
+# Give the app a moment to generate the fresh database file
+sleep 6
 
-# --- FORCE RESET ADMIN ACCOUNT ---
-# We delete the marker file and use a subshell to force-add the user clean
-rm -f /etc/pufferpanel/.admin_created
-
-echo "Creating/Resetting admin user..."
+# 4. Inject the fresh admin profile cleanly
+echo "Registering fresh admin account..."
 pufferpanel user add \
   --name "$PUFFER_ADMIN_USER" \
   --email "$PUFFER_ADMIN_EMAIL" \
   --password "$PUFFER_ADMIN_PASS" \
-  --admin || echo "Admin user profile updated or already exists."
+  --admin
 
 touch /etc/pufferpanel/.admin_created
-# ----------------------------------
+echo "Admin profile successfully created!"
 
-# Start all tunnels matching your configuration schema
+# 5. Start all tunnels matching your configuration schema
 ngrok start --all \
   --config /app/tunnels.yml \
   --log=stdout &
