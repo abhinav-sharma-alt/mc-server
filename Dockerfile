@@ -1,17 +1,17 @@
 FROM pufferpanel/pufferpanel:latest
 
-# Install curl to download ngrok
+# Alpine Linux uses 'apk' instead of 'apt-get'
 USER root
-RUN apt-get update && apt-get install -y curl && rm -rf /var/lib/apt/lists/*
+RUN apk update && apk add --no-cache curl
 
-# Download and install ngrok
+# Download and install ngrok (using the Linux AMD64 binary)
 RUN curl -s https://bin.equinox.io/c/bPf3oKqgD2j/ngrok-stable-linux-amd64.tgz | tar -xz -C /usr/local/bin
 
 # Set mandatory web port for Hugging Face UI
 ENV PUFFER_PANEL_WEB_PORT=7860
 EXPOSE 7860
 
-# We use a custom startup script to start both PufferPanel and ngrok simultaneously
+# Custom startup script
 CMD ["/bin/sh", "-c", "\
     # 1. Create PufferPanel default config \
     if [ ! -f /etc/pufferpanel/config.json ]; then \
