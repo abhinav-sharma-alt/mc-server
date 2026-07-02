@@ -1,6 +1,6 @@
 FROM pufferpanel/pufferpanel:latest
 
-# Switch to root to install dependencies
+# Switch to root to install dependencies and manipulate system directories
 USER root
 
 # Install curl and unzip
@@ -16,8 +16,12 @@ EXPOSE 7860
 
 # Custom startup script
 CMD ["/bin/sh", "-c", "\
-    # 1. Force-create a structural config that defines the local node as 'local/standalone' \
-    mkdir -p /etc/pufferpanel; \
+    # 1. Create a dummy/mock Docker socket to bypass the hardcoded crash check \
+    mkdir -p /var/run && \
+    touch /var/run/docker.sock && \
+    \
+    # 2. Create default configuration \
+    mkdir -p /etc/pufferpanel && \
     echo '{\
       \"panel\": {\"web\": {\"host\": \"0.0.0.0:7860\"}},\
       \"daemon\": {\
@@ -26,14 +30,7 @@ CMD ["/bin/sh", "-c", "\
       }\
     }' > /etc/pufferpanel/config.json; \
     \
-    # 2. Tell the internal PufferPanel node manager to use local execution instead of docker \
-    echo '{\
-      \"images\": {},\
-      \"environments\": {\"local\": {}},\
-      \"active\": true\
-    }' > /etc/pufferpanel/local.json; \
-    \
-    # 3. Add PufferPanel admin user (suppressing errors if it already exists) \
+    # 3. Add PufferPanel admin user \
     /pufferpanel/pufferpanel user add --name admin --email admin@hf.space --password Password123! --admin true || true; \
     \
     # 4. Start ngrok TCP tunnel if an Authtoken is provided \
@@ -45,6 +42,6 @@ CMD ["/bin/sh", "-c", "\
         echo 'WARNING: NGROK_AUTHTOKEN not found. Server won\'t be accessible externally.'; \
     fi; \
     \
-    # 5. Run PufferPanel with an explicit flag telling it not to auto-create a docker daemon \
+    # 5. Run PufferPanel \
     /pufferpanel/pufferpanel run \
 "]
