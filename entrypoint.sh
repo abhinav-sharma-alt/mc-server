@@ -23,7 +23,7 @@ if [ ! -f /etc/pufferpanel/.admin_created ]; then
     --name "$PUFFER_ADMIN_USER" \
     --email "$PUFFER_ADMIN_EMAIL" \
     --password "$PUFFER_ADMIN_PASS" \
-    --admin true || true
+    --admin || true
   touch /etc/pufferpanel/.admin_created
 fi
 
