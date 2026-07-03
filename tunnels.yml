@@ -4,3 +4,9 @@ tunnels:
     addr: 7860
     proto: http
     domain: symphony-eagle-glorify.ngrok-free.dev
+  gameserver:
+    addr: 25565
+    proto: tcp
+  sftp:
+    addr: 5657
+    proto: tcp

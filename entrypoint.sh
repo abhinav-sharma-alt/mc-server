@@ -14,7 +14,7 @@ rm -f /var/lib/pufferpanel/pufferpanel.db
 rm -f /etc/pufferpanel/.admin_created
 
 # 2. Generate clean configuration
-echo '{"panel":{"web":{"host":"0.0.0.0:7860"},"webauthn":{"id":"huggingface.co","name":"HuggingFace Space","origin":"https://huggingface.co"}},"daemon":{"data":{"servers":"/var/lib/pufferpanel/servers"},"sftp":{"host":"0.0.0.0:5657"}}}' > /etc/pufferpanel/config.json
+echo '{"panel":{"web":{"host":"0.0.0.0:7860"},"webauthn":{"id":"symphony-eagle-glorify.ngrok-free.dev","name":"PufferPanel","origin":"https://symphony-eagle-glorify.ngrok-free.dev"}},"daemon":{"data":{"servers":"/var/lib/pufferpanel/servers"},"sftp":{"host":"0.0.0.0:5657"}}}' > /etc/pufferpanel/config.json
 
 # 3. Start PufferPanel background service
 pufferpanel run &
