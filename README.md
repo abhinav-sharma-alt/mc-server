@@ -1,5 +1,5 @@
 ---
-title: PufferPanel
+title: Crafty Controller
 sdk: docker
-app_port: 8080
+app_port: 8443
 ---
