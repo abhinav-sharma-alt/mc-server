@@ -14,6 +14,10 @@ RUN curl -sSL https://ngrok-agent.s3.amazonaws.com/ngrok.asc \
     | tee /etc/apt/sources.list.d/ngrok.list \
     && apt-get update && apt-get install -y ngrok
 
+RUN curl -SsL -o /usr/local/bin/playit \
+    https://github.com/playit-cloud/playit-agent/releases/latest/download/playit-linux-amd64 \
+    && chmod +x /usr/local/bin/playit
+
 # Pre-create internal data paths and a dummy docker socket to prevent boot crashes
 RUN mkdir -p /etc/pufferpanel /var/lib/pufferpanel /var/run \
     && touch /var/run/docker.sock \
