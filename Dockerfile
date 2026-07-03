@@ -26,7 +26,9 @@ RUN useradd -m -u 1000 crafty \
     && chown -R crafty:crafty /home/crafty
 
 COPY tunnels.yml /app/tunnels.yml
+RUN sed -i 's/\r$//' /app/tunnels.yml
 COPY entrypoint.sh /entrypoint.sh
+RUN sed -i 's/\r$//' /entrypoint.sh && chmod +x /entrypoint.sh && chown crafty:crafty /entrypoint.sh
 RUN chmod +x /entrypoint.sh && chown crafty:crafty /entrypoint.sh /app/tunnels.yml
 
 USER crafty
