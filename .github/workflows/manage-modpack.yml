@@ -60,12 +60,13 @@ jobs:
       - name: Validate modpack name
         run: |
           NAME="${{ github.event.inputs.modpack_name }}"
+          ACTION="${{ github.event.inputs.action }}"
           if ! [[ "$NAME" =~ ^[a-z0-9][a-z0-9_-]*$ ]]; then
             echo "::error::modpack_name must be lowercase alphanumeric (with - or _), got: $NAME"
             exit 1
           fi
-          if [ "$NAME" = "vanilla" ] || [ "$NAME" = "bmc1" ]; then
-            echo "::error::'$NAME' is a reserved/protected modpack name."
+          if { [ "$NAME" = "vanilla" ] || [ "$NAME" = "bmc1" ]; } && { [ "$ACTION" = "create" ] || [ "$ACTION" = "delete" ]; }; then
+            echo "::error::'$NAME' is a reserved modpack with special-cased setup in start-server.yml — it can't be created or deleted this way. 'configure' (memory/java) is fine."
             exit 1
           fi
 
