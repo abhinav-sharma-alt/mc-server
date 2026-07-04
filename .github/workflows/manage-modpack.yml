@@ -28,13 +28,14 @@ on:
         type: boolean
         default: false
       java_version:
-        description: 'Java version to pin for this modpack (create/configure)'
+        description: 'Java version (create: defaults to 25 if blank. configure: leave blank to keep current value)'
         required: false
-        default: '25'
       memory_gb:
-        description: 'Xmx memory in GB (create/configure). Runner has 16GB total — leave ~5-6GB headroom.'
+        description: 'Xmx memory in GB (create: defaults to 10 if blank. configure: leave blank to keep current value). Runner has 16GB total.'
         required: false
-        default: '10'
+      server_jar:
+        description: 'Runnable jar filename inside the modpack folder (create: defaults to server.jar if blank. configure: leave blank to keep current value)'
+        required: false
       delete_world:
         description: 'Also delete the saved world data? (delete only)'
         required: false
@@ -120,17 +121,43 @@ jobs:
         if: github.event.inputs.action == 'create' || github.event.inputs.action == 'configure'
         run: |
           NAME="${{ github.event.inputs.modpack_name }}"
-          if [ "${{ github.event.inputs.action }}" = "configure" ] && [ ! -d "modpacks/$NAME" ]; then
+          ACTION="${{ github.event.inputs.action }}"
+          META="modpacks/$NAME/meta.json"
+
+          if [ "$ACTION" = "configure" ] && [ ! -d "modpacks/$NAME" ]; then
             echo "::error::modpacks/$NAME does not exist. Use 'create' first."
             exit 1
           fi
           mkdir -p "modpacks/$NAME"
-          cat > "modpacks/$NAME/meta.json" <<EOF
+
+          # Start from existing meta.json if present (configure), else hardcoded defaults (create)
+          if [ -f "$META" ]; then
+            CUR_JAVA=$(jq -r '.java_version // "25"' "$META")
+            CUR_MEM=$(jq -r '.memory_gb // "10"' "$META")
+            CUR_JAR=$(jq -r '.server_jar // "server.jar"' "$META")
+          else
+            CUR_JAVA="25"
+            CUR_MEM="10"
+            CUR_JAR="server.jar"
+          fi
+
+          # Only override a field if the corresponding input was actually provided
+          IN_JAVA="${{ github.event.inputs.java_version }}"
+          IN_MEM="${{ github.event.inputs.memory_gb }}"
+          IN_JAR="${{ github.event.inputs.server_jar }}"
+
+          FINAL_JAVA="${IN_JAVA:-$CUR_JAVA}"
+          FINAL_MEM="${IN_MEM:-$CUR_MEM}"
+          FINAL_JAR="${IN_JAR:-$CUR_JAR}"
+
+          cat > "$META" <<EOF
           {
-            "java_version": "${{ github.event.inputs.java_version }}",
-            "memory_gb": "${{ github.event.inputs.memory_gb }}"
+            "java_version": "$FINAL_JAVA",
+            "memory_gb": "$FINAL_MEM",
+            "server_jar": "$FINAL_JAR"
           }
           EOF
+          echo "meta.json for $NAME -> java=$FINAL_JAVA mem=${FINAL_MEM}GB jar=$FINAL_JAR"
 
       - name: Create - add to start-server.yml dropdown
         if: github.event.inputs.action == 'create'

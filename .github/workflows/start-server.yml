@@ -37,12 +37,15 @@ jobs:
           if [ -f "$META" ]; then
             JAVA_VERSION=$(jq -r '.java_version // "25"' "$META")
             MEMORY_GB=$(jq -r '.memory_gb // "10"' "$META")
+            SERVER_JAR=$(jq -r '.server_jar // "server.jar"' "$META")
           else
             JAVA_VERSION="25"
             MEMORY_GB="10"
+            SERVER_JAR="server.jar"
           fi
           echo "java_version=$JAVA_VERSION" >> "$GITHUB_OUTPUT"
           echo "memory_gb=$MEMORY_GB" >> "$GITHUB_OUTPUT"
+          echo "server_jar=$SERVER_JAR" >> "$GITHUB_OUTPUT"
 
       - name: Set up Java
         uses: actions/setup-java@v4
@@ -72,6 +75,16 @@ jobs:
           mkdir -p server
           cp -r "modpacks/$MODPACK"/* server/
 
+          SERVER_JAR="${{ steps.modpack_meta.outputs.server_jar }}"
+          if [ ! -f "server/$SERVER_JAR" ]; then
+            echo "::error::server/$SERVER_JAR not found after copying modpacks/$MODPACK."
+            echo "Files actually present in modpacks/$MODPACK:"
+            find "modpacks/$MODPACK" -maxdepth 1 -name "*.jar"
+            echo "If the real jar has a different name, set it with:"
+            echo "  /modpack configure name: $MODPACK server_jar: <actual-filename>.jar"
+            exit 1
+          fi
+
       - name: Accept EULA
         run: echo "eula=true" > server/eula.txt
 
@@ -99,6 +112,7 @@ jobs:
           PLAYIT_SECRET: ${{ secrets.PLAYIT_SECRET }}
           MODPACK: ${{ github.event.inputs.modpack }}
           MEMORY_GB: ${{ steps.modpack_meta.outputs.memory_gb }}
+          SERVER_JAR: ${{ steps.modpack_meta.outputs.server_jar }}
         run: |
           chmod +x scripts/run-session.sh
           ./scripts/run-session.sh

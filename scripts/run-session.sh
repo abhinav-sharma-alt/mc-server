@@ -52,7 +52,8 @@ mkfifo /tmp/mc_console 2>/dev/null || true
 exec 3<>/tmp/mc_console
 
 MEMORY_GB="${MEMORY_GB:-10}"
-java -Xmx${MEMORY_GB}G -Xms1G -jar server.jar nogui <&3 &
+SERVER_JAR="${SERVER_JAR:-server.jar}"
+java -Xmx${MEMORY_GB}G -Xms1G -jar "$SERVER_JAR" nogui <&3 &
 MC_PID=$!
 cd ..
 
