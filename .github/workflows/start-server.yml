@@ -55,7 +55,9 @@ jobs:
         run: |
           mkdir -p "worlds/${{ github.event.inputs.modpack }}"
           if [ -d "worlds/${{ github.event.inputs.modpack }}/world" ]; then
+            rm -rf server/world
             cp -r "worlds/${{ github.event.inputs.modpack }}/world" server/world
+            rm -f server/world/session.lock
           fi
           if [ -f "worlds/${{ github.event.inputs.modpack }}/server.properties" ]; then
             cp "worlds/${{ github.event.inputs.modpack }}/server.properties" server/server.properties
@@ -82,7 +84,9 @@ jobs:
           git config user.email "actions@github.com"
           if [ -d "server/world" ]; then
             mkdir -p "worlds/${{ github.event.inputs.modpack }}"
+            rm -rf "worlds/${{ github.event.inputs.modpack }}/world"
             cp -r server/world "worlds/${{ github.event.inputs.modpack }}/world"
+            rm -f "worlds/${{ github.event.inputs.modpack }}/world/session.lock"
             cp server/server.properties "worlds/${{ github.event.inputs.modpack }}/server.properties"
             git add "worlds/${{ github.event.inputs.modpack }}"
             git diff --staged --quiet || git commit -m "Update ${{ github.event.inputs.modpack }} world state after session"
