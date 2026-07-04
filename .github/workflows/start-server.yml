@@ -36,10 +36,10 @@ jobs:
           curl -L -o playit https://github.com/playit-cloud/playit-agent/releases/latest/download/playit-linux-amd64
           chmod +x playit
 
-      - name: Start playit tunnel and Minecraft server
+      - name: Start ngrok tunnel and Minecraft server
         env:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
-          PLAYIT_SECRET: ${{ secrets.PLAYIT_SECRET }}
+          NGROK_AUTHTOKEN: ${{ secrets.NGROK_AUTHTOKEN }}
         run: |
           chmod +x scripts/run-session.sh
           ./scripts/run-session.sh
