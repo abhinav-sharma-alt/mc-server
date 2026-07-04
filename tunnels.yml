@@ -1,6 +1,0 @@
-version: "3"
-tunnels:
-  panel:
-    addr: 8443
-    proto: http
-    domain: symphony-eagle-glorify.ngrok-free.dev

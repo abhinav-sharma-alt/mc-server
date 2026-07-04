@@ -1,0 +1,53 @@
+name: Start Minecraft Server
+
+on:
+  workflow_dispatch:
+
+jobs:
+  run-server:
+    runs-on: ubuntu-latest
+    timeout-minutes: 350   # ~5h50m, safely under the 6h hard limit
+
+    steps:
+      - name: Checkout repo (includes saved world)
+        uses: actions/checkout@v4
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - name: Download latest vanilla server jar
+        run: |
+          VERSION_MANIFEST=$(curl -s https://launchermeta.mojang.com/mc/game/version_manifest.json)
+          LATEST=$(echo "$VERSION_MANIFEST" | jq -r '.latest.release')
+          VERSION_URL=$(echo "$VERSION_MANIFEST" | jq -r ".versions[] | select(.id==\"$LATEST\") | .url")
+          SERVER_URL=$(curl -s "$VERSION_URL" | jq -r '.downloads.server.url')
+          echo "Downloading Minecraft $LATEST server jar"
+          curl -o server/server.jar "$SERVER_URL"
+
+      - name: Accept EULA
+        run: echo "eula=true" > server/eula.txt
+
+      - name: Download playit.gg agent
+        run: |
+          curl -L -o playit https://github.com/playit-cloud/playit-agent/releases/latest/download/playit-linux-amd64
+          chmod +x playit
+
+      - name: Start playit tunnel and Minecraft server
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+          PLAYIT_SECRET: ${{ secrets.PLAYIT_SECRET }}
+        run: |
+          chmod +x scripts/run-session.sh
+          ./scripts/run-session.sh
+
+      - name: Commit updated world back to repo
+        if: always()
+        run: |
+          git config user.name "minecraft-bot"
+          git config user.email "actions@github.com"
+          git add server/world server/server.properties
+          git diff --staged --quiet || git commit -m "Update world state after session"
+          git push
