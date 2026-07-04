@@ -1,0 +1,196 @@
+name: Manage Modpack
+
+# Create, reconfigure, or delete a modpack definition under modpacks/<name>/.
+# Triggered by the Discord bot's /modpack command (authored-user only — enforced
+# in the bot, not here, so don't expose this workflow_dispatch to anyone else
+# with repo write access without adding your own guard).
+
+on:
+  workflow_dispatch:
+    inputs:
+      action:
+        description: 'What to do'
+        required: true
+        type: choice
+        options:
+          - create
+          - configure
+          - delete
+      modpack_name:
+        description: 'Short id, lowercase, no spaces (e.g. atm9)'
+        required: true
+      jar_url:
+        description: 'Direct download URL for server jar OR a server-pack .zip (create only)'
+        required: false
+      is_zip:
+        description: 'Is jar_url a .zip server pack that needs extracting? (create only)'
+        required: false
+        type: boolean
+        default: false
+      java_version:
+        description: 'Java version to pin for this modpack (create/configure)'
+        required: false
+        default: '25'
+      memory_gb:
+        description: 'Xmx memory in GB (create/configure). Runner has 16GB total — leave ~5-6GB headroom.'
+        required: false
+        default: '10'
+      delete_world:
+        description: 'Also delete the saved world data? (delete only)'
+        required: false
+        type: boolean
+        default: false
+
+jobs:
+  manage:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Configure git identity
+        run: |
+          git config user.name "minecraft-bot"
+          git config user.email "actions@github.com"
+          git config core.fileMode false
+
+      - name: Validate modpack name
+        run: |
+          NAME="${{ github.event.inputs.modpack_name }}"
+          if ! [[ "$NAME" =~ ^[a-z0-9][a-z0-9_-]*$ ]]; then
+            echo "::error::modpack_name must be lowercase alphanumeric (with - or _), got: $NAME"
+            exit 1
+          fi
+          if [ "$NAME" = "vanilla" ] || [ "$NAME" = "bmc1" ]; then
+            echo "::error::'$NAME' is a reserved/protected modpack name."
+            exit 1
+          fi
+
+      # ---------------- CREATE ----------------
+      - name: Create - fetch jar / server pack
+        if: github.event.inputs.action == 'create'
+        run: |
+          NAME="${{ github.event.inputs.modpack_name }}"
+          JAR_URL="${{ github.event.inputs.jar_url }}"
+          IS_ZIP="${{ github.event.inputs.is_zip }}"
+
+          if [ -d "modpacks/$NAME" ]; then
+            echo "::error::modpacks/$NAME already exists. Use 'configure' to change it, or delete it first."
+            exit 1
+          fi
+          if [ -z "$JAR_URL" ]; then
+            echo "::error::jar_url is required for 'create'."
+            exit 1
+          fi
+
+          mkdir -p "modpacks/$NAME"
+
+          if [ "$IS_ZIP" = "true" ]; then
+            curl -L -o /tmp/pack.zip "$JAR_URL"
+            unzip -q /tmp/pack.zip -d "modpacks/$NAME"
+            # Server packs often nest one level deep - flatten if so
+            INNER=$(find "modpacks/$NAME" -mindepth 1 -maxdepth 1 -type d | head -n1)
+            if [ -n "$INNER" ] && [ -z "$(find "modpacks/$NAME" -mindepth 1 -maxdepth 1 -type f)" ]; then
+              mv "$INNER"/* "modpacks/$NAME"/
+              rmdir "$INNER"
+            fi
+          else
+            curl -L -o "modpacks/$NAME/server.jar" "$JAR_URL"
+          fi
+
+          echo "eula=true" > "modpacks/$NAME/eula.txt"
+
+          if [ ! -f "modpacks/$NAME/server.properties" ]; then
+            cat > "modpacks/$NAME/server.properties" <<'EOF'
+          motd=A Minecraft Server
+          max-players=20
+          view-distance=10
+          difficulty=normal
+          gamemode=survival
+          online-mode=true
+          EOF
+          fi
+
+      # ---------------- CREATE + CONFIGURE (shared meta.json step) ----------------
+      - name: Write meta.json
+        if: github.event.inputs.action == 'create' || github.event.inputs.action == 'configure'
+        run: |
+          NAME="${{ github.event.inputs.modpack_name }}"
+          if [ "${{ github.event.inputs.action }}" = "configure" ] && [ ! -d "modpacks/$NAME" ]; then
+            echo "::error::modpacks/$NAME does not exist. Use 'create' first."
+            exit 1
+          fi
+          mkdir -p "modpacks/$NAME"
+          cat > "modpacks/$NAME/meta.json" <<EOF
+          {
+            "java_version": "${{ github.event.inputs.java_version }}",
+            "memory_gb": "${{ github.event.inputs.memory_gb }}"
+          }
+          EOF
+
+      - name: Create - add to start-server.yml dropdown
+        if: github.event.inputs.action == 'create'
+        run: |
+          NAME="${{ github.event.inputs.modpack_name }}"
+          if grep -qE "^\s+- ${NAME}$" .github/workflows/start-server.yml; then
+            echo "'$NAME' already listed in start-server.yml, skipping."
+          else
+            # Insert right after the "options:" line under the modpack input
+            sed -i "/^\s*options:$/a\\          - ${NAME}" .github/workflows/start-server.yml
+          fi
+
+      - name: Create - commit
+        if: github.event.inputs.action == 'create'
+        run: |
+          NAME="${{ github.event.inputs.modpack_name }}"
+          git add "modpacks/$NAME" .github/workflows/start-server.yml
+          git commit -m "modpack: create '$NAME'"
+          git pull --rebase --autostash --quiet
+          git push origin HEAD:main
+
+      # ---------------- CONFIGURE ----------------
+      - name: Configure - commit
+        if: github.event.inputs.action == 'configure'
+        run: |
+          NAME="${{ github.event.inputs.modpack_name }}"
+          git add "modpacks/$NAME/meta.json"
+          git diff --staged --quiet && { echo "No changes."; exit 0; }
+          git commit -m "modpack: configure '$NAME' (java=${{ github.event.inputs.java_version }}, mem=${{ github.event.inputs.memory_gb }}GB)"
+          git pull --rebase --autostash --quiet
+          git push origin HEAD:main
+
+      # ---------------- DELETE ----------------
+      - name: Delete - remove files
+        if: github.event.inputs.action == 'delete'
+        run: |
+          NAME="${{ github.event.inputs.modpack_name }}"
+          if [ ! -d "modpacks/$NAME" ]; then
+            echo "::error::modpacks/$NAME does not exist."
+            exit 1
+          fi
+          git rm -r --quiet "modpacks/$NAME"
+
+          if [ "${{ github.event.inputs.delete_world }}" = "true" ] && [ -d "worlds/$NAME" ]; then
+            git rm -r --quiet "worlds/$NAME"
+          fi
+
+          # Remove from start-server.yml dropdown
+          sed -i "/^\s*- ${NAME}$/d" .github/workflows/start-server.yml
+
+      - name: Delete - commit
+        if: github.event.inputs.action == 'delete'
+        run: |
+          NAME="${{ github.event.inputs.modpack_name }}"
+          git add .github/workflows/start-server.yml
+          git commit -m "modpack: delete '$NAME'"
+          git pull --rebase --autostash --quiet
+          git push origin HEAD:main
+
+      - name: Summary
+        if: always()
+        run: |
+          echo "Action: ${{ github.event.inputs.action }}"
+          echo "Modpack: ${{ github.event.inputs.modpack_name }}"

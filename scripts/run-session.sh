@@ -51,7 +51,8 @@ sed -i '/^enable-rcon=/d; /^rcon.port=/d; /^rcon.password=/d' server.properties 
 mkfifo /tmp/mc_console 2>/dev/null || true
 exec 3<>/tmp/mc_console
 
-java -Xmx3G -Xms1G -jar server.jar nogui <&3 &
+MEMORY_GB="${MEMORY_GB:-10}"
+java -Xmx${MEMORY_GB}G -Xms1G -jar server.jar nogui <&3 &
 MC_PID=$!
 cd ..
 
