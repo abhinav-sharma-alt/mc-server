@@ -61,13 +61,16 @@ jobs:
           mkdir -p server
           curl -o server/server.jar "$SERVER_URL"
 
-      - name: Set up BMC1 modpack
-        if: github.event.inputs.modpack == 'bmc1'
+      - name: Set up modpack from modpacks/<name>/ (any non-vanilla modpack)
+        if: github.event.inputs.modpack != 'vanilla'
         run: |
+          MODPACK="${{ github.event.inputs.modpack }}"
+          if [ ! -d "modpacks/$MODPACK" ]; then
+            echo "::error::modpacks/$MODPACK does not exist. Create it first with /modpack create."
+            exit 1
+          fi
           mkdir -p server
-          # Copies the pre-committed BMC1 server jar + mods folder from modpacks/bmc1
-          # into the live server/ directory used for this session.
-          cp -r modpacks/bmc1/* server/
+          cp -r "modpacks/$MODPACK"/* server/
 
       - name: Accept EULA
         run: echo "eula=true" > server/eula.txt

@@ -65,8 +65,8 @@ jobs:
             echo "::error::modpack_name must be lowercase alphanumeric (with - or _), got: $NAME"
             exit 1
           fi
-          if { [ "$NAME" = "vanilla" ] || [ "$NAME" = "bmc1" ]; } && { [ "$ACTION" = "create" ] || [ "$ACTION" = "delete" ]; }; then
-            echo "::error::'$NAME' is a reserved modpack with special-cased setup in start-server.yml — it can't be created or deleted this way. 'configure' (memory/java) is fine."
+          if [ "$NAME" = "vanilla" ] && { [ "$ACTION" = "create" ] || [ "$ACTION" = "delete" ]; }; then
+            echo "::error::'vanilla' has dynamic version-download logic baked into start-server.yml — it can't be created or deleted this way. 'configure' (memory/java) is fine."
             exit 1
           fi
 
