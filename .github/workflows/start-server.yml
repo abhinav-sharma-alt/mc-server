@@ -2,6 +2,15 @@ name: Start Minecraft Server
 
 on:
   workflow_dispatch:
+    inputs:
+      modpack:
+        description: 'Which server setup to launch'
+        required: true
+        default: 'vanilla'
+        type: choice
+        options:
+          - vanilla
+          - bmc1
 
 jobs:
   run-server:
@@ -19,27 +28,47 @@ jobs:
           java-version: '25'
 
       - name: Download vanilla server jar (pinned version)
+        if: github.event.inputs.modpack == 'vanilla'
         env:
           MC_VERSION: "26.2"
         run: |
           VERSION_MANIFEST=$(curl -s https://launchermeta.mojang.com/mc/game/version_manifest.json)
           VERSION_URL=$(echo "$VERSION_MANIFEST" | jq -r ".versions[] | select(.id==\"$MC_VERSION\") | .url")
           SERVER_URL=$(curl -s "$VERSION_URL" | jq -r '.downloads.server.url')
-          echo "Downloading Minecraft $MC_VERSION server jar"
+          mkdir -p server
           curl -o server/server.jar "$SERVER_URL"
+
+      - name: Set up BMC1 modpack
+        if: github.event.inputs.modpack == 'bmc1'
+        run: |
+          mkdir -p server
+          # Copies the pre-committed BMC1 server jar + mods folder from modpacks/bmc1
+          # into the live server/ directory used for this session.
+          cp -r modpacks/bmc1/* server/
 
       - name: Accept EULA
         run: echo "eula=true" > server/eula.txt
 
-      - name: Download playit.gg agent
+      - name: Restore saved world for this modpack (if it exists)
         run: |
-          curl -L -o playit https://github.com/playit-cloud/playit-agent/releases/latest/download/playit-linux-amd64
-          chmod +x playit
+          mkdir -p "worlds/${{ github.event.inputs.modpack }}"
+          if [ -d "worlds/${{ github.event.inputs.modpack }}/world" ]; then
+            cp -r "worlds/${{ github.event.inputs.modpack }}/world" server/world
+          fi
+          if [ -f "worlds/${{ github.event.inputs.modpack }}/server.properties" ]; then
+            cp "worlds/${{ github.event.inputs.modpack }}/server.properties" server/server.properties
+          fi
+
+      - name: Configure git identity for console polling
+        run: |
+          git config user.name "minecraft-bot"
+          git config user.email "actions@github.com"
 
       - name: Start playit tunnel and Minecraft server
         env:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
           PLAYIT_SECRET: ${{ secrets.PLAYIT_SECRET }}
+          MODPACK: ${{ github.event.inputs.modpack }}
         run: |
           chmod +x scripts/run-session.sh
           ./scripts/run-session.sh
@@ -50,8 +79,11 @@ jobs:
           git config user.name "minecraft-bot"
           git config user.email "actions@github.com"
           if [ -d "server/world" ]; then
-            git add server/world server/server.properties
-            git diff --staged --quiet || git commit -m "Update world state after session"
+            mkdir -p "worlds/${{ github.event.inputs.modpack }}"
+            cp -r server/world "worlds/${{ github.event.inputs.modpack }}/world"
+            cp server/server.properties "worlds/${{ github.event.inputs.modpack }}/server.properties"
+            git add "worlds/${{ github.event.inputs.modpack }}"
+            git diff --staged --quiet || git commit -m "Update ${{ github.event.inputs.modpack }} world state after session"
             git push
           else
             echo "No server/world directory found — server likely never started successfully. Skipping commit."

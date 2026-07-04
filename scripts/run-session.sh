@@ -39,9 +39,48 @@ fi
 
 echo "Starting Minecraft server..."
 cd server
-java -Xmx3G -Xms1G -jar server.jar nogui &
+
+# Remove RCON config if present from earlier attempts — not used anymore
+sed -i '/^enable-rcon=/d; /^rcon.port=/d; /^rcon.password=/d' server.properties 2>/dev/null
+
+# Set up a FIFO so we can feed console commands into the server's stdin
+mkfifo /tmp/mc_console 2>/dev/null || true
+exec 3<>/tmp/mc_console
+
+java -Xmx3G -Xms1G -jar server.jar nogui <&3 &
 MC_PID=$!
 cd ..
+
+# Make sure the console command file exists in the repo
+mkdir -p console
+if [ ! -f console/command.txt ]; then
+  touch console/command.txt
+fi
+
+# Background loop: poll GitHub for new console commands and feed them to the server
+poll_console() {
+  while kill -0 "$MC_PID" 2>/dev/null; do
+    git fetch origin main --quiet 2>/dev/null
+    git checkout origin/main -- console/command.txt 2>/dev/null
+
+    if [ -s console/command.txt ]; then
+      CMD=$(cat console/command.txt)
+      echo "Executing console command: $CMD"
+      echo "$CMD" >&3
+
+      # Clear the file and push, so the same command doesn't run again
+      echo -n "" > console/command.txt
+      git add console/command.txt
+      git commit -m "console: executed command" --quiet 2>/dev/null
+      git pull --rebase --quiet 2>/dev/null
+      git push origin HEAD:main --quiet 2>/dev/null
+    fi
+
+    sleep 5
+  done
+}
+poll_console &
+POLL_PID=$!
 
 echo "Session running for $SESSION_MINUTES minutes..."
 sleep $((SESSION_MINUTES * 60))
@@ -49,6 +88,8 @@ sleep $((SESSION_MINUTES * 60))
 echo "Time's up — stopping server gracefully..."
 kill -SIGTERM $MC_PID
 wait $MC_PID || true
+kill $POLL_PID 2>/dev/null || true
+exec 3>&- 2>/dev/null || true
 
 docker stop playit-agent || true
 docker rm playit-agent || true
