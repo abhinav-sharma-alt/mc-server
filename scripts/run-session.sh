@@ -1,5 +1,4 @@
 #!/bin/bash
-set -e
 
 SESSION_MINUTES=345   # 5h45m — leaves buffer for the commit step after this
 
@@ -17,13 +16,31 @@ docker run -d --rm --net=host \
 # Give ngrok time to establish the tunnel
 sleep 10
 
-# Query ngrok's local API for the assigned public address
-TUNNEL_JSON=$(curl -s http://localhost:4040/api/tunnels)
-TUNNEL_ADDRESS=$(echo "$TUNNEL_JSON" | jq -r '.tunnels[0].public_url' | sed 's|tcp://||')
+echo "--- ngrok container logs ---"
+docker logs ngrok-agent 2>&1 || true
+echo "--- end logs ---"
 
-if [ -z "$TUNNEL_ADDRESS" ] || [ "$TUNNEL_ADDRESS" == "null" ]; then
-  TUNNEL_ADDRESS="(couldn't auto-detect — check this run's log)"
-  echo "$TUNNEL_JSON"
+# Retry the API query a few times in case it's just slow to come up
+TUNNEL_JSON=""
+for i in 1 2 3 4 5; do
+  TUNNEL_JSON=$(curl -s --max-time 5 http://localhost:4040/api/tunnels || echo "")
+  if [ -n "$TUNNEL_JSON" ]; then
+    break
+  fi
+  echo "ngrok API not ready yet, retrying... ($i/5)"
+  sleep 5
+done
+
+if [ -z "$TUNNEL_JSON" ]; then
+  echo "ERROR: Could not reach ngrok's local API after retries. Dumping logs again:"
+  docker logs ngrok-agent 2>&1 || true
+  TUNNEL_ADDRESS="(ngrok failed to start — check the run log above)"
+else
+  TUNNEL_ADDRESS=$(echo "$TUNNEL_JSON" | jq -r '.tunnels[0].public_url' | sed 's|tcp://||')
+  if [ -z "$TUNNEL_ADDRESS" ] || [ "$TUNNEL_ADDRESS" == "null" ]; then
+    TUNNEL_ADDRESS="(couldn't parse tunnel address — check this run's log)"
+    echo "$TUNNEL_JSON"
+  fi
 fi
 
 echo "Detected tunnel address: $TUNNEL_ADDRESS"
