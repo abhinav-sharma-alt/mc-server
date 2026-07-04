@@ -26,11 +26,8 @@ PLAYIT_LOGS=$(docker logs playit-agent 2>&1)
 echo "$PLAYIT_LOGS"
 echo "--- end logs ---"
 
-TUNNEL_ADDRESS=$(echo "$PLAYIT_LOGS" | grep -oE '[a-zA-Z0-9.-]+\.(joinmc\.link|playit\.gg)(:[0-9]+)?' | head -n1)
-
-if [ -z "$TUNNEL_ADDRESS" ]; then
-  TUNNEL_ADDRESS="(couldn't auto-detect — check the playit.gg dashboard or this run's log)"
-fi
+TUNNEL_ADDRESS="significant-surpass.gl.joinmc.link"
+echo "Using configured tunnel address: $TUNNEL_ADDRESS"
 
 echo "Detected tunnel address: $TUNNEL_ADDRESS"
 
