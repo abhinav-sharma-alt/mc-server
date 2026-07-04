@@ -8,12 +8,19 @@ if [ -z "$NGROK_AUTHTOKEN" ]; then
 fi
 
 echo "Starting ngrok tunnel via Docker..."
-docker run -d --rm --net=host \
+docker run -d --net=host \
   -e NGROK_AUTHTOKEN="$NGROK_AUTHTOKEN" \
   --name ngrok-agent \
   ngrok/ngrok:latest tcp 25565
 
-# Give ngrok time to establish the tunnel
+sleep 5
+echo "--- ngrok container status ---"
+docker ps -a --filter "name=ngrok-agent"
+echo "--- ngrok container logs (immediate) ---"
+docker logs ngrok-agent 2>&1 || true
+echo "--- end immediate logs ---"
+
+# Give ngrok more time in case it's just slow, then check again
 sleep 10
 
 echo "--- ngrok container logs ---"
@@ -65,6 +72,7 @@ kill -SIGTERM $MC_PID
 wait $MC_PID || true
 
 docker stop ngrok-agent || true
+docker rm ngrok-agent || true
 
 if [ -n "$DISCORD_WEBHOOK" ]; then
   curl -H "Content-Type: application/json" \
