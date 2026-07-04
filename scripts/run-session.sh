@@ -120,11 +120,39 @@ if kill -0 "$MC_PID" 2>/dev/null; then
   kill -SIGTERM $MC_PID
 fi
 wait $MC_PID || true
-kill $POLL_PID 2>/dev/null || true
+
+# Stop the console poller gracefully instead of hard-killing it, so it isn't
+# caught mid-write/mid-commit on a tracked file (which left the working tree
+# dirty and broke the final "git pull --rebase" step in the workflow).
+if [ -n "$POLL_PID" ] && kill -0 "$POLL_PID" 2>/dev/null; then
+  echo "Stopping console poller (pid $POLL_PID)..."
+  kill -TERM "$POLL_PID" 2>/dev/null || true
+  for i in $(seq 1 10); do
+    kill -0 "$POLL_PID" 2>/dev/null || break
+    sleep 1
+  done
+  if kill -0 "$POLL_PID" 2>/dev/null; then
+    echo "Poller didn't exit in time — forcing kill."
+    kill -9 "$POLL_PID" 2>/dev/null || true
+  fi
+fi
+
 exec 3>&- 2>/dev/null || true
 
 docker stop playit-agent || true
 docker rm playit-agent || true
+
+# Safety net: if the poller left any tracked console files modified but
+# uncommitted (e.g. it was interrupted between writing and committing),
+# clean that up now so the workflow's later "git pull --rebase" step
+# doesn't fail on a dirty tree.
+if [ -n "$(git status --porcelain console/ 2>/dev/null)" ]; then
+  echo "Cleaning up leftover console file state..."
+  git add console/
+  git commit -m "console: final state cleanup" --quiet 2>/dev/null || true
+  git pull --rebase --quiet 2>/dev/null || git rebase --abort 2>/dev/null || true
+  git push origin HEAD:main --quiet 2>/dev/null || true
+fi
 
 if [ -n "$DISCORD_WEBHOOK" ]; then
   curl -H "Content-Type: application/json" \

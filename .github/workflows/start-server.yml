@@ -88,9 +88,13 @@ jobs:
             cp -r server/world "worlds/${{ github.event.inputs.modpack }}/world"
             rm -f "worlds/${{ github.event.inputs.modpack }}/world/session.lock"
             cp server/server.properties "worlds/${{ github.event.inputs.modpack }}/server.properties"
-            git add "worlds/${{ github.event.inputs.modpack }}"
+            # Stage everything (not just the world folder) in case the console
+            # poller left tracked files (console/command.txt, console/stop.txt)
+            # modified-but-uncommitted when it was stopped. Without this, the
+            # subsequent "git pull --rebase" fails on a dirty working tree.
+            git add -A
             git diff --staged --quiet || git commit -m "Update ${{ github.event.inputs.modpack }} world state after session"
-            git pull --rebase --quiet
+            git pull --rebase --quiet || { git rebase --abort 2>/dev/null || true; }
             git push origin HEAD:main
           else
             echo "No server/world directory found — server likely never started successfully. Skipping commit."
