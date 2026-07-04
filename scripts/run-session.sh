@@ -51,20 +51,21 @@ java -Xmx3G -Xms1G -jar server.jar nogui <&3 &
 MC_PID=$!
 cd ..
 
-# Make sure the console command/stop files exist in the repo
+# Make sure the console command/stop files exist and start CLEAR for this session
 mkdir -p console
-if [ ! -f console/command.txt ]; then
-  touch console/command.txt
-fi
-if [ ! -f console/stop.txt ]; then
-  touch console/stop.txt
-fi
+echo -n "" > console/command.txt
+echo -n "" > console/stop.txt
+git add console/command.txt console/stop.txt
+git commit -m "console: reset signal files for new session" --quiet 2>/dev/null || true
+git push origin HEAD:main --quiet 2>/dev/null || true
 
 # Background loop: poll GitHub for new console commands AND a stop signal
 poll_console() {
+  sleep 20   # give the server time to fully boot before accepting any signals
   while kill -0 "$MC_PID" 2>/dev/null; do
-    git fetch origin main --quiet 2>/dev/null
-    git checkout origin/main -- console/command.txt console/stop.txt 2>/dev/null
+    git fetch origin main --quiet
+    git checkout origin/main -- console/command.txt 2>/dev/null || true
+    git checkout origin/main -- console/stop.txt 2>/dev/null || true
 
     if [ -s console/command.txt ]; then
       CMD=$(cat console/command.txt)
@@ -81,10 +82,24 @@ poll_console() {
       echo "Graceful stop signal received — shutting down..."
       echo -n "" > console/stop.txt
       git add console/stop.txt
-      git commit -m "console: stop signal consumed" --quiet 2>/dev/null
-      git pull --rebase --quiet 2>/dev/null
-      git push origin HEAD:main --quiet 2>/dev/null
+      git commit -m "console: stop signal consumed" --quiet
+      git pull --rebase --quiet
+      git push origin HEAD:main --quiet
+
       echo "stop" >&3
+
+      # Wait up to 30s for the server to actually exit; force-kill if it doesn't
+      for i in $(seq 1 30); do
+        if ! kill -0 "$MC_PID" 2>/dev/null; then
+          echo "Server exited cleanly after stop command."
+          break
+        fi
+        sleep 1
+      done
+      if kill -0 "$MC_PID" 2>/dev/null; then
+        echo "Server didn't exit after 'stop' command — forcing SIGTERM."
+        kill -SIGTERM "$MC_PID"
+      fi
       break
     fi
 
