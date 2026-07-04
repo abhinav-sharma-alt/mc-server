@@ -16,6 +16,8 @@ jobs:
   run-server:
     runs-on: ubuntu-latest
     timeout-minutes: 350   # ~5h50m, safely under the 6h hard limit
+    permissions:
+      contents: write
 
     steps:
       - name: Checkout repo (includes saved world)
