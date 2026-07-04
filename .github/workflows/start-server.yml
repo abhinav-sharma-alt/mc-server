@@ -22,6 +22,13 @@ jobs:
     steps:
       - name: Checkout repo (includes saved world)
         uses: actions/checkout@v4
+        # NOTE: if `git status` ever shows server/server.properties or other
+        # live server/ files as tracked, run this once locally and push it:
+        #   git rm --cached server/server.properties
+        #   echo "server/" >> .gitignore
+        #   git add .gitignore && git commit -m "untrack live server/ dir"
+        # The source of truth for properties is worlds/<modpack>/server.properties,
+        # which is already copied in/out below.
 
       - name: Set up Java
         uses: actions/setup-java@v4
@@ -67,6 +74,7 @@ jobs:
         run: |
           git config user.name "minecraft-bot"
           git config user.email "actions@github.com"
+          git config core.fileMode false
 
       - name: Start playit tunnel and Minecraft server
         env:
@@ -94,7 +102,7 @@ jobs:
             # subsequent "git pull --rebase" fails on a dirty working tree.
             git add -A
             git diff --staged --quiet || git commit -m "Update ${{ github.event.inputs.modpack }} world state after session"
-            git pull --rebase --quiet || { git rebase --abort 2>/dev/null || true; }
+            git pull --rebase --autostash --quiet || { git rebase --abort 2>/dev/null || true; }
             git push origin HEAD:main
           else
             echo "No server/world directory found — server likely never started successfully. Skipping commit."

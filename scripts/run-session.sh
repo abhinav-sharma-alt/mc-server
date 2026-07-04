@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Ignore file-mode-only changes (e.g. chmod +x on this script) so they never
+# count as a "dirty tree" diff and block a git pull --rebase later.
+git config core.fileMode false
+
 SESSION_MINUTES=345   # 5h45m — leaves buffer for the commit step after this
 
 if [ -z "$PLAYIT_SECRET" ]; then
@@ -74,7 +78,7 @@ poll_console() {
       echo -n "" > console/command.txt
       git add console/command.txt
       git commit -m "console: executed command" --quiet 2>/dev/null
-      git pull --rebase --quiet 2>/dev/null
+      git pull --rebase --autostash --quiet 2>/dev/null
       git push origin HEAD:main --quiet 2>/dev/null
     fi
 
@@ -83,7 +87,7 @@ poll_console() {
       echo -n "" > console/stop.txt
       git add console/stop.txt
       git commit -m "console: stop signal consumed" --quiet
-      git pull --rebase --quiet
+      git pull --rebase --autostash --quiet
       git push origin HEAD:main --quiet
 
       echo "stop" >&3
@@ -150,7 +154,7 @@ if [ -n "$(git status --porcelain console/ 2>/dev/null)" ]; then
   echo "Cleaning up leftover console file state..."
   git add console/
   git commit -m "console: final state cleanup" --quiet 2>/dev/null || true
-  git pull --rebase --quiet 2>/dev/null || git rebase --abort 2>/dev/null || true
+  git pull --rebase --autostash --quiet 2>/dev/null || git rebase --abort 2>/dev/null || true
   git push origin HEAD:main --quiet 2>/dev/null || true
 fi
 
