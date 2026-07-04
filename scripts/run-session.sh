@@ -51,29 +51,41 @@ java -Xmx3G -Xms1G -jar server.jar nogui <&3 &
 MC_PID=$!
 cd ..
 
-# Make sure the console command file exists in the repo
+# Make sure the console command/stop files exist in the repo
 mkdir -p console
 if [ ! -f console/command.txt ]; then
   touch console/command.txt
 fi
+if [ ! -f console/stop.txt ]; then
+  touch console/stop.txt
+fi
 
-# Background loop: poll GitHub for new console commands and feed them to the server
+# Background loop: poll GitHub for new console commands AND a stop signal
 poll_console() {
   while kill -0 "$MC_PID" 2>/dev/null; do
     git fetch origin main --quiet 2>/dev/null
-    git checkout origin/main -- console/command.txt 2>/dev/null
+    git checkout origin/main -- console/command.txt console/stop.txt 2>/dev/null
 
     if [ -s console/command.txt ]; then
       CMD=$(cat console/command.txt)
       echo "Executing console command: $CMD"
       echo "$CMD" >&3
-
-      # Clear the file and push, so the same command doesn't run again
       echo -n "" > console/command.txt
       git add console/command.txt
       git commit -m "console: executed command" --quiet 2>/dev/null
       git pull --rebase --quiet 2>/dev/null
       git push origin HEAD:main --quiet 2>/dev/null
+    fi
+
+    if [ -s console/stop.txt ]; then
+      echo "Graceful stop signal received — shutting down..."
+      echo -n "" > console/stop.txt
+      git add console/stop.txt
+      git commit -m "console: stop signal consumed" --quiet 2>/dev/null
+      git pull --rebase --quiet 2>/dev/null
+      git push origin HEAD:main --quiet 2>/dev/null
+      echo "stop" >&3
+      break
     fi
 
     sleep 5
@@ -82,11 +94,16 @@ poll_console() {
 poll_console &
 POLL_PID=$!
 
-echo "Session running for $SESSION_MINUTES minutes..."
-sleep $((SESSION_MINUTES * 60))
+echo "Session running for up to $SESSION_MINUTES minutes (or until a graceful stop is triggered)..."
+END_TIME=$((SECONDS + SESSION_MINUTES * 60))
+while kill -0 "$MC_PID" 2>/dev/null && [ $SECONDS -lt $END_TIME ]; do
+  sleep 5
+done
 
-echo "Time's up — stopping server gracefully..."
-kill -SIGTERM $MC_PID
+if kill -0 "$MC_PID" 2>/dev/null; then
+  echo "Time's up — stopping server gracefully..."
+  kill -SIGTERM $MC_PID
+fi
 wait $MC_PID || true
 kill $POLL_PID 2>/dev/null || true
 exec 3>&- 2>/dev/null || true
