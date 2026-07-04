@@ -18,13 +18,14 @@ jobs:
           distribution: temurin
           java-version: '21'
 
-      - name: Download latest vanilla server jar
+      - name: Download vanilla server jar (pinned version)
+        env:
+          MC_VERSION: "1.21.4"
         run: |
           VERSION_MANIFEST=$(curl -s https://launchermeta.mojang.com/mc/game/version_manifest.json)
-          LATEST=$(echo "$VERSION_MANIFEST" | jq -r '.latest.release')
-          VERSION_URL=$(echo "$VERSION_MANIFEST" | jq -r ".versions[] | select(.id==\"$LATEST\") | .url")
+          VERSION_URL=$(echo "$VERSION_MANIFEST" | jq -r ".versions[] | select(.id==\"$MC_VERSION\") | .url")
           SERVER_URL=$(curl -s "$VERSION_URL" | jq -r '.downloads.server.url')
-          echo "Downloading Minecraft $LATEST server jar"
+          echo "Downloading Minecraft $MC_VERSION server jar"
           curl -o server/server.jar "$SERVER_URL"
 
       - name: Accept EULA
