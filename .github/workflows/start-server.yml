@@ -90,7 +90,8 @@ jobs:
             cp server/server.properties "worlds/${{ github.event.inputs.modpack }}/server.properties"
             git add "worlds/${{ github.event.inputs.modpack }}"
             git diff --staged --quiet || git commit -m "Update ${{ github.event.inputs.modpack }} world state after session"
-            git push
+            git pull --rebase --quiet
+            git push origin HEAD:main
           else
             echo "No server/world directory found — server likely never started successfully. Skipping commit."
           fi
