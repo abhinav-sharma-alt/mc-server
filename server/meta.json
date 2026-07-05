@@ -1,7 +1,0 @@
-{
-  "java_version": "17",
-  "memory_gb": "12",
-  "server_jar": "server.jar",
-  "launch_mode": "script",
-  "start_script": "start.sh"
-}
