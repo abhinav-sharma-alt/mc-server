@@ -53,7 +53,21 @@ exec 3<>/tmp/mc_console
 
 MEMORY_GB="${MEMORY_GB:-10}"
 SERVER_JAR="${SERVER_JAR:-server.jar}"
-java -Xmx${MEMORY_GB}G -Xms1G -jar "$SERVER_JAR" nogui <&3 &
+LAUNCH_MODE="${LAUNCH_MODE:-jar}"
+START_SCRIPT="${START_SCRIPT:-start.sh}"
+
+if [ "$LAUNCH_MODE" = "script" ]; then
+  # Forge-style packs often read memory from user_jvm_args.txt rather than
+  # taking -Xmx as a start.sh argument. If that file exists, rewrite its
+  # -Xmx line (or add one) so MEMORY_GB actually takes effect.
+  if [ -f "user_jvm_args.txt" ]; then
+    sed -i '/-Xmx/d' user_jvm_args.txt
+    echo "-Xmx${MEMORY_GB}G" >> user_jvm_args.txt
+  fi
+  ./"$START_SCRIPT" nogui <&3 &
+else
+  java -Xmx${MEMORY_GB}G -Xms1G -jar "$SERVER_JAR" nogui <&3 &
+fi
 MC_PID=$!
 cd ..
 

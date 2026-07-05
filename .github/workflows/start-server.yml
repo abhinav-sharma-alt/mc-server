@@ -38,14 +38,20 @@ jobs:
             JAVA_VERSION=$(jq -r '.java_version // "25"' "$META")
             MEMORY_GB=$(jq -r '.memory_gb // "10"' "$META")
             SERVER_JAR=$(jq -r '.server_jar // "server.jar"' "$META")
+            LAUNCH_MODE=$(jq -r '.launch_mode // "jar"' "$META")
+            START_SCRIPT=$(jq -r '.start_script // "start.sh"' "$META")
           else
             JAVA_VERSION="25"
             MEMORY_GB="10"
             SERVER_JAR="server.jar"
+            LAUNCH_MODE="jar"
+            START_SCRIPT="start.sh"
           fi
           echo "java_version=$JAVA_VERSION" >> "$GITHUB_OUTPUT"
           echo "memory_gb=$MEMORY_GB" >> "$GITHUB_OUTPUT"
           echo "server_jar=$SERVER_JAR" >> "$GITHUB_OUTPUT"
+          echo "launch_mode=$LAUNCH_MODE" >> "$GITHUB_OUTPUT"
+          echo "start_script=$START_SCRIPT" >> "$GITHUB_OUTPUT"
 
       - name: Set up Java
         uses: actions/setup-java@v4
@@ -75,14 +81,30 @@ jobs:
           mkdir -p server
           cp -r "modpacks/$MODPACK"/* server/
 
-          SERVER_JAR="${{ steps.modpack_meta.outputs.server_jar }}"
-          if [ ! -f "server/$SERVER_JAR" ]; then
-            echo "::error::server/$SERVER_JAR not found after copying modpacks/$MODPACK."
-            echo "Files actually present in modpacks/$MODPACK:"
-            find "modpacks/$MODPACK" -maxdepth 1 -name "*.jar"
-            echo "If the real jar has a different name, set it with:"
-            echo "  /modpack configure name: $MODPACK server_jar: <actual-filename>.jar"
-            exit 1
+          LAUNCH_MODE="${{ steps.modpack_meta.outputs.launch_mode }}"
+          if [ "$LAUNCH_MODE" = "script" ]; then
+            START_SCRIPT="${{ steps.modpack_meta.outputs.start_script }}"
+            if [ ! -f "server/$START_SCRIPT" ]; then
+              echo "::error::server/$START_SCRIPT not found after copying modpacks/$MODPACK."
+              echo "Files actually present in modpacks/$MODPACK:"
+              find "modpacks/$MODPACK" -maxdepth 1 \( -name "*.sh" -o -name "*.jar" \)
+              echo "Set the right one with:"
+              echo "  /modpack configure name: $MODPACK launch_mode: script start_script: <actual-filename>.sh"
+              exit 1
+            fi
+            chmod +x "server/$START_SCRIPT"
+          else
+            SERVER_JAR="${{ steps.modpack_meta.outputs.server_jar }}"
+            if [ ! -f "server/$SERVER_JAR" ]; then
+              echo "::error::server/$SERVER_JAR not found after copying modpacks/$MODPACK."
+              echo "Files actually present in modpacks/$MODPACK:"
+              find "modpacks/$MODPACK" -maxdepth 1 \( -name "*.jar" -o -name "*.sh" \)
+              echo "If there's a .sh launcher instead of a plain jar, this modpack needs script mode:"
+              echo "  /modpack configure name: $MODPACK launch_mode: script start_script: <actual-filename>.sh"
+              echo "Otherwise, if the jar just has a different name:"
+              echo "  /modpack configure name: $MODPACK server_jar: <actual-filename>.jar"
+              exit 1
+            fi
           fi
 
       - name: Accept EULA
@@ -113,6 +135,8 @@ jobs:
           MODPACK: ${{ github.event.inputs.modpack }}
           MEMORY_GB: ${{ steps.modpack_meta.outputs.memory_gb }}
           SERVER_JAR: ${{ steps.modpack_meta.outputs.server_jar }}
+          LAUNCH_MODE: ${{ steps.modpack_meta.outputs.launch_mode }}
+          START_SCRIPT: ${{ steps.modpack_meta.outputs.start_script }}
         run: |
           chmod +x scripts/run-session.sh
           ./scripts/run-session.sh

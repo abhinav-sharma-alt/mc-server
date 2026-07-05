@@ -34,7 +34,18 @@ on:
         description: 'Xmx memory in GB (create: defaults to 10 if blank. configure: leave blank to keep current value). Runner has 16GB total.'
         required: false
       server_jar:
-        description: 'Runnable jar filename inside the modpack folder (create: defaults to server.jar if blank. configure: leave blank to keep current value)'
+        description: 'Runnable jar filename, jar mode only (create: defaults to server.jar if blank. configure: leave blank to keep current value)'
+        required: false
+      launch_mode:
+        description: 'jar (java -jar, default) or script (run a shipped start.sh). Blank on configure keeps current value.'
+        required: false
+        type: choice
+        options:
+          - ''
+          - jar
+          - script
+      start_script:
+        description: 'Script filename for script mode, e.g. start.sh (create: defaults to start.sh if blank. configure: leave blank to keep current value)'
         required: false
       delete_world:
         description: 'Also delete the saved world data? (delete only)'
@@ -135,29 +146,39 @@ jobs:
             CUR_JAVA=$(jq -r '.java_version // "25"' "$META")
             CUR_MEM=$(jq -r '.memory_gb // "10"' "$META")
             CUR_JAR=$(jq -r '.server_jar // "server.jar"' "$META")
+            CUR_MODE=$(jq -r '.launch_mode // "jar"' "$META")
+            CUR_SCRIPT=$(jq -r '.start_script // "start.sh"' "$META")
           else
             CUR_JAVA="25"
             CUR_MEM="10"
             CUR_JAR="server.jar"
+            CUR_MODE="jar"
+            CUR_SCRIPT="start.sh"
           fi
 
           # Only override a field if the corresponding input was actually provided
           IN_JAVA="${{ github.event.inputs.java_version }}"
           IN_MEM="${{ github.event.inputs.memory_gb }}"
           IN_JAR="${{ github.event.inputs.server_jar }}"
+          IN_MODE="${{ github.event.inputs.launch_mode }}"
+          IN_SCRIPT="${{ github.event.inputs.start_script }}"
 
           FINAL_JAVA="${IN_JAVA:-$CUR_JAVA}"
           FINAL_MEM="${IN_MEM:-$CUR_MEM}"
           FINAL_JAR="${IN_JAR:-$CUR_JAR}"
+          FINAL_MODE="${IN_MODE:-$CUR_MODE}"
+          FINAL_SCRIPT="${IN_SCRIPT:-$CUR_SCRIPT}"
 
           cat > "$META" <<EOF
           {
             "java_version": "$FINAL_JAVA",
             "memory_gb": "$FINAL_MEM",
-            "server_jar": "$FINAL_JAR"
+            "server_jar": "$FINAL_JAR",
+            "launch_mode": "$FINAL_MODE",
+            "start_script": "$FINAL_SCRIPT"
           }
           EOF
-          echo "meta.json for $NAME -> java=$FINAL_JAVA mem=${FINAL_MEM}GB jar=$FINAL_JAR"
+          echo "meta.json for $NAME -> java=$FINAL_JAVA mem=${FINAL_MEM}GB mode=$FINAL_MODE jar=$FINAL_JAR script=$FINAL_SCRIPT"
 
       - name: Create - add to start-server.yml dropdown
         if: github.event.inputs.action == 'create'
