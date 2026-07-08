@@ -1,126 +1,33 @@
-[07:45:55] [ServerMain/INFO]: Environment: Environment[sessionHost=https://sessionserver.mojang.com, servicesHost=https://api.minecraftservices.com, profilesHost=https://api.mojang.com, name=PROD]
-[07:45:57] [ServerMain/INFO]: Loaded 1585 recipes
-[07:45:57] [ServerMain/INFO]: Loaded 1688 advancements
-[07:45:57] [Server thread/INFO]: Starting minecraft server version 26.2
-[07:45:57] [Server thread/INFO]: Loading properties
-[07:45:57] [Server thread/INFO]: Default game type: SURVIVAL
-[07:45:57] [Server thread/INFO]: Generating keypair
-[07:45:57] [Server thread/INFO]: Starting Minecraft server on *:25565
-[07:45:57] [Server thread/WARN]: **** SERVER IS RUNNING IN OFFLINE/INSECURE MODE!
-[07:45:57] [Server thread/WARN]: The server will make no attempt to authenticate usernames. Beware.
-[07:45:57] [Server thread/WARN]: While this makes the game possible to play without internet access, it also opens up the ability for hackers to connect with any username they choose.
-[07:45:57] [Server thread/WARN]: To change this, set "online-mode" to "true" in the server.properties file.
-[07:45:57] [Server thread/INFO]: Preparing level "world"
-[07:45:58] [Server thread/INFO]: Loading 0 persistent chunks...
-[07:45:58] [Server thread/INFO]: Preparing spawn area: 100%
-[07:45:58] [Server thread/INFO]: Time elapsed: 12 ms
-[07:45:58] [Server thread/INFO]: Done (0.331s)! For help, type "help"
-[07:45:58] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
-[07:45:58] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_nether
-[07:45:58] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_end
-[07:45:58] [Server thread/INFO]: ThreadedAnvilChunkStorage (world): All chunks are saved
-[07:45:58] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
-[07:45:58] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
-[07:45:58] [Server thread/INFO]: ThreadedAnvilChunkStorage: All dimensions are saved
-[07:46:11] [Server thread/INFO]: abhinav2654[/127.102.29.229:35875] logged in with entity id 58 at (19.27050843444629, 69.0, -70.33457837254484)
-[07:46:11] [Server thread/INFO]: abhinav2654 joined the game
-[07:46:14] [Server thread/INFO]: OpZero[/127.44.81.197:33069] logged in with entity id 171 at (31.5, 69.0, -55.5)
-[07:46:14] [Server thread/INFO]: OpZero joined the game
-[07:47:29] [Server thread/INFO]: OpZero has made the advancement [Stone Age]
-[07:48:18] [Server thread/INFO]: abhinav2654 has made the advancement [Stone Age]
-[07:48:52] [Server thread/INFO]: abhinav2654 has made the advancement [Getting an Upgrade]
-[07:50:40] [Server thread/INFO]: OpZero has made the advancement [Getting an Upgrade]
-[07:53:07] [Server thread/INFO]: OpZero has made the advancement [Acquire Hardware]
-[07:53:28] [Server thread/INFO]: OpZero has made the advancement [Isn't It Iron Pick]
-[07:55:12] [Server thread/INFO]: Made abhinav2654 a server operator
-[07:55:17] [Server thread/INFO]: Nothing changed. The player already is an operator
-[07:55:26] [Server thread/INFO]: [abhinav2654: Gamerule keep_inventory is now set to: true]
-[07:55:35] [Server thread/INFO]: [abhinav2654: Gamerule players_sleeping_percentage is now set to: 1]
-[07:55:42] [Server thread/INFO]: abhinav2654 has made the advancement [Monster Hunter]
-[07:56:24] [Server thread/INFO]: OpZero has made the advancement [Diamonds!]
-[07:56:28] [Server thread/INFO]: abhinav2654 has made the advancement [Ice Bucket Challenge]
-[07:56:32] [Server thread/INFO]: abhinav2654 has made the advancement [Suit Up]
-[07:56:39] [Server thread/INFO]: TRIPATHI10[/127.102.29.229:53587] logged in with entity id 4451 at (17.246361009800523, 69.0, -72.46983861191474)
-[07:56:39] [Server thread/INFO]: TRIPATHI10 joined the game
-[07:56:58] [Server thread/INFO]: abhinav2654 has made the advancement [Sweet Dreams]
-[07:57:37] [Server thread/INFO]: [Not Secure] <TRIPATHI10> admin is gay
-[07:57:46] [Server thread/INFO]: [abhinav2654: Made TRIPATHI10 a server operator]
-[07:57:54] [Server thread/INFO]: [abhinav2654: Made TRIPATHI10 no longer a server operator]
-[08:00:05] [Server thread/INFO]: [abhinav2654: Applied effect Hunger to OpZero]
-[08:00:15] [Server thread/INFO]: [abhinav2654: Removed every effect from OpZero]
-[08:03:37] [Server thread/INFO]: TRIPATHI10 tried to swim in lava
-[08:04:40] [Server thread/INFO]: abhinav2654 lost connection: Disconnected
-[08:04:40] [Server thread/INFO]: abhinav2654 left the game
-[08:05:24] [Server thread/INFO]: TRIPATHI10 has made the advancement [Stone Age]
-[08:06:05] [Server thread/INFO]: TRIPATHI10 has made the advancement [Getting an Upgrade]
-[08:06:08] [Server thread/INFO]: OpZero suffocated in a wall
-[08:06:21] [Server thread/INFO]: abhinav2654[/127.102.29.229:38207] logged in with entity id 10339 at (210.99114265770638, 70.0, 129.14515554326516)
-[08:06:21] [Server thread/INFO]: abhinav2654 joined the game
-[08:06:29] [Server thread/INFO]: OpZero has made the advancement [Cover Me with Diamonds]
-[08:06:37] [Server thread/INFO]: TRIPATHI10 fell from a high place
-[08:08:41] [Server thread/INFO]: OpZero lost connection: Disconnected
-[08:08:41] [Server thread/INFO]: OpZero left the game
-[08:09:33] [Server thread/INFO]: OpZero[/127.44.81.197:35759] logged in with entity id 13328 at (-176.30000001192093, 32.0, -218.69999998807907)
-[08:09:33] [Server thread/INFO]: OpZero joined the game
-[08:09:49] [Server thread/INFO]: OpZero has made the advancement [Monster Hunter]
-[08:10:07] [Server thread/INFO]: TRIPATHI10 has made the advancement [Monster Hunter]
-[08:10:42] [Server thread/INFO]: OpZero was doomed to fall by Skeleton
-[08:11:26] [Server thread/INFO]: abhinav2654 was shot by Pillager
-[08:11:35] [Server thread/INFO]: OpZero lost connection: xray
-[08:11:35] [Server thread/INFO]: OpZero left the game
-[08:11:35] [Server thread/INFO]: [abhinav2654: Kicked OpZero: xray]
-[08:11:35] [Server thread/WARN]: handleDisconnection() called twice
-[08:11:47] [Server thread/INFO]: OpZero[/127.44.81.197:34367] logged in with entity id 15282 at (48.31654763080534, 65.24918707874468, -115.98328221696565)
-[08:11:47] [Server thread/INFO]: OpZero joined the game
-[08:12:01] [Server thread/INFO]: TRIPATHI10 has made the advancement [Acquire Hardware]
-[08:12:21] [Server thread/INFO]: TRIPATHI10 has made the advancement [Isn't It Iron Pick]
-[08:12:43] [Server thread/INFO]: OpZero fell from a high place
-[08:12:55] [Server thread/INFO]: TRIPATHI10 has made the advancement [Suit Up]
-[08:14:31] [Server thread/INFO]: TRIPATHI10 was blown up by Creeper
-[08:15:46] [Server thread/INFO]: abhinav2654 has made the advancement [Acquire Hardware]
-[08:18:06] [Server thread/INFO]: TRIPATHI10 has made the advancement [Hot Stuff]
-[08:21:22] [Server thread/INFO]: OpZero fell from a high place
-[08:22:07] [Server thread/INFO]: abhinav2654 has made the advancement [Voluntary Exile]
-[08:22:37] [Server thread/INFO]: TRIPATHI10 has made the advancement [We Need to Go Deeper]
-[08:22:38] [Server thread/WARN]: Can't keep up! Is the server overloaded? Running 2734ms or 54 ticks behind
-[08:22:38] [Server thread/WARN]: abhinav2654 moved too quickly! 8.276314798696376,0.0,5.959695939928224
-[08:22:49] [Server thread/INFO]: OpZero has made the advancement [Sweet Dreams]
-[08:24:17] [Server thread/INFO]: abhinav2654 was shot by Pillager
-[08:24:19] [Server thread/INFO]: [Not Secure] <TRIPATHI10> xaero-waypoint:NEATHER PORTAL 1:N:189:73:223:7:false:0:Internal-overworld
-[08:28:25] [Server thread/INFO]: abhinav2654 has made the advancement [Best Friends Forever]
-[08:29:55] [Server thread/INFO]: TRIPATHI10 has made the advancement [Best Friends Forever]
-[08:36:17] [Server thread/INFO]: OpZero has made the advancement [Suit Up]
-[08:37:57] [Server thread/INFO]: TRIPATHI10 lost connection: Disconnected
-[08:37:57] [Server thread/INFO]: TRIPATHI10 left the game
-[08:41:33] [Server thread/INFO]: TRIPATHI10[/127.102.29.229:43279] logged in with entity id 44037 at (867.9201741059915, 93.84375002384186, 997.7836728406787)
-[08:41:33] [Server thread/INFO]: TRIPATHI10 joined the game
-[08:42:02] [Server thread/INFO]: OpZero lost connection: Disconnected
-[08:42:02] [Server thread/INFO]: OpZero left the game
-[08:42:22] [Server thread/INFO]: TRIPATHI10 lost connection: Disconnected
-[08:42:22] [Server thread/INFO]: TRIPATHI10 left the game
-[08:44:16] [Server thread/INFO]: TRIPATHI10[/127.102.29.229:55777] logged in with entity id 45188 at (868.2452410536832, 93.0, 1002.0811243853343)
-[08:44:16] [Server thread/INFO]: TRIPATHI10 joined the game
-[08:44:55] [Server thread/INFO]: abhinav2654 has made the advancement [What a Deal!]
-[08:51:19] [Server thread/INFO]: OpZero[/127.61.191.47:57961] logged in with entity id 52287 at (895.3000000119209, 61.0, 1647.8239363983819)
-[08:51:19] [Server thread/INFO]: OpZero joined the game
-[08:55:49] [Server thread/INFO]: TRIPATHI10 has made the advancement [Sweet Dreams]
-[08:59:09] [Server thread/INFO]: abhinav2654 has made the advancement [Diamonds!]
-[09:01:45] [Server thread/WARN]: Mismatch in destroy block pos: BlockPos{x=398, y=64, z=2238} BlockPos{x=398, y=62, z=2238}
-[09:03:33] [Server thread/WARN]: Mismatch in destroy block pos: BlockPos{x=209, y=64, z=2848} BlockPos{x=209, y=62, z=2849}
-[09:03:34] [Server thread/WARN]: Mismatch in destroy block pos: BlockPos{x=209, y=64, z=2849} BlockPos{x=211, y=62, z=2850}
-[09:03:34] [Server thread/WARN]: Mismatch in destroy block pos: BlockPos{x=209, y=64, z=2849} BlockPos{x=211, y=62, z=2850}
-[09:03:34] [Server thread/WARN]: Mismatch in destroy block pos: BlockPos{x=210, y=64, z=2850} BlockPos{x=211, y=62, z=2850}
-[09:04:06] [Server thread/INFO]: OpZero lost connection: Timed out
-[09:04:06] [Server thread/INFO]: OpZero left the game
-[09:04:20] [Server thread/INFO]: OpZero[/127.61.191.47:36057] logged in with entity id 75292 at (1978.56431707299, 80.25220334025373, 2301.1695597251737)
-[09:04:20] [Server thread/INFO]: OpZero joined the game
-[09:06:51] [Server thread/INFO]: OpZero lost connection: Disconnected
-[09:06:51] [Server thread/INFO]: OpZero left the game
-[09:19:20] [Server thread/INFO]: abhinav2654 was shot by Parched
-[09:19:35] [Worker-Main-3/ERROR]: Failed to fetch mob spawner entity at (-1518, 38, 4906)
-[09:20:34] [Server thread/INFO]: TRIPATHI10 lost connection: Disconnected
-[09:20:34] [Server thread/INFO]: TRIPATHI10 left the game
-[09:22:08] [Server thread/WARN]: abhinav2654 moved too quickly! 9.934867185858195,0.2468000194787976,1.8383259245943009
-[09:22:22] [Server thread/INFO]: abhinav2654 lost connection: Disconnected
-[09:22:22] [Server thread/INFO]: abhinav2654 left the game
-[09:23:21] [Server thread/INFO]: Server empty for 60 seconds, pausing
+[04:46:18] [ServerMain/INFO]: Environment: Environment[sessionHost=https://sessionserver.mojang.com, servicesHost=https://api.minecraftservices.com, profilesHost=https://api.mojang.com, name=PROD]
+[04:46:20] [ServerMain/INFO]: Loaded 1585 recipes
+[04:46:21] [ServerMain/INFO]: Loaded 1688 advancements
+[04:46:21] [Server thread/INFO]: Starting minecraft server version 26.2
+[04:46:21] [Server thread/INFO]: Loading properties
+[04:46:21] [Server thread/INFO]: Default game type: SURVIVAL
+[04:46:21] [Server thread/INFO]: Generating keypair
+[04:46:21] [Server thread/INFO]: Starting Minecraft server on *:25565
+[04:46:21] [Server thread/WARN]: **** SERVER IS RUNNING IN OFFLINE/INSECURE MODE!
+[04:46:21] [Server thread/WARN]: The server will make no attempt to authenticate usernames. Beware.
+[04:46:21] [Server thread/WARN]: While this makes the game possible to play without internet access, it also opens up the ability for hackers to connect with any username they choose.
+[04:46:21] [Server thread/WARN]: To change this, set "online-mode" to "true" in the server.properties file.
+[04:46:21] [Server thread/INFO]: Preparing level "world"
+[04:46:21] [Server thread/INFO]: Loading 0 persistent chunks...
+[04:46:21] [Server thread/INFO]: Preparing spawn area: 100%
+[04:46:21] [Server thread/INFO]: Time elapsed: 11 ms
+[04:46:21] [Server thread/INFO]: Done (0.336s)! For help, type "help"
+[04:46:21] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
+[04:46:21] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_end
+[04:46:21] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_nether
+[04:46:21] [Server thread/INFO]: ThreadedAnvilChunkStorage (world): All chunks are saved
+[04:46:22] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
+[04:46:22] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
+[04:46:22] [Server thread/INFO]: ThreadedAnvilChunkStorage: All dimensions are saved
+[04:46:29] [Server thread/INFO]: OpZero[/127.195.89.132:37609] logged in with entity id 94 at (2055.5, 79.0, 2306.5)
+[04:46:29] [Server thread/INFO]: OpZero joined the game
+[04:53:59] [Server thread/INFO]: OpZero has made the advancement [Hot Stuff]
+[04:54:13] [Server thread/INFO]: OpZero burned to death
+[04:55:17] [Server thread/INFO]: OpZero has made the advancement [Ice Bucket Challenge]
+[05:23:55] [Server thread/INFO]: OpZero has made the advancement [We Need to Go Deeper]
+[05:26:28] [Server thread/INFO]: OpZero tried to swim in lava
+[05:38:37] [Server thread/INFO]: OpZero has made the advancement [Those Were the Days]
+[05:40:41] [Server thread/INFO]: [Not Secure] [Server] why are you always in bastion
