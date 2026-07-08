@@ -1,33 +1,76 @@
-[04:46:18] [ServerMain/INFO]: Environment: Environment[sessionHost=https://sessionserver.mojang.com, servicesHost=https://api.minecraftservices.com, profilesHost=https://api.mojang.com, name=PROD]
-[04:46:20] [ServerMain/INFO]: Loaded 1585 recipes
-[04:46:21] [ServerMain/INFO]: Loaded 1688 advancements
-[04:46:21] [Server thread/INFO]: Starting minecraft server version 26.2
-[04:46:21] [Server thread/INFO]: Loading properties
-[04:46:21] [Server thread/INFO]: Default game type: SURVIVAL
-[04:46:21] [Server thread/INFO]: Generating keypair
-[04:46:21] [Server thread/INFO]: Starting Minecraft server on *:25565
-[04:46:21] [Server thread/WARN]: **** SERVER IS RUNNING IN OFFLINE/INSECURE MODE!
-[04:46:21] [Server thread/WARN]: The server will make no attempt to authenticate usernames. Beware.
-[04:46:21] [Server thread/WARN]: While this makes the game possible to play without internet access, it also opens up the ability for hackers to connect with any username they choose.
-[04:46:21] [Server thread/WARN]: To change this, set "online-mode" to "true" in the server.properties file.
-[04:46:21] [Server thread/INFO]: Preparing level "world"
-[04:46:21] [Server thread/INFO]: Loading 0 persistent chunks...
-[04:46:21] [Server thread/INFO]: Preparing spawn area: 100%
-[04:46:21] [Server thread/INFO]: Time elapsed: 11 ms
-[04:46:21] [Server thread/INFO]: Done (0.336s)! For help, type "help"
-[04:46:21] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
-[04:46:21] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_end
-[04:46:21] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_nether
-[04:46:21] [Server thread/INFO]: ThreadedAnvilChunkStorage (world): All chunks are saved
-[04:46:22] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
-[04:46:22] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
-[04:46:22] [Server thread/INFO]: ThreadedAnvilChunkStorage: All dimensions are saved
-[04:46:29] [Server thread/INFO]: OpZero[/127.195.89.132:37609] logged in with entity id 94 at (2055.5, 79.0, 2306.5)
-[04:46:29] [Server thread/INFO]: OpZero joined the game
-[04:53:59] [Server thread/INFO]: OpZero has made the advancement [Hot Stuff]
-[04:54:13] [Server thread/INFO]: OpZero burned to death
-[04:55:17] [Server thread/INFO]: OpZero has made the advancement [Ice Bucket Challenge]
-[05:23:55] [Server thread/INFO]: OpZero has made the advancement [We Need to Go Deeper]
-[05:26:28] [Server thread/INFO]: OpZero tried to swim in lava
-[05:38:37] [Server thread/INFO]: OpZero has made the advancement [Those Were the Days]
-[05:40:41] [Server thread/INFO]: [Not Secure] [Server] why are you always in bastion
+[14:52:21] [ServerMain/INFO]: Environment: Environment[sessionHost=https://sessionserver.mojang.com, servicesHost=https://api.minecraftservices.com, profilesHost=https://api.mojang.com, name=PROD]
+[14:52:23] [ServerMain/INFO]: Loaded 1585 recipes
+[14:52:23] [ServerMain/INFO]: Loaded 1688 advancements
+[14:52:23] [Server thread/INFO]: Starting minecraft server version 26.2
+[14:52:23] [Server thread/INFO]: Loading properties
+[14:52:23] [Server thread/INFO]: Default game type: SURVIVAL
+[14:52:23] [Server thread/INFO]: Generating keypair
+[14:52:23] [Server thread/INFO]: Starting Minecraft server on *:25565
+[14:52:23] [Server thread/WARN]: **** SERVER IS RUNNING IN OFFLINE/INSECURE MODE!
+[14:52:23] [Server thread/WARN]: The server will make no attempt to authenticate usernames. Beware.
+[14:52:23] [Server thread/WARN]: While this makes the game possible to play without internet access, it also opens up the ability for hackers to connect with any username they choose.
+[14:52:23] [Server thread/WARN]: To change this, set "online-mode" to "true" in the server.properties file.
+[14:52:23] [Server thread/INFO]: Preparing level "world"
+[14:52:24] [Server thread/INFO]: Loading 0 persistent chunks...
+[14:52:24] [Server thread/INFO]: Preparing spawn area: 100%
+[14:52:24] [Server thread/INFO]: Time elapsed: 11 ms
+[14:52:24] [Server thread/INFO]: Done (0.245s)! For help, type "help"
+[14:52:24] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
+[14:52:24] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_end
+[14:52:24] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_nether
+[14:52:24] [Server thread/INFO]: ThreadedAnvilChunkStorage (world): All chunks are saved
+[14:52:24] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
+[14:52:24] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
+[14:52:24] [Server thread/INFO]: ThreadedAnvilChunkStorage: All dimensions are saved
+[14:52:27] [Server thread/INFO]: OpZero[/127.72.122.78:40607] logged in with entity id 82 at (2505.5, 64.0, -1118.5)
+[14:52:27] [Server thread/INFO]: OpZero joined the game
+[14:53:50] [Server thread/INFO]: OpZero has made the advancement [Hidden in the Depths]
+[15:05:48] [Server thread/INFO]: OpZero tried to swim in lava
+[15:08:49] [Server thread/INFO]: TRIPATHI10[/127.83.106.75:45639] logged in with entity id 4760 at (-1092.7709031726486, 78.0, 4420.046027770921)
+[15:08:49] [Server thread/INFO]: TRIPATHI10 joined the game
+[15:09:09] [Server thread/INFO]: [Not Secure] <TRIPATHI10> hello
+[15:09:51] [Server thread/INFO]: [Not Secure] <OpZero> hi
+[15:11:32] [Server thread/INFO]: [Not Secure] <OpZero> muzhe library chiye
+[15:12:09] [Server thread/INFO]: [Not Secure] <TRIPATHI10> library matlb bookshelf ya server ki library
+[15:12:18] [Server thread/INFO]: [Not Secure] <OpZero> bookshlef
+[15:12:48] [Worker-Main-3/ERROR]: Detected unsafe terrain read during worldgen: reading from chunk [185, -109] while generating chunk [185, -111] (distance: 2, write radius: 1), step: minecraft:features, currently generating: ResourceKey[minecraft:worldgen/placed_feature / minecraft:sculk_patch_deep_dark]
+[15:12:48] [Worker-Main-3/ERROR]: Detected unsafe terrain read during worldgen: reading from chunk [185, -109] while generating chunk [185, -111] (distance: 2, write radius: 1), step: minecraft:features, currently generating: ResourceKey[minecraft:worldgen/placed_feature / minecraft:sculk_patch_deep_dark]
+[15:12:48] [Worker-Main-3/ERROR]: Detected unsafe terrain read during worldgen: reading from chunk [185, -109] while generating chunk [185, -111] (distance: 2, write radius: 1), step: minecraft:features, currently generating: ResourceKey[minecraft:worldgen/placed_feature / minecraft:sculk_patch_deep_dark]
+[15:12:48] [Worker-Main-3/ERROR]: Detected unsafe terrain read during worldgen: reading from chunk [185, -109] while generating chunk [185, -111] (distance: 2, write radius: 1), step: minecraft:features, currently generating: ResourceKey[minecraft:worldgen/placed_feature / minecraft:sculk_patch_deep_dark]
+[15:12:48] [Worker-Main-3/ERROR]: Detected unsafe terrain read during worldgen: reading from chunk [185, -109] while generating chunk [185, -111] (distance: 2, write radius: 1), step: minecraft:features, currently generating: ResourceKey[minecraft:worldgen/placed_feature / minecraft:sculk_patch_deep_dark]
+[15:12:48] [Worker-Main-3/ERROR]: Detected unsafe terrain read during worldgen: reading from chunk [185, -109] while generating chunk [185, -111] (distance: 2, write radius: 1), step: minecraft:features, currently generating: ResourceKey[minecraft:worldgen/placed_feature / minecraft:sculk_patch_deep_dark]
+[15:12:48] [Worker-Main-3/ERROR]: Detected unsafe terrain read during worldgen: reading from chunk [185, -109] while generating chunk [185, -111] (distance: 2, write radius: 1), step: minecraft:features, currently generating: ResourceKey[minecraft:worldgen/placed_feature / minecraft:sculk_patch_deep_dark]
+[15:12:48] [Worker-Main-3/ERROR]: Detected unsafe terrain read during worldgen: reading from chunk [185, -109] while generating chunk [185, -111] (distance: 2, write radius: 1), step: minecraft:features, currently generating: ResourceKey[minecraft:worldgen/placed_feature / minecraft:sculk_patch_deep_dark]
+[15:12:48] [Worker-Main-3/ERROR]: Detected unsafe terrain read during worldgen: reading from chunk [185, -109] while generating chunk [185, -111] (distance: 2, write radius: 1), step: minecraft:features, currently generating: ResourceKey[minecraft:worldgen/placed_feature / minecraft:sculk_patch_deep_dark]
+[15:12:48] [Worker-Main-3/ERROR]: Detected unsafe terrain read during worldgen: reading from chunk [185, -109] while generating chunk [185, -111] (distance: 2, write radius: 1), step: minecraft:features, currently generating: ResourceKey[minecraft:worldgen/placed_feature / minecraft:sculk_patch_deep_dark]
+[15:12:48] [Worker-Main-3/ERROR]: Detected unsafe terrain read during worldgen: reading from chunk [185, -109] while generating chunk [185, -111] (distance: 2, write radius: 1), step: minecraft:features, currently generating: ResourceKey[minecraft:worldgen/placed_feature / minecraft:sculk_patch_deep_dark]
+[15:12:48] [Worker-Main-3/ERROR]: Detected unsafe terrain read during worldgen: reading from chunk [185, -109] while generating chunk [185, -111] (distance: 2, write radius: 1), step: minecraft:features, currently generating: ResourceKey[minecraft:worldgen/placed_feature / minecraft:sculk_patch_deep_dark]
+[15:12:48] [Worker-Main-3/ERROR]: Detected unsafe terrain read during worldgen: reading from chunk [185, -109] while generating chunk [185, -111] (distance: 2, write radius: 1), step: minecraft:features, currently generating: ResourceKey[minecraft:worldgen/placed_feature / minecraft:sculk_patch_deep_dark]
+[15:12:48] [Worker-Main-3/ERROR]: Detected unsafe terrain read during worldgen: reading from chunk [185, -109] while generating chunk [185, -111] (distance: 2, write radius: 1), step: minecraft:features, currently generating: ResourceKey[minecraft:worldgen/placed_feature / minecraft:sculk_patch_deep_dark]
+[15:12:48] [Worker-Main-3/ERROR]: Detected unsafe terrain read during worldgen: reading from chunk [185, -109] while generating chunk [185, -111] (distance: 2, write radius: 1), step: minecraft:features, currently generating: ResourceKey[minecraft:worldgen/placed_feature / minecraft:sculk_patch_deep_dark]
+[15:12:48] [Worker-Main-3/ERROR]: Detected unsafe terrain read during worldgen: reading from chunk [185, -109] while generating chunk [185, -111] (distance: 2, write radius: 1), step: minecraft:features, currently generating: ResourceKey[minecraft:worldgen/placed_feature / minecraft:sculk_patch_deep_dark]
+[15:12:48] [Worker-Main-3/ERROR]: Detected unsafe terrain read during worldgen: reading from chunk [185, -109] while generating chunk [185, -111] (distance: 2, write radius: 1), step: minecraft:features, currently generating: ResourceKey[minecraft:worldgen/placed_feature / minecraft:sculk_patch_deep_dark]
+[15:12:48] [Worker-Main-3/ERROR]: Detected unsafe terrain read during worldgen: reading from chunk [185, -109] while generating chunk [185, -111] (distance: 2, write radius: 1), step: minecraft:features, currently generating: ResourceKey[minecraft:worldgen/placed_feature / minecraft:sculk_patch_deep_dark]
+[15:12:48] [Worker-Main-3/ERROR]: Detected unsafe terrain read during worldgen: reading from chunk [185, -109] while generating chunk [185, -111] (distance: 2, write radius: 1), step: minecraft:features, currently generating: ResourceKey[minecraft:worldgen/placed_feature / minecraft:sculk_patch_deep_dark]
+[15:12:48] [Worker-Main-3/ERROR]: Detected unsafe terrain read during worldgen: reading from chunk [185, -109] while generating chunk [185, -111] (distance: 2, write radius: 1), step: minecraft:features, currently generating: ResourceKey[minecraft:worldgen/placed_feature / minecraft:sculk_patch_deep_dark]
+[15:12:48] [Worker-Main-3/ERROR]: Detected unsafe terrain read during worldgen: reading from chunk [185, -109] while generating chunk [185, -111] (distance: 2, write radius: 1), step: minecraft:features, currently generating: ResourceKey[minecraft:worldgen/placed_feature / minecraft:sculk_patch_deep_dark]
+[15:12:48] [Worker-Main-3/ERROR]: Detected unsafe terrain read during worldgen: reading from chunk [185, -109] while generating chunk [185, -111] (distance: 2, write radius: 1), step: minecraft:features, currently generating: ResourceKey[minecraft:worldgen/placed_feature / minecraft:sculk_patch_deep_dark]
+[15:12:48] [Worker-Main-3/ERROR]: Detected unsafe terrain read during worldgen: reading from chunk [185, -109] while generating chunk [185, -111] (distance: 2, write radius: 1), step: minecraft:features, currently generating: ResourceKey[minecraft:worldgen/placed_feature / minecraft:sculk_patch_deep_dark]
+[15:12:48] [Worker-Main-3/ERROR]: Detected unsafe terrain read during worldgen: reading from chunk [185, -109] while generating chunk [185, -111] (distance: 2, write radius: 1), step: minecraft:features, currently generating: ResourceKey[minecraft:worldgen/placed_feature / minecraft:sculk_patch_deep_dark]
+[15:12:48] [Worker-Main-3/ERROR]: Detected unsafe terrain read during worldgen: reading from chunk [185, -109] while generating chunk [185, -111] (distance: 2, write radius: 1), step: minecraft:features, currently generating: ResourceKey[minecraft:worldgen/placed_feature / minecraft:sculk_patch_deep_dark]
+[15:12:48] [Worker-Main-3/ERROR]: Detected unsafe terrain read during worldgen: reading from chunk [185, -109] while generating chunk [185, -111] (distance: 2, write radius: 1), step: minecraft:features, currently generating: ResourceKey[minecraft:worldgen/placed_feature / minecraft:sculk_patch_deep_dark]
+[15:12:48] [Worker-Main-3/ERROR]: Detected unsafe terrain read during worldgen: reading from chunk [185, -109] while generating chunk [185, -111] (distance: 2, write radius: 1), step: minecraft:features, currently generating: ResourceKey[minecraft:worldgen/placed_feature / minecraft:sculk_patch_deep_dark]
+[15:13:00] [Server thread/WARN]: Mismatch in destroy block pos: BlockPos{x=2548, y=64, z=-1242} BlockPos{x=2548, y=62, z=-1242}
+[15:13:04] [Server thread/WARN]: Mismatch in destroy block pos: BlockPos{x=2545, y=64, z=-1247} BlockPos{x=2545, y=62, z=-1248}
+[15:13:14] [Server thread/INFO]: [Not Secure] <TRIPATHI10> mere pe ek stack sugarcane hai leather aur chaiye
+[15:13:41] [Server thread/INFO]: [Not Secure] <OpZero> mai bhi sugarcane ikahte kar ra
+[15:19:04] [Server thread/INFO]: TRIPATHI10 lost connection: Disconnected
+[15:19:04] [Server thread/INFO]: TRIPATHI10 left the game
+[15:30:25] [Server thread/INFO]: OpZero was blown up by Creeper
+[15:31:59] [Server thread/INFO]: OpZero lost connection: Disconnected
+[15:31:59] [Server thread/INFO]: OpZero left the game
+[15:32:06] [Server thread/INFO]: OpZero[/127.72.122.78:35389] logged in with entity id 19663 at (2405.80179359533, 61.39300764708899, -1845.605785268209)
+[15:32:06] [Server thread/INFO]: OpZero joined the game
+[15:39:29] [Server thread/INFO]: OpZero tried to swim in lava
+[15:40:30] [Server thread/INFO]: OpZero lost connection: Disconnected
+[15:40:30] [Server thread/INFO]: OpZero left the game
