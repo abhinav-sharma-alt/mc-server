@@ -1,59 +1,85 @@
-[05:09:33] [ServerMain/INFO]: Environment: Environment[sessionHost=https://sessionserver.mojang.com, servicesHost=https://api.minecraftservices.com, profilesHost=https://api.mojang.com, name=PROD]
-[05:09:35] [ServerMain/INFO]: Loaded 1585 recipes
-[05:09:35] [ServerMain/INFO]: Loaded 1688 advancements
-[05:09:35] [Server thread/INFO]: Starting minecraft server version 26.2
-[05:09:35] [Server thread/INFO]: Loading properties
-[05:09:35] [Server thread/INFO]: Default game type: SURVIVAL
-[05:09:35] [Server thread/INFO]: Generating keypair
-[05:09:35] [Server thread/INFO]: Starting Minecraft server on *:25565
-[05:09:36] [Server thread/WARN]: **** SERVER IS RUNNING IN OFFLINE/INSECURE MODE!
-[05:09:36] [Server thread/WARN]: The server will make no attempt to authenticate usernames. Beware.
-[05:09:36] [Server thread/WARN]: While this makes the game possible to play without internet access, it also opens up the ability for hackers to connect with any username they choose.
-[05:09:36] [Server thread/WARN]: To change this, set "online-mode" to "true" in the server.properties file.
-[05:09:36] [Server thread/INFO]: Preparing level "world"
-[05:09:36] [Server thread/INFO]: Loading 0 persistent chunks...
-[05:09:36] [Server thread/INFO]: Preparing spawn area: 100%
-[05:09:36] [Server thread/INFO]: Time elapsed: 13 ms
-[05:09:36] [Server thread/INFO]: Done (0.290s)! For help, type "help"
-[05:09:36] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
-[05:09:36] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_end
-[05:09:36] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_nether
-[05:09:36] [Server thread/INFO]: ThreadedAnvilChunkStorage (world): All chunks are saved
-[05:09:36] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
-[05:09:36] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
-[05:09:36] [Server thread/INFO]: ThreadedAnvilChunkStorage: All dimensions are saved
-[05:09:41] [Server thread/INFO]: OpZero[/127.238.80.200:50093] logged in with entity id 79 at (2445.699999988079, 64.0, -1829.699999988079)
-[05:09:41] [Server thread/INFO]: OpZero joined the game
-[05:12:10] [Server thread/INFO]: OpZero has made the advancement [Not Today, Thank You]
-[05:12:28] [Server thread/INFO]: OpZero was shot by Skeleton
-[05:21:13] [Server thread/INFO]: OpZero has made the advancement [Sneak 100]
-[05:23:08] [Server thread/INFO]: OpZero tried to swim in lava
-[05:38:36] [Server thread/INFO]: OpZero was obliterated by a sonically-charged shriek
-[05:40:28] [Server thread/INFO]: OpZero lost connection: Timed out
-[05:40:28] [Server thread/INFO]: OpZero left the game
-[05:40:47] [Server thread/INFO]: OpZero[/127.238.80.200:41331] logged in with entity id 12503 at (2854.6129547236887, -25.0, -2516.3607755780326)
-[05:40:47] [Server thread/INFO]: OpZero joined the game
-[05:42:43] [Server thread/WARN]: Mismatch in destroy block pos: BlockPos{x=2851, y=-52, z=-2529} BlockPos{x=2850, y=-53, z=-2529}
-[05:42:56] [Server thread/WARN]: Mismatch in destroy block pos: BlockPos{x=2838, y=-52, z=-2530} BlockPos{x=2839, y=-53, z=-2529}
-[05:42:56] [Server thread/WARN]: Mismatch in destroy block pos: BlockPos{x=2838, y=-52, z=-2530} BlockPos{x=2839, y=-53, z=-2529}
-[05:42:57] [Server thread/INFO]: OpZero was slain by Warden
-[05:45:58] [Server thread/WARN]: OpZero moved too quickly! 0.9150213544758117,-9.957691746670726,2.308523347715891
-[05:46:02] [Server thread/INFO]: OpZero lost connection: Timed out
-[05:46:02] [Server thread/INFO]: OpZero left the game
-[05:47:02] [Server thread/INFO]: Server empty for 60 seconds, pausing
-[05:47:05] [Server thread/INFO]: OpZero[/127.238.80.200:58131] logged in with entity id 16151 at (2896.960877212609, -44.91802740647135, -2558.260604513903)
-[05:47:05] [Server thread/INFO]: OpZero joined the game
-[05:47:29] [Server thread/WARN]: Mismatch in destroy block pos: BlockPos{x=2943, y=-51, z=-2539} BlockPos{x=2943, y=-52, z=-2539}
-[05:48:00] [Server thread/WARN]: Mismatch in destroy block pos: BlockPos{x=2933, y=-51, z=-2572} BlockPos{x=2934, y=-49, z=-2577}
-[05:48:00] [Server thread/WARN]: Mismatch in destroy block pos: BlockPos{x=2933, y=-51, z=-2572} BlockPos{x=2934, y=-49, z=-2577}
-[05:48:17] [Server thread/INFO]: OpZero tried to swim in lava
-[05:48:35] [Server thread/INFO]: OpZero lost connection: Timed out
-[05:48:35] [Server thread/INFO]: OpZero left the game
-[05:49:15] [Server thread/INFO]: OpZero[/127.238.80.200:49561] logged in with entity id 17661 at (2936.127826894625, -52.0, -2578.1570595493845)
-[05:49:15] [Server thread/INFO]: OpZero joined the game
-[05:50:26] [Server thread/INFO]: OpZero was slain by Warden
-[05:53:01] [Server thread/INFO]: OpZero was slain by Warden
-[05:54:15] [Server thread/INFO]: OpZero lost connection: Timed out
-[05:54:15] [Server thread/INFO]: OpZero left the game
-[05:55:15] [Server thread/INFO]: Server empty for 60 seconds, pausing
-[10:54:29] [Server thread/INFO]: Stopping server
+[15:05:45] [ServerMain/INFO]: Environment: Environment[sessionHost=https://sessionserver.mojang.com, servicesHost=https://api.minecraftservices.com, profilesHost=https://api.mojang.com, name=PROD]
+[15:05:48] [ServerMain/INFO]: Loaded 1585 recipes
+[15:05:48] [ServerMain/INFO]: Loaded 1688 advancements
+[15:05:48] [Server thread/INFO]: Starting minecraft server version 26.2
+[15:05:48] [Server thread/INFO]: Loading properties
+[15:05:48] [Server thread/INFO]: Default game type: SURVIVAL
+[15:05:48] [Server thread/INFO]: Generating keypair
+[15:05:48] [Server thread/INFO]: Starting Minecraft server on *:25565
+[15:05:48] [Server thread/WARN]: **** SERVER IS RUNNING IN OFFLINE/INSECURE MODE!
+[15:05:48] [Server thread/WARN]: The server will make no attempt to authenticate usernames. Beware.
+[15:05:48] [Server thread/WARN]: While this makes the game possible to play without internet access, it also opens up the ability for hackers to connect with any username they choose.
+[15:05:48] [Server thread/WARN]: To change this, set "online-mode" to "true" in the server.properties file.
+[15:05:48] [Server thread/INFO]: Preparing level "world"
+[15:05:49] [Server thread/INFO]: Loading 0 persistent chunks...
+[15:05:49] [Server thread/INFO]: Preparing spawn area: 100%
+[15:05:49] [Server thread/INFO]: Time elapsed: 12 ms
+[15:05:49] [Server thread/INFO]: Done (0.271s)! For help, type "help"
+[15:05:49] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
+[15:05:49] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_nether
+[15:05:49] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_end
+[15:05:49] [Server thread/INFO]: ThreadedAnvilChunkStorage (world): All chunks are saved
+[15:05:49] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
+[15:05:49] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
+[15:05:49] [Server thread/INFO]: ThreadedAnvilChunkStorage: All dimensions are saved
+[15:06:49] [Server thread/INFO]: Server empty for 60 seconds, pausing
+[15:13:53] [Server thread/INFO]: abhinav2654[/127.188.61.32:50049] logged in with entity id 28 at (-339.2701503196314, 70.84375002384186, 3572.590193629263)
+[15:13:53] [Server thread/INFO]: abhinav2654 joined the game
+[15:19:53] [Server thread/INFO]: abhinav2654 was speared by Husk
+[15:22:48] [Server thread/INFO]: [abhinav2654: Teleported abhinav2654 to -284.500000, 64.500000, 3514.500000]
+[15:25:12] [Server thread/INFO]: OpZero[/127.48.161.65:34577] logged in with entity id 5163 at (2838.94671251494, -28.0, -2526.4726428300346)
+[15:25:12] [Server thread/INFO]: OpZero joined the game
+[15:25:16] [Server thread/INFO]: [Not Secure] <abhinav2654> yo
+[15:25:22] [Server thread/INFO]: [Not Secure] <OpZero> finally
+[15:25:43] [Server thread/INFO]: [Not Secure] <abhinav2654> i am on the vc
+[15:27:16] [Server thread/INFO]: OpZero tried to swim in lava
+[15:27:44] [Server thread/WARN]: Mismatch in destroy block pos: BlockPos{x=2852, y=-54, z=-2490} BlockPos{x=2851, y=-54, z=-2490}
+[15:28:10] [Server thread/WARN]: Mismatch in destroy block pos: BlockPos{x=2831, y=-51, z=-2487} BlockPos{x=2830, y=-52, z=-2488}
+[15:28:10] [Server thread/WARN]: Mismatch in destroy block pos: BlockPos{x=2831, y=-52, z=-2488} BlockPos{x=2830, y=-51, z=-2489}
+[15:28:15] [Server thread/WARN]: Mismatch in destroy block pos: BlockPos{x=2829, y=-49, z=-2484} BlockPos{x=2829, y=-51, z=-2487}
+[15:28:19] [Server thread/WARN]: Mismatch in destroy block pos: BlockPos{x=2829, y=-45, z=-2482} BlockPos{x=2829, y=-47, z=-2482}
+[15:28:19] [Server thread/WARN]: Mismatch in destroy block pos: BlockPos{x=2829, y=-45, z=-2482} BlockPos{x=2829, y=-47, z=-2482}
+[15:29:35] [Server thread/INFO]: OpZero was slain by Warden
+[15:31:34] [Server thread/WARN]: Mismatch in destroy block pos: BlockPos{x=2892, y=-52, z=-2572} BlockPos{x=2890, y=-51, z=-2573}
+[15:31:34] [Server thread/WARN]: Mismatch in destroy block pos: BlockPos{x=2892, y=-52, z=-2572} BlockPos{x=2891, y=-52, z=-2572}
+[15:31:35] [Server thread/INFO]: OpZero was slain by Warden
+[15:33:58] [Server thread/INFO]: OpZero lost connection: Timed out
+[15:33:58] [Server thread/INFO]: OpZero left the game
+[15:42:23] [Server thread/INFO]: OpZero[/127.166.50.4:56617] logged in with entity id 19898 at (2898.722465418786, -23.0, -2588.02362437078)
+[15:42:23] [Server thread/INFO]: OpZero joined the game
+[15:42:31] [Server thread/INFO]: OpZero fell from a high place
+[15:42:55] [Server thread/INFO]: OpZero fell from a high place
+[15:44:18] [Server thread/INFO]: OpZero was slain by Warden
+[15:44:22] [Server thread/INFO]: [Not Secure] <abhinav2654> lol
+[15:44:28] [Server thread/INFO]: [Not Secure] <OpZero> meow
+[15:44:39] [Server thread/WARN]: OpZero moved too quickly! -0.5419890671441863,-11.194885754619975,0.11665986370644532
+[15:46:40] [Server thread/INFO]: OpZero tried to swim in lava
+[15:48:45] [Server thread/INFO]: OpZero was slain by Warden
+[15:49:57] [Server thread/WARN]: OpZero moved too quickly! 9.080555176725284,-2.0784000015258783,-4.030888370394223
+[15:51:10] [Server thread/INFO]: [Not Secure] <abhinav2654> you have strings?
+[15:51:26] [Server thread/INFO]: [Not Secure] <OpZero> yes
+[15:51:31] [Server thread/INFO]: [Not Secure] <abhinav2654> i need
+[15:51:37] [Server thread/INFO]: [Not Secure] <abhinav2654> gimme
+[15:51:47] [Server thread/INFO]: [Not Secure] <OpZero> ok come and take
+[15:51:55] [Server thread/INFO]: [Not Secure] <abhinav2654> where are you
+[15:52:03] [Server thread/INFO]: [Not Secure] <OpZero> ancient city
+[15:52:11] [Server thread/INFO]: [Not Secure] <abhinav2654> rehne de
+[15:53:54] [Server thread/INFO]: OpZero was slain by Warden
+[15:57:29] [Server thread/INFO]: abhinav2654 was blown up by Creeper
+[15:59:19] [Server thread/INFO]: OpZero was slain by Warden
+[16:03:33] [Server thread/INFO]: [abhinav2654: Gamerule mob_griefing is now set to: false]
+[16:05:00] [Server thread/INFO]: [Not Secure] <abhinav2654> yo
+[16:05:11] [Server thread/INFO]: [Not Secure] <OpZero> wow
+[16:05:22] [Server thread/INFO]: [Not Secure] <abhinav2654> how can we see the skins
+[16:05:37] [Server thread/INFO]: [Not Secure] <OpZero> ptani
+[16:05:50] [Server thread/INFO]: [Not Secure] <abhinav2654> i think i have extra horn
+[16:06:13] [Server thread/INFO]: [Not Secure] <abhinav2654> nope
+[16:06:48] [Server thread/INFO]: [Not Secure] <abhinav2654> bye
+[16:07:01] [Server thread/WARN]: OpZero was kicked for floating too long!
+[16:07:01] [Server thread/INFO]: OpZero lost connection: Flying is not enabled on this server
+[16:07:01] [Server thread/INFO]: OpZero left the game
+[16:27:50] [Server thread/INFO]: abhinav2654 has made the advancement [The Parrots and the Bats]
+[16:29:50] [Server thread/INFO]: abhinav2654 drowned
+[16:33:45] [Server thread/INFO]: abhinav2654 lost connection: Timed out
+[16:33:45] [Server thread/INFO]: abhinav2654 left the game
+[16:34:45] [Server thread/INFO]: Server empty for 60 seconds, pausing
