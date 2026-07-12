@@ -1,70 +1,56 @@
-[15:31:33] [ServerMain/INFO]: Environment: Environment[sessionHost=https://sessionserver.mojang.com, servicesHost=https://api.minecraftservices.com, profilesHost=https://api.mojang.com, name=PROD]
-[15:31:36] [ServerMain/INFO]: Loaded 1585 recipes
-[15:31:36] [ServerMain/INFO]: Loaded 1688 advancements
-[15:31:36] [Server thread/INFO]: Starting minecraft server version 26.2
-[15:31:36] [Server thread/INFO]: Loading properties
-[15:31:36] [Server thread/INFO]: Default game type: SURVIVAL
-[15:31:36] [Server thread/INFO]: Generating keypair
-[15:31:36] [Server thread/INFO]: Starting Minecraft server on *:25565
-[15:31:36] [Server thread/WARN]: **** SERVER IS RUNNING IN OFFLINE/INSECURE MODE!
-[15:31:36] [Server thread/WARN]: The server will make no attempt to authenticate usernames. Beware.
-[15:31:36] [Server thread/WARN]: While this makes the game possible to play without internet access, it also opens up the ability for hackers to connect with any username they choose.
-[15:31:36] [Server thread/WARN]: To change this, set "online-mode" to "true" in the server.properties file.
-[15:31:36] [Server thread/INFO]: Preparing level "world"
-[15:31:37] [Server thread/INFO]: Loading 0 persistent chunks...
-[15:31:37] [Server thread/INFO]: Preparing spawn area: 100%
-[15:31:37] [Server thread/INFO]: Time elapsed: 13 ms
-[15:31:37] [Server thread/INFO]: Done (0.294s)! For help, type "help"
-[15:31:37] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
-[15:31:37] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_end
-[15:31:37] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_nether
-[15:31:37] [Server thread/INFO]: ThreadedAnvilChunkStorage (world): All chunks are saved
-[15:31:37] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
-[15:31:37] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
-[15:31:37] [Server thread/INFO]: ThreadedAnvilChunkStorage: All dimensions are saved
-[15:32:37] [Server thread/INFO]: Server empty for 60 seconds, pausing
-[15:42:45] [Server thread/INFO]: OpZero[/127.102.82.104:36277] logged in with entity id 21 at (756.1981935990821, 73.00133597911214, 1371.5585277323353)
-[15:42:45] [Server thread/INFO]: OpZero joined the game
-[15:49:51] [Server thread/WARN]: OpZero moved too quickly! 2.843022939089451,-0.0448124203990119,-9.641114356316393
-[15:49:53] [Server thread/INFO]: abhinav2654[/127.41.229.117:35647] logged in with entity id 3257 at (569.053009763244, 69.0, 1330.501269722777)
-[15:49:53] [Server thread/INFO]: abhinav2654 joined the game
-[15:50:11] [Server thread/INFO]: [Not Secure] <OpZero> hi
-[15:50:11] [Server thread/WARN]: OpZero moved too quickly! 8.090865385349389,0.49520087700592796,6.233102968253888
-[15:51:01] [Server thread/INFO]: OpZero lost connection: Timed out
-[15:51:01] [Server thread/INFO]: OpZero left the game
-[15:51:09] [Server thread/INFO]: OpZero[/127.102.82.104:38225] logged in with entity id 3491 at (566.6004996161582, 71.41999998688698, 1294.0278875854888)
-[15:51:09] [Server thread/INFO]: OpZero joined the game
-[15:51:54] [Server thread/INFO]: OpZero lost connection: Timed out
-[15:51:54] [Server thread/INFO]: OpZero left the game
-[15:52:04] [Server thread/INFO]: OpZero[/127.102.82.104:44985] logged in with entity id 3587 at (566.4421703693379, 69.0, 1293.300000011921)
-[15:52:04] [Server thread/INFO]: OpZero joined the game
-[15:52:07] [Server thread/INFO]: [abhinav2654: Created team [GareebSMP]]
-[15:52:19] [Server thread/INFO]: [abhinav2654: Added abhinav2654 to team [GareebSMP]]
-[15:52:30] [Server thread/INFO]: [abhinav2654: Added OpZero to team [GareebSMP]]
-[15:52:47] [Server thread/INFO]: [Not Secure] <abhinav2654> HIT ME
-[15:53:00] [Server thread/INFO]: [Not Secure] <abhinav2654> OK
-[15:53:00] [Server thread/INFO]: abhinav2654 was slain by OpZero
-[15:53:06] [Server thread/INFO]: [Not Secure] <OpZero> ohhh
-[15:53:23] [Server thread/INFO]: [Not Secure] <OpZero> muzhe laga pvp off kara ha
-[15:53:37] [Server thread/INFO]: [Not Secure] <abhinav2654> I ADDED YOU IN MY TEAM
-[15:54:10] [Server thread/INFO]: [Not Secure] <abhinav2654> do / team list
-[15:54:11] [Server thread/INFO]: [Not Secure] <OpZero> ek idea hai
-[15:54:21] [Server thread/INFO]: [Not Secure] <OpZero> suar dhoond
-[15:54:25] [Server thread/INFO]: [Not Secure] <abhinav2654> why
-[15:54:39] [Server thread/INFO]: [Not Secure] <abhinav2654> what happened to my dogs
-[15:54:48] [Server thread/INFO]: [Not Secure] <OpZero> idk
-[15:54:52] [Server thread/INFO]: [Not Secure] <OpZero> mai abhi aya
-[15:55:53] [Server thread/INFO]: [Not Secure] <OpZero> apna ghoda la
-[15:56:20] [Server thread/INFO]: [Not Secure] <OpZero> lead laga
-[15:56:41] [Server thread/INFO]: [Not Secure] <OpZero> cha;
-[15:58:02] [Server thread/INFO]: [Not Secure] <OpZero> chal ghoomne
-[15:58:07] [Server thread/INFO]: [Not Secure] <OpZero> base kha banara?
-[15:59:26] [Server thread/INFO]: [Not Secure] <abhinav2654> yaha apna bana raha hu
-[15:59:38] [Server thread/INFO]: [Not Secure] <abhinav2654> abhi dekhra hu ki dogs tp kaise karu
-[16:00:55] [Server thread/INFO]: [Not Secure] <OpZero> how do i make max enchantments thingy
-[16:01:11] [Server thread/INFO]: [Not Secure] <abhinav2654> this is private property
-[16:01:24] [Server thread/INFO]: [Not Secure] <OpZero> aana
-[16:03:31] [Server thread/INFO]: [Not Secure] <OpZero> bookshelk
-[16:04:05] [Server thread/INFO]: OpZero lost connection: Timed out
-[16:04:05] [Server thread/INFO]: OpZero left the game
-[16:04:28] [Server thread/INFO]: abhinav2654 has the following entity data: [I; -341698293, 1505770549, -1138945366, 1005963061]
+[02:27:23] [ServerMain/INFO]: Environment: Environment[sessionHost=https://sessionserver.mojang.com, servicesHost=https://api.minecraftservices.com, profilesHost=https://api.mojang.com, name=PROD]
+[02:27:25] [ServerMain/INFO]: Loaded 1585 recipes
+[02:27:25] [ServerMain/INFO]: Loaded 1688 advancements
+[02:27:25] [Server thread/INFO]: Starting minecraft server version 26.2
+[02:27:25] [Server thread/INFO]: Loading properties
+[02:27:25] [Server thread/INFO]: Default game type: SURVIVAL
+[02:27:25] [Server thread/INFO]: Generating keypair
+[02:27:25] [Server thread/INFO]: Starting Minecraft server on *:25565
+[02:27:26] [Server thread/WARN]: **** SERVER IS RUNNING IN OFFLINE/INSECURE MODE!
+[02:27:26] [Server thread/WARN]: The server will make no attempt to authenticate usernames. Beware.
+[02:27:26] [Server thread/WARN]: While this makes the game possible to play without internet access, it also opens up the ability for hackers to connect with any username they choose.
+[02:27:26] [Server thread/WARN]: To change this, set "online-mode" to "true" in the server.properties file.
+[02:27:26] [Server thread/INFO]: Preparing level "world"
+[02:27:26] [Server thread/INFO]: Loading 0 persistent chunks...
+[02:27:26] [Server thread/INFO]: Preparing spawn area: 100%
+[02:27:26] [Server thread/INFO]: Time elapsed: 11 ms
+[02:27:26] [Server thread/INFO]: Done (0.264s)! For help, type "help"
+[02:27:26] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
+[02:27:26] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_end
+[02:27:26] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_nether
+[02:27:26] [Server thread/INFO]: ThreadedAnvilChunkStorage (world): All chunks are saved
+[02:27:26] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
+[02:27:26] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
+[02:27:26] [Server thread/INFO]: ThreadedAnvilChunkStorage: All dimensions are saved
+[02:27:59] [Server thread/INFO]: OpZero[/127.100.63.226:42133] logged in with entity id 4 at (924.9408232509846, 86.84375002384186, 2682.1146566788534)
+[02:27:59] [Server thread/INFO]: OpZero joined the game
+[02:28:19] [Server thread/WARN]: UUID of added entity already exists: Horse['Horse'/761, l='ServerLevel[world]', x=1371.04, y=63.00, z=2276.09]
+[02:28:48] [Server thread/INFO]: abhinav2654[/127.100.63.226:45273] logged in with entity id 1030 at (936.6181627367131, 80.84375002384186, 2718.5062910496913)
+[02:28:48] [Server thread/INFO]: abhinav2654 joined the game
+[02:28:54] [Server thread/INFO]: [abhinav2654: Made OpZero a server operator]
+[02:28:56] [Server thread/INFO]: abhinav2654 lost connection: Disconnected
+[02:28:56] [Server thread/INFO]: abhinav2654 left the game
+[02:29:05] [Server thread/INFO]: [OpZero: Set own game mode to Creative Mode]
+[02:34:32] [Server thread/INFO]: OpZero has completed the challenge [Cover Me in Debris]
+[02:36:56] [Server thread/INFO]: [OpZero: Gave 1 [Netherite Leggings] to OpZero]
+[02:44:42] [Server thread/INFO]: [OpZero: Set minecraft:overworld to time marker minecraft:day]
+[02:44:57] [Server thread/INFO]: OpZero has made the advancement [Best Friends Forever]
+[02:46:57] [Server thread/WARN]: OpZero moved too quickly! 9.403884705386076,-3.259542921092418,2.219818719104296
+[02:47:21] [Server thread/WARN]: OpZero moved too quickly! 9.816154249028045,-2.8379934453706,-0.0733753376275672
+[02:47:21] [Server thread/INFO]: [OpZero: Set own game mode to Spectator Mode]
+[02:47:46] [Server thread/INFO]: [OpZero: Set own game mode to Creative Mode]
+[02:51:02] [Server thread/INFO]: [OpZero: Teleported OpZero to 235.500000, 89.500000, 715.500000]
+[02:51:13] [Server thread/INFO]: [OpZero: Set own game mode to Spectator Mode]
+[02:51:22] [Server thread/INFO]: OpZero has made the advancement [A Terrible Fortress]
+[02:51:33] [Server thread/INFO]: OpZero has completed the challenge [Hot Tourist Destinations]
+[02:52:04] [Server thread/INFO]: [OpZero: Set own game mode to Creative Mode]
+[02:52:47] [Server thread/INFO]: [OpZero: Set own game mode to Survival Mode]
+[02:53:19] [Server thread/INFO]: OpZero has made the advancement [Into Fire]
+[02:53:24] [Server thread/INFO]: [OpZero: Set own game mode to Creative Mode]
+[02:53:42] [Server thread/INFO]: [OpZero: Teleported OpZero to 1008.500000, 104.500000, 2674.500000]
+[02:54:09] [Server thread/INFO]: [OpZero: Set own game mode to Survival Mode]
+[02:55:54] [Server thread/INFO]: [OpZero: Set own game mode to Creative Mode]
+[03:01:11] [Server thread/INFO]: [OpZero: Set own game mode to Survival Mode]
+[03:01:18] [Server thread/INFO]: [OpZero: Made OpZero no longer a server operator]
+[03:01:30] [Server thread/INFO]: OpZero lost connection: Disconnected
+[03:01:30] [Server thread/INFO]: OpZero left the game

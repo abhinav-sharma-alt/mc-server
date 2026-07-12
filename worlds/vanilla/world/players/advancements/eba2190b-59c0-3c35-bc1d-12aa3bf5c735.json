@@ -1916,6 +1916,54 @@
     },
     "done": false
   },
+  "minecraft:recipes/misc/yellow_dye_from_dandelion": {
+    "criteria": {
+      "has_dandelion": "2026-07-10 16:02:07 +0000"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/golden_dandelion": {
+    "criteria": {
+      "has_dandelion": "2026-07-10 16:02:07 +0000"
+    },
+    "done": true
+  },
+  "minecraft:recipes/food/suspicious_stew_from_dandelion": {
+    "criteria": {
+      "has_dandelion": "2026-07-10 16:02:07 +0000"
+    },
+    "done": true
+  },
+  "minecraft:recipes/food/suspicious_stew_from_azure_bluet": {
+    "criteria": {
+      "has_azure_bluet": "2026-07-10 16:02:10 +0000"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/light_gray_dye_from_azure_bluet": {
+    "criteria": {
+      "has_azure_bluet": "2026-07-10 16:02:10 +0000"
+    },
+    "done": true
+  },
+  "minecraft:recipes/food/suspicious_stew_from_oxeye_daisy": {
+    "criteria": {
+      "has_oxeye_daisy": "2026-07-10 16:03:25 +0000"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/flower_banner_pattern": {
+    "criteria": {
+      "has_oxeye_daisy": "2026-07-10 16:03:25 +0000"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/light_gray_dye_from_oxeye_daisy": {
+    "criteria": {
+      "has_oxeye_daisy": "2026-07-10 16:03:25 +0000"
+    },
+    "done": true
+  },
   "minecraft:recipes/building_blocks/polished_deepslate": {
     "criteria": {
       "has_cobbled_deepslate": "2026-07-10 16:29:15 +0000"
@@ -1928,21 +1976,9 @@
     },
     "done": true
   },
-  "minecraft:recipes/decorations/light_gray_glazed_terracotta": {
-    "criteria": {
-      "has_light_gray_terracotta": "2026-07-10 16:39:59 +0000"
-    },
-    "done": true
-  },
   "minecraft:recipes/building_blocks/deepslate_brick_stairs_from_cobbled_deepslate_stonecutting": {
     "criteria": {
       "has_cobbled_deepslate": "2026-07-10 16:29:15 +0000"
-    },
-    "done": true
-  },
-  "minecraft:recipes/decorations/white_glazed_terracotta": {
-    "criteria": {
-      "has_white_terracotta": "2026-07-10 16:37:53 +0000"
     },
     "done": true
   },
@@ -1964,12 +2000,6 @@
     },
     "done": true
   },
-  "minecraft:recipes/misc/yellow_dye_from_dandelion": {
-    "criteria": {
-      "has_dandelion": "2026-07-10 16:02:07 +0000"
-    },
-    "done": true
-  },
   "minecraft:recipes/decorations/cobbled_deepslate_wall": {
     "criteria": {
       "has_cobbled_deepslate": "2026-07-10 16:29:15 +0000"
@@ -1979,18 +2009,6 @@
   "minecraft:recipes/decorations/polished_deepslate_wall_from_cobbled_deepslate_stonecutting": {
     "criteria": {
       "has_cobbled_deepslate": "2026-07-10 16:29:15 +0000"
-    },
-    "done": true
-  },
-  "minecraft:recipes/food/suspicious_stew_from_azure_bluet": {
-    "criteria": {
-      "has_azure_bluet": "2026-07-10 16:02:10 +0000"
-    },
-    "done": true
-  },
-  "minecraft:recipes/decorations/golden_dandelion": {
-    "criteria": {
-      "has_dandelion": "2026-07-10 16:02:07 +0000"
     },
     "done": true
   },
@@ -2006,27 +2024,9 @@
     },
     "done": true
   },
-  "minecraft:recipes/food/suspicious_stew_from_oxeye_daisy": {
-    "criteria": {
-      "has_oxeye_daisy": "2026-07-10 16:03:25 +0000"
-    },
-    "done": true
-  },
   "minecraft:recipes/building_blocks/polished_deepslate_stairs_from_cobbled_deepslate_stonecutting": {
     "criteria": {
       "has_cobbled_deepslate": "2026-07-10 16:29:15 +0000"
-    },
-    "done": true
-  },
-  "minecraft:recipes/food/suspicious_stew_from_dandelion": {
-    "criteria": {
-      "has_dandelion": "2026-07-10 16:02:07 +0000"
-    },
-    "done": true
-  },
-  "minecraft:recipes/misc/flower_banner_pattern": {
-    "criteria": {
-      "has_oxeye_daisy": "2026-07-10 16:03:25 +0000"
     },
     "done": true
   },
@@ -2039,12 +2039,6 @@
   "minecraft:recipes/building_blocks/polished_deepslate_from_cobbled_deepslate_stonecutting": {
     "criteria": {
       "has_cobbled_deepslate": "2026-07-10 16:29:15 +0000"
-    },
-    "done": true
-  },
-  "minecraft:recipes/misc/light_gray_dye_from_azure_bluet": {
-    "criteria": {
-      "has_azure_bluet": "2026-07-10 16:02:10 +0000"
     },
     "done": true
   },
@@ -2090,15 +2084,21 @@
     },
     "done": true
   },
-  "minecraft:recipes/misc/light_gray_dye_from_oxeye_daisy": {
-    "criteria": {
-      "has_oxeye_daisy": "2026-07-10 16:03:25 +0000"
-    },
-    "done": true
-  },
   "minecraft:recipes/building_blocks/deepslate_tiles_from_cobbled_deepslate_stonecutting": {
     "criteria": {
       "has_cobbled_deepslate": "2026-07-10 16:29:15 +0000"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/white_glazed_terracotta": {
+    "criteria": {
+      "has_white_terracotta": "2026-07-10 16:37:53 +0000"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/light_gray_glazed_terracotta": {
+    "criteria": {
+      "has_light_gray_terracotta": "2026-07-10 16:39:59 +0000"
     },
     "done": true
   },
