@@ -1,125 +1,163 @@
-[03:26:33] [ServerMain/INFO]: Environment: Environment[sessionHost=https://sessionserver.mojang.com, servicesHost=https://api.minecraftservices.com, profilesHost=https://api.mojang.com, name=PROD]
-[03:26:35] [ServerMain/INFO]: Loaded 1585 recipes
-[03:26:35] [ServerMain/INFO]: Loaded 1688 advancements
-[03:26:35] [Server thread/INFO]: Starting minecraft server version 26.2
-[03:26:35] [Server thread/INFO]: Loading properties
-[03:26:35] [Server thread/INFO]: Default game type: SURVIVAL
-[03:26:35] [Server thread/INFO]: Generating keypair
-[03:26:35] [Server thread/INFO]: Starting Minecraft server on *:25565
-[03:26:36] [Server thread/WARN]: **** SERVER IS RUNNING IN OFFLINE/INSECURE MODE!
-[03:26:36] [Server thread/WARN]: The server will make no attempt to authenticate usernames. Beware.
-[03:26:36] [Server thread/WARN]: While this makes the game possible to play without internet access, it also opens up the ability for hackers to connect with any username they choose.
-[03:26:36] [Server thread/WARN]: To change this, set "online-mode" to "true" in the server.properties file.
-[03:26:36] [Server thread/INFO]: Preparing level "world"
-[03:26:36] [Server thread/INFO]: Loading 0 persistent chunks...
-[03:26:36] [Server thread/INFO]: Preparing spawn area: 100%
-[03:26:36] [Server thread/INFO]: Time elapsed: 12 ms
-[03:26:36] [Server thread/INFO]: Done (0.275s)! For help, type "help"
-[03:26:36] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
-[03:26:36] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_end
-[03:26:36] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_nether
-[03:26:36] [Server thread/INFO]: ThreadedAnvilChunkStorage (world): All chunks are saved
-[03:26:36] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
-[03:26:36] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
-[03:26:36] [Server thread/INFO]: ThreadedAnvilChunkStorage: All dimensions are saved
-[03:26:40] [Server thread/INFO]: OpZero[/127.46.20.151:47367] logged in with entity id 42 at (920.6156459710596, 87.84375002384186, 2667.954685297573)
-[03:26:40] [Server thread/INFO]: OpZero joined the game
-[03:26:53] [Server thread/WARN]: Horse (vehicle of OpZero) moved too quickly! 10.30371200993443,1.0,1.035091235165055
-[03:26:53] [Server thread/WARN]: Horse (vehicle of OpZero) moved too quickly! 10.79650161058305,1.0,0.8039605066946933
-[03:26:53] [Server thread/WARN]: Horse (vehicle of OpZero) moved too quickly! 11.317598400453221,2.0,0.55853051609256
-[03:26:54] [Server thread/WARN]: Horse (vehicle of OpZero) moved too quickly! -1.7213914010020517,-3.0,9.74508378811197
-[03:26:54] [Server thread/WARN]: Horse (vehicle of OpZero) moved too quickly! -1.7890374515804979,-3.0,10.316899096064844
-[03:26:54] [Server thread/WARN]: Horse (vehicle of OpZero) moved too quickly! -1.858722059126876,-3.0,10.905994401006865
-[03:26:54] [Server thread/WARN]: Horse (vehicle of OpZero) moved too quickly! -1.9295197189069313,-3.0,11.504524585400759
-[03:26:54] [Server thread/WARN]: Horse (vehicle of OpZero) moved too quickly! -2.000925105277247,-3.0,12.108206214573329
-[03:26:54] [Server thread/WARN]: Horse (vehicle of OpZero) moved too quickly! -2.0726623104043256,-3.0,12.714700532922052
-[03:26:54] [Server thread/WARN]: Horse (vehicle of OpZero) moved too quickly! -2.1445806885936918,-3.0,13.322730579739527
-[03:26:54] [Server thread/WARN]: Horse (vehicle of OpZero) moved too quickly! -2.216597987286491,-3.0,13.931599134398311
-[03:26:54] [Server thread/WARN]: Horse (vehicle of OpZero) moved too quickly! -2.2886692965804514,-3.0,14.540925514391347
-[03:26:54] [Server thread/WARN]: Horse (vehicle of OpZero) moved too quickly! -2.360770095666112,-3.0,15.150501867045932
-[03:26:54] [Server thread/WARN]: Horse (vehicle of OpZero) moved too quickly! -2.4328869961799455,-3.0,15.760214704789632
-[03:26:54] [Server thread/WARN]: Horse (vehicle of OpZero) moved too quickly! -2.505012688074544,-3.0,16.37000206340099
-[03:26:54] [Server thread/WARN]: Horse (vehicle of OpZero) moved too quickly! -2.5771431800635582,-3.0,16.979830110410603
-[03:26:54] [Server thread/WARN]: Horse (vehicle of OpZero) moved too quickly! -2.64927629290446,-2.0,17.589680373288047
-[03:26:54] [Server thread/WARN]: Horse (vehicle of OpZero) moved too quickly! -2.7214108367306835,-2.0,18.199542766030845
-[03:26:54] [Server thread/WARN]: Horse (vehicle of OpZero) moved too quickly! -2.7935461618749287,-2.0,18.809411781680865
-[03:26:54] [Server thread/WARN]: Horse (vehicle of OpZero) moved too quickly! -2.832932053978425,-2.0,19.142400302903297
-[03:26:54] [Server thread/WARN]: Horse (vehicle of OpZero) moved too quickly! -2.8544367535647552,-2.0,19.324212056608758
-[03:26:54] [Server thread/WARN]: Horse (vehicle of OpZero) moved too quickly! -2.8661783209026908,-2.0,19.423481285662092
-[03:26:54] [Server thread/WARN]: Horse (vehicle of OpZero) moved too quickly! -2.8725892174138608,-2.0,19.477682291020756
-[03:26:54] [Server thread/WARN]: Horse (vehicle of OpZero) moved too quickly! -2.876089567315489,-2.0,19.50727604338408
-[03:26:54] [Server thread/WARN]: Horse (vehicle of OpZero) moved too quickly! -2.876089567315489,-2.0,19.523434234051365
-[03:26:54] [Server thread/WARN]: Horse (vehicle of OpZero) moved too quickly! -2.876089567315489,-2.0,19.532256607180443
-[03:26:54] [Server thread/WARN]: Horse (vehicle of OpZero) moved too quickly! -2.876089567315489,-2.0,19.537073623468586
-[03:26:54] [Server thread/WARN]: Horse (vehicle of OpZero) moved too quickly! -2.876089567315489,-2.0,19.537073623468586
-[03:26:54] [Server thread/WARN]: Horse (vehicle of OpZero) moved too quickly! -2.876089567315489,-2.0,19.537073623468586
-[03:26:54] [Server thread/WARN]: Horse (vehicle of OpZero) moved too quickly! -2.876089567315489,-2.0,19.537073623468586
-[03:26:54] [Server thread/WARN]: Horse (vehicle of OpZero) moved too quickly! -2.876089567315489,-2.0,19.537073623468586
-[03:26:54] [Server thread/WARN]: Horse (vehicle of OpZero) moved too quickly! -2.876089567315489,-2.0,19.537073623468586
-[03:26:54] [Server thread/WARN]: Horse (vehicle of OpZero) moved too quickly! -2.876089567315489,-2.0,19.537073623468586
-[03:26:54] [Server thread/WARN]: Horse (vehicle of OpZero) moved too quickly! -2.876089567315489,-2.0,19.537073623468586
-[03:26:54] [Server thread/WARN]: Horse (vehicle of OpZero) moved too quickly! -2.876089567315489,-2.0,19.537073623468586
-[03:26:54] [Server thread/WARN]: Horse (vehicle of OpZero) moved too quickly! -2.876089567315489,-2.0,19.537073623468586
-[03:26:54] [Server thread/WARN]: Horse (vehicle of OpZero) moved too quickly! -2.8876641063300212,-2.0,19.39814784996497
-[03:26:54] [Server thread/WARN]: Horse (vehicle of OpZero) moved too quickly! -2.9041992402213737,-2.0,19.18326204502182
-[03:26:54] [Server thread/WARN]: Horse (vehicle of OpZero) moved too quickly! -2.922776266559822,-2.0,18.926854686712886
-[03:26:54] [Server thread/WARN]: Horse (vehicle of OpZero) moved too quickly! -2.941788015953989,-2.0,18.647731529476005
-[03:26:54] [Server thread/WARN]: Horse (vehicle of OpZero) moved too quickly! -2.9521684323289037,-2.0,18.495330267922782
-[03:26:54] [Server thread/WARN]: Horse (vehicle of OpZero) moved too quickly! -2.957836140327913,-2.0,18.412119169449397
-[03:26:54] [Server thread/WARN]: Horse (vehicle of OpZero) moved too quickly! -2.9609307092548534,-2.0,18.36668590440604
-[03:26:54] [Server thread/WARN]: Horse (vehicle of OpZero) moved too quickly! -2.9609307092548534,-2.0,18.34187933881094
-[03:26:54] [Server thread/WARN]: Horse (vehicle of OpZero) moved too quickly! -2.9609307092548534,-2.0,18.328334952422665
-[03:26:54] [Server thread/WARN]: Horse (vehicle of OpZero) moved too quickly! -2.9609307092548534,-2.0,18.320939716595603
-[03:26:54] [Server thread/WARN]: Horse (vehicle of OpZero) moved too quickly! -3.23842842917702,-2.0,18.289839380241574
-[03:26:54] [Server thread/WARN]: Horse (vehicle of OpZero) moved too quickly! -3.66743992177544,-2.0,18.245796057496136
-[03:26:54] [Server thread/WARN]: Horse (vehicle of OpZero) moved too quickly! -4.179177943864033,-2.0784000015258783,18.19468586336052
-[03:26:54] [Server thread/WARN]: Horse (vehicle of OpZero) moved too quickly! -4.486336708370686,-2.233632006042484,18.16407344040863
-[03:26:54] [Server thread/WARN]: Horse (vehicle of OpZero) moved too quickly! -4.793600964119491,-2.464159374955443,18.133509881007285
-[03:26:54] [Server thread/WARN]: Horse (vehicle of OpZero) moved too quickly! -5.1010284774509955,-2.768476202412984,18.103803273953872
-[03:26:54] [Server thread/WARN]: Horse (vehicle of OpZero) moved too quickly! -5.40858366391717,-3.0,18.078949284317332
-[03:26:54] [Server thread/WARN]: Horse (vehicle of OpZero) moved too quickly! -5.961705152570289,-3.0,18.111774398564194
-[03:26:54] [Server thread/WARN]: Horse (vehicle of OpZero) moved too quickly! -6.536118850924936,-3.0,18.189115097374724
-[03:26:54] [Server thread/WARN]: Horse (vehicle of OpZero) moved too quickly! -7.119287296619859,-3.0,18.302661741491647
-[03:26:54] [Server thread/WARN]: Horse (vehicle of OpZero) moved too quickly! -7.703028448484588,-3.0,18.45031302141433
-[03:26:54] [Server thread/WARN]: Horse (vehicle of OpZero) moved too quickly! -8.274703119529931,-3.0,18.64820242151245
-[03:26:55] [Server thread/WARN]: Horse (vehicle of OpZero) moved too quickly! -7.173063038304463,0.0,9.686778750473877
-[03:26:55] [Server thread/WARN]: Horse (vehicle of OpZero) moved too quickly! -7.69873276276644,0.0,9.988167943920871
-[03:26:55] [Server thread/WARN]: Horse (vehicle of OpZero) moved too quickly! -8.158587288103831,0.0,10.371505139509281
-[03:26:55] [Server thread/WARN]: Horse (vehicle of OpZero) moved too quickly! -8.524606599939489,0.0,10.83482786498007
-[03:26:55] [Server thread/WARN]: Horse (vehicle of OpZero) moved too quickly! -8.829394855677492,0.0,11.34611317438339
-[03:26:55] [Server thread/WARN]: Horse (vehicle of OpZero) moved too quickly! -9.10075095090292,0.0,11.883586057655975
-[03:26:55] [Server thread/WARN]: Horse (vehicle of OpZero) moved too quickly! -9.231440198316363,0.0,12.401287075542314
-[03:26:55] [Server thread/WARN]: Horse (vehicle of OpZero) moved too quickly! -9.285325337903487,0.0,12.908192653674178
-[03:26:55] [Server thread/WARN]: Horse (vehicle of OpZero) moved too quickly! -9.297275429746605,0.0,13.409203921015433
-[03:26:55] [Server thread/WARN]: Horse (vehicle of OpZero) moved too quickly! -9.174644644694467,0.0,13.735226948889249
-[03:26:55] [Server thread/WARN]: Horse (vehicle of OpZero) moved too quickly! -8.97853269232246,0.0,13.965706386915826
-[03:26:55] [Server thread/WARN]: Horse (vehicle of OpZero) moved too quickly! -8.742300017933644,0.0,14.144019018826839
-[03:26:55] [Server thread/WARN]: Horse (vehicle of OpZero) moved too quickly! -8.48390641402193,0.0,14.293216432139616
-[03:26:55] [Server thread/WARN]: Horse (vehicle of OpZero) moved too quickly! -8.213412941185311,0.0,14.426516934251595
-[03:26:55] [Server thread/WARN]: Horse (vehicle of OpZero) moved too quickly! -7.936061017454676,0.0,14.550504344601904
-[03:26:55] [Server thread/WARN]: Horse (vehicle of OpZero) moved too quickly! -7.7846268495082995,0.0,14.618201478516312
-[03:26:55] [Server thread/WARN]: Horse (vehicle of OpZero) moved too quickly! -7.701943784205696,0.0,14.655164117926688
-[03:26:55] [Server thread/WARN]: Horse (vehicle of OpZero) moved too quickly! -7.656798825306737,0.0,14.675345721389021
-[03:26:55] [Server thread/WARN]: Horse (vehicle of OpZero) moved too quickly! -7.632149674884886,0.0,14.686364878159566
-[03:26:55] [Server thread/WARN]: Horse (vehicle of OpZero) moved too quickly! -7.5066335795505665,0.0,14.947685952047777
-[03:26:55] [Server thread/WARN]: Horse (vehicle of OpZero) moved too quickly! -7.233645517219884,0.0,15.279932574444956
-[03:26:55] [Server thread/WARN]: Horse (vehicle of OpZero) moved too quickly! -6.83786265232925,1.0,15.591189163191757
-[03:26:55] [Server thread/WARN]: Horse (vehicle of OpZero) moved too quickly! -6.344193294165734,1.0,15.787426175413657
-[03:26:55] [Server thread/WARN]: Horse (vehicle of OpZero) moved too quickly! -5.798940220505983,1.0,15.853079429678019
-[03:26:55] [Server thread/WARN]: Horse (vehicle of OpZero) moved too quickly! -5.227350948675166,1.0,15.836709897067522
-[03:26:55] [Server thread/WARN]: Horse (vehicle of OpZero) moved too quickly! 7.979412872021385,4.0,-11.444334786767286
-[03:26:55] [Server thread/WARN]: Horse (vehicle of OpZero) moved too quickly! 7.979412872021385,4.0,-11.444334786767286
-[03:26:55] [Server thread/WARN]: Horse (vehicle of OpZero) moved too quickly! 7.979412872021385,4.0,-11.444334786767286
-[03:40:30] [Server thread/INFO]: OpZero has made the advancement [Eye Spy]
-[03:46:05] [Server thread/INFO]: OpZero has made the advancement [Crafting a New Look]
-[03:59:57] [Server thread/INFO]: OpZero lost connection: Disconnected
-[03:59:57] [Server thread/INFO]: OpZero left the game
-[03:59:57] [Server thread/WARN]: handleDisconnection() called twice
-[04:00:57] [Server thread/INFO]: Server empty for 60 seconds, pausing
-[04:04:35] [Server thread/INFO]: OpZero[/127.214.102.96:38567] logged in with entity id 10121 at (42.69999998807907, 43.0, 303.4701182026557)
-[04:04:35] [Server thread/INFO]: OpZero joined the game
-[04:05:32] [Server thread/WARN]: OpZero moved wrongly!
-[04:17:50] [Server thread/INFO]: OpZero tried to swim in lava
-[04:18:13] [Server thread/INFO]: OpZero lost connection: Disconnected
-[04:18:13] [Server thread/INFO]: OpZero left the game
-[04:19:13] [Server thread/INFO]: Server empty for 60 seconds, pausing
+[08:35:20] [ServerMain/INFO]: Environment: Environment[sessionHost=https://sessionserver.mojang.com, servicesHost=https://api.minecraftservices.com, profilesHost=https://api.mojang.com, name=PROD]
+[08:35:22] [ServerMain/INFO]: Loaded 1585 recipes
+[08:35:22] [ServerMain/INFO]: Loaded 1688 advancements
+[08:35:22] [Server thread/INFO]: Starting minecraft server version 26.2
+[08:35:22] [Server thread/INFO]: Loading properties
+[08:35:22] [Server thread/INFO]: Default game type: SURVIVAL
+[08:35:22] [Server thread/INFO]: Generating keypair
+[08:35:22] [Server thread/INFO]: Starting Minecraft server on *:25565
+[08:35:23] [Server thread/WARN]: **** SERVER IS RUNNING IN OFFLINE/INSECURE MODE!
+[08:35:23] [Server thread/WARN]: The server will make no attempt to authenticate usernames. Beware.
+[08:35:23] [Server thread/WARN]: While this makes the game possible to play without internet access, it also opens up the ability for hackers to connect with any username they choose.
+[08:35:23] [Server thread/WARN]: To change this, set "online-mode" to "true" in the server.properties file.
+[08:35:23] [Server thread/INFO]: Preparing level "world"
+[08:35:23] [Server thread/INFO]: Loading 0 persistent chunks...
+[08:35:23] [Server thread/INFO]: Preparing spawn area: 100%
+[08:35:23] [Server thread/INFO]: Time elapsed: 12 ms
+[08:35:23] [Server thread/INFO]: Done (0.254s)! For help, type "help"
+[08:35:23] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
+[08:35:23] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_nether
+[08:35:23] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_end
+[08:35:23] [Server thread/INFO]: ThreadedAnvilChunkStorage (world): All chunks are saved
+[08:35:23] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
+[08:35:23] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
+[08:35:23] [Server thread/INFO]: ThreadedAnvilChunkStorage: All dimensions are saved
+[08:35:29] [Server thread/INFO]: OpZero[/127.244.190.85:45327] logged in with entity id 68 at (-295.46980959536944, -8.0, 2297.0191859341817)
+[08:35:29] [Server thread/INFO]: OpZero joined the game
+[08:36:45] [Server thread/INFO]: OpZero tried to swim in lava
+[08:52:34] [Server thread/WARN]: Mismatch in destroy block pos: BlockPos{x=202, y=68, z=265} BlockPos{x=203, y=68, z=263}
+[08:53:01] [Server thread/WARN]: Mismatch in destroy block pos: BlockPos{x=205, y=66, z=263} BlockPos{x=209, y=66, z=264}
+[08:53:01] [Server thread/WARN]: Mismatch in destroy block pos: BlockPos{x=205, y=66, z=263} BlockPos{x=209, y=67, z=264}
+[09:01:35] [Server thread/INFO]: OpZero was slain by Piglin Brute
+[09:05:52] [Server thread/WARN]: Mismatch in destroy block pos: BlockPos{x=216, y=37, z=269} BlockPos{x=215, y=38, z=269}
+[09:05:54] [Server thread/INFO]: abhinav2654 (/127.17.79.14:56881) lost connection: Disconnected
+[09:06:01] [Server thread/INFO]: abhinav2654[/127.17.79.14:38267] logged in with entity id 8935 at (936.6181627367131, 80.84375002384186, 2718.5062910496913)
+[09:06:02] [Server thread/INFO]: abhinav2654 joined the game
+[09:06:11] [Server thread/INFO]: OpZero was slain by Piglin Brute
+[09:06:14] [Server thread/INFO]: [Not Secure] <abhinav2654> lol
+[09:06:22] [Server thread/INFO]: [Not Secure] <OpZero> esne gold kyu ni uthtaya
+[09:06:47] [Server thread/INFO]: abhinav2654 lost connection: Timed out
+[09:06:47] [Server thread/INFO]: abhinav2654 left the game
+[09:07:25] [Server thread/INFO]: abhinav2654[/127.17.79.14:52351] logged in with entity id 11509 at (934.5351313507001, 92.84375002384186, 2609.0131553014353)
+[09:07:25] [Server thread/INFO]: abhinav2654 joined the game
+[09:07:55] [Server thread/INFO]: abhinav2654 lost connection: Timed out
+[09:07:55] [Server thread/INFO]: abhinav2654 left the game
+[09:09:11] [Server thread/INFO]: OpZero was slain by Piglin Brute
+[09:10:09] [Server thread/INFO]: abhinav2654[/127.17.79.14:40581] logged in with entity id 14284 at (934.5351313507001, 92.84375002384186, 2609.0131553014353)
+[09:10:09] [Server thread/INFO]: abhinav2654 joined the game
+[09:10:25] [Server thread/INFO]: [Not Secure] <abhinav2654> MY NETWORK WILL SUCK TODAY
+[09:11:09] [Server thread/INFO]: abhinav2654 was blown up by Creeper
+[09:11:20] [Server thread/INFO]: [Not Secure] <abhinav2654> WOW
+[09:11:34] [Server thread/WARN]: OpZero moved too quickly! 6.466725894400724,-7.535840625044557,2.3314263900397236
+[09:11:52] [Server thread/WARN]: Mismatch in destroy block pos: BlockPos{x=79, y=46, z=264} BlockPos{x=209, y=40, z=279}
+[09:11:52] [Server thread/INFO]: [Not Secure] <abhinav2654> NIGGA
+[09:11:58] [Server thread/INFO]: [Not Secure] <abhinav2654> ARE YOU EVEN ONLINE
+[09:12:03] [Server thread/INFO]: [Not Secure] <OpZero> hm
+[09:12:18] [Server thread/INFO]: [Not Secure] <abhinav2654> cobblemon khel le na
+[09:12:24] [Server thread/INFO]: [Not Secure] <OpZero> nai yaar
+[09:12:38] [Server thread/INFO]: [Not Secure] <abhinav2654> i guess
+[09:12:47] [Server thread/INFO]: [Not Secure] <abhinav2654> did you make a base?
+[09:12:52] [Server thread/INFO]: [Not Secure] <OpZero> not yet
+[09:12:57] [Server thread/INFO]: [Not Secure] <OpZero> elytra lene jara
+[09:13:04] [Server thread/INFO]: [Not Secure] <abhinav2654> chutiye
+[09:13:07] [Server thread/INFO]: [Not Secure] <abhinav2654> nahu
+[09:13:10] [Server thread/INFO]: [Not Secure] <abhinav2654> nahi
+[09:13:15] [Server thread/INFO]: OpZero was shot by Piglin
+[09:13:25] [Server thread/INFO]: [Not Secure] <OpZero> gang rape kiya abhi
+[09:13:43] [Server thread/INFO]: [Not Secure] <OpZero> rishwat ni lere bc
+[09:15:10] [Server thread/INFO]: abhinav2654 lost connection: Timed out
+[09:15:10] [Server thread/INFO]: abhinav2654 left the game
+[09:16:30] [Server thread/WARN]: Mismatch in destroy block pos: BlockPos{x=-156, y=55, z=352} BlockPos{x=-158, y=53, z=352}
+[09:16:30] [Server thread/INFO]: abhinav2654 (/127.17.79.14:48311) lost connection: Disconnected
+[09:16:38] [Server thread/INFO]: abhinav2654[/127.17.79.14:36507] logged in with entity id 19835 at (727.865775960397, 72.875, 1370.5761948190798)
+[09:16:38] [Server thread/INFO]: abhinav2654 joined the game
+[09:16:48] [Server thread/INFO]: [Not Secure] <abhinav2654> bruh
+[09:17:00] [Server thread/WARN]: Mismatch in destroy block pos: BlockPos{x=-227, y=51, z=360} BlockPos{x=-225, y=51, z=356}
+[09:19:25] [Server thread/INFO]: [Not Secure] <OpZero> ye trade ni krre yaar
+[09:19:29] [Server thread/INFO]: OpZero lost connection: Disconnected
+[09:19:29] [Server thread/INFO]: OpZero left the game
+[09:20:53] [Server thread/INFO]: abhinav2654 lost connection: Timed out
+[09:20:53] [Server thread/INFO]: abhinav2654 left the game
+[09:21:53] [Server thread/INFO]: Server empty for 60 seconds, pausing
+[09:21:53] [Server thread/INFO]: abhinav2654[/127.17.79.14:47033] logged in with entity id 22548 at (827.3949885130181, 63.84375002384186, 1385.367875419563)
+[09:21:53] [Server thread/INFO]: abhinav2654 joined the game
+[09:22:24] [Server thread/INFO]: abhinav2654 lost connection: Timed out
+[09:22:24] [Server thread/INFO]: abhinav2654 left the game
+[09:23:23] [Server thread/INFO]: abhinav2654[/127.17.79.14:56847] logged in with entity id 23864 at (827.3949885130181, 63.84375002384186, 1385.367875419563)
+[09:23:23] [Server thread/INFO]: abhinav2654 joined the game
+[09:23:44] [Server thread/WARN]: Horse (vehicle of abhinav2654) moved too quickly! 6.60236891277475,0.0,7.574579711879778
+[09:23:44] [Server thread/WARN]: Horse (vehicle of abhinav2654) moved too quickly! 6.67354246655384,0.0,7.642472778161846
+[09:23:44] [Server thread/WARN]: Horse (vehicle of abhinav2654) moved too quickly! 6.71240323143104,0.0,7.679542396657553
+[09:23:44] [Server thread/WARN]: Horse (vehicle of abhinav2654) moved too quickly! 6.733621211518539,0.0,7.699782410707257
+[09:23:44] [Server thread/WARN]: Horse (vehicle of abhinav2654) moved too quickly! 6.745206229991936,0.0,7.710833459661899
+[09:23:44] [Server thread/WARN]: Horse (vehicle of abhinav2654) moved too quickly! 6.751531650813149,0.0,7.716867333092068
+[09:23:44] [Server thread/WARN]: Horse (vehicle of abhinav2654) moved too quickly! 6.754985330982663,0.0,7.720161828367509
+[09:23:44] [Server thread/WARN]: Horse (vehicle of abhinav2654) moved too quickly! 6.754985330982663,0.0,7.720161828367509
+[09:23:44] [Server thread/WARN]: Horse (vehicle of abhinav2654) moved too quickly! 6.754985330982663,0.0,7.720161828367509
+[09:23:44] [Server thread/WARN]: Horse (vehicle of abhinav2654) moved too quickly! 6.754985330982663,0.0,7.720161828367509
+[09:23:44] [Server thread/WARN]: Horse (vehicle of abhinav2654) moved too quickly! 6.754985330982663,0.0,7.720161828367509
+[09:24:04] [Server thread/INFO]: abhinav2654 was slain by Zombie
+[09:24:08] [Server thread/INFO]: abhinav2654 lost connection: Timed out
+[09:24:08] [Server thread/INFO]: abhinav2654 left the game
+[09:24:12] [Server thread/INFO]: abhinav2654[/127.17.79.14:38657] logged in with entity id 25279 at (855.8261788898311, 65.0, 1417.3912527496238)
+[09:24:12] [Server thread/INFO]: abhinav2654 joined the game
+[09:24:33] [Server thread/INFO]: abhinav2654 lost connection: Disconnected
+[09:24:33] [Server thread/INFO]: abhinav2654 left the game
+[09:25:33] [Server thread/INFO]: Server empty for 60 seconds, pausing
+[09:27:05] [Server thread/INFO]: OpZero[/127.244.190.85:33303] logged in with entity id 26697 at (-282.6041269972414, 69.0, 454.8697216697974)
+[09:27:05] [Server thread/INFO]: OpZero joined the game
+[09:30:21] [Server thread/WARN]: Mismatch in destroy block pos: BlockPos{x=-316, y=69, z=424} BlockPos{x=-316, y=70, z=414}
+[09:34:30] [Server thread/INFO]: OpZero was slain by Piglin Brute
+[09:37:39] [Server thread/INFO]: abhinav2654[/127.244.190.85:33451] logged in with entity id 29145 at (726.5, 72.0, 1371.5)
+[09:37:39] [Server thread/INFO]: abhinav2654 joined the game
+[09:37:45] [Server thread/INFO]: [abhinav2654: Made OpZero a server operator]
+[09:37:46] [Server thread/INFO]: abhinav2654 lost connection: Disconnected
+[09:37:46] [Server thread/INFO]: abhinav2654 left the game
+[09:37:52] [Server thread/INFO]: [OpZero: Set own game mode to Creative Mode]
+[09:40:57] [Server thread/INFO]: OpZero has made the advancement [The End?]
+[09:40:58] [Server thread/INFO]: Scanning for legacy world dragon fight...
+[09:40:58] [Server thread/INFO]: Found that the dragon has not yet been killed in this world.
+[09:49:11] [Server thread/INFO]: OpZero has made the advancement [The City at the End of the Game]
+[09:49:51] [Server thread/INFO]: OpZero has reached the goal [Sky's the Limit]
+[09:50:00] [Server thread/INFO]: [OpZero: Set own game mode to Survival Mode]
+[09:50:38] [Server thread/INFO]: [OpZero: Set own game mode to Creative Mode]
+[09:52:01] [Server thread/WARN]: OpZero moved too quickly! 6.582803627781914,-4.661097524643537,-6.025228356575099
+[10:02:54] [Server thread/INFO]: [OpZero: Teleported OpZero to -297.500000, -6.500000, 2299.500000]
+[10:03:44] [Server thread/INFO]: [OpZero: Teleported OpZero to 2191.500000, 64.500000, 1923.500000]
+[10:05:37] [Server thread/INFO]: OpZero has made the advancement [What a Deal!]
+[10:09:07] [Server thread/INFO]: [OpZero: Set own game mode to Survival Mode]
+[10:09:52] [Server thread/INFO]: Villager Villager['Villager'/33054, l='ServerLevel[world]', x=2170.32, y=88.00, z=2012.14] died, message: 'Villager was slain by Zombie Villager'
+[10:10:04] [Server thread/INFO]: [OpZero: Set own game mode to Creative Mode]
+[10:14:58] [Server thread/INFO]: [OpZero: Set own game mode to Survival Mode]
+[10:16:04] [Server thread/INFO]: [OpZero: Set own game mode to Creative Mode]
+[10:16:42] [Server thread/INFO]: Villager Villager['Villager'/33055, l='ServerLevel[world]', x=2185.80, y=72.18, z=1996.45] died, message: 'Villager was slain by Zombie'
+[10:17:02] [Server thread/INFO]: [OpZero: Set own game mode to Survival Mode]
+[10:17:05] [Server thread/INFO]: Villager Villager['Villager'/33092, l='ServerLevel[world]', x=2186.74, y=63.00, z=1973.62] died, message: 'Villager was burned to a crisp while fighting Zombie'
+[10:17:16] [Server thread/INFO]: [OpZero: Gave 45 experience levels to OpZero]
+[10:17:47] [Server thread/INFO]: [OpZero: Teleported OpZero to -297.500000, -6.500000, 2299.500000]
+[10:18:00] [Server thread/INFO]: [OpZero: Teleported OpZero to 2506.500000, 64.500000, -1122.500000]
+[10:18:08] [Server thread/INFO]: [OpZero: Teleported OpZero to 2506.500000, 64.500000, -1122.500000]
+[10:18:15] [Server thread/INFO]: [OpZero: Teleported OpZero to 2215.500000, 67.500000, 1953.500000]
+[10:18:33] [Server thread/INFO]: [OpZero: Teleported OpZero to -297.500000, -6.500000, 2299.500000]
+[10:19:00] [Server thread/INFO]: [OpZero: Teleported OpZero to 2215.500000, 67.500000, 1953.500000]
+[10:19:52] [Server thread/INFO]: Villager Villager['Villager'/41229, l='ServerLevel[world]', x=2216.30, y=67.11, z=1952.95] died, message: 'Villager was slain by OpZero using [destroyer]'
+[10:20:10] [Server thread/INFO]: [OpZero: Set own game mode to Creative Mode]
+[10:21:15] [Server thread/INFO]: [OpZero: Set own game mode to Survival Mode]
+[10:21:28] [Server thread/INFO]: [OpZero: Set own game mode to Creative Mode]
+[10:24:06] [Server thread/INFO]: [OpZero: Set own game mode to Survival Mode]
+[10:24:19] [Server thread/INFO]: [OpZero: Teleported OpZero to 2506.500000, 64.500000, -1122.500000]
+[10:24:55] [Server thread/INFO]: [OpZero: Teleported OpZero to -297.500000, -6.500000, 2299.500000]
+[10:25:11] [Server thread/INFO]: [OpZero: Teleported OpZero to 1008.500000, 104.500000, 2674.500000]
+[10:25:23] [Server thread/INFO]: [OpZero: Teleported OpZero to -9.500000, 67.500000, 2201.500000]
+[10:28:21] [Server thread/INFO]: OpZero lost connection: Disconnected
+[10:28:21] [Server thread/INFO]: OpZero left the game
+[10:28:51] [Server thread/INFO]: abhinav2654[/127.244.190.85:38773] logged in with entity id 48130 at (726.5, 72.0, 1371.5)
+[10:28:51] [Server thread/INFO]: abhinav2654 joined the game
+[10:28:57] [Server thread/INFO]: [abhinav2654: Made OpZero no longer a server operator]
+[10:28:59] [Server thread/INFO]: abhinav2654 lost connection: Disconnected
+[10:28:59] [Server thread/INFO]: abhinav2654 left the game
+[10:29:59] [Server thread/INFO]: OpZero[/127.244.190.85:51729] logged in with entity id 49459 at (545.4039219283322, 78.84375002384186, 1747.8397896467986)
+[10:29:59] [Server thread/INFO]: OpZero joined the game
+[10:37:56] [Server thread/INFO]: OpZero lost connection: Disconnected
+[10:37:56] [Server thread/INFO]: OpZero left the game
+[10:38:56] [Server thread/INFO]: Server empty for 60 seconds, pausing
