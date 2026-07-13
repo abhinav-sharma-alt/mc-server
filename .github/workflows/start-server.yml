@@ -40,18 +40,21 @@ jobs:
             SERVER_JAR=$(jq -r '.server_jar // "server.jar"' "$META")
             LAUNCH_MODE=$(jq -r '.launch_mode // "jar"' "$META")
             START_SCRIPT=$(jq -r '.start_script // "start.sh"' "$META")
+            SERVER_PORT=$(jq -r '.server_port // "25565"' "$META")
           else
             JAVA_VERSION="25"
             MEMORY_GB="10"
             SERVER_JAR="server.jar"
             LAUNCH_MODE="jar"
             START_SCRIPT="start.sh"
+            SERVER_PORT="25565"
           fi
           echo "java_version=$JAVA_VERSION" >> "$GITHUB_OUTPUT"
           echo "memory_gb=$MEMORY_GB" >> "$GITHUB_OUTPUT"
           echo "server_jar=$SERVER_JAR" >> "$GITHUB_OUTPUT"
           echo "launch_mode=$LAUNCH_MODE" >> "$GITHUB_OUTPUT"
           echo "start_script=$START_SCRIPT" >> "$GITHUB_OUTPUT"
+          echo "server_port=$SERVER_PORT" >> "$GITHUB_OUTPUT"
 
       - name: Set up Java
         uses: actions/setup-java@v4
@@ -122,6 +125,13 @@ jobs:
             cp "worlds/${{ github.event.inputs.modpack }}/server.properties" server/server.properties
           fi
 
+      - name: Enforce configured server-port in server.properties
+        run: |
+          SERVER_PORT="${{ steps.modpack_meta.outputs.server_port }}"
+          touch server/server.properties
+          sed -i '/^server-port=/d' server/server.properties
+          echo "server-port=$SERVER_PORT" >> server/server.properties
+
       - name: Configure git identity for console polling
         run: |
           git config user.name "minecraft-bot"
@@ -137,6 +147,7 @@ jobs:
           SERVER_JAR: ${{ steps.modpack_meta.outputs.server_jar }}
           LAUNCH_MODE: ${{ steps.modpack_meta.outputs.launch_mode }}
           START_SCRIPT: ${{ steps.modpack_meta.outputs.start_script }}
+          SERVER_PORT: ${{ steps.modpack_meta.outputs.server_port }}
         run: |
           chmod +x scripts/run-session.sh
           ./scripts/run-session.sh

@@ -30,10 +30,26 @@ PLAYIT_LOGS=$(docker logs playit-agent 2>&1)
 echo "$PLAYIT_LOGS"
 echo "--- end logs ---"
 
-TUNNEL_ADDRESS="significant-surpass.gl.joinmc.link"
-echo "Using configured tunnel address: $TUNNEL_ADDRESS"
+SERVER_PORT="${SERVER_PORT:-25565}"
 
-echo "Detected tunnel address: $TUNNEL_ADDRESS"
+# Each Minecraft port needs its own playit.gg tunnel (created once in the
+# playit.gg dashboard under this agent). Map port -> the address playit
+# assigned that tunnel. Add a line here every time you configure a new
+# tunnel for a new modpack port.
+declare -A TUNNEL_ADDRESSES=(
+  [25565]="significant-surpass.gl.joinmc.link"
+  [25566]="film-alaska.gl.joinmc.link"
+)
+
+TUNNEL_ADDRESS="${TUNNEL_ADDRESSES[$SERVER_PORT]}"
+if [ -z "$TUNNEL_ADDRESS" ]; then
+  echo "ERROR: No tunnel address configured for port $SERVER_PORT."
+  echo "Create a playit.gg tunnel pointing at local port $SERVER_PORT, then add"
+  echo "  [$SERVER_PORT]=\"<address playit gave you>\""
+  echo "to the TUNNEL_ADDRESSES table in run-session.sh."
+  exit 1
+fi
+echo "Using configured tunnel address for port $SERVER_PORT: $TUNNEL_ADDRESS"
 
 if [ -n "$DISCORD_WEBHOOK" ]; then
   curl -H "Content-Type: application/json" \

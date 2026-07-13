@@ -27,6 +27,9 @@ on:
         required: false
         type: boolean
         default: false
+      server_port:
+        description: 'Minecraft server port (create: defaults to 25565 if blank. configure: leave blank to keep current value). Must be unique per modpack — pick one not already used by another modpack, and make sure you have a playit.gg tunnel configured for it.'
+        required: false
       java_version:
         description: 'Java version (create: defaults to 25 if blank. configure: leave blank to keep current value)'
         required: false
@@ -148,12 +151,14 @@ jobs:
             CUR_JAR=$(jq -r '.server_jar // "server.jar"' "$META")
             CUR_MODE=$(jq -r '.launch_mode // "jar"' "$META")
             CUR_SCRIPT=$(jq -r '.start_script // "start.sh"' "$META")
+            CUR_PORT=$(jq -r '.server_port // "25565"' "$META")
           else
             CUR_JAVA="25"
             CUR_MEM="10"
             CUR_JAR="server.jar"
             CUR_MODE="jar"
             CUR_SCRIPT="start.sh"
+            CUR_PORT="25565"
           fi
 
           # Only override a field if the corresponding input was actually provided
@@ -162,12 +167,29 @@ jobs:
           IN_JAR="${{ github.event.inputs.server_jar }}"
           IN_MODE="${{ github.event.inputs.launch_mode }}"
           IN_SCRIPT="${{ github.event.inputs.start_script }}"
+          IN_PORT="${{ github.event.inputs.server_port }}"
 
           FINAL_JAVA="${IN_JAVA:-$CUR_JAVA}"
           FINAL_MEM="${IN_MEM:-$CUR_MEM}"
           FINAL_JAR="${IN_JAR:-$CUR_JAR}"
           FINAL_MODE="${IN_MODE:-$CUR_MODE}"
           FINAL_SCRIPT="${IN_SCRIPT:-$CUR_SCRIPT}"
+          FINAL_PORT="${IN_PORT:-$CUR_PORT}"
+
+          # Guard against two modpacks accidentally sharing a port
+          CLASH=$(for f in modpacks/*/meta.json; do
+            [ -f "$f" ] || continue
+            OTHER_NAME=$(basename "$(dirname "$f")")
+            [ "$OTHER_NAME" = "$NAME" ] && continue
+            OTHER_PORT=$(jq -r '.server_port // "25565"' "$f")
+            if [ "$OTHER_PORT" = "$FINAL_PORT" ]; then
+              echo "$OTHER_NAME"
+            fi
+          done)
+          if [ -n "$CLASH" ]; then
+            echo "::error::server_port $FINAL_PORT is already used by modpack(s): $CLASH. Pick a different port."
+            exit 1
+          fi
 
           cat > "$META" <<EOF
           {
@@ -175,10 +197,11 @@ jobs:
             "memory_gb": "$FINAL_MEM",
             "server_jar": "$FINAL_JAR",
             "launch_mode": "$FINAL_MODE",
-            "start_script": "$FINAL_SCRIPT"
+            "start_script": "$FINAL_SCRIPT",
+            "server_port": "$FINAL_PORT"
           }
           EOF
-          echo "meta.json for $NAME -> java=$FINAL_JAVA mem=${FINAL_MEM}GB mode=$FINAL_MODE jar=$FINAL_JAR script=$FINAL_SCRIPT"
+          echo "meta.json for $NAME -> java=$FINAL_JAVA mem=${FINAL_MEM}GB mode=$FINAL_MODE jar=$FINAL_JAR script=$FINAL_SCRIPT port=$FINAL_PORT"
 
       - name: Create - add to start-server.yml dropdown
         if: github.event.inputs.action == 'create'
