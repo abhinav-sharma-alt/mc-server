@@ -29,8 +29,12 @@ jobs:
         #   git add .gitignore && git commit -m "untrack live server/ dir"
         # The source of truth for properties is worlds/<modpack>/server.properties,
         # which is already copied in/out below.
+        #
+        # Mod/jar/resourcepack binaries are never committed (GitHub hard-rejects
+        # files >100MB). modpacks/<name>/meta.json only records where to fetch
+        # them from; they're downloaded fresh below on this ephemeral runner.
 
-      - name: Read modpack config (java version / memory)
+      - name: Read modpack config (java version / memory / source)
         id: modpack_meta
         run: |
           META="modpacks/${{ github.event.inputs.modpack }}/meta.json"
@@ -41,6 +45,10 @@ jobs:
             LAUNCH_MODE=$(jq -r '.launch_mode // "jar"' "$META")
             START_SCRIPT=$(jq -r '.start_script // "start.sh"' "$META")
             SERVER_PORT=$(jq -r '.server_port // "25565"' "$META")
+            SOURCE_TYPE=$(jq -r '.source_type // "jar"' "$META")
+            JAR_URL=$(jq -r '.jar_url // ""' "$META")
+            MRPACK_SLUG=$(jq -r '.mrpack_slug // ""' "$META")
+            MRPACK_VERSION=$(jq -r '.mrpack_version // ""' "$META")
           else
             JAVA_VERSION="25"
             MEMORY_GB="10"
@@ -48,6 +56,10 @@ jobs:
             LAUNCH_MODE="jar"
             START_SCRIPT="start.sh"
             SERVER_PORT="25565"
+            SOURCE_TYPE="jar"
+            JAR_URL=""
+            MRPACK_SLUG=""
+            MRPACK_VERSION=""
           fi
           echo "java_version=$JAVA_VERSION" >> "$GITHUB_OUTPUT"
           echo "memory_gb=$MEMORY_GB" >> "$GITHUB_OUTPUT"
@@ -55,6 +67,10 @@ jobs:
           echo "launch_mode=$LAUNCH_MODE" >> "$GITHUB_OUTPUT"
           echo "start_script=$START_SCRIPT" >> "$GITHUB_OUTPUT"
           echo "server_port=$SERVER_PORT" >> "$GITHUB_OUTPUT"
+          echo "source_type=$SOURCE_TYPE" >> "$GITHUB_OUTPUT"
+          echo "jar_url=$JAR_URL" >> "$GITHUB_OUTPUT"
+          echo "mrpack_slug=$MRPACK_SLUG" >> "$GITHUB_OUTPUT"
+          echo "mrpack_version=$MRPACK_VERSION" >> "$GITHUB_OUTPUT"
 
       - name: Set up Java
         uses: actions/setup-java@v4
@@ -73,7 +89,8 @@ jobs:
           mkdir -p server
           curl -o server/server.jar "$SERVER_URL"
 
-      - name: Set up modpack from modpacks/<name>/ (any non-vanilla modpack)
+      - name: Build server directory for modpack (fetch fresh — nothing is committed)
+        id: build_modpack
         if: github.event.inputs.modpack != 'vanilla'
         run: |
           MODPACK="${{ github.event.inputs.modpack }}"
@@ -81,27 +98,116 @@ jobs:
             echo "::error::modpacks/$MODPACK does not exist. Create it first with /modpack create."
             exit 1
           fi
+
+          SOURCE_TYPE="${{ steps.modpack_meta.outputs.source_type }}"
+          JAR_URL="${{ steps.modpack_meta.outputs.jar_url }}"
+          MRPACK_SLUG="${{ steps.modpack_meta.outputs.mrpack_slug }}"
+          MRPACK_VERSION="${{ steps.modpack_meta.outputs.mrpack_version }}"
+          SERVER_JAR="${{ steps.modpack_meta.outputs.server_jar }}"
+
           mkdir -p server
-          cp -r "modpacks/$MODPACK"/* server/
+          # small tracked config (server.properties template etc), never the mods
+          cp -r "modpacks/$MODPACK"/* server/ 2>/dev/null || true
+
+          RESOLVED_JAR="$SERVER_JAR"
+
+          case "$SOURCE_TYPE" in
+            jar)
+              if [ -z "$JAR_URL" ]; then
+                echo "::error::meta.json has source_type=jar but no jar_url set. Fix with /modpack configure."
+                exit 1
+              fi
+              curl -L -o "server/$SERVER_JAR" "$JAR_URL"
+              ;;
+
+            zip)
+              if [ -z "$JAR_URL" ]; then
+                echo "::error::meta.json has source_type=zip but no jar_url set. Fix with /modpack configure."
+                exit 1
+              fi
+              curl -L -o /tmp/pack.zip "$JAR_URL"
+              unzip -q /tmp/pack.zip -d server
+              # Server packs often nest one level deep - flatten if so
+              INNER=$(find server -mindepth 1 -maxdepth 1 -type d | head -n1)
+              if [ -n "$INNER" ] && [ -z "$(find server -mindepth 1 -maxdepth 1 -type f)" ]; then
+                mv "$INNER"/* server/
+                rmdir "$INNER"
+              fi
+              ;;
+
+            mrpack)
+              if [ -z "$MRPACK_SLUG" ]; then
+                echo "::error::meta.json has source_type=mrpack but no mrpack_slug set. Fix with /modpack configure."
+                exit 1
+              fi
+              echo "Downloading mrpack-install..."
+              MRPACK_URL=$(curl -s https://api.github.com/repos/nothub/mrpack-install/releases/latest \
+                | jq -r '.assets[] | select(.name | test("linux"; "i")) | .browser_download_url' | head -n1)
+              if [ -z "$MRPACK_URL" ]; then
+                echo "::error::Could not find a Linux mrpack-install asset in the latest release."
+                exit 1
+              fi
+              curl -sSL -o /tmp/mrpack-install "$MRPACK_URL"
+              chmod +x /tmp/mrpack-install
+
+              echo "Running mrpack-install for $MRPACK_SLUG ${MRPACK_VERSION:+(version $MRPACK_VERSION)}..."
+              if [ -n "$MRPACK_VERSION" ]; then
+                /tmp/mrpack-install "$MRPACK_SLUG" "$MRPACK_VERSION" --server-dir server
+              else
+                /tmp/mrpack-install "$MRPACK_SLUG" --server-dir server
+              fi
+
+              # mrpack-install names the runnable jar differently depending on loader
+              # (e.g. fabric-server-launch.jar, forge server jar with a version suffix,
+              # etc). Prefer the configured server_jar if it happens to exist; otherwise
+              # auto-detect.
+              if [ ! -f "server/$SERVER_JAR" ]; then
+                DETECTED_JAR=$(find server -maxdepth 1 -name "*.jar" ! -iname "*installer*" | head -n1 | xargs -r basename)
+                if [ -n "$DETECTED_JAR" ]; then
+                  echo "Auto-detected server jar: $DETECTED_JAR (configured server_jar '$SERVER_JAR' not found)"
+                  RESOLVED_JAR="$DETECTED_JAR"
+                fi
+              fi
+              ;;
+
+            *)
+              echo "::error::Unknown source_type '$SOURCE_TYPE' in meta.json."
+              exit 1
+              ;;
+          esac
+
+          echo "eula=true" > server/eula.txt
+
+          if [ ! -f "server/server.properties" ]; then
+            cat > server/server.properties <<'EOF'
+          motd=A Minecraft Server
+          max-players=20
+          view-distance=10
+          difficulty=normal
+          gamemode=survival
+          online-mode=true
+          EOF
+          fi
+
+          echo "resolved_server_jar=$RESOLVED_JAR" >> "$GITHUB_OUTPUT"
 
           LAUNCH_MODE="${{ steps.modpack_meta.outputs.launch_mode }}"
           if [ "$LAUNCH_MODE" = "script" ]; then
             START_SCRIPT="${{ steps.modpack_meta.outputs.start_script }}"
             if [ ! -f "server/$START_SCRIPT" ]; then
-              echo "::error::server/$START_SCRIPT not found after copying modpacks/$MODPACK."
-              echo "Files actually present in modpacks/$MODPACK:"
-              find "modpacks/$MODPACK" -maxdepth 1 \( -name "*.sh" -o -name "*.jar" \)
+              echo "::error::server/$START_SCRIPT not found after building modpacks/$MODPACK."
+              echo "Files actually present in server/:"
+              find server -maxdepth 1 \( -name "*.sh" -o -name "*.jar" \)
               echo "Set the right one with:"
               echo "  /modpack configure name: $MODPACK launch_mode: script start_script: <actual-filename>.sh"
               exit 1
             fi
             chmod +x "server/$START_SCRIPT"
           else
-            SERVER_JAR="${{ steps.modpack_meta.outputs.server_jar }}"
-            if [ ! -f "server/$SERVER_JAR" ]; then
-              echo "::error::server/$SERVER_JAR not found after copying modpacks/$MODPACK."
-              echo "Files actually present in modpacks/$MODPACK:"
-              find "modpacks/$MODPACK" -maxdepth 1 \( -name "*.jar" -o -name "*.sh" \)
+            if [ ! -f "server/$RESOLVED_JAR" ]; then
+              echo "::error::server/$RESOLVED_JAR not found after building modpacks/$MODPACK."
+              echo "Files actually present in server/:"
+              find server -maxdepth 1 \( -name "*.jar" -o -name "*.sh" \)
               echo "If there's a .sh launcher instead of a plain jar, this modpack needs script mode:"
               echo "  /modpack configure name: $MODPACK launch_mode: script start_script: <actual-filename>.sh"
               echo "Otherwise, if the jar just has a different name:"
@@ -110,7 +216,8 @@ jobs:
             fi
           fi
 
-      - name: Accept EULA
+      - name: Accept EULA (vanilla)
+        if: github.event.inputs.modpack == 'vanilla'
         run: echo "eula=true" > server/eula.txt
 
       - name: Restore saved world for this modpack (if it exists)
@@ -144,7 +251,7 @@ jobs:
           PLAYIT_SECRET: ${{ secrets.PLAYIT_SECRET }}
           MODPACK: ${{ github.event.inputs.modpack }}
           MEMORY_GB: ${{ steps.modpack_meta.outputs.memory_gb }}
-          SERVER_JAR: ${{ steps.modpack_meta.outputs.server_jar }}
+          SERVER_JAR: ${{ github.event.inputs.modpack == 'vanilla' && steps.modpack_meta.outputs.server_jar || steps.build_modpack.outputs.resolved_server_jar }}
           LAUNCH_MODE: ${{ steps.modpack_meta.outputs.launch_mode }}
           START_SCRIPT: ${{ steps.modpack_meta.outputs.start_script }}
           SERVER_PORT: ${{ steps.modpack_meta.outputs.server_port }}
