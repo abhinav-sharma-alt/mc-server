@@ -1,0 +1,13 @@
+{
+  "java_version": "21",
+  "memory_gb": "6",
+  "server_jar": "server.jar",
+  "launch_mode": "jar",
+  "start_script": "start.sh",
+  "server_port": "25566",
+  "source_type": "mrpack",
+  "jar_url": "",
+  "is_zip": "false",
+  "mrpack_slug": "cobbleverse",
+  "mrpack_version": ""
+}
