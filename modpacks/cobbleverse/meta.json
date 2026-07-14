@@ -1,5 +1,5 @@
 {
-  "java_version": "21",
+  "java_version": "25",
   "memory_gb": "6",
   "server_jar": "server.jar",
   "launch_mode": "jar",
