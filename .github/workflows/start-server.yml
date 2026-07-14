@@ -266,11 +266,13 @@ jobs:
             cp -r server/world "worlds/${{ github.event.inputs.modpack }}/world"
             rm -f "worlds/${{ github.event.inputs.modpack }}/world/session.lock"
             cp server/server.properties "worlds/${{ github.event.inputs.modpack }}/server.properties"
-            # Stage everything (not just the world folder) in case the console
-            # poller left tracked files (console/command.txt, console/stop.txt)
-            # modified-but-uncommitted when it was stopped. Without this, the
-            # subsequent "git pull --rebase" fails on a dirty working tree.
-            git add -A
+            # Stage only the world data and console signal files (the latter
+            # in case the console poller left command.txt/stop.txt
+            # modified-but-uncommitted when it was stopped).
+            # NEVER "git add -A" here — server/ contains freshly-downloaded
+            # mod jars/resourcepacks (can be 100MB+) that must never be
+            # committed; GitHub hard-rejects pushes with files over 100MB.
+            git add "worlds/${{ github.event.inputs.modpack }}" console/
             git diff --staged --quiet || git commit -m "Update ${{ github.event.inputs.modpack }} world state after session"
             git pull --rebase --autostash --quiet || { git rebase --abort 2>/dev/null || true; }
             git push origin HEAD:main
