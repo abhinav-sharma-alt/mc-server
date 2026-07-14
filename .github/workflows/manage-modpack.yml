@@ -20,13 +20,19 @@ on:
         description: 'Short id, lowercase, no spaces (e.g. atm9)'
         required: true
       jar_url:
-        description: 'Direct download URL for server jar OR a server-pack .zip (create only)'
+        description: 'Direct download URL for server jar OR a server-pack .zip (create only). Leave blank if using mrpack_slug instead.'
         required: false
       is_zip:
         description: 'Is jar_url a .zip server pack that needs extracting? (create only)'
         required: false
         type: boolean
         default: false
+      mrpack_slug:
+        description: 'Modrinth modpack slug or project id, e.g. cobbleverse (create only). Alternative to jar_url — builds the server via mrpack-install instead.'
+        required: false
+      mrpack_version:
+        description: 'Specific Modrinth version number/id for mrpack_slug (create only). Leave blank for latest.'
+        required: false
       server_port:
         description: 'Minecraft server port (create: defaults to 25565 if blank. configure: leave blank to keep current value). Must be unique per modpack — pick one not already used by another modpack, and make sure you have a playit.gg tunnel configured for it.'
         required: false
@@ -93,16 +99,27 @@ jobs:
           JAR_URL="${{ github.event.inputs.jar_url }}"
           IS_ZIP="${{ github.event.inputs.is_zip }}"
 
+          MRPACK_SLUG="${{ github.event.inputs.mrpack_slug }}"
+
           if [ -d "modpacks/$NAME" ]; then
             echo "::error::modpacks/$NAME already exists. Use 'configure' to change it, or delete it first."
             exit 1
           fi
-          if [ -z "$JAR_URL" ]; then
-            echo "::error::jar_url is required for 'create'."
+          if [ -z "$JAR_URL" ] && [ -z "$MRPACK_SLUG" ]; then
+            echo "::error::Provide either jar_url or mrpack_slug for 'create'."
+            exit 1
+          fi
+          if [ -n "$JAR_URL" ] && [ -n "$MRPACK_SLUG" ]; then
+            echo "::error::Provide only one of jar_url or mrpack_slug, not both."
             exit 1
           fi
 
           mkdir -p "modpacks/$NAME"
+
+          if [ -n "$MRPACK_SLUG" ]; then
+            echo "Using mrpack-install for Modrinth pack: $MRPACK_SLUG"
+            exit 0   # actual install happens in the next step
+          fi
 
           if [ "$IS_ZIP" = "true" ]; then
             curl -L -o /tmp/pack.zip "$JAR_URL"
@@ -128,6 +145,58 @@ jobs:
           gamemode=survival
           online-mode=true
           EOF
+          fi
+
+      - name: Create - install via mrpack-install (Modrinth slug path)
+        if: github.event.inputs.action == 'create' && github.event.inputs.mrpack_slug != ''
+        run: |
+          NAME="${{ github.event.inputs.modpack_name }}"
+          SLUG="${{ github.event.inputs.mrpack_slug }}"
+          VERSION="${{ github.event.inputs.mrpack_version }}"
+
+          mkdir -p "modpacks/$NAME"
+
+          echo "Downloading mrpack-install..."
+          MRPACK_URL=$(curl -s https://api.github.com/repos/nothub/mrpack-install/releases/latest \
+            | jq -r '.assets[] | select(.name | test("linux"; "i")) | .browser_download_url' | head -n1)
+          if [ -z "$MRPACK_URL" ]; then
+            echo "::error::Could not find a Linux mrpack-install asset in the latest release."
+            exit 1
+          fi
+          curl -sSL -o /tmp/mrpack-install "$MRPACK_URL"
+          chmod +x /tmp/mrpack-install
+
+          echo "Running mrpack-install for $SLUG ${VERSION:+(version $VERSION)}..."
+          if [ -n "$VERSION" ]; then
+            /tmp/mrpack-install "$SLUG" "$VERSION" --server-dir "modpacks/$NAME"
+          else
+            /tmp/mrpack-install "$SLUG" --server-dir "modpacks/$NAME"
+          fi
+
+          echo "eula=true" > "modpacks/$NAME/eula.txt"
+
+          if [ ! -f "modpacks/$NAME/server.properties" ]; then
+            cat > "modpacks/$NAME/server.properties" <<'EOF'
+          motd=A Minecraft Server
+          max-players=20
+          view-distance=10
+          difficulty=normal
+          gamemode=survival
+          online-mode=true
+          EOF
+          fi
+
+          # mrpack-install names the runnable jar differently depending on loader
+          # (e.g. fabric-server-launch.jar, forge server jar with a version suffix,
+          # etc.). Detect it so the meta.json step below picks the right default
+          # instead of assuming "server.jar".
+          DETECTED_JAR=$(find "modpacks/$NAME" -maxdepth 1 -name "*.jar" \
+            ! -iname "*installer*" | head -n1 | xargs -r basename)
+          if [ -n "$DETECTED_JAR" ]; then
+            echo "Detected server jar: $DETECTED_JAR"
+            echo "$DETECTED_JAR" > "modpacks/$NAME/.detected_jar"
+          else
+            echo "::warning::Could not auto-detect a server jar in modpacks/$NAME. You may need to set server_jar manually via /modpack configure after checking the folder contents."
           fi
 
       # ---------------- CREATE + CONFIGURE (shared meta.json step) ----------------
@@ -159,6 +228,13 @@ jobs:
             CUR_MODE="jar"
             CUR_SCRIPT="start.sh"
             CUR_PORT="25565"
+          fi
+
+          # If mrpack-install auto-detected a jar filename, use it as the default
+          # (still overridable by an explicit server_jar input below).
+          if [ -f "modpacks/$NAME/.detected_jar" ]; then
+            CUR_JAR=$(cat "modpacks/$NAME/.detected_jar")
+            rm -f "modpacks/$NAME/.detected_jar"
           fi
 
           # Only override a field if the corresponding input was actually provided
