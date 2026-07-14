@@ -4,13 +4,9 @@ on:
   workflow_dispatch:
     inputs:
       modpack:
-        description: 'Which server setup to launch'
+        description: 'Which server setup to launch: "vanilla" or a modpack name from modpacks/<name>/ (created via /modpack create)'
         required: true
         default: 'vanilla'
-        type: choice
-        options:
-          - vanilla
-          - bmc1
 
 jobs:
   run-server:

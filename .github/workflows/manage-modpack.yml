@@ -251,22 +251,11 @@ jobs:
           EOF
           echo "meta.json for $NAME -> source=$FINAL_SOURCE_TYPE java=$FINAL_JAVA mem=${FINAL_MEM}GB mode=$FINAL_MODE jar=$FINAL_JAR script=$FINAL_SCRIPT port=$FINAL_PORT"
 
-      - name: Create - add to start-server.yml dropdown
-        if: github.event.inputs.action == 'create'
-        run: |
-          NAME="${{ github.event.inputs.modpack_name }}"
-          if grep -qE "^\s+- ${NAME}$" .github/workflows/start-server.yml; then
-            echo "'$NAME' already listed in start-server.yml, skipping."
-          else
-            # Insert right after the "options:" line under the modpack input
-            sed -i "/^\s*options:$/a\\          - ${NAME}" .github/workflows/start-server.yml
-          fi
-
       - name: Create - commit
         if: github.event.inputs.action == 'create'
         run: |
           NAME="${{ github.event.inputs.modpack_name }}"
-          git add "modpacks/$NAME" .github/workflows/start-server.yml
+          git add "modpacks/$NAME"
           git commit -m "modpack: create '$NAME'"
           git pull --rebase --autostash --quiet
           git push origin HEAD:main
@@ -297,14 +286,11 @@ jobs:
             git rm -r --quiet "worlds/$NAME"
           fi
 
-          # Remove from start-server.yml dropdown
-          sed -i "/^\s*- ${NAME}$/d" .github/workflows/start-server.yml
-
       - name: Delete - commit
         if: github.event.inputs.action == 'delete'
         run: |
           NAME="${{ github.event.inputs.modpack_name }}"
-          git add .github/workflows/start-server.yml
+          git diff --staged --quiet && { echo "No changes."; exit 0; }
           git commit -m "modpack: delete '$NAME'"
           git pull --rebase --autostash --quiet
           git push origin HEAD:main
