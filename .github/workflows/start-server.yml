@@ -85,22 +85,6 @@ jobs:
           mkdir -p server
           curl -o server/server.jar "$SERVER_URL"
 
-      - name: Debug - inspect world dir origin
-        if: github.event.inputs.modpack != 'vanilla'
-        run: |
-          echo "=== server/ top level ==="
-          ls -la server/
-          echo "=== server/world (if exists) ==="
-          if [ -d server/world ]; then
-            find server/world -maxdepth 2
-            if [ -f server/world/level.dat ]; then
-              echo "level.dat size:"
-              stat -c%s server/world/level.dat
-            fi
-          else
-            echo "no server/world at this point"
-          fi
-
       - name: Build server directory for modpack (fetch fresh — nothing is committed)
         id: build_modpack
         if: github.event.inputs.modpack != 'vanilla'
@@ -231,6 +215,23 @@ jobs:
       - name: Accept EULA (vanilla)
         if: github.event.inputs.modpack == 'vanilla'
         run: echo "eula=true" > server/eula.txt
+
+      - name: Debug - inspect world dir origin
+        if: github.event.inputs.modpack != 'vanilla'
+        run: |
+          echo "=== server/ top level ==="
+          ls -la server/
+          echo "=== server/world (if exists) ==="
+          if [ -d server/world ]; then
+            find server/world -maxdepth 2
+            if [ -f server/world/level.dat ]; then
+              echo "level.dat size:"
+              stat -c%s server/world/level.dat
+            fi
+          else
+            echo "no server/world at this point"
+          fi
+
 
       - name: Restore saved world for this modpack (if it exists)
         run: |
