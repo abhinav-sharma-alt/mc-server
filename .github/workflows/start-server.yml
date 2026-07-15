@@ -232,6 +232,13 @@ jobs:
             echo "no server/world at this point"
           fi
 
+      - name: Ensure clean world dir if no real saved world exists (modpacks only)
+        if: github.event.inputs.modpack != 'vanilla'
+        run: |
+          if [ -d server/world ] && [ ! -d "worlds/${{ github.event.inputs.modpack }}/world" ]; then
+            echo "No real saved world for ${{ github.event.inputs.modpack }} yet — server/world is likely a template from mrpack overrides. Clearing it so the server generates a real one."
+            rm -rf server/world
+          fi
 
       - name: Restore saved world for this modpack (if it exists)
         run: |
