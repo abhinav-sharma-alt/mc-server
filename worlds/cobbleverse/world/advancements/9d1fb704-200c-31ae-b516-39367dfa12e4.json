@@ -1,4 +1,89 @@
 {
+  "cobbleverse:root": {
+    "criteria": {
+      "cobbleverse_starts_now": "2026-07-15 17:26:54 +0000"
+    },
+    "done": true
+  },
+  "minecraft:adventure/adventuring_time": {
+    "criteria": {
+      "minecraft:river": "2026-07-15 17:33:15 +0000",
+      "minecraft:savanna": "2026-07-15 17:26:54 +0000"
+    },
+    "done": false
+  },
+  "cobblemon:recipes/misc/pokedex_blue": {
+    "criteria": {
+      "has_pokedex": "2026-07-15 17:30:56 +0000"
+    },
+    "done": true
+  },
+  "cobblemon:root": {
+    "criteria": {
+      "picked_starter": "2026-07-15 17:30:56 +0000"
+    },
+    "done": true
+  },
+  "cobblemon:recipes/misc/pokedex_yellow": {
+    "criteria": {
+      "has_pokedex": "2026-07-15 17:30:56 +0000"
+    },
+    "done": true
+  },
+  "cobblemon:recipes/misc/pokedex_red": {
+    "criteria": {
+      "has_pokedex": "2026-07-15 17:30:56 +0000"
+    },
+    "done": true
+  },
+  "cobbleverse:gen_1": {
+    "criteria": {
+      "started_gen1": "2026-07-15 17:30:56 +0000"
+    },
+    "done": true
+  },
+  "mega_showdown:mega_showdown/root": {
+    "criteria": {
+      "root": "2026-07-15 17:30:56 +0000"
+    },
+    "done": true
+  },
+  "cobblemon:recipes/misc/pokedex_black": {
+    "criteria": {
+      "has_pokedex": "2026-07-15 17:30:56 +0000"
+    },
+    "done": true
+  },
+  "cobblemon:craft_pokedex": {
+    "criteria": {
+      "requirement": "2026-07-15 17:30:56 +0000"
+    },
+    "done": true
+  },
+  "cobblemon:recipes/misc/pokedex_green": {
+    "criteria": {
+      "has_pokedex": "2026-07-15 17:30:56 +0000"
+    },
+    "done": true
+  },
+  "cobblemon:recipes/misc/pokedex_white": {
+    "criteria": {
+      "has_pokedex": "2026-07-15 17:30:56 +0000"
+    },
+    "done": true
+  },
+  "cobblemon:recipes/misc/pokedex_pink": {
+    "criteria": {
+      "has_pokedex": "2026-07-15 17:30:56 +0000"
+    },
+    "done": true
+  },
+  "sophisticatedbackpacks:recipes/misc/gold_backpack": {
+    "criteria": {
+      "has_iron_backpack": "2026-07-15 17:30:56 +0000"
+    },
+    "done": true
+  },
   "tmcraft:recipes/misc/tm_magicalleaf": {
     "criteria": {
       "has_the_recipe": "2026-07-15 17:30:57 +0000"
@@ -1644,12 +1729,6 @@
     },
     "done": true
   },
-  "cobblemon:recipes/misc/pokedex_blue": {
-    "criteria": {
-      "has_pokedex": "2026-07-15 17:30:56 +0000"
-    },
-    "done": true
-  },
   "cobblemon:recipes/blocks/chiseled_tumblestone_bricks_from_polished_tumblestone_in_stonecutter": {
     "criteria": {
       "has_the_recipe": "2026-07-15 17:30:57 +0000"
@@ -3051,12 +3130,6 @@
   "mega_showdown:recipes/misc/pikanium_z2": {
     "criteria": {
       "has_the_recipe": "2026-07-15 17:30:57 +0000"
-    },
-    "done": true
-  },
-  "cobblemon:root": {
-    "criteria": {
-      "picked_starter": "2026-07-15 17:30:56 +0000"
     },
     "done": true
   },
@@ -6360,12 +6433,6 @@
     },
     "done": true
   },
-  "cobblemon:recipes/misc/pokedex_yellow": {
-    "criteria": {
-      "has_pokedex": "2026-07-15 17:30:56 +0000"
-    },
-    "done": true
-  },
   "handcrafted:recipes/misc/acacia_corner_trim": {
     "criteria": {
       "has_the_recipe": "2026-07-15 17:30:57 +0000"
@@ -7005,12 +7072,6 @@
   "cozyhome:recipes/building_blocks/gold_chimney": {
     "criteria": {
       "has_the_recipe": "2026-07-15 17:30:57 +0000"
-    },
-    "done": true
-  },
-  "cobblemon:recipes/misc/pokedex_red": {
-    "criteria": {
-      "has_pokedex": "2026-07-15 17:30:56 +0000"
     },
     "done": true
   },
@@ -11857,12 +11918,6 @@
     },
     "done": true
   },
-  "cobbleverse:root": {
-    "criteria": {
-      "cobbleverse_starts_now": "2026-07-15 17:26:54 +0000"
-    },
-    "done": true
-  },
   "cobblemon:recipes/blocks/white_plaque_redye": {
     "criteria": {
       "has_the_recipe": "2026-07-15 17:30:57 +0000"
@@ -13159,12 +13214,6 @@
     },
     "done": true
   },
-  "cobblemonraiddens:join_raid": {
-    "criteria": {
-      "joined_raid": "2026-07-15 17:34:44 +0000"
-    },
-    "done": true
-  },
   "cobblemon:recipes/held/bright_powder": {
     "criteria": {
       "has_the_recipe": "2026-07-15 17:30:57 +0000"
@@ -13594,12 +13643,6 @@
   "minecraft:recipes/building_blocks/crimson_stairs": {
     "criteria": {
       "has_the_recipe": "2026-07-15 17:30:57 +0000"
-    },
-    "done": true
-  },
-  "cobbleverse:gen_1": {
-    "criteria": {
-      "started_gen1": "2026-07-15 17:30:56 +0000"
     },
     "done": true
   },
@@ -14275,21 +14318,9 @@
     },
     "done": true
   },
-  "mega_showdown:mega_showdown/root": {
-    "criteria": {
-      "root": "2026-07-15 17:30:56 +0000"
-    },
-    "done": true
-  },
   "minecraft:recipes/building_blocks/brown_concrete_powder": {
     "criteria": {
       "has_the_recipe": "2026-07-15 17:30:57 +0000"
-    },
-    "done": true
-  },
-  "cobblemon:recipes/misc/pokedex_black": {
-    "criteria": {
-      "has_pokedex": "2026-07-15 17:30:56 +0000"
     },
     "done": true
   },
@@ -15148,12 +15179,6 @@
   "sophisticatedstorage:recipes/misc/oak_barrel": {
     "criteria": {
       "has_the_recipe": "2026-07-15 17:30:57 +0000"
-    },
-    "done": true
-  },
-  "cobblemon:craft_pokedex": {
-    "criteria": {
-      "requirement": "2026-07-15 17:30:56 +0000"
     },
     "done": true
   },
@@ -16738,12 +16763,6 @@
   "carved_wood:recipes/building_blocks/dark_oak_lantern_block_from_dark_oak_lantern": {
     "criteria": {
       "has_the_recipe": "2026-07-15 17:30:57 +0000"
-    },
-    "done": true
-  },
-  "cobblemon:recipes/misc/pokedex_green": {
-    "criteria": {
-      "has_pokedex": "2026-07-15 17:30:56 +0000"
     },
     "done": true
   },
@@ -18610,12 +18629,6 @@
   "minecraft:recipes/decorations/white_stained_glass_pane_from_glass_pane": {
     "criteria": {
       "has_the_recipe": "2026-07-15 17:30:57 +0000"
-    },
-    "done": true
-  },
-  "cobblemon:recipes/misc/pokedex_white": {
-    "criteria": {
-      "has_pokedex": "2026-07-15 17:30:56 +0000"
     },
     "done": true
   },
@@ -21421,12 +21434,6 @@
     },
     "done": true
   },
-  "cobblemon:first_catch": {
-    "criteria": {
-      "catch": "2026-07-15 17:35:42 +0000"
-    },
-    "done": true
-  },
   "pokeblocks:recipes/decorations/gigantic_pokedoll_shiny_dolliv": {
     "criteria": {
       "has_the_recipe": "2026-07-15 17:30:57 +0000"
@@ -23342,12 +23349,6 @@
     },
     "done": true
   },
-  "cobblemon:recipes/misc/pokedex_pink": {
-    "criteria": {
-      "has_pokedex": "2026-07-15 17:30:56 +0000"
-    },
-    "done": true
-  },
   "tmcraft:recipes/misc/tm_steelwing": {
     "criteria": {
       "has_the_recipe": "2026-07-15 17:30:57 +0000"
@@ -23414,12 +23415,6 @@
     },
     "done": true
   },
-  "sophisticatedbackpacks:recipes/misc/gold_backpack": {
-    "criteria": {
-      "has_iron_backpack": "2026-07-15 17:30:56 +0000"
-    },
-    "done": true
-  },
   "mega_showdown:recipes/misc/z_ring_red": {
     "criteria": {
       "has_the_recipe": "2026-07-15 17:30:57 +0000"
@@ -23437,13 +23432,6 @@
       "has_the_recipe": "2026-07-15 17:30:57 +0000"
     },
     "done": true
-  },
-  "minecraft:adventure/adventuring_time": {
-    "criteria": {
-      "minecraft:river": "2026-07-15 17:33:15 +0000",
-      "minecraft:savanna": "2026-07-15 17:26:54 +0000"
-    },
-    "done": false
   },
   "mega_showdown:recipes/misc/purple_nectar": {
     "criteria": {
@@ -25023,12 +25011,6 @@
     },
     "done": true
   },
-  "minecraft:story/root": {
-    "criteria": {
-      "crafting_table": "2026-07-15 17:31:15 +0000"
-    },
-    "done": true
-  },
   "minecraft:recipes/building_blocks/polished_meteor_from_smelting": {
     "criteria": {
       "has_the_recipe": "2026-07-15 17:30:57 +0000"
@@ -25470,6 +25452,24 @@
   "carved_wood:recipes/decorations/dark_oak_crafting_table": {
     "criteria": {
       "has_the_recipe": "2026-07-15 17:30:57 +0000"
+    },
+    "done": true
+  },
+  "minecraft:story/root": {
+    "criteria": {
+      "crafting_table": "2026-07-15 17:31:15 +0000"
+    },
+    "done": true
+  },
+  "cobblemonraiddens:join_raid": {
+    "criteria": {
+      "joined_raid": "2026-07-15 17:34:44 +0000"
+    },
+    "done": true
+  },
+  "cobblemon:first_catch": {
+    "criteria": {
+      "catch": "2026-07-15 17:35:42 +0000"
     },
     "done": true
   },
