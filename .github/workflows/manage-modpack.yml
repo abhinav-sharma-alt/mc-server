@@ -128,7 +128,7 @@ jobs:
           view-distance=10
           difficulty=normal
           gamemode=survival
-          online-mode=true
+          online-mode=false
           EOF
           fi
 

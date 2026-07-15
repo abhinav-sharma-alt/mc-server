@@ -181,7 +181,7 @@ jobs:
           view-distance=10
           difficulty=normal
           gamemode=survival
-          online-mode=true
+          online-mode=false
           EOF
           fi
 
@@ -258,6 +258,12 @@ jobs:
           touch server/server.properties
           sed -i '/^server-port=/d' server/server.properties
           echo "server-port=$SERVER_PORT" >> server/server.properties
+
+      - name: Force online-mode=false (allow cracked players on every modpack/vanilla)
+        run: |
+          touch server/server.properties
+          sed -i '/^online-mode=/d' server/server.properties
+          echo "online-mode=false" >> server/server.properties
 
       - name: Configure git identity for console polling
         run: |
