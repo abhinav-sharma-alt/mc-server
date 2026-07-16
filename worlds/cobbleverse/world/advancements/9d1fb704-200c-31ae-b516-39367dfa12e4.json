@@ -25528,12 +25528,6 @@
     },
     "done": true
   },
-  "minecraft:story/smelt_iron": {
-    "criteria": {
-      "iron": "2026-07-16 06:52:38 +0000"
-    },
-    "done": true
-  },
   "cobblemonraiddens:great_friend": {
     "criteria": {
       "attack_cheer": "2026-07-16 06:42:43 +0000",
@@ -25544,6 +25538,12 @@
   "minecraft:husbandry/root": {
     "criteria": {
       "consumed_item": "2026-07-16 06:42:38 +0000"
+    },
+    "done": true
+  },
+  "minecraft:story/smelt_iron": {
+    "criteria": {
+      "iron": "2026-07-16 06:52:38 +0000"
     },
     "done": true
   },

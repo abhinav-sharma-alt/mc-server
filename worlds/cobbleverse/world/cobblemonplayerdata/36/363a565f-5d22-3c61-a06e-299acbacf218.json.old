@@ -1,0 +1,99 @@
+{
+  "uuid": "363a565f-5d22-3c61-a06e-299acbacf218",
+  "starterPrompted": true,
+  "starterLocked": false,
+  "starterSelected": true,
+  "starterUUID": "fdb8b769-c1e5-4d77-88eb-2fe05dac9f69",
+  "keyItems": [],
+  "battleTheme": "cobblemon:battle.pvp.default",
+  "extraData": {},
+  "advancementData": {
+    "totalCaptureCount": 12,
+    "totalEggsCollected": 0,
+    "totalEggsHatched": 0,
+    "totalEvolvedCount": 2,
+    "totalBattleVictoryCount": 26,
+    "totalPvPBattleVictoryCount": 0,
+    "totalPvWBattleVictoryCount": 19,
+    "totalPvNBattleVictoryCount": 7,
+    "totalShinyCaptureCount": 0,
+    "totalTradedCount": 0,
+    "totalTypeCaptureCounts": {
+      "electric": 2,
+      "normal": 6,
+      "flying": 3,
+      "psychic": 1,
+      "bug": 2,
+      "grass": 1,
+      "poison": 1
+    },
+    "totalDefeatedCounts": {
+      "cobblemon:skitty": 1,
+      "cobblemon:deerling": 1,
+      "cobblemon:weedle": 1,
+      "cobblemon:psyduck": 1,
+      "cobblemon:yamper": 1,
+      "cobblemon:polteageist": 1,
+      "cobblemon:meowth": 1
+    },
+    "aspectsCollected": {
+      "cobblemon:pawmi": [
+        "male",
+        "bucket-uncommon"
+      ],
+      "cobblemon:yungoos": [
+        "female",
+        "bucket-common"
+      ],
+      "cobblemon:pidgey": [
+        "female",
+        "bucket-common"
+      ],
+      "cobblemon:mareep": [
+        "male",
+        "bucket-common"
+      ],
+      "cobblemon:glameow": [
+        "female",
+        "bucket-common"
+      ],
+      "cobblemon:taillow": [
+        "male",
+        "bucket-common"
+      ],
+      "cobblemon:frogadier": [
+        "shiny",
+        "male",
+        "bucket-"
+      ],
+      "cobblemon:sentret": [
+        "male",
+        "bucket-common"
+      ],
+      "cobblemon:drowzee": [
+        "male",
+        "bucket-common"
+      ],
+      "cobblemon:ledyba": [
+        "female",
+        "bucket-common"
+      ],
+      "cobblemon:sewaddle": [
+        "male",
+        "bucket-common"
+      ],
+      "cobblemon:munchlax": [
+        "male",
+        "bucket-rare"
+      ],
+      "cobblemon:koffing": [
+        "female",
+        "bucket-common"
+      ],
+      "cobblemon:swellow": [
+        "male",
+        "bucket-common"
+      ]
+    }
+  }
+}

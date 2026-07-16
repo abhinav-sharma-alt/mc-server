@@ -1,0 +1,79 @@
+{
+  "uuid": "fa0cb3e4-08ce-39ff-bf7a-08d9b986e9ee",
+  "starterPrompted": true,
+  "starterLocked": false,
+  "starterSelected": true,
+  "starterUUID": "df9047df-859b-4a35-b201-7b8a40b63114",
+  "keyItems": [],
+  "battleTheme": "cobblemon:battle.pvp.default",
+  "extraData": {},
+  "advancementData": {
+    "totalCaptureCount": 3,
+    "totalEggsCollected": 0,
+    "totalEggsHatched": 0,
+    "totalEvolvedCount": 3,
+    "totalBattleVictoryCount": 41,
+    "totalPvPBattleVictoryCount": 0,
+    "totalPvWBattleVictoryCount": 28,
+    "totalPvNBattleVictoryCount": 13,
+    "totalShinyCaptureCount": 1,
+    "totalTradedCount": 0,
+    "totalTypeCaptureCounts": {
+      "normal": 1,
+      "flying": 1,
+      "dark": 1,
+      "grass": 1
+    },
+    "totalDefeatedCounts": {
+      "cobblemon:meowth": 1,
+      "cobblemon:happiny": 1,
+      "cobblemon:krabby": 2,
+      "cobblemon:blipbug": 1,
+      "cobblemon:wooloo": 1,
+      "cobblemon:hoothoot": 1,
+      "cobblemon:munna": 1,
+      "cobblemon:glameow": 1,
+      "cobblemon:sentret": 1,
+      "cobblemon:maschiff": 1,
+      "cobblemon:weedle": 1,
+      "cobblemon:oddish": 1,
+      "cobblemon:lechonk": 1,
+      "cobblemon:fidough": 2,
+      "cobblemon:seedot": 1,
+      "cobblemon:combee": 1,
+      "cobblemon:bunnelby": 1,
+      "cobblemon:snubbull": 1,
+      "cobblemon:gimmighoul": 2,
+      "cobblemon:magikarp": 3,
+      "cobblemon:barboach": 1
+    },
+    "aspectsCollected": {
+      "cobblemon:spearow": [
+        "male",
+        "bucket-common"
+      ],
+      "cobblemon:frogadier": [
+        "shiny",
+        "male",
+        "bucket-"
+      ],
+      "cobblemon:maschiff": [
+        "shiny",
+        "female",
+        "bucket-common"
+      ],
+      "cobblemon:shroomish": [
+        "female",
+        "bucket-common"
+      ],
+      "cobblemon:fearow": [
+        "male",
+        "bucket-common"
+      ],
+      "cobblemon:breloom": [
+        "female",
+        "bucket-common"
+      ]
+    }
+  }
+}
