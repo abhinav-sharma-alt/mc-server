@@ -45,6 +45,7 @@ jobs:
             JAR_URL=$(jq -r '.jar_url // ""' "$META")
             MRPACK_SLUG=$(jq -r '.mrpack_slug // ""' "$META")
             MRPACK_VERSION=$(jq -r '.mrpack_version // ""' "$META")
+            TUNNEL_ADDRESS=$(jq -r '.tunnel_address // ""' "$META")
           else
             JAVA_VERSION="25"
             MEMORY_GB="10"
@@ -56,6 +57,10 @@ jobs:
             JAR_URL=""
             MRPACK_SLUG=""
             MRPACK_VERSION=""
+            TUNNEL_ADDRESS=""
+          fi
+          if [ -z "$TUNNEL_ADDRESS" ]; then
+            echo "::warning::No tunnel_address configured for '${{ github.event.inputs.modpack }}'. Set one with /modpack configure name: ${{ github.event.inputs.modpack }} tunnel_address: <your-playit-address>."
           fi
           echo "java_version=$JAVA_VERSION" >> "$GITHUB_OUTPUT"
           echo "memory_gb=$MEMORY_GB" >> "$GITHUB_OUTPUT"
@@ -67,6 +72,16 @@ jobs:
           echo "jar_url=$JAR_URL" >> "$GITHUB_OUTPUT"
           echo "mrpack_slug=$MRPACK_SLUG" >> "$GITHUB_OUTPUT"
           echo "mrpack_version=$MRPACK_VERSION" >> "$GITHUB_OUTPUT"
+          echo "tunnel_address=$TUNNEL_ADDRESS" >> "$GITHUB_OUTPUT"
+
+      - name: Announce tunnel address
+        run: |
+          echo "### 🔌 Connect address" >> "$GITHUB_STEP_SUMMARY"
+          if [ -n "${{ steps.modpack_meta.outputs.tunnel_address }}" ]; then
+            echo "**${{ steps.modpack_meta.outputs.tunnel_address }}**" >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "_No tunnel_address configured for this modpack — set one with \`/modpack configure name: ${{ github.event.inputs.modpack }} tunnel_address: <address>\`._" >> "$GITHUB_STEP_SUMMARY"
+          fi
 
       - name: Set up Java
         uses: actions/setup-java@v4
@@ -281,6 +296,7 @@ jobs:
           LAUNCH_MODE: ${{ steps.modpack_meta.outputs.launch_mode }}
           START_SCRIPT: ${{ steps.modpack_meta.outputs.start_script }}
           SERVER_PORT: ${{ steps.modpack_meta.outputs.server_port }}
+          TUNNEL_ADDRESS: ${{ steps.modpack_meta.outputs.tunnel_address }}
         run: |
           chmod +x scripts/run-session.sh
           ./scripts/run-session.sh

@@ -43,6 +43,9 @@ on:
       server_port:
         description: 'Minecraft server port (create: defaults to 25565 if blank. configure: leave blank to keep current value). Must be unique per modpack — pick one not already used by another modpack, and make sure you have a playit.gg tunnel configured for it.'
         required: false
+      tunnel_address:
+        description: 'playit.gg tunnel address for this modpack, e.g. myserver.playit.gg:12345 (create/configure: leave blank to keep current value on configure). Set this up on playit.gg pointed at the port above BEFORE starting the server.'
+        required: false
       java_version:
         description: 'Java version (create: defaults to 25 if blank. configure: leave blank to keep current value)'
         required: false
@@ -140,7 +143,7 @@ jobs:
           ACTION="${{ github.event.inputs.action }}"
           META="modpacks/$NAME/meta.json"
 
-          if [ "$ACTION" = "configure" ] && [ ! -d "modpacks/$NAME" ]; then
+          if [ "$ACTION" = "configure" ] && [ "$NAME" != "vanilla" ] && [ ! -d "modpacks/$NAME" ]; then
             echo "::error::modpacks/$NAME does not exist. Use 'create' first."
             exit 1
           fi
@@ -159,6 +162,7 @@ jobs:
             CUR_IS_ZIP=$(jq -r '.is_zip // "false"' "$META")
             CUR_MRPACK_SLUG=$(jq -r '.mrpack_slug // ""' "$META")
             CUR_MRPACK_VERSION=$(jq -r '.mrpack_version // ""' "$META")
+            CUR_TUNNEL_ADDRESS=$(jq -r '.tunnel_address // ""' "$META")
           else
             CUR_JAVA="25"
             CUR_MEM="10"
@@ -171,6 +175,7 @@ jobs:
             CUR_IS_ZIP="false"
             CUR_MRPACK_SLUG=""
             CUR_MRPACK_VERSION=""
+            CUR_TUNNEL_ADDRESS=""
           fi
 
           # Only override a field if the corresponding input was actually provided
@@ -180,6 +185,7 @@ jobs:
           IN_MODE="${{ github.event.inputs.launch_mode }}"
           IN_SCRIPT="${{ github.event.inputs.start_script }}"
           IN_PORT="${{ github.event.inputs.server_port }}"
+          IN_TUNNEL_ADDRESS="${{ github.event.inputs.tunnel_address }}"
           IN_JAR_URL="${{ github.event.inputs.jar_url }}"
           IN_MRPACK_SLUG="${{ github.event.inputs.mrpack_slug }}"
           IN_MRPACK_VERSION="${{ github.event.inputs.mrpack_version }}"
@@ -191,6 +197,7 @@ jobs:
           FINAL_MODE="${IN_MODE:-$CUR_MODE}"
           FINAL_SCRIPT="${IN_SCRIPT:-$CUR_SCRIPT}"
           FINAL_PORT="${IN_PORT:-$CUR_PORT}"
+          FINAL_TUNNEL_ADDRESS="${IN_TUNNEL_ADDRESS:-$CUR_TUNNEL_ADDRESS}"
 
           # is_zip is only meaningful/settable at create time (boolean inputs
           # can't distinguish "not provided" from "false" on configure).
@@ -234,6 +241,24 @@ jobs:
             exit 1
           fi
 
+          # Same guard for tunnel_address, since a shared playit.gg address would
+          # route traffic to whichever modpack happens to bind it first.
+          if [ -n "$FINAL_TUNNEL_ADDRESS" ]; then
+            TUNNEL_CLASH=$(for f in modpacks/*/meta.json; do
+              [ -f "$f" ] || continue
+              OTHER_NAME=$(basename "$(dirname "$f")")
+              [ "$OTHER_NAME" = "$NAME" ] && continue
+              OTHER_TUNNEL=$(jq -r '.tunnel_address // ""' "$f")
+              if [ -n "$OTHER_TUNNEL" ] && [ "$OTHER_TUNNEL" = "$FINAL_TUNNEL_ADDRESS" ]; then
+                echo "$OTHER_NAME"
+              fi
+            done)
+            if [ -n "$TUNNEL_CLASH" ]; then
+              echo "::error::tunnel_address $FINAL_TUNNEL_ADDRESS is already used by modpack(s): $TUNNEL_CLASH. Each modpack needs its own playit.gg tunnel."
+              exit 1
+            fi
+          fi
+
           cat > "$META" <<EOF
           {
             "java_version": "$FINAL_JAVA",
@@ -242,6 +267,7 @@ jobs:
             "launch_mode": "$FINAL_MODE",
             "start_script": "$FINAL_SCRIPT",
             "server_port": "$FINAL_PORT",
+            "tunnel_address": "$FINAL_TUNNEL_ADDRESS",
             "source_type": "$FINAL_SOURCE_TYPE",
             "jar_url": "$FINAL_JAR_URL",
             "is_zip": "$FINAL_IS_ZIP",
@@ -249,7 +275,10 @@ jobs:
             "mrpack_version": "$FINAL_MRPACK_VERSION"
           }
           EOF
-          echo "meta.json for $NAME -> source=$FINAL_SOURCE_TYPE java=$FINAL_JAVA mem=${FINAL_MEM}GB mode=$FINAL_MODE jar=$FINAL_JAR script=$FINAL_SCRIPT port=$FINAL_PORT"
+          echo "meta.json for $NAME -> source=$FINAL_SOURCE_TYPE java=$FINAL_JAVA mem=${FINAL_MEM}GB mode=$FINAL_MODE jar=$FINAL_JAR script=$FINAL_SCRIPT port=$FINAL_PORT tunnel=${FINAL_TUNNEL_ADDRESS:-<none set>}"
+          if [ "$ACTION" = "create" ] && [ -z "$FINAL_TUNNEL_ADDRESS" ]; then
+            echo "::warning::No tunnel_address set for '$NAME'. Set up a playit.gg tunnel for port $FINAL_PORT and add it with /modpack configure name: $NAME tunnel_address: <address>, or players won't know where to connect."
+          fi
 
       - name: Create - commit
         if: github.event.inputs.action == 'create'
