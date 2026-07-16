@@ -8,24 +8,61 @@
   "battleTheme": "cobblemon:battle.pvp.default",
   "extraData": {},
   "advancementData": {
-    "totalCaptureCount": 1,
+    "totalCaptureCount": 6,
     "totalEggsCollected": 0,
     "totalEggsHatched": 0,
-    "totalEvolvedCount": 0,
-    "totalBattleVictoryCount": 0,
+    "totalEvolvedCount": 2,
+    "totalBattleVictoryCount": 15,
     "totalPvPBattleVictoryCount": 0,
-    "totalPvWBattleVictoryCount": 0,
-    "totalPvNBattleVictoryCount": 0,
+    "totalPvWBattleVictoryCount": 12,
+    "totalPvNBattleVictoryCount": 3,
     "totalShinyCaptureCount": 0,
     "totalTradedCount": 0,
     "totalTypeCaptureCounts": {
-      "electric": 1
+      "electric": 1,
+      "normal": 3,
+      "flying": 3,
+      "psychic": 1,
+      "fire": 1
     },
-    "totalDefeatedCounts": {},
+    "totalDefeatedCounts": {
+      "cobblemon:pidgey": 1,
+      "cobblemon:yungoos": 1,
+      "cobblemon:mareep": 1,
+      "cobblemon:fletchling": 1,
+      "cobblemon:zigzagoon": 1,
+      "cobblemon:bunnelby": 1,
+      "cobblemon:purrloin": 1
+    },
     "aspectsCollected": {
       "cobblemon:blitzle": [
         "female",
         "bucket-common"
+      ],
+      "cobblemon:taillow": [
+        "male",
+        "bucket-common"
+      ],
+      "cobblemon:frogadier": [
+        "male",
+        "bucket-"
+      ],
+      "cobblemon:pidgey": [
+        "female",
+        "bucket-common"
+      ],
+      "cobblemon:pidgeotto": [
+        "female",
+        "bucket-common"
+      ],
+      "cobblemon:ponyta": [
+        "female",
+        "bucket-uncommon",
+        "galarian"
+      ],
+      "cobblemon:growlithe": [
+        "male",
+        "bucket-uncommon"
       ]
     }
   }
