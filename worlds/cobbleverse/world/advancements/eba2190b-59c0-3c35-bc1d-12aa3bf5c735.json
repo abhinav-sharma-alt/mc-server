@@ -36,12 +36,6 @@
     },
     "done": true
   },
-  "minecraft:adventure/root": {
-    "criteria": {
-      "killed_by_something": "2026-07-15 17:12:24 +0000"
-    },
-    "done": true
-  },
   "minecraft:recipes/transportation/pale_oak_boat": {
     "criteria": {
       "in_water": "2026-07-15 17:06:11 +0000"
@@ -87,6 +81,54 @@
   "minecraft:recipes/transportation/dark_oak_boat": {
     "criteria": {
       "in_water": "2026-07-15 17:06:11 +0000"
+    },
+    "done": true
+  },
+  "minecraft:adventure/root": {
+    "criteria": {
+      "killed_by_something": "2026-07-15 17:12:24 +0000"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/crafting_table": {
+    "criteria": {
+      "unlock_right_away": "2026-07-16 09:23:48 +0000"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/charcoal": {
+    "criteria": {
+      "has_log": "2026-07-16 09:24:35 +0000"
+    },
+    "done": true
+  },
+  "cozyhome:recipes/building_blocks/oak_large_stump": {
+    "criteria": {
+      "has_oak_log": "2026-07-16 09:24:35 +0000"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/oak_planks": {
+    "criteria": {
+      "has_logs": "2026-07-16 09:24:35 +0000"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/oak_wood": {
+    "criteria": {
+      "has_oak_log": "2026-07-16 09:24:35 +0000"
+    },
+    "done": true
+  },
+  "carved_wood:recipes/building_blocks/oak_wood": {
+    "criteria": {
+      "has_oak_log": "2026-07-16 09:24:35 +0000"
+    },
+    "done": true
+  },
+  "carved_wood:recipes/building_blocks/oak_log_bundle": {
+    "criteria": {
+      "has_oak_log": "2026-07-16 09:24:35 +0000"
     },
     "done": true
   },
