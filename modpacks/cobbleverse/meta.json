@@ -5,6 +5,7 @@
   "launch_mode": "jar",
   "start_script": "start.sh",
   "server_port": "25566",
+  "tunnel_address": "film-alaska.gl.joinmc.link",
   "source_type": "mrpack",
   "jar_url": "",
   "is_zip": "false",
