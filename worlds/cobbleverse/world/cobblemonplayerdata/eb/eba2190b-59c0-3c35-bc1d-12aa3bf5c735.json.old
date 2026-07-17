@@ -11,11 +11,11 @@
     "totalCaptureCount": 4,
     "totalEggsCollected": 0,
     "totalEggsHatched": 0,
-    "totalEvolvedCount": 3,
-    "totalBattleVictoryCount": 39,
+    "totalEvolvedCount": 4,
+    "totalBattleVictoryCount": 64,
     "totalPvPBattleVictoryCount": 0,
-    "totalPvWBattleVictoryCount": 35,
-    "totalPvNBattleVictoryCount": 4,
+    "totalPvWBattleVictoryCount": 54,
+    "totalPvNBattleVictoryCount": 10,
     "totalShinyCaptureCount": 0,
     "totalTradedCount": 0,
     "totalTypeCaptureCounts": {
@@ -25,11 +25,11 @@
       "normal": 2
     },
     "totalDefeatedCounts": {
-      "cobblemon:skitty": 3,
-      "cobblemon:meowth": 4,
+      "cobblemon:skitty": 5,
+      "cobblemon:meowth": 5,
       "cobblemon:lillipup": 3,
-      "cobblemon:lechonk": 1,
-      "cobblemon:sentret": 2,
+      "cobblemon:lechonk": 3,
+      "cobblemon:sentret": 4,
       "cobblemon:igglybuff": 2,
       "cobblemon:bunnelby": 1,
       "cobblemon:yungoos": 1,
@@ -44,10 +44,16 @@
       "cobblemon:taillow": 2,
       "cobblemon:smeargle": 1,
       "cobblemon:diglett": 1,
-      "cobblemon:fidough": 1,
-      "cobblemon:pawmi": 1,
+      "cobblemon:fidough": 4,
+      "cobblemon:pawmi": 2,
       "cobblemon:happiny": 1,
-      "cobblemon:wooloo": 1
+      "cobblemon:wooloo": 2,
+      "cobblemon:patrat": 2,
+      "cobblemon:timburr": 1,
+      "cobblemon:pidove": 1,
+      "cobblemon:yamper": 1,
+      "cobblemon:skwovet": 1,
+      "cobblemon:glameow": 1
     },
     "aspectsCollected": {
       "cobblemon:rookidee": [
@@ -77,6 +83,10 @@
       ],
       "cobblemon:swellow": [
         "male",
+        "bucket-common"
+      ],
+      "cobblemon:tinkatuff": [
+        "female",
         "bucket-common"
       ]
     }

@@ -13,28 +13,32 @@
   },
   "minecraft:adventure/adventuring_time": {
     "criteria": {
+      "minecraft:snowy_slopes": "2026-07-17 15:13:47 +0000",
+      "minecraft:forest": "2026-07-16 17:28:42 +0000",
+      "minecraft:ocean": "2026-07-16 18:56:26 +0000",
+      "minecraft:jungle": "2026-07-17 15:10:37 +0000",
+      "minecraft:sunflower_plains": "2026-07-16 18:56:16 +0000",
+      "minecraft:cherry_grove": "2026-07-17 17:51:41 +0000",
+      "minecraft:birch_forest": "2026-07-16 17:30:44 +0000",
+      "minecraft:windswept_hills": "2026-07-16 19:06:13 +0000",
+      "minecraft:windswept_savanna": "2026-07-16 19:10:14 +0000",
+      "minecraft:deep_lukewarm_ocean": "2026-07-17 16:48:45 +0000",
       "minecraft:flower_forest": "2026-07-16 18:56:32 +0000",
       "minecraft:savanna_plateau": "2026-07-16 18:59:39 +0000",
-      "minecraft:snowy_slopes": "2026-07-17 15:13:47 +0000",
       "minecraft:beach": "2026-07-16 16:55:50 +0000",
       "minecraft:dark_forest": "2026-07-16 19:11:14 +0000",
-      "minecraft:forest": "2026-07-16 17:28:42 +0000",
+      "minecraft:stony_peaks": "2026-07-17 16:52:40 +0000",
       "minecraft:sparse_jungle": "2026-07-16 17:30:26 +0000",
       "minecraft:river": "2026-07-16 17:06:00 +0000",
       "minecraft:lukewarm_ocean": "2026-07-16 17:29:22 +0000",
       "minecraft:stony_shore": "2026-07-16 18:56:23 +0000",
       "minecraft:old_growth_birch_forest": "2026-07-16 17:30:37 +0000",
-      "minecraft:ocean": "2026-07-16 18:56:26 +0000",
-      "minecraft:jungle": "2026-07-17 15:10:37 +0000",
-      "minecraft:sunflower_plains": "2026-07-16 18:56:16 +0000",
+      "minecraft:deep_dark": "2026-07-17 17:18:55 +0000",
       "minecraft:swamp": "2026-07-16 19:10:31 +0000",
       "minecraft:grove": "2026-07-17 15:14:22 +0000",
       "minecraft:meadow": "2026-07-16 18:40:47 +0000",
-      "minecraft:birch_forest": "2026-07-16 17:30:44 +0000",
       "minecraft:windswept_gravelly_hills": "2026-07-16 19:13:08 +0000",
-      "minecraft:windswept_hills": "2026-07-16 19:06:13 +0000",
       "minecraft:savanna": "2026-07-16 15:02:49 +0000",
-      "minecraft:windswept_savanna": "2026-07-16 19:10:14 +0000",
       "minecraft:plains": "2026-07-16 17:21:35 +0000",
       "minecraft:jagged_peaks": "2026-07-17 15:13:48 +0000"
     },
@@ -10353,12 +10357,14 @@
       "nest_ball": "2026-07-16 17:33:21 +0000",
       "quick_ball": "2026-07-16 17:33:21 +0000",
       "dusk_ball": "2026-07-16 17:33:21 +0000",
+      "great_ball": "2026-07-17 17:37:25 +0000",
       "timer_ball": "2026-07-16 17:33:21 +0000",
       "moon_ball": "2026-07-16 17:33:21 +0000",
       "ancient_poke_ball": "2026-07-17 05:09:15 +0000",
       "repeat_ball": "2026-07-16 17:33:21 +0000",
       "azure_ball": "2026-07-16 17:33:21 +0000",
       "love_ball": "2026-07-17 04:54:43 +0000",
+      "ancient_jet_ball": "2026-07-17 17:53:20 +0000",
       "net_ball": "2026-07-17 04:54:07 +0000",
       "dive_ball": "2026-07-16 19:18:23 +0000",
       "ancient_citrine_ball": "2026-07-16 17:33:21 +0000",
@@ -25577,7 +25583,8 @@
       "ancient_roseate_ball": "2026-07-17 06:00:43 +0000",
       "ancient_poke_ball": "2026-07-17 05:09:15 +0000",
       "ancient_ultra_ball": "2026-07-17 04:51:21 +0000",
-      "ancient_azure_ball": "2026-07-17 04:54:59 +0000"
+      "ancient_azure_ball": "2026-07-17 04:54:59 +0000",
+      "ancient_jet_ball": "2026-07-17 17:53:20 +0000"
     },
     "done": false
   },
@@ -25603,7 +25610,8 @@
     "criteria": {
       "obtain_potion": "2026-07-16 17:33:21 +0000",
       "obtain_full_restore": "2026-07-17 04:47:42 +0000",
-      "obtain_elixir": "2026-07-17 04:54:02 +0000"
+      "obtain_elixir": "2026-07-17 04:54:02 +0000",
+      "obtain_ether": "2026-07-17 17:40:01 +0000"
     },
     "done": false
   },
@@ -25737,11 +25745,12 @@
     "criteria": {
       "obtain_green_mint_leaf": "2026-07-17 08:21:08 +0000",
       "obtain_cyan_mint_leaf": "2026-07-17 07:04:31 +0000",
+      "obtain_white_mint_leaf": "2026-07-17 17:53:35 +0000",
       "obtain_pink_mint_leaf": "2026-07-17 11:47:39 +0000",
       "obtain_red_mint_leaf": "2026-07-17 08:12:35 +0000",
       "obtain_blue_mint_leaf": "2026-07-17 07:04:52 +0000"
     },
-    "done": false
+    "done": true
   },
   "minecraft:story/lava_bucket": {
     "criteria": {
@@ -25785,6 +25794,30 @@
   "minecraft:nether/obtain_blaze_rod": {
     "criteria": {
       "blaze_rod": "2026-07-17 08:36:50 +0000"
+    },
+    "done": true
+  },
+  "sophisticatedbackpacks:recipes/misc/netherite_backpack": {
+    "criteria": {
+      "has_diamond_backpack": "2026-07-17 17:36:43 +0000"
+    },
+    "done": true
+  },
+  "minecraft:story/mine_diamond": {
+    "criteria": {
+      "diamond": "2026-07-17 17:19:21 +0000"
+    },
+    "done": true
+  },
+  "sophisticatedbackpacks:recipes/misc/diamond_backpack": {
+    "criteria": {
+      "has_gold_backpack": "2026-07-17 17:36:21 +0000"
+    },
+    "done": true
+  },
+  "minecraft:adventure/avoid_vibration": {
+    "criteria": {
+      "avoid_vibration": "2026-07-17 17:19:19 +0000"
     },
     "done": true
   },

@@ -8,13 +8,13 @@
   "battleTheme": "cobblemon:battle.pvp.default",
   "extraData": {},
   "advancementData": {
-    "totalCaptureCount": 10,
+    "totalCaptureCount": 15,
     "totalEggsCollected": 0,
     "totalEggsHatched": 0,
     "totalEvolvedCount": 11,
-    "totalBattleVictoryCount": 187,
+    "totalBattleVictoryCount": 196,
     "totalPvPBattleVictoryCount": 0,
-    "totalPvWBattleVictoryCount": 173,
+    "totalPvWBattleVictoryCount": 182,
     "totalPvNBattleVictoryCount": 14,
     "totalShinyCaptureCount": 1,
     "totalTradedCount": 0,
@@ -25,9 +25,12 @@
       "grass": 4,
       "psychic": 1,
       "fairy": 2,
-      "fire": 1,
+      "fire": 2,
       "electric": 1,
-      "bug": 1
+      "bug": 1,
+      "fighting": 2,
+      "poison": 1,
+      "dragon": 2
     },
     "totalDefeatedCounts": {
       "cobblemon:meowth": 5,
@@ -90,7 +93,7 @@
       "cobblemon:grimer": 1,
       "cobblemon:trubbish": 1,
       "cobblemon:bouffalant": 2,
-      "cobblemon:mareep": 5,
+      "cobblemon:mareep": 6,
       "cobblemon:voltorb": 1,
       "cobblemon:wimpod": 1,
       "cobblemon:crabrawler": 1,
@@ -106,7 +109,10 @@
       "cobblemon:electrike": 1,
       "cobblemon:yungoos": 1,
       "cobblemon:spritzee": 2,
-      "cobblemon:lickitung": 1
+      "cobblemon:lickitung": 1,
+      "cobblemon:woobat": 1,
+      "cobblemon:lairon": 1,
+      "cobblemon:ditto": 1
     },
     "aspectsCollected": {
       "cobblemon:spearow": [
@@ -196,6 +202,28 @@
       "cobblemon:ribombee": [
         "male",
         "bucket-common"
+      ],
+      "cobblemon:sneasel": [
+        "male",
+        "bucket-uncommon",
+        "hisuian"
+      ],
+      "cobblemon:bagon": [
+        "male",
+        "bucket-ultra-rare"
+      ],
+      "cobblemon:axew": [
+        "female",
+        "bucket-ultra-rare"
+      ],
+      "cobblemon:chimchar": [
+        "male",
+        "bucket-ultra-rare"
+      ],
+      "cobblemon:farfetchd": [
+        "male",
+        "bucket-rare",
+        "galarian"
       ]
     }
   }
