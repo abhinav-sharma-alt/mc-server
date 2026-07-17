@@ -8,13 +8,13 @@
   "battleTheme": "cobblemon:battle.pvp.default",
   "extraData": {},
   "advancementData": {
-    "totalCaptureCount": 9,
+    "totalCaptureCount": 10,
     "totalEggsCollected": 0,
     "totalEggsHatched": 0,
-    "totalEvolvedCount": 10,
-    "totalBattleVictoryCount": 184,
+    "totalEvolvedCount": 11,
+    "totalBattleVictoryCount": 187,
     "totalPvPBattleVictoryCount": 0,
-    "totalPvWBattleVictoryCount": 170,
+    "totalPvWBattleVictoryCount": 173,
     "totalPvNBattleVictoryCount": 14,
     "totalShinyCaptureCount": 1,
     "totalTradedCount": 0,
@@ -24,9 +24,10 @@
       "dark": 1,
       "grass": 4,
       "psychic": 1,
-      "fairy": 1,
+      "fairy": 2,
       "fire": 1,
-      "electric": 1
+      "electric": 1,
+      "bug": 1
     },
     "totalDefeatedCounts": {
       "cobblemon:meowth": 5,
@@ -50,7 +51,7 @@
       "cobblemon:gimmighoul": 4,
       "cobblemon:magikarp": 7,
       "cobblemon:barboach": 1,
-      "cobblemon:miltank": 8,
+      "cobblemon:miltank": 10,
       "cobblemon:koffing": 1,
       "cobblemon:tandemaus": 2,
       "cobblemon:mimejr": 1,
@@ -187,6 +188,14 @@
         "male",
         "bucket-ultra-rare",
         "tree-none"
+      ],
+      "cobblemon:cutiefly": [
+        "male",
+        "bucket-common"
+      ],
+      "cobblemon:ribombee": [
+        "male",
+        "bucket-common"
       ]
     }
   }
