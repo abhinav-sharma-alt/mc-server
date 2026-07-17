@@ -71,6 +71,40 @@ MEMORY_GB="${MEMORY_GB:-10}"
 SERVER_JAR="${SERVER_JAR:-server.jar}"
 LAUNCH_MODE="${LAUNCH_MODE:-jar}"
 START_SCRIPT="${START_SCRIPT:-start.sh}"
+LOG_FILE="server/logs/latest.log"   # standard log4j location for vanilla/Paper/Forge/Fabric; path is relative to the repo root, since callers run from there after the cd .. below
+
+# Sends the real in-game "stop" command through stdin (not an OS signal) and
+# waits for the process to exit. This is what actually persists things like
+# gamerules (fallDamage, keepInventory, ...) which live in level.dat and are
+# only guaranteed to be flushed by a clean in-game shutdown.
+#
+# We deliberately do NOT rely on kill -SIGTERM as the primary mechanism: in
+# `script` launch_mode, $MC_PID is the wrapper script's PID, and if that
+# wrapper doesn't `exec` into java (many Forge/NeoForge start.sh scripts spawn
+# java as a child instead), SIGTERM kills the wrapper without ever reaching
+# the actual server process — so it never saves, and the world gets copied
+# out mid-write on the next commit. Typing "stop" into stdin has no such
+# problem: every launcher forwards stdin to the real server process.
+graceful_stop() {
+  local wait_seconds="${1:-60}"
+  echo "Sending 'stop' to the server console and waiting up to ${wait_seconds}s..."
+  { echo "save-all flush"; sleep 1; echo "stop"; } >&3 2>/dev/null || true
+
+  for i in $(seq 1 "$wait_seconds"); do
+    kill -0 "$MC_PID" 2>/dev/null || { echo "Server exited cleanly."; return 0; }
+    sleep 1
+  done
+
+  echo "Server didn't exit after 'stop' within ${wait_seconds}s — escalating to SIGTERM."
+  kill -SIGTERM "$MC_PID" 2>/dev/null || true
+  for i in $(seq 1 15); do
+    kill -0 "$MC_PID" 2>/dev/null || { echo "Server exited after SIGTERM."; return 0; }
+    sleep 1
+  done
+
+  echo "Server still alive — forcing SIGKILL. Any unsaved changes since the last autosave will be lost."
+  kill -SIGKILL "$MC_PID" 2>/dev/null || true
+}
 
 if [ "$LAUNCH_MODE" = "script" ]; then
   # Forge-style packs often read memory from user_jvm_args.txt rather than
@@ -106,12 +140,38 @@ poll_console() {
     if [ -s console/command.txt ]; then
       CMD=$(cat console/command.txt)
       echo "Executing console command: $CMD"
+
+      LINES_BEFORE=0
+      [ -f "$LOG_FILE" ] && LINES_BEFORE=$(wc -l < "$LOG_FILE")
+
       echo "$CMD" >&3
       echo -n "" > console/command.txt
       git add console/command.txt
       git commit -m "console: executed command" --quiet 2>/dev/null
       git pull --rebase --autostash --quiet 2>/dev/null
       git push origin HEAD:main --quiet 2>/dev/null
+
+      # Give the server a moment to process the command and write its
+      # response to the log, then relay any new lines back to Discord.
+      # Note: slow/async commands (e.g. big worldgen ops) may log after this
+      # window and won't be captured — this covers typical commands.
+      sleep 2
+      if [ -n "$DISCORD_WEBHOOK" ]; then
+        if [ -f "$LOG_FILE" ]; then
+          LINES_AFTER=$(wc -l < "$LOG_FILE")
+          NEW_LINES=$((LINES_AFTER - LINES_BEFORE))
+          if [ "$NEW_LINES" -gt 0 ]; then
+            OUTPUT=$(tail -n "$NEW_LINES" "$LOG_FILE" | tail -c 1500)
+          else
+            OUTPUT="(no output)"
+          fi
+        else
+          OUTPUT="(log file not found)"
+        fi
+        PAYLOAD=$(jq -n --arg cmd "$CMD" --arg out "$OUTPUT" \
+          '{content: ("📤 `" + $cmd + "`\n```\n" + $out + "\n```")}')
+        curl -s -H "Content-Type: application/json" -d "$PAYLOAD" "$DISCORD_WEBHOOK" > /dev/null
+      fi
     fi
 
     if [ -s console/stop.txt ]; then
@@ -122,20 +182,7 @@ poll_console() {
       git pull --rebase --autostash --quiet
       git push origin HEAD:main --quiet
 
-      echo "stop" >&3
-
-      # Wait up to 30s for the server to actually exit; force-kill if it doesn't
-      for i in $(seq 1 30); do
-        if ! kill -0 "$MC_PID" 2>/dev/null; then
-          echo "Server exited cleanly after stop command."
-          break
-        fi
-        sleep 1
-      done
-      if kill -0 "$MC_PID" 2>/dev/null; then
-        echo "Server didn't exit after 'stop' command — forcing SIGTERM."
-        kill -SIGTERM "$MC_PID"
-      fi
+      graceful_stop 30
       break
     fi
 
@@ -153,9 +200,9 @@ done
 
 if kill -0 "$MC_PID" 2>/dev/null; then
   echo "Time's up — stopping server gracefully..."
-  kill -SIGTERM $MC_PID
+  graceful_stop 60
 fi
-wait $MC_PID || true
+wait $MC_PID 2>/dev/null || true
 
 # Stop the console poller gracefully instead of hard-killing it, so it isn't
 # caught mid-write/mid-commit on a tracked file (which left the working tree
