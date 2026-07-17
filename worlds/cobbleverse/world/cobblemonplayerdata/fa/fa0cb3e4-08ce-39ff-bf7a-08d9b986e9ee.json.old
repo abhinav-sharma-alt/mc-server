@@ -8,44 +8,94 @@
   "battleTheme": "cobblemon:battle.pvp.default",
   "extraData": {},
   "advancementData": {
-    "totalCaptureCount": 3,
+    "totalCaptureCount": 9,
     "totalEggsCollected": 0,
     "totalEggsHatched": 0,
-    "totalEvolvedCount": 3,
-    "totalBattleVictoryCount": 41,
+    "totalEvolvedCount": 10,
+    "totalBattleVictoryCount": 153,
     "totalPvPBattleVictoryCount": 0,
-    "totalPvWBattleVictoryCount": 28,
-    "totalPvNBattleVictoryCount": 13,
+    "totalPvWBattleVictoryCount": 139,
+    "totalPvNBattleVictoryCount": 14,
     "totalShinyCaptureCount": 1,
     "totalTradedCount": 0,
     "totalTypeCaptureCounts": {
       "normal": 1,
-      "flying": 1,
+      "flying": 3,
       "dark": 1,
-      "grass": 1
+      "grass": 4,
+      "psychic": 1,
+      "fairy": 1,
+      "fire": 1,
+      "electric": 1
     },
     "totalDefeatedCounts": {
-      "cobblemon:meowth": 1,
-      "cobblemon:happiny": 1,
+      "cobblemon:meowth": 5,
+      "cobblemon:happiny": 2,
       "cobblemon:krabby": 2,
       "cobblemon:blipbug": 1,
-      "cobblemon:wooloo": 1,
+      "cobblemon:wooloo": 2,
       "cobblemon:hoothoot": 1,
-      "cobblemon:munna": 1,
-      "cobblemon:glameow": 1,
-      "cobblemon:sentret": 1,
+      "cobblemon:munna": 2,
+      "cobblemon:glameow": 4,
+      "cobblemon:sentret": 2,
       "cobblemon:maschiff": 1,
       "cobblemon:weedle": 1,
       "cobblemon:oddish": 1,
       "cobblemon:lechonk": 1,
-      "cobblemon:fidough": 2,
+      "cobblemon:fidough": 4,
       "cobblemon:seedot": 1,
       "cobblemon:combee": 1,
-      "cobblemon:bunnelby": 1,
-      "cobblemon:snubbull": 1,
-      "cobblemon:gimmighoul": 2,
-      "cobblemon:magikarp": 3,
-      "cobblemon:barboach": 1
+      "cobblemon:bunnelby": 3,
+      "cobblemon:snubbull": 4,
+      "cobblemon:gimmighoul": 4,
+      "cobblemon:magikarp": 7,
+      "cobblemon:barboach": 1,
+      "cobblemon:miltank": 8,
+      "cobblemon:koffing": 1,
+      "cobblemon:tandemaus": 1,
+      "cobblemon:mimejr": 1,
+      "cobblemon:mudsdale": 1,
+      "cobblemon:hoppip": 2,
+      "cobblemon:skitty": 3,
+      "cobblemon:minior": 1,
+      "cobblemon:zigzagoon": 2,
+      "cobblemon:mudbray": 3,
+      "cobblemon:staryu": 1,
+      "cobblemon:wishiwashi": 1,
+      "cobblemon:remoraid": 6,
+      "cobblemon:wingull": 2,
+      "cobblemon:arrokuda": 1,
+      "cobblemon:poliwag": 1,
+      "cobblemon:frillish": 2,
+      "cobblemon:cyndaquil": 1,
+      "cobblemon:timburr": 3,
+      "cobblemon:growlithe": 1,
+      "cobblemon:taillow": 3,
+      "cobblemon:igglybuff": 2,
+      "cobblemon:patrat": 3,
+      "cobblemon:comfey": 1,
+      "cobblemon:slugma": 1,
+      "cobblemon:numel": 1,
+      "cobblemon:charcadet": 1,
+      "cobblemon:ledyba": 4,
+      "cobblemon:jigglypuff": 1,
+      "cobblemon:ponyta": 2,
+      "cobblemon:chansey": 1,
+      "cobblemon:purugly": 1,
+      "cobblemon:eevee": 1,
+      "cobblemon:beautifly": 1,
+      "cobblemon:cottonee": 1,
+      "cobblemon:butterfree": 1,
+      "cobblemon:grimer": 1,
+      "cobblemon:trubbish": 1,
+      "cobblemon:bouffalant": 2,
+      "cobblemon:mareep": 2,
+      "cobblemon:voltorb": 1,
+      "cobblemon:wimpod": 1,
+      "cobblemon:crabrawler": 1,
+      "cobblemon:smoliv": 1,
+      "cobblemon:purrloin": 3,
+      "cobblemon:herdier": 1
     },
     "aspectsCollected": {
       "cobblemon:spearow": [
@@ -73,6 +123,60 @@
       "cobblemon:breloom": [
         "female",
         "bucket-common"
+      ],
+      "cobblemon:kirlia": [
+        "female",
+        "bucket-rare"
+      ],
+      "cobblemon:torchic": [
+        "male",
+        "bucket-ultra-rare"
+      ],
+      "cobblemon:combusken": [
+        "male",
+        "bucket-ultra-rare"
+      ],
+      "cobblemon:gardevoir": [
+        "female",
+        "bucket-rare"
+      ],
+      "cobblemon:wattrel": [
+        "male",
+        "bucket-uncommon"
+      ],
+      "cobblemon:kilowattrel": [
+        "male",
+        "bucket-uncommon"
+      ],
+      "cobblemon:chespin": [
+        "male",
+        "bucket-ultra-rare"
+      ],
+      "cobblemon:quilladin": [
+        "male",
+        "bucket-ultra-rare"
+      ],
+      "cobblemon:grotle": [
+        "male",
+        "bucket-ultra-rare"
+      ],
+      "cobblemon:rowlet": [
+        "female",
+        "bucket-ultra-rare"
+      ],
+      "cobblemon:greninja": [
+        "shiny",
+        "male",
+        "bucket-"
+      ],
+      "cobblemon:blaziken": [
+        "male",
+        "bucket-ultra-rare"
+      ],
+      "cobblemon:torterra": [
+        "male",
+        "bucket-ultra-rare",
+        "tree-none"
       ]
     }
   }

@@ -8,18 +8,77 @@
   "battleTheme": "cobblemon:battle.pvp.default",
   "extraData": {},
   "advancementData": {
-    "totalCaptureCount": 0,
+    "totalCaptureCount": 4,
     "totalEggsCollected": 0,
     "totalEggsHatched": 0,
-    "totalEvolvedCount": 0,
-    "totalBattleVictoryCount": 0,
+    "totalEvolvedCount": 3,
+    "totalBattleVictoryCount": 39,
     "totalPvPBattleVictoryCount": 0,
-    "totalPvWBattleVictoryCount": 0,
-    "totalPvNBattleVictoryCount": 0,
+    "totalPvWBattleVictoryCount": 35,
+    "totalPvNBattleVictoryCount": 4,
     "totalShinyCaptureCount": 0,
     "totalTradedCount": 0,
-    "totalTypeCaptureCounts": {},
-    "totalDefeatedCounts": {},
-    "aspectsCollected": {}
+    "totalTypeCaptureCounts": {
+      "flying": 3,
+      "fairy": 1,
+      "steel": 1,
+      "normal": 2
+    },
+    "totalDefeatedCounts": {
+      "cobblemon:skitty": 3,
+      "cobblemon:meowth": 4,
+      "cobblemon:lillipup": 3,
+      "cobblemon:lechonk": 1,
+      "cobblemon:sentret": 2,
+      "cobblemon:igglybuff": 2,
+      "cobblemon:bunnelby": 1,
+      "cobblemon:yungoos": 1,
+      "cobblemon:maschiff": 1,
+      "cobblemon:zubat": 1,
+      "cobblemon:ledyba": 2,
+      "cobblemon:zigzagoon": 1,
+      "cobblemon:burmy": 1,
+      "cobblemon:rattata": 1,
+      "cobblemon:hoppip": 1,
+      "cobblemon:shuppet": 1,
+      "cobblemon:taillow": 2,
+      "cobblemon:smeargle": 1,
+      "cobblemon:diglett": 1,
+      "cobblemon:fidough": 1,
+      "cobblemon:pawmi": 1,
+      "cobblemon:happiny": 1,
+      "cobblemon:wooloo": 1
+    },
+    "aspectsCollected": {
+      "cobblemon:rookidee": [
+        "female",
+        "bucket-common"
+      ],
+      "cobblemon:tinkatink": [
+        "female",
+        "bucket-common"
+      ],
+      "cobblemon:fletchling": [
+        "male",
+        "bucket-common"
+      ],
+      "cobblemon:fletchinder": [
+        "male",
+        "bucket-common"
+      ],
+      "cobblemon:frogadier": [
+        "shiny",
+        "male",
+        "bucket-"
+      ],
+      "cobblemon:taillow": [
+        "male",
+        "bucket-common"
+      ],
+      "cobblemon:swellow": [
+        "male",
+        "bucket-common"
+      ]
+    }
   }
 }

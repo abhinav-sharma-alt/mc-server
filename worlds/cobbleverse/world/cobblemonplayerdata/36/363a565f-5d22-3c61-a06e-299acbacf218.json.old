@@ -8,24 +8,28 @@
   "battleTheme": "cobblemon:battle.pvp.default",
   "extraData": {},
   "advancementData": {
-    "totalCaptureCount": 12,
+    "totalCaptureCount": 19,
     "totalEggsCollected": 0,
     "totalEggsHatched": 0,
-    "totalEvolvedCount": 2,
-    "totalBattleVictoryCount": 26,
+    "totalEvolvedCount": 3,
+    "totalBattleVictoryCount": 48,
     "totalPvPBattleVictoryCount": 0,
-    "totalPvWBattleVictoryCount": 19,
+    "totalPvWBattleVictoryCount": 41,
     "totalPvNBattleVictoryCount": 7,
     "totalShinyCaptureCount": 0,
     "totalTradedCount": 0,
     "totalTypeCaptureCounts": {
       "electric": 2,
-      "normal": 6,
+      "normal": 10,
       "flying": 3,
-      "psychic": 1,
+      "psychic": 2,
       "bug": 2,
-      "grass": 1,
-      "poison": 1
+      "grass": 2,
+      "poison": 2,
+      "ground": 1,
+      "fire": 1,
+      "fighting": 1,
+      "ghost": 1
     },
     "totalDefeatedCounts": {
       "cobblemon:skitty": 1,
@@ -34,7 +38,19 @@
       "cobblemon:psyduck": 1,
       "cobblemon:yamper": 1,
       "cobblemon:polteageist": 1,
-      "cobblemon:meowth": 1
+      "cobblemon:meowth": 2,
+      "cobblemon:crabrawler": 1,
+      "cobblemon:bunnelby": 1,
+      "cobblemon:lunatone": 1,
+      "cobblemon:toedscool": 1,
+      "cobblemon:spearow": 2,
+      "cobblemon:snubbull": 1,
+      "cobblemon:phanpy": 1,
+      "cobblemon:rattata": 1,
+      "cobblemon:numel": 1,
+      "cobblemon:magby": 2,
+      "cobblemon:honedge": 1,
+      "cobblemon:spoink": 1
     },
     "aspectsCollected": {
       "cobblemon:pawmi": [
@@ -92,6 +108,39 @@
       ],
       "cobblemon:swellow": [
         "male",
+        "bucket-common"
+      ],
+      "cobblemon:flaaffy": [
+        "male",
+        "bucket-common"
+      ],
+      "cobblemon:skitty": [
+        "female",
+        "bucket-common"
+      ],
+      "cobblemon:toedscool": [
+        "male",
+        "bucket-common"
+      ],
+      "cobblemon:bouffalant": [
+        "female",
+        "bucket-common"
+      ],
+      "cobblemon:litleo": [
+        "female",
+        "bucket-common"
+      ],
+      "cobblemon:girafarig": [
+        "male",
+        "bucket-common"
+      ],
+      "cobblemon:timburr": [
+        "male",
+        "bucket-common",
+        "tree-none"
+      ],
+      "cobblemon:gastly": [
+        "female",
         "bucket-common"
       ]
     }

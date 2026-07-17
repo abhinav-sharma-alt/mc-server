@@ -14,15 +14,16 @@
   "minecraft:adventure/adventuring_time": {
     "criteria": {
       "minecraft:flower_forest": "2026-07-16 19:18:07 +0000",
-      "minecraft:old_growth_birch_forest": "2026-07-16 17:30:37 +0000",
+      "minecraft:savanna_plateau": "2026-07-17 07:59:28 +0000",
       "minecraft:beach": "2026-07-16 16:51:21 +0000",
       "minecraft:forest": "2026-07-16 17:28:41 +0000",
       "minecraft:sparse_jungle": "2026-07-16 17:30:26 +0000",
-      "minecraft:ocean": "2026-07-16 19:17:26 +0000",
       "minecraft:river": "2026-07-16 17:28:01 +0000",
       "minecraft:lukewarm_ocean": "2026-07-16 17:29:22 +0000",
-      "minecraft:birch_forest": "2026-07-16 17:30:44 +0000",
       "minecraft:stony_shore": "2026-07-16 19:17:29 +0000",
+      "minecraft:old_growth_birch_forest": "2026-07-16 17:30:37 +0000",
+      "minecraft:ocean": "2026-07-16 19:17:26 +0000",
+      "minecraft:birch_forest": "2026-07-16 17:30:44 +0000",
       "minecraft:savanna": "2026-07-16 16:32:27 +0000",
       "minecraft:plains": "2026-07-16 17:30:21 +0000"
     },
@@ -1645,8 +1646,11 @@
   },
   "cobblemon:craft_base_balls": {
     "criteria": {
+      "slate_ball": "2026-07-17 08:03:35 +0000",
       "poke_ball": "2026-07-16 17:00:07 +0000",
-      "citrine_ball": "2026-07-16 18:02:55 +0000"
+      "azure_ball": "2026-07-17 08:02:57 +0000",
+      "citrine_ball": "2026-07-16 18:02:55 +0000",
+      "verdant_ball": "2026-07-17 08:03:30 +0000"
     },
     "done": false
   },
@@ -10379,9 +10383,12 @@
       "ancient_ivory_ball": "2026-07-16 18:36:49 +0000",
       "heal_ball": "2026-07-16 18:02:53 +0000",
       "quick_ball": "2026-07-16 19:05:06 +0000",
+      "slate_ball": "2026-07-17 08:03:35 +0000",
       "ancient_verdant_ball": "2026-07-16 18:37:13 +0000",
       "sport_ball": "2026-07-16 18:02:55 +0000",
       "poke_ball": "2026-07-16 17:00:07 +0000",
+      "azure_ball": "2026-07-17 08:02:57 +0000",
+      "verdant_ball": "2026-07-17 08:03:30 +0000",
       "citrine_ball": "2026-07-16 18:02:55 +0000"
     },
     "done": false
@@ -25477,33 +25484,9 @@
     },
     "done": true
   },
-  "minecraft:recipes/decorations/ladder": {
+  "cobblemon:full_party": {
     "criteria": {
-      "has_stick": "2026-07-16 18:45:37 +0000"
-    },
-    "done": true
-  },
-  "cobblemon:obtain_revival_herb": {
-    "criteria": {
-      "check_inv": "2026-07-16 18:03:20 +0000"
-    },
-    "done": true
-  },
-  "cobblemon:recipes/misc/relic_coin_pouch": {
-    "criteria": {
-      "has_coin": "2026-07-16 18:02:46 +0000"
-    },
-    "done": true
-  },
-  "minecraft:story/mine_stone": {
-    "criteria": {
-      "get_stone": "2026-07-16 18:44:22 +0000"
-    },
-    "done": true
-  },
-  "minecraft:recipes/decorations/chest": {
-    "criteria": {
-      "has_planks": "2026-07-16 18:43:45 +0000"
+      "full_party": "2026-07-16 17:57:39 +0000"
     },
     "done": true
   },
@@ -25513,21 +25496,27 @@
     },
     "done": true
   },
-  "cobblemon:brew_potion": {
-    "criteria": {
-      "check_inv": "2026-07-16 18:03:18 +0000"
-    },
-    "done": true
-  },
   "cobblemon:cook_all_regional_delicacies": {
     "criteria": {
       "jubilife_muffin": "2026-07-16 18:02:28 +0000"
     },
     "done": false
   },
-  "minecraft:recipes/decorations/campfire": {
+  "cobblemon:recipes/misc/relic_coin_pouch": {
     "criteria": {
-      "has_stick": "2026-07-16 18:45:37 +0000"
+      "has_coin": "2026-07-16 18:02:46 +0000"
+    },
+    "done": true
+  },
+  "cobblemon:brew_potion": {
+    "criteria": {
+      "check_inv": "2026-07-16 18:03:18 +0000"
+    },
+    "done": true
+  },
+  "cobblemon:obtain_revival_herb": {
+    "criteria": {
+      "check_inv": "2026-07-16 18:03:20 +0000"
     },
     "done": true
   },
@@ -25537,27 +25526,21 @@
     },
     "done": true
   },
-  "minecraft:recipes/decorations/barrel": {
+  "cobblemon:first_evolution": {
     "criteria": {
-      "has_planks": "2026-07-16 18:43:45 +0000"
+      "evolve": "2026-07-16 18:06:09 +0000"
+    },
+    "done": true
+  },
+  "cobbleverse:trainer/kanto/defeat_brock": {
+    "criteria": {
+      "leader_defeated": "2026-07-16 18:25:22 +0000"
     },
     "done": true
   },
   "minecraft:recipes/building_blocks/oak_wood": {
     "criteria": {
       "has_oak_log": "2026-07-16 18:34:25 +0000"
-    },
-    "done": true
-  },
-  "cobblemon:full_party": {
-    "criteria": {
-      "full_party": "2026-07-16 17:57:39 +0000"
-    },
-    "done": true
-  },
-  "cobblemon:ride_pokemon": {
-    "criteria": {
-      "check_inv": "2026-07-16 19:14:24 +0000"
     },
     "done": true
   },
@@ -25568,21 +25551,21 @@
     },
     "done": false
   },
-  "minecraft:story/upgrade_tools": {
+  "minecraft:recipes/decorations/chest": {
     "criteria": {
-      "stone_pickaxe": "2026-07-16 18:45:44 +0000"
+      "has_planks": "2026-07-16 18:43:45 +0000"
     },
     "done": true
   },
-  "minecraft:recipes/decorations/soul_campfire": {
+  "minecraft:recipes/decorations/barrel": {
     "criteria": {
-      "has_stick": "2026-07-16 18:45:37 +0000"
+      "has_planks": "2026-07-16 18:43:45 +0000"
     },
     "done": true
   },
-  "cobbleverse:trainer/kanto/defeat_brock": {
+  "minecraft:story/mine_stone": {
     "criteria": {
-      "leader_defeated": "2026-07-16 18:25:22 +0000"
+      "get_stone": "2026-07-16 18:44:22 +0000"
     },
     "done": true
   },
@@ -25592,9 +25575,66 @@
     },
     "done": true
   },
-  "cobblemon:first_evolution": {
+  "minecraft:recipes/decorations/ladder": {
     "criteria": {
-      "evolve": "2026-07-16 18:06:09 +0000"
+      "has_stick": "2026-07-16 18:45:37 +0000"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/campfire": {
+    "criteria": {
+      "has_stick": "2026-07-16 18:45:37 +0000"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/soul_campfire": {
+    "criteria": {
+      "has_stick": "2026-07-16 18:45:37 +0000"
+    },
+    "done": true
+  },
+  "minecraft:story/upgrade_tools": {
+    "criteria": {
+      "stone_pickaxe": "2026-07-16 18:45:44 +0000"
+    },
+    "done": true
+  },
+  "cobblemon:ride_pokemon": {
+    "criteria": {
+      "check_inv": "2026-07-16 19:14:24 +0000"
+    },
+    "done": true
+  },
+  "minecraft:nether/explore_nether": {
+    "criteria": {
+      "minecraft:nether_wastes": "2026-07-17 08:34:25 +0000",
+      "minecraft:soul_sand_valley": "2026-07-17 08:37:10 +0000",
+      "minecraft:basalt_deltas": "2026-07-17 08:41:17 +0000",
+      "minecraft:warped_forest": "2026-07-17 08:42:22 +0000"
+    },
+    "done": false
+  },
+  "cobblemon:use_candy": {
+    "criteria": {
+      "use_xs_candy": "2026-07-17 07:39:26 +0000"
+    },
+    "done": true
+  },
+  "minecraft:story/enter_the_nether": {
+    "criteria": {
+      "entered_nether": "2026-07-17 08:34:25 +0000"
+    },
+    "done": true
+  },
+  "cobblemon:harvest_apricorn_seed": {
+    "criteria": {
+      "check_inv": "2026-07-17 07:53:37 +0000"
+    },
+    "done": true
+  },
+  "minecraft:nether/root": {
+    "criteria": {
+      "entered_nether": "2026-07-17 08:34:25 +0000"
     },
     "done": true
   },
