@@ -25663,36 +25663,9 @@
     },
     "done": true
   },
-  "minecraft:nether/explore_nether": {
-    "criteria": {
-      "minecraft:nether_wastes": "2026-07-17 08:33:53 +0000",
-      "minecraft:soul_sand_valley": "2026-07-17 08:35:06 +0000",
-      "minecraft:basalt_deltas": "2026-07-17 08:34:59 +0000",
-      "minecraft:warped_forest": "2026-07-17 08:58:52 +0000"
-    },
-    "done": false
-  },
-  "minecraft:nether/obtain_blaze_rod": {
-    "criteria": {
-      "blaze_rod": "2026-07-17 08:36:50 +0000"
-    },
-    "done": true
-  },
   "cobblemon:brew_full_restore": {
     "criteria": {
       "check_inv": "2026-07-17 04:47:42 +0000"
-    },
-    "done": true
-  },
-  "moarconcrete:recipes/building_blocks/white_concrete_stairs_from_white_concrete_stonecutting": {
-    "criteria": {
-      "has_white_concrete": "2026-07-17 06:59:08 +0000"
-    },
-    "done": true
-  },
-  "minecraft:story/lava_bucket": {
-    "criteria": {
-      "lava_bucket": "2026-07-17 07:57:21 +0000"
     },
     "done": true
   },
@@ -25702,24 +25675,9 @@
     },
     "done": true
   },
-  "cobblemon:obtain_mint": {
+  "cobblemon:full_party": {
     "criteria": {
-      "check_inv": "2026-07-17 07:04:31 +0000"
-    },
-    "done": true
-  },
-  "cobblemon:obtain_all_mints": {
-    "criteria": {
-      "obtain_green_mint_leaf": "2026-07-17 08:21:08 +0000",
-      "obtain_cyan_mint_leaf": "2026-07-17 07:04:31 +0000",
-      "obtain_red_mint_leaf": "2026-07-17 08:12:35 +0000",
-      "obtain_blue_mint_leaf": "2026-07-17 07:04:52 +0000"
-    },
-    "done": false
-  },
-  "minecraft:nether/find_fortress": {
-    "criteria": {
-      "fortress": "2026-07-17 08:36:11 +0000"
+      "full_party": "2026-07-17 06:19:12 +0000"
     },
     "done": true
   },
@@ -25729,21 +25687,15 @@
     },
     "done": true
   },
-  "cobblemon:full_party": {
+  "moarconcrete:recipes/building_blocks/white_concrete_stairs_from_white_concrete_stonecutting": {
     "criteria": {
-      "full_party": "2026-07-17 06:19:12 +0000"
+      "has_white_concrete": "2026-07-17 06:59:08 +0000"
     },
     "done": true
   },
   "moarconcrete:recipes/building_blocks/white_concrete_panel_from_white_concrete_stonecutting": {
     "criteria": {
       "has_white_concrete": "2026-07-17 06:59:08 +0000"
-    },
-    "done": true
-  },
-  "minecraft:story/enter_the_nether": {
-    "criteria": {
-      "entered_nether": "2026-07-17 08:33:51 +0000"
     },
     "done": true
   },
@@ -25759,18 +25711,6 @@
     },
     "done": true
   },
-  "cobblemon:obtain_mutated_berry": {
-    "criteria": {
-      "check_inv": "2026-07-17 08:13:53 +0000"
-    },
-    "done": true
-  },
-  "minecraft:nether/root": {
-    "criteria": {
-      "entered_nether": "2026-07-17 08:33:51 +0000"
-    },
-    "done": true
-  },
   "moarconcrete:recipes/building_blocks/white_concrete_wall_from_white_concrete_stonecutting": {
     "criteria": {
       "has_white_concrete": "2026-07-17 06:59:08 +0000"
@@ -25780,6 +25720,67 @@
   "moarconcrete:recipes/building_blocks/white_concrete_brick_slab_from_white_concrete_stonecutting": {
     "criteria": {
       "has_white_concrete": "2026-07-17 06:59:08 +0000"
+    },
+    "done": true
+  },
+  "cobblemon:obtain_mint": {
+    "criteria": {
+      "check_inv": "2026-07-17 07:04:31 +0000"
+    },
+    "done": true
+  },
+  "cobblemon:obtain_all_mints": {
+    "criteria": {
+      "obtain_green_mint_leaf": "2026-07-17 08:21:08 +0000",
+      "obtain_cyan_mint_leaf": "2026-07-17 07:04:31 +0000",
+      "obtain_pink_mint_leaf": "2026-07-17 11:47:39 +0000",
+      "obtain_red_mint_leaf": "2026-07-17 08:12:35 +0000",
+      "obtain_blue_mint_leaf": "2026-07-17 07:04:52 +0000"
+    },
+    "done": false
+  },
+  "minecraft:story/lava_bucket": {
+    "criteria": {
+      "lava_bucket": "2026-07-17 07:57:21 +0000"
+    },
+    "done": true
+  },
+  "cobblemon:obtain_mutated_berry": {
+    "criteria": {
+      "check_inv": "2026-07-17 08:13:53 +0000"
+    },
+    "done": true
+  },
+  "minecraft:story/enter_the_nether": {
+    "criteria": {
+      "entered_nether": "2026-07-17 08:33:51 +0000"
+    },
+    "done": true
+  },
+  "minecraft:nether/root": {
+    "criteria": {
+      "entered_nether": "2026-07-17 08:33:51 +0000"
+    },
+    "done": true
+  },
+  "minecraft:nether/explore_nether": {
+    "criteria": {
+      "minecraft:nether_wastes": "2026-07-17 08:33:53 +0000",
+      "minecraft:soul_sand_valley": "2026-07-17 08:35:06 +0000",
+      "minecraft:basalt_deltas": "2026-07-17 08:34:59 +0000",
+      "minecraft:warped_forest": "2026-07-17 08:58:52 +0000"
+    },
+    "done": false
+  },
+  "minecraft:nether/find_fortress": {
+    "criteria": {
+      "fortress": "2026-07-17 08:36:11 +0000"
+    },
+    "done": true
+  },
+  "minecraft:nether/obtain_blaze_rod": {
+    "criteria": {
+      "blaze_rod": "2026-07-17 08:36:50 +0000"
     },
     "done": true
   },
