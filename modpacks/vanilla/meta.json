@@ -1,0 +1,14 @@
+{
+  "java_version": "25",
+  "memory_gb": "10",
+  "server_jar": "server.jar",
+  "launch_mode": "jar",
+  "start_script": "start.sh",
+  "server_port": "25565",
+  "tunnel_address": "significant-surpass.gl.joinmc.link",
+  "source_type": "jar",
+  "jar_url": "",
+  "is_zip": "false",
+  "mrpack_slug": "",
+  "mrpack_version": ""
+}
