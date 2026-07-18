@@ -8,7 +8,8 @@ name: Manage Modpack
 # IMPORTANT: this workflow does NOT download mods/jars/resourcepacks and does
 # NOT commit them to the repo. GitHub hard-rejects any file >100MB (and warns
 # above 50MB), and modpacks like Cobbleverse blow way past that. Instead this
-# workflow only records *where* to get the modpack (jar_url / mrpack_slug) in
+# workflow only records *where* to get the modpack (jar_url / mrpack_slug /
+# curseforge_project_id) in
 # modpacks/<name>/meta.json. The actual download/build happens fresh on every
 # run in start-server.yml, on the ephemeral runner, and is never committed.
 
@@ -39,6 +40,12 @@ on:
         required: false
       mrpack_version:
         description: 'Specific Modrinth version number/id for mrpack_slug. Leave blank for latest / to keep current value.'
+        required: false
+      curseforge_project_id:
+        description: 'CurseForge project (mod) id, e.g. 715572. Alternative to jar_url/mrpack_slug. Needs CURSEFORGE_API_KEY repo secret. On configure, leave blank to keep current value.'
+        required: false
+      curseforge_file_id:
+        description: 'Specific CurseForge file id for curseforge_project_id. Leave blank for latest file / to keep current value.'
         required: false
       server_port:
         description: 'Minecraft server port (create: defaults to 25565 if blank. configure: leave blank to keep current value). Must match whatever local port you pointed this modpack''s playit.gg tunnel at — does not need to differ from other modpacks.'
@@ -108,17 +115,24 @@ jobs:
           NAME="${{ github.event.inputs.modpack_name }}"
           JAR_URL="${{ github.event.inputs.jar_url }}"
           MRPACK_SLUG="${{ github.event.inputs.mrpack_slug }}"
+          CURSEFORGE_PROJECT_ID="${{ github.event.inputs.curseforge_project_id }}"
 
           if [ -d "modpacks/$NAME" ]; then
             echo "::error::modpacks/$NAME already exists. Use 'configure' to change it, or delete it first."
             exit 1
           fi
-          if [ -z "$JAR_URL" ] && [ -z "$MRPACK_SLUG" ]; then
-            echo "::error::Provide either jar_url or mrpack_slug for 'create'."
+
+          SOURCE_COUNT=0
+          [ -n "$JAR_URL" ] && SOURCE_COUNT=$((SOURCE_COUNT + 1))
+          [ -n "$MRPACK_SLUG" ] && SOURCE_COUNT=$((SOURCE_COUNT + 1))
+          [ -n "$CURSEFORGE_PROJECT_ID" ] && SOURCE_COUNT=$((SOURCE_COUNT + 1))
+
+          if [ "$SOURCE_COUNT" -eq 0 ]; then
+            echo "::error::Provide one of jar_url, mrpack_slug, or curseforge_project_id for 'create'."
             exit 1
           fi
-          if [ -n "$JAR_URL" ] && [ -n "$MRPACK_SLUG" ]; then
-            echo "::error::Provide only one of jar_url or mrpack_slug, not both."
+          if [ "$SOURCE_COUNT" -gt 1 ]; then
+            echo "::error::Provide only one of jar_url, mrpack_slug, or curseforge_project_id, not more than one."
             exit 1
           fi
 
@@ -163,6 +177,8 @@ jobs:
             CUR_MRPACK_SLUG=$(jq -r '.mrpack_slug // ""' "$META")
             CUR_MRPACK_VERSION=$(jq -r '.mrpack_version // ""' "$META")
             CUR_TUNNEL_ADDRESS=$(jq -r '.tunnel_address // ""' "$META")
+            CUR_CURSEFORGE_PROJECT_ID=$(jq -r '.curseforge_project_id // ""' "$META")
+            CUR_CURSEFORGE_FILE_ID=$(jq -r '.curseforge_file_id // ""' "$META")
           else
             CUR_JAVA="25"
             CUR_MEM="10"
@@ -176,6 +192,8 @@ jobs:
             CUR_MRPACK_SLUG=""
             CUR_MRPACK_VERSION=""
             CUR_TUNNEL_ADDRESS=""
+            CUR_CURSEFORGE_PROJECT_ID=""
+            CUR_CURSEFORGE_FILE_ID=""
           fi
 
           # Only override a field if the corresponding input was actually provided
@@ -190,6 +208,8 @@ jobs:
           IN_MRPACK_SLUG="${{ github.event.inputs.mrpack_slug }}"
           IN_MRPACK_VERSION="${{ github.event.inputs.mrpack_version }}"
           IN_IS_ZIP="${{ github.event.inputs.is_zip }}"
+          IN_CURSEFORGE_PROJECT_ID="${{ github.event.inputs.curseforge_project_id }}"
+          IN_CURSEFORGE_FILE_ID="${{ github.event.inputs.curseforge_file_id }}"
 
           FINAL_JAVA="${IN_JAVA:-$CUR_JAVA}"
           FINAL_MEM="${IN_MEM:-$CUR_MEM}"
@@ -207,16 +227,28 @@ jobs:
             FINAL_IS_ZIP="$CUR_IS_ZIP"
           fi
 
-          # Resolve source: mrpack_slug and jar_url are mutually exclusive.
-          # On configure, whichever one the user just provided wins and clears the other.
+          # Resolve source: mrpack_slug, jar_url, and curseforge_project_id
+          # are mutually exclusive. On configure, whichever one the user just
+          # provided wins and clears the other two.
           if [ -n "$IN_MRPACK_SLUG" ]; then
             FINAL_SOURCE_TYPE="mrpack"
             FINAL_MRPACK_SLUG="$IN_MRPACK_SLUG"
             FINAL_MRPACK_VERSION="${IN_MRPACK_VERSION:-$CUR_MRPACK_VERSION}"
             FINAL_JAR_URL=""
+            FINAL_CURSEFORGE_PROJECT_ID=""
+            FINAL_CURSEFORGE_FILE_ID=""
           elif [ -n "$IN_JAR_URL" ]; then
             FINAL_SOURCE_TYPE=$([ "$FINAL_IS_ZIP" = "true" ] && echo "zip" || echo "jar")
             FINAL_JAR_URL="$IN_JAR_URL"
+            FINAL_MRPACK_SLUG=""
+            FINAL_MRPACK_VERSION=""
+            FINAL_CURSEFORGE_PROJECT_ID=""
+            FINAL_CURSEFORGE_FILE_ID=""
+          elif [ -n "$IN_CURSEFORGE_PROJECT_ID" ]; then
+            FINAL_SOURCE_TYPE="curseforge"
+            FINAL_CURSEFORGE_PROJECT_ID="$IN_CURSEFORGE_PROJECT_ID"
+            FINAL_CURSEFORGE_FILE_ID="${IN_CURSEFORGE_FILE_ID:-$CUR_CURSEFORGE_FILE_ID}"
+            FINAL_JAR_URL=""
             FINAL_MRPACK_SLUG=""
             FINAL_MRPACK_VERSION=""
           else
@@ -224,6 +256,8 @@ jobs:
             FINAL_JAR_URL="$CUR_JAR_URL"
             FINAL_MRPACK_SLUG="$CUR_MRPACK_SLUG"
             FINAL_MRPACK_VERSION="$CUR_MRPACK_VERSION"
+            FINAL_CURSEFORGE_PROJECT_ID="$CUR_CURSEFORGE_PROJECT_ID"
+            FINAL_CURSEFORGE_FILE_ID="$CUR_CURSEFORGE_FILE_ID"
           fi
 
           # Ports no longer need to be globally unique: each modpack runs on
@@ -264,7 +298,9 @@ jobs:
             "jar_url": "$FINAL_JAR_URL",
             "is_zip": "$FINAL_IS_ZIP",
             "mrpack_slug": "$FINAL_MRPACK_SLUG",
-            "mrpack_version": "$FINAL_MRPACK_VERSION"
+            "mrpack_version": "$FINAL_MRPACK_VERSION",
+            "curseforge_project_id": "$FINAL_CURSEFORGE_PROJECT_ID",
+            "curseforge_file_id": "$FINAL_CURSEFORGE_FILE_ID"
           }
           EOF
           echo "meta.json for $NAME -> source=$FINAL_SOURCE_TYPE java=$FINAL_JAVA mem=${FINAL_MEM}GB mode=$FINAL_MODE jar=$FINAL_JAR script=$FINAL_SCRIPT port=$FINAL_PORT tunnel=${FINAL_TUNNEL_ADDRESS:-<none set>}"

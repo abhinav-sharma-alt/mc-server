@@ -46,6 +46,8 @@ jobs:
             MRPACK_SLUG=$(jq -r '.mrpack_slug // ""' "$META")
             MRPACK_VERSION=$(jq -r '.mrpack_version // ""' "$META")
             TUNNEL_ADDRESS=$(jq -r '.tunnel_address // ""' "$META")
+            CURSEFORGE_PROJECT_ID=$(jq -r '.curseforge_project_id // ""' "$META")
+            CURSEFORGE_FILE_ID=$(jq -r '.curseforge_file_id // ""' "$META")
           else
             JAVA_VERSION="25"
             MEMORY_GB="10"
@@ -58,6 +60,8 @@ jobs:
             MRPACK_SLUG=""
             MRPACK_VERSION=""
             TUNNEL_ADDRESS=""
+            CURSEFORGE_PROJECT_ID=""
+            CURSEFORGE_FILE_ID=""
           fi
           if [ -z "$TUNNEL_ADDRESS" ]; then
             echo "::warning::No tunnel_address configured for '${{ github.event.inputs.modpack }}'. Set one with /modpack configure name: ${{ github.event.inputs.modpack }} tunnel_address: <your-playit-address>."
@@ -73,6 +77,8 @@ jobs:
           echo "mrpack_slug=$MRPACK_SLUG" >> "$GITHUB_OUTPUT"
           echo "mrpack_version=$MRPACK_VERSION" >> "$GITHUB_OUTPUT"
           echo "tunnel_address=$TUNNEL_ADDRESS" >> "$GITHUB_OUTPUT"
+          echo "curseforge_project_id=$CURSEFORGE_PROJECT_ID" >> "$GITHUB_OUTPUT"
+          echo "curseforge_file_id=$CURSEFORGE_FILE_ID" >> "$GITHUB_OUTPUT"
 
       - name: Announce tunnel address
         run: |
@@ -103,6 +109,8 @@ jobs:
       - name: Build server directory for modpack (fetch fresh — nothing is committed)
         id: build_modpack
         if: github.event.inputs.modpack != 'vanilla'
+        env:
+          CURSEFORGE_API_KEY: ${{ secrets.CURSEFORGE_API_KEY }}
         run: |
           MODPACK="${{ github.event.inputs.modpack }}"
           if [ ! -d "modpacks/$MODPACK" ]; then
@@ -114,6 +122,8 @@ jobs:
           JAR_URL="${{ steps.modpack_meta.outputs.jar_url }}"
           MRPACK_SLUG="${{ steps.modpack_meta.outputs.mrpack_slug }}"
           MRPACK_VERSION="${{ steps.modpack_meta.outputs.mrpack_version }}"
+          CURSEFORGE_PROJECT_ID="${{ steps.modpack_meta.outputs.curseforge_project_id }}"
+          CURSEFORGE_FILE_ID="${{ steps.modpack_meta.outputs.curseforge_file_id }}"
           SERVER_JAR="${{ steps.modpack_meta.outputs.server_jar }}"
 
           mkdir -p server
@@ -172,6 +182,77 @@ jobs:
               # (e.g. fabric-server-launch.jar, forge server jar with a version suffix,
               # etc). Prefer the configured server_jar if it happens to exist; otherwise
               # auto-detect.
+              if [ ! -f "server/$SERVER_JAR" ]; then
+                DETECTED_JAR=$(find server -maxdepth 1 -name "*.jar" ! -iname "*installer*" | head -n1 | xargs -r basename)
+                if [ -n "$DETECTED_JAR" ]; then
+                  echo "Auto-detected server jar: $DETECTED_JAR (configured server_jar '$SERVER_JAR' not found)"
+                  RESOLVED_JAR="$DETECTED_JAR"
+                fi
+              fi
+              ;;
+
+            curseforge)
+              if [ -z "$CURSEFORGE_PROJECT_ID" ]; then
+                echo "::error::meta.json has source_type=curseforge but no curseforge_project_id set. Fix with /modpack configure."
+                exit 1
+              fi
+              if [ -z "$CURSEFORGE_API_KEY" ]; then
+                echo "::error::CURSEFORGE_API_KEY repo secret is not set. Get a key at https://console.curseforge.com/#/api-keys and add it under repo Settings > Secrets and variables > Actions."
+                exit 1
+              fi
+
+              CF_AUTH=(-H "x-api-key: $CURSEFORGE_API_KEY" -H "Accept: application/json")
+
+              RESOLVED_FILE_ID="$CURSEFORGE_FILE_ID"
+              if [ -z "$RESOLVED_FILE_ID" ]; then
+                echo "No curseforge_file_id set — looking up the latest file for project $CURSEFORGE_PROJECT_ID..."
+                RESOLVED_FILE_ID=$(curl -s "${CF_AUTH[@]}" \
+                  "https://api.curseforge.com/v1/mods/$CURSEFORGE_PROJECT_ID/files?pageSize=1" \
+                  | jq -r '.data[0].id // empty')
+                if [ -z "$RESOLVED_FILE_ID" ]; then
+                  echo "::error::Could not find any files for CurseForge project $CURSEFORGE_PROJECT_ID. Double-check the project id (it's numeric, found on the project's CurseForge page under 'About Project')."
+                  exit 1
+                fi
+              fi
+
+              # Prefer the dedicated server pack file if this file has one —
+              # the main file is usually the client pack and won't run headless.
+              FILE_INFO=$(curl -s "${CF_AUTH[@]}" "https://api.curseforge.com/v1/mods/$CURSEFORGE_PROJECT_ID/files/$RESOLVED_FILE_ID")
+              SERVER_PACK_ID=$(echo "$FILE_INFO" | jq -r '.data.serverPackFileId // empty')
+              DOWNLOAD_FILE_ID="$RESOLVED_FILE_ID"
+              if [ -n "$SERVER_PACK_ID" ] && [ "$SERVER_PACK_ID" != "null" ]; then
+                echo "File $RESOLVED_FILE_ID has a dedicated server pack — using file $SERVER_PACK_ID instead."
+                DOWNLOAD_FILE_ID="$SERVER_PACK_ID"
+              else
+                echo "No dedicated server pack for file $RESOLVED_FILE_ID — downloading it directly. If the server fails to start, this modpack may only publish a client pack; check the project's Files page for a separate server-files download and use jar_url + is_zip instead."
+              fi
+
+              DOWNLOAD_URL=$(curl -s "${CF_AUTH[@]}" \
+                "https://api.curseforge.com/v1/mods/$CURSEFORGE_PROJECT_ID/files/$DOWNLOAD_FILE_ID/download-url" \
+                | jq -r '.data // empty')
+              if [ -z "$DOWNLOAD_URL" ]; then
+                echo "::error::Could not resolve a download URL for file $DOWNLOAD_FILE_ID. The author may have disabled third-party downloads for this project — download the server pack zip yourself and use jar_url + is_zip instead."
+                exit 1
+              fi
+
+              curl -L -o /tmp/pack.zip "$DOWNLOAD_URL"
+              unzip -q /tmp/pack.zip -d server
+              # Server packs often nest one level deep - flatten if so
+              INNER=$(find server -mindepth 1 -maxdepth 1 -type d | head -n1)
+              if [ -n "$INNER" ] && [ -z "$(find server -mindepth 1 -maxdepth 1 -type f)" ]; then
+                mv "$INNER"/* server/
+                rmdir "$INNER"
+              fi
+
+              # Forge/NeoForge CurseForge server packs commonly ship an
+              # installer jar instead of a ready-to-run server — run it once
+              # to generate the real launch files before we look for a jar/script.
+              INSTALLER_JAR=$(find server -maxdepth 1 -iname "*installer*.jar" | head -n1)
+              if [ -n "$INSTALLER_JAR" ]; then
+                echo "Found installer jar $(basename "$INSTALLER_JAR") — running it to generate the server..."
+                (cd server && java -jar "$(basename "$INSTALLER_JAR")" --installServer)
+              fi
+
               if [ ! -f "server/$SERVER_JAR" ]; then
                 DETECTED_JAR=$(find server -maxdepth 1 -name "*.jar" ! -iname "*installer*" | head -n1 | xargs -r basename)
                 if [ -n "$DETECTED_JAR" ]; then
