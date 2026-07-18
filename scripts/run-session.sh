@@ -6,6 +6,29 @@ git config core.fileMode false
 
 SESSION_MINUTES=345   # 5h45m — leaves buffer for the commit step after this
 
+# Small retrying push for the console/ signal-file commits made throughout
+# this script. These files are ephemeral (not world data), so on conflict we
+# always just take our own version of console/* and retry — never worth
+# aborting a running session over a signal-file race.
+push_console_state() {
+  for attempt in 1 2 3; do
+    if git push origin HEAD:main --quiet 2>/dev/null; then
+      return 0
+    fi
+    git fetch origin main --quiet 2>/dev/null
+    if git rebase origin/main --quiet 2>/dev/null; then
+      continue
+    fi
+    for f in $(git diff --name-only --diff-filter=U 2>/dev/null); do
+      git checkout --ours -- "$f" 2>/dev/null
+      git add "$f" 2>/dev/null
+    done
+    GIT_EDITOR=true git rebase --continue --quiet 2>/dev/null || { git rebase --abort 2>/dev/null || true; }
+  done
+  echo "WARNING: could not push console state after retries (non-fatal, will retry next poll)."
+  return 1
+}
+
 if [ -z "$PLAYIT_SECRET" ]; then
   echo "ERROR: PLAYIT_SECRET is not set. Add it as a GitHub Actions secret."
   exit 1
@@ -127,7 +150,7 @@ echo -n "" > console/command.txt
 echo -n "" > console/stop.txt
 git add console/command.txt console/stop.txt
 git commit -m "console: reset signal files for new session" --quiet 2>/dev/null || true
-git push origin HEAD:main --quiet 2>/dev/null || true
+push_console_state || true
 
 # Background loop: poll GitHub for new console commands AND a stop signal
 poll_console() {
@@ -148,8 +171,7 @@ poll_console() {
       echo -n "" > console/command.txt
       git add console/command.txt
       git commit -m "console: executed command" --quiet 2>/dev/null
-      git pull --rebase --autostash --quiet 2>/dev/null
-      git push origin HEAD:main --quiet 2>/dev/null
+      push_console_state || true
 
       # Give the server a moment to process the command and write its
       # response to the log, then relay any new lines back to Discord.
@@ -179,8 +201,7 @@ poll_console() {
       echo -n "" > console/stop.txt
       git add console/stop.txt
       git commit -m "console: stop signal consumed" --quiet
-      git pull --rebase --autostash --quiet
-      git push origin HEAD:main --quiet
+      push_console_state || true
 
       graceful_stop 30
       break
@@ -233,8 +254,7 @@ if [ -n "$(git status --porcelain console/ 2>/dev/null)" ]; then
   echo "Cleaning up leftover console file state..."
   git add console/
   git commit -m "console: final state cleanup" --quiet 2>/dev/null || true
-  git pull --rebase --autostash --quiet 2>/dev/null || git rebase --abort 2>/dev/null || true
-  git push origin HEAD:main --quiet 2>/dev/null || true
+  push_console_state || true
 fi
 
 if [ -n "$DISCORD_WEBHOOK" ]; then

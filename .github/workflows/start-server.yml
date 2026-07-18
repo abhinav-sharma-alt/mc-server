@@ -320,8 +320,43 @@ jobs:
             # committed; GitHub hard-rejects pushes with files over 100MB.
             git add "worlds/${{ github.event.inputs.modpack }}" console/
             git diff --staged --quiet || git commit -m "Update ${{ github.event.inputs.modpack }} world state after session"
-            git pull --rebase --autostash --quiet || { git rebase --abort 2>/dev/null || true; }
-            git push origin HEAD:main
+
+            # Retry push a few times in case something else pushed to main
+            # while this session was running (another /console command's
+            # signal-file commit, a /modpack configure, a manual push, etc).
+            # We must NEVER silently drop the world update here — on a
+            # rebase conflict we always keep THIS session's worlds/console
+            # changes and defer to remote for everything else, then retry.
+            PUSHED=false
+            for attempt in 1 2 3 4 5; do
+              if git push origin HEAD:main --quiet 2>/dev/null; then
+                PUSHED=true
+                break
+              fi
+              echo "Push attempt $attempt failed (remote moved) — rebasing onto latest main..."
+              git fetch origin main --quiet
+              if git rebase origin/main --quiet 2>/dev/null; then
+                continue
+              fi
+              echo "Rebase hit a conflict — keeping this session's world/console data, taking remote's version of everything else..."
+              for f in $(git diff --name-only --diff-filter=U); do
+                case "$f" in
+                  worlds/*|console/*) git checkout --ours -- "$f" ;;
+                  *) git checkout --theirs -- "$f" ;;
+                esac
+                git add "$f"
+              done
+              if ! GIT_EDITOR=true git rebase --continue --quiet; then
+                git rebase --abort
+                echo "::error::Could not auto-resolve a rebase conflict while saving the world."
+                break
+              fi
+            done
+
+            if [ "$PUSHED" != "true" ]; then
+              echo "::error::Failed to push the world update for ${{ github.event.inputs.modpack }} after retries. The data is NOT lost yet — it exists in this run's git history — but was not saved to the repo. Check this log and push worlds/${{ github.event.inputs.modpack }} manually, or re-run and avoid pushing to main while a session is active."
+              exit 1
+            fi
           else
             echo "No server/world directory found — server likely never started successfully. Skipping commit."
           fi
