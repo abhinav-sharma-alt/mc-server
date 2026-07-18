@@ -41,7 +41,7 @@ on:
         description: 'Specific Modrinth version number/id for mrpack_slug. Leave blank for latest / to keep current value.'
         required: false
       server_port:
-        description: 'Minecraft server port (create: defaults to 25565 if blank. configure: leave blank to keep current value). Must be unique per modpack — pick one not already used by another modpack, and make sure you have a playit.gg tunnel configured for it.'
+        description: 'Minecraft server port (create: defaults to 25565 if blank. configure: leave blank to keep current value). Must match whatever local port you pointed this modpack''s playit.gg tunnel at — does not need to differ from other modpacks.'
         required: false
       tunnel_address:
         description: 'playit.gg tunnel address for this modpack, e.g. myserver.playit.gg:12345 (create/configure: leave blank to keep current value on configure). Set this up on playit.gg pointed at the port above BEFORE starting the server.'
@@ -226,23 +226,15 @@ jobs:
             FINAL_MRPACK_VERSION="$CUR_MRPACK_VERSION"
           fi
 
-          # Guard against two modpacks accidentally sharing a port
-          CLASH=$(for f in modpacks/*/meta.json; do
-            [ -f "$f" ] || continue
-            OTHER_NAME=$(basename "$(dirname "$f")")
-            [ "$OTHER_NAME" = "$NAME" ] && continue
-            OTHER_PORT=$(jq -r '.server_port // "25565"' "$f")
-            if [ "$OTHER_PORT" = "$FINAL_PORT" ]; then
-              echo "$OTHER_NAME"
-            fi
-          done)
-          if [ -n "$CLASH" ]; then
-            echo "::error::server_port $FINAL_PORT is already used by modpack(s): $CLASH. Pick a different port."
-            exit 1
-          fi
+          # Ports no longer need to be globally unique: each modpack runs on
+          # its own isolated GitHub Actions runner per session, and routing
+          # is done by tunnel_address, not by port. The port only needs to
+          # match whatever local port you pointed this modpack's tunnel at
+          # in the playit.gg dashboard.
 
-          # Same guard for tunnel_address, since a shared playit.gg address would
-          # route traffic to whichever modpack happens to bind it first.
+          # Guard against two modpacks accidentally sharing a tunnel_address,
+          # since a shared playit.gg address would route traffic to whichever
+          # modpack happens to bind it first.
           if [ -n "$FINAL_TUNNEL_ADDRESS" ]; then
             TUNNEL_CLASH=$(for f in modpacks/*/meta.json; do
               [ -f "$f" ] || continue

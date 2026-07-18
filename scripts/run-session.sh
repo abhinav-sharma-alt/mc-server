@@ -55,24 +55,19 @@ echo "--- end logs ---"
 
 SERVER_PORT="${SERVER_PORT:-25565}"
 
-# Each Minecraft port needs its own playit.gg tunnel (created once in the
-# playit.gg dashboard under this agent). Map port -> the address playit
-# assigned that tunnel. Add a line here every time you configure a new
-# tunnel for a new modpack port.
-declare -A TUNNEL_ADDRESSES=(
-  [25565]="significant-surpass.gl.joinmc.link"
-  [25566]="film-alaska.gl.joinmc.link"
-)
-
-TUNNEL_ADDRESS="${TUNNEL_ADDRESSES[$SERVER_PORT]}"
+# The tunnel address comes from modpacks/<name>/meta.json (set via
+# /modpack configure name: X tunnel_address: <address>), passed in as the
+# TUNNEL_ADDRESS env var by start-server.yml. It just needs to be pointed at
+# local port $SERVER_PORT in the playit.gg dashboard for this agent — it does
+# NOT need to be globally unique across modpacks, since each session runs on
+# its own isolated GitHub Actions runner.
 if [ -z "$TUNNEL_ADDRESS" ]; then
-  echo "ERROR: No tunnel address configured for port $SERVER_PORT."
-  echo "Create a playit.gg tunnel pointing at local port $SERVER_PORT, then add"
-  echo "  [$SERVER_PORT]=\"<address playit gave you>\""
-  echo "to the TUNNEL_ADDRESSES table in run-session.sh."
+  echo "ERROR: No tunnel_address configured for this modpack."
+  echo "Set one with: /modpack configure name: <modpack> tunnel_address: <address playit gave you>"
+  echo "Make sure that tunnel is pointed at local port $SERVER_PORT in the playit.gg dashboard."
   exit 1
 fi
-echo "Using configured tunnel address for port $SERVER_PORT: $TUNNEL_ADDRESS"
+echo "Using tunnel address: $TUNNEL_ADDRESS -> local port $SERVER_PORT"
 
 if [ -n "$DISCORD_WEBHOOK" ]; then
   curl -H "Content-Type: application/json" \
