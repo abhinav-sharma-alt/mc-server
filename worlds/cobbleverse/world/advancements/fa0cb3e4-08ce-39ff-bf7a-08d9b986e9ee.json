@@ -15,6 +15,8 @@
     "criteria": {
       "minecraft:snowy_slopes": "2026-07-17 15:13:47 +0000",
       "minecraft:forest": "2026-07-16 17:28:42 +0000",
+      "minecraft:taiga": "2026-07-18 06:44:39 +0000",
+      "minecraft:deep_ocean": "2026-07-18 06:45:12 +0000",
       "minecraft:ocean": "2026-07-16 18:56:26 +0000",
       "minecraft:jungle": "2026-07-17 15:10:37 +0000",
       "minecraft:sunflower_plains": "2026-07-16 18:56:16 +0000",
@@ -25778,12 +25780,13 @@
   },
   "minecraft:nether/explore_nether": {
     "criteria": {
+      "minecraft:crimson_forest": "2026-07-18 06:09:05 +0000",
       "minecraft:nether_wastes": "2026-07-17 08:33:53 +0000",
       "minecraft:soul_sand_valley": "2026-07-17 08:35:06 +0000",
       "minecraft:basalt_deltas": "2026-07-17 08:34:59 +0000",
       "minecraft:warped_forest": "2026-07-17 08:58:52 +0000"
     },
-    "done": false
+    "done": true
   },
   "minecraft:nether/find_fortress": {
     "criteria": {
@@ -25797,9 +25800,9 @@
     },
     "done": true
   },
-  "sophisticatedbackpacks:recipes/misc/netherite_backpack": {
+  "minecraft:adventure/avoid_vibration": {
     "criteria": {
-      "has_diamond_backpack": "2026-07-17 17:36:43 +0000"
+      "avoid_vibration": "2026-07-17 17:19:19 +0000"
     },
     "done": true
   },
@@ -25815,9 +25818,69 @@
     },
     "done": true
   },
-  "minecraft:adventure/avoid_vibration": {
+  "sophisticatedbackpacks:recipes/misc/netherite_backpack": {
     "criteria": {
-      "avoid_vibration": "2026-07-17 17:19:19 +0000"
+      "has_diamond_backpack": "2026-07-17 17:36:43 +0000"
+    },
+    "done": true
+  },
+  "minecraft:story/shiny_gear": {
+    "criteria": {
+      "diamond_boots": "2026-07-18 05:49:43 +0000"
+    },
+    "done": true
+  },
+  "cobblemon:recipes/consumables/vivichoke_dip": {
+    "criteria": {
+      "has_vivichoke": "2026-07-18 06:54:47 +0000"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/birch_wood": {
+    "criteria": {
+      "has_birch_log": "2026-07-18 06:57:03 +0000"
+    },
+    "done": true
+  },
+  "minecraft:nether/obtain_ancient_debris": {
+    "criteria": {
+      "ancient_debris": "2026-07-18 05:52:50 +0000"
+    },
+    "done": true
+  },
+  "cobblemon:cook_all_regional_delicacies": {
+    "criteria": {
+      "casteliacone": "2026-07-18 07:01:22 +0000"
+    },
+    "done": false
+  },
+  "minecraft:story/form_obsidian": {
+    "criteria": {
+      "obsidian": "2026-07-18 06:02:34 +0000"
+    },
+    "done": true
+  },
+  "minecraft:nether/loot_bastion": {
+    "criteria": {
+      "loot_bastion_treasure": "2026-07-18 05:49:33 +0000"
+    },
+    "done": true
+  },
+  "cobblemon:harvest_apricorn_seed": {
+    "criteria": {
+      "check_inv": "2026-07-18 06:40:18 +0000"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/warped_hyphae": {
+    "criteria": {
+      "has_warped_stem": "2026-07-18 05:39:34 +0000"
+    },
+    "done": true
+  },
+  "minecraft:nether/find_bastion": {
+    "criteria": {
+      "bastion": "2026-07-18 05:48:41 +0000"
     },
     "done": true
   },
