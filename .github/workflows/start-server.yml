@@ -388,6 +388,21 @@ jobs:
           git config user.name "minecraft-bot"
           git config user.email "actions@github.com"
           if [ -d "server/world" ]; then
+            # Guard against saving a corrupted world over a good one. A
+            # healthy level.dat is normally several KB (it holds the seed,
+            # dimension data, gamerules, etc); if it's missing or tiny, the
+            # server likely never finished a proper save this session (e.g.
+            # was killed uncleanly) — pushing it would silently brick the
+            # world for every future session, exactly like a truncated
+            # level.dat that fails to parse on next boot with errors like
+            # "No key dimensions in MapLike[{}]".
+            LEVEL_DAT_SIZE=0
+            [ -f "server/world/level.dat" ] && LEVEL_DAT_SIZE=$(stat -c%s "server/world/level.dat" 2>/dev/null || echo 0)
+            if [ "$LEVEL_DAT_SIZE" -lt 1000 ]; then
+              echo "::error::server/world/level.dat is missing or only ${LEVEL_DAT_SIZE} bytes — this looks like a corrupted/incomplete save, not a real world. Refusing to overwrite the last saved world for ${{ github.event.inputs.modpack }} with this. If the server never started properly this session, that's expected and fine; if it did run and this still happened, please report it — do not just re-run without investigating, or a future run could still push a bad save before this check catches it."
+              exit 1
+            fi
+
             mkdir -p "worlds/${{ github.event.inputs.modpack }}"
             rm -rf "worlds/${{ github.event.inputs.modpack }}/world"
             cp -r server/world "worlds/${{ github.event.inputs.modpack }}/world"
