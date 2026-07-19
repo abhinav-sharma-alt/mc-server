@@ -150,44 +150,59 @@ push_console_state || true
 # Background loop: poll GitHub for new console commands AND a stop signal
 poll_console() {
   sleep 20   # give the server time to fully boot before accepting any signals
+  LAST_EXECUTED_ID=""
   while kill -0 "$MC_PID" 2>/dev/null; do
     git fetch origin main --quiet
-    git checkout origin/main -- console/command.txt 2>/dev/null || true
-    git checkout origin/main -- console/stop.txt 2>/dev/null || true
+    # Fully sync to origin's tip (not just checkout individual files) so our
+    # own commits below always build on the latest base and push cleanly —
+    # `checkout origin/main -- <path>` alone updates the working tree but
+    # never advances local history, which made every subsequent push here a
+    # guaranteed non-fast-forward whenever origin had moved (e.g. right
+    # after a command was queued) and could snowball into a stuck loop.
+    git reset --hard origin/main --quiet
 
     if [ -s console/command.txt ]; then
-      CMD=$(cat console/command.txt)
-      echo "Executing console command: $CMD"
+      CMD_ID=$(sed -n '1p' console/command.txt)
+      CMD=$(sed -n '2p' console/command.txt)
 
-      LINES_BEFORE=0
-      [ -f "$LOG_FILE" ] && LINES_BEFORE=$(wc -l < "$LOG_FILE")
+      if [ "$CMD_ID" = "$LAST_EXECUTED_ID" ]; then
+        # Same command id we already ran — our clear of this file just
+        # hasn't landed on origin yet (push race). Do NOT re-execute it.
+        :
+      else
+        echo "Executing console command: $CMD"
 
-      echo "$CMD" >&3
-      echo -n "" > console/command.txt
-      git add console/command.txt
-      git commit -m "console: executed command" --quiet 2>/dev/null
-      push_console_state || true
+        LINES_BEFORE=0
+        [ -f "$LOG_FILE" ] && LINES_BEFORE=$(wc -l < "$LOG_FILE")
 
-      # Give the server a moment to process the command and write its
-      # response to the log, then relay any new lines back to Discord.
-      # Note: slow/async commands (e.g. big worldgen ops) may log after this
-      # window and won't be captured — this covers typical commands.
-      sleep 2
-      if [ -n "$DISCORD_WEBHOOK" ]; then
-        if [ -f "$LOG_FILE" ]; then
-          LINES_AFTER=$(wc -l < "$LOG_FILE")
-          NEW_LINES=$((LINES_AFTER - LINES_BEFORE))
-          if [ "$NEW_LINES" -gt 0 ]; then
-            OUTPUT=$(tail -n "$NEW_LINES" "$LOG_FILE" | tail -c 1500)
+        echo "$CMD" >&3
+        LAST_EXECUTED_ID="$CMD_ID"
+        echo -n "" > console/command.txt
+        git add console/command.txt
+        git commit -m "console: executed command" --quiet 2>/dev/null
+        push_console_state || true
+
+        # Give the server a moment to process the command and write its
+        # response to the log, then relay any new lines back to Discord.
+        # Note: slow/async commands (e.g. big worldgen ops) may log after
+        # this window and won't be captured — this covers typical commands.
+        sleep 2
+        if [ -n "$DISCORD_WEBHOOK" ]; then
+          if [ -f "$LOG_FILE" ]; then
+            LINES_AFTER=$(wc -l < "$LOG_FILE")
+            NEW_LINES=$((LINES_AFTER - LINES_BEFORE))
+            if [ "$NEW_LINES" -gt 0 ]; then
+              OUTPUT=$(tail -n "$NEW_LINES" "$LOG_FILE" | tail -c 1500)
+            else
+              OUTPUT="(no output)"
+            fi
           else
-            OUTPUT="(no output)"
+            OUTPUT="(log file not found)"
           fi
-        else
-          OUTPUT="(log file not found)"
+          PAYLOAD=$(jq -n --arg cmd "$CMD" --arg out "$OUTPUT" \
+            '{content: ("📤 `" + $cmd + "`\n```\n" + $out + "\n```")}')
+          curl -s -H "Content-Type: application/json" -d "$PAYLOAD" "$DISCORD_WEBHOOK" > /dev/null
         fi
-        PAYLOAD=$(jq -n --arg cmd "$CMD" --arg out "$OUTPUT" \
-          '{content: ("📤 `" + $cmd + "`\n```\n" + $out + "\n```")}')
-        curl -s -H "Content-Type: application/json" -d "$PAYLOAD" "$DISCORD_WEBHOOK" > /dev/null
       fi
     fi
 
