@@ -382,6 +382,17 @@ jobs:
           chmod +x scripts/run-session.sh
           ./scripts/run-session.sh
 
+      - name: Upload crash reports and logs (for debugging failed starts)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: server-logs-${{ github.event.inputs.modpack }}-${{ github.run_id }}
+          path: |
+            server/crash-reports/*.txt
+            server/logs/*.log
+          if-no-files-found: ignore
+          retention-days: 7
+
       - name: Commit updated world back to repo
         if: always()
         run: |
