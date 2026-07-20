@@ -106,7 +106,7 @@ LOG_FILE="server/logs/latest.log"   # standard log4j location for vanilla/Paper/
 graceful_stop() {
   local wait_seconds="${1:-60}"
   echo "Sending 'stop' to the server console and waiting up to ${wait_seconds}s..."
-  { echo "save-all flush"; sleep 1; echo "stop"; } >&3 2>/dev/null || true
+  echo "stop" >&3 2>/dev/null || true
 
   for i in $(seq 1 "$wait_seconds"); do
     kill -0 "$MC_PID" 2>/dev/null || { echo "Server exited cleanly."; return 0; }
@@ -153,13 +153,17 @@ poll_console() {
   LAST_EXECUTED_ID=""
   while kill -0 "$MC_PID" 2>/dev/null; do
     git fetch origin main --quiet
-    # Fully sync to origin's tip (not just checkout individual files) so our
-    # own commits below always build on the latest base and push cleanly —
-    # `checkout origin/main -- <path>` alone updates the working tree but
-    # never advances local history, which made every subsequent push here a
-    # guaranteed non-fast-forward whenever origin had moved (e.g. right
-    # after a command was queued) and could snowball into a stuck loop.
-    git reset --hard origin/main --quiet
+    # Advance local history to match origin WITHOUT touching unrelated
+    # working-tree files. We deliberately do NOT use `git reset --hard` here:
+    # that unconditionally rewrites every tracked file to match origin, and
+    # if server/ files were ever accidentally left tracked in this repo (see
+    # the checkout step's note above), a hard reset running every ~5s during
+    # a live session could tear a write to server/world/level.dat out from
+    # under the running Minecraft process mid-save — producing exactly a
+    # corrupted/empty level.dat. A fast-forward-only merge only touches files
+    # that actually changed in the new commits (in practice just the
+    # console/ signal files), so it can't touch server/ at all.
+    git merge --ff-only origin/main --quiet 2>/dev/null || true
 
     if [ -s console/command.txt ]; then
       CMD_ID=$(sed -n '1p' console/command.txt)
