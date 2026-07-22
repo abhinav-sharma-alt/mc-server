@@ -1,0 +1,20 @@
+{
+  "java_version": "25",
+  "memory_gb": "10",
+  "server_jar": "server.jar",
+  "launch_mode": "jar",
+  "start_script": "start.sh",
+  "server_port": "25565",
+  "tunnel_address": "read-looking.gl.joinmc.link",
+  "source_type": "jar",
+  "jar_url": "https://piston-data.mojang.com/v1/objects/823e2250d24b3ddac457a60c92a6a941943fcd6a/server.jar",
+  "is_zip": "false",
+  "mrpack_slug": "",
+  "mrpack_version": "",
+  "curseforge_project_id": "",
+  "curseforge_file_id": "",
+  "difficulty": "normal",
+  "gamemode": "survival",
+  "hardcore": "true",
+  "mc_version": "26.2"
+}
