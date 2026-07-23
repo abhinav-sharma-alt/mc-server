@@ -48,6 +48,9 @@ jobs:
             TUNNEL_ADDRESS=$(jq -r '.tunnel_address // ""' "$META")
             CURSEFORGE_PROJECT_ID=$(jq -r '.curseforge_project_id // ""' "$META")
             CURSEFORGE_FILE_ID=$(jq -r '.curseforge_file_id // ""' "$META")
+            HARDCORE=$(jq -r '.hardcore // "false"' "$META")
+            DIFFICULTY=$(jq -r '.difficulty // "normal"' "$META")
+            GAMEMODE=$(jq -r '.gamemode // "survival"' "$META")
           else
             JAVA_VERSION="25"
             MEMORY_GB="10"
@@ -62,6 +65,9 @@ jobs:
             TUNNEL_ADDRESS=""
             CURSEFORGE_PROJECT_ID=""
             CURSEFORGE_FILE_ID=""
+            HARDCORE="false"
+            DIFFICULTY="normal"
+            GAMEMODE="survival"
           fi
           if [ -z "$TUNNEL_ADDRESS" ]; then
             echo "::warning::No tunnel_address configured for '${{ github.event.inputs.modpack }}'. Set one with /modpack configure name: ${{ github.event.inputs.modpack }} tunnel_address: <your-playit-address>."
@@ -79,6 +85,9 @@ jobs:
           echo "tunnel_address=$TUNNEL_ADDRESS" >> "$GITHUB_OUTPUT"
           echo "curseforge_project_id=$CURSEFORGE_PROJECT_ID" >> "$GITHUB_OUTPUT"
           echo "curseforge_file_id=$CURSEFORGE_FILE_ID" >> "$GITHUB_OUTPUT"
+          echo "hardcore=$HARDCORE" >> "$GITHUB_OUTPUT"
+          echo "difficulty=$DIFFICULTY" >> "$GITHUB_OUTPUT"
+          echo "gamemode=$GAMEMODE" >> "$GITHUB_OUTPUT"
 
       - name: Announce tunnel address
         run: |
@@ -360,6 +369,18 @@ jobs:
           touch server/server.properties
           sed -i '/^online-mode=/d' server/server.properties
           echo "online-mode=false" >> server/server.properties
+
+      - name: Enforce hardcore/difficulty/gamemode from meta.json
+        run: |
+          HARDCORE="${{ steps.modpack_meta.outputs.hardcore || 'false' }}"
+          DIFFICULTY="${{ steps.modpack_meta.outputs.difficulty || 'normal' }}"
+          GAMEMODE="${{ steps.modpack_meta.outputs.gamemode || 'survival' }}"
+          touch server/server.properties
+          sed -i '/^hardcore=/d;/^difficulty=/d;/^gamemode=/d' server/server.properties
+          echo "hardcore=$HARDCORE" >> server/server.properties
+          echo "difficulty=$DIFFICULTY" >> server/server.properties
+          echo "gamemode=$GAMEMODE" >> server/server.properties
+          echo "Applied: hardcore=$HARDCORE difficulty=$DIFFICULTY gamemode=$GAMEMODE"
 
       - name: Configure git identity for console polling
         run: |

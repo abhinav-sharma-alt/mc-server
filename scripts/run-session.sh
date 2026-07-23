@@ -5,6 +5,7 @@
 git config core.fileMode false
 
 SESSION_MINUTES=345   # 5h45m — leaves buffer for the commit step after this
+INTENTIONAL_STOP=false   # set true only when we deliberately ask the server to stop (time's up / stop signal). Lets us tell a clean shutdown apart from a crash/OOM.
 
 # Small retrying push for the console/ signal-file commits made throughout
 # this script. These files are ephemeral (not world data), so on conflict we
@@ -105,6 +106,7 @@ LOG_FILE="server/logs/latest.log"   # standard log4j location for vanilla/Paper/
 # problem: every launcher forwards stdin to the real server process.
 graceful_stop() {
   local wait_seconds="${1:-60}"
+  INTENTIONAL_STOP=true
   echo "Sending 'stop' to the server console and waiting up to ${wait_seconds}s..."
   echo "stop" >&3 2>/dev/null || true
 
@@ -236,8 +238,22 @@ done
 if kill -0 "$MC_PID" 2>/dev/null; then
   echo "Time's up — stopping server gracefully..."
   graceful_stop 60
+elif [ "$INTENTIONAL_STOP" != "true" ]; then
+  echo "::warning::Minecraft server process exited on its own before any stop was requested — this looks like a crash or OOM kill, not a clean shutdown. The world may not have saved properly this session. Check server/crash-reports and server/logs in the uploaded artifact for the cause (e.g. -Xmx${MEMORY_GB}G may be too large for this runner's available memory)."
+  if [ -n "$DISCORD_WEBHOOK" ]; then
+    curl -s -H "Content-Type: application/json" \
+      -d "{\"content\": \"⚠️ **Minecraft server crashed unexpectedly** (not a normal stop). Check the run's crash-reports/logs artifact — the world may not have saved cleanly this session.\"}" \
+      "$DISCORD_WEBHOOK" > /dev/null
+  fi
 fi
-wait $MC_PID 2>/dev/null || true
+wait $MC_PID 2>/dev/null
+MC_EXIT_CODE=$?
+echo "Server process exit code: $MC_EXIT_CODE"
+if [ -f "server/world/level.dat" ]; then
+  echo "server/world/level.dat size at shutdown: $(stat -c%s server/world/level.dat 2>/dev/null || echo unknown) bytes"
+else
+  echo "server/world/level.dat does not exist at shutdown."
+fi
 
 # Stop the console poller gracefully instead of hard-killing it, so it isn't
 # caught mid-write/mid-commit on a tracked file (which left the working tree
