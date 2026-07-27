@@ -1,0 +1,2 @@
+81050b3a-9f2a-4a49-a330-6ddf9c4c7c62
+effect give tripathi10 minecraft:hunger
