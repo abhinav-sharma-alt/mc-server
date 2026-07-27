@@ -1,2 +1,0 @@
-6c91e337-177f-40ab-b4ba-efd90bf92437
-effect give tripathi10 minecraft:saturation
