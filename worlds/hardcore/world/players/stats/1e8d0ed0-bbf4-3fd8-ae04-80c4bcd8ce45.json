@@ -1,0 +1,89 @@
+{
+  "stats": {
+    "minecraft:custom": {
+      "minecraft:interact_with_crafting_table": 4,
+      "minecraft:time_since_rest": 345,
+      "minecraft:walk_one_cm": 34589,
+      "minecraft:leave_game": 3,
+      "minecraft:walk_under_water_one_cm": 1634,
+      "minecraft:mob_kills": 6,
+      "minecraft:damage_taken": 450,
+      "minecraft:play_time": 21695,
+      "minecraft:damage_dealt": 563,
+      "minecraft:jump": 166,
+      "minecraft:time_since_death": 283,
+      "minecraft:interact_with_furnace": 10,
+      "minecraft:sprint_one_cm": 40703,
+      "minecraft:fall_one_cm": 3270,
+      "minecraft:total_world_time": 21695,
+      "minecraft:fly_one_cm": 23072,
+      "minecraft:walk_on_water_one_cm": 107,
+      "minecraft:crouch_one_cm": 976,
+      "minecraft:sneak_time": 596,
+      "minecraft:deaths": 1
+    },
+    "minecraft:killed": {
+      "minecraft:chicken": 1,
+      "minecraft:pig": 4,
+      "minecraft:cow": 1
+    },
+    "minecraft:killed_by": {
+      "minecraft:zombie": 1
+    },
+    "minecraft:mined": {
+      "minecraft:short_grass": 1,
+      "minecraft:wildflowers": 4,
+      "minecraft:dirt": 9,
+      "minecraft:birch_log": 27,
+      "minecraft:birch_leaves": 7,
+      "minecraft:birch_planks": 11,
+      "minecraft:coal_ore": 8,
+      "minecraft:grass_block": 4,
+      "minecraft:iron_ore": 3,
+      "minecraft:stone": 24
+    },
+    "minecraft:used": {
+      "minecraft:stone_axe": 24,
+      "minecraft:birch_planks": 21,
+      "minecraft:wooden_axe": 40,
+      "minecraft:crafting_table": 2,
+      "minecraft:wooden_pickaxe": 15,
+      "minecraft:porkchop": 3,
+      "minecraft:furnace": 1,
+      "minecraft:cooked_porkchop": 2,
+      "minecraft:stone_pickaxe": 28,
+      "minecraft:dirt": 23,
+      "minecraft:cobblestone": 3
+    },
+    "minecraft:crafted": {
+      "minecraft:furnace": 1,
+      "minecraft:stick": 8,
+      "minecraft:wooden_axe": 1,
+      "minecraft:wooden_pickaxe": 1,
+      "minecraft:cooked_beef": 3,
+      "minecraft:stone_axe": 1,
+      "minecraft:cooked_chicken": 1,
+      "minecraft:cooked_porkchop": 8,
+      "minecraft:birch_planks": 80,
+      "minecraft:stone_pickaxe": 1,
+      "minecraft:air": 0,
+      "minecraft:crafting_table": 2
+    },
+    "minecraft:picked_up": {
+      "minecraft:egg": 1,
+      "minecraft:porkchop": 11,
+      "minecraft:dirt": 28,
+      "minecraft:cobblestone": 24,
+      "minecraft:feather": 1,
+      "minecraft:wildflowers": 11,
+      "minecraft:chicken": 1,
+      "minecraft:leather": 2,
+      "minecraft:beef": 3,
+      "minecraft:raw_iron": 3,
+      "minecraft:coal": 8,
+      "minecraft:birch_planks": 11,
+      "minecraft:birch_log": 27
+    }
+  },
+  "DataVersion": 4903
+}
