@@ -8,6 +8,7 @@
   "minecraft:adventure/adventuring_time": {
     "criteria": {
       "minecraft:old_growth_birch_forest": "2026-07-28 05:42:20 +0000",
+      "minecraft:windswept_forest": "2026-07-30 04:37:05 +0000",
       "minecraft:river": "2026-07-28 05:42:16 +0000",
       "minecraft:birch_forest": "2026-07-27 13:11:25 +0000"
     },

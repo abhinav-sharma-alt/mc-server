@@ -1,0 +1,53 @@
+{
+  "minecraft:recipes/decorations/crafting_table": {
+    "criteria": {
+      "unlock_right_away": "2026-07-30 04:54:56 +0000"
+    },
+    "done": true
+  },
+  "minecraft:adventure/adventuring_time": {
+    "criteria": {
+      "minecraft:beach": "2026-07-30 05:01:01 +0000",
+      "minecraft:old_growth_pine_taiga": "2026-07-30 04:59:39 +0000",
+      "minecraft:dark_forest": "2026-07-30 04:59:25 +0000",
+      "minecraft:forest": "2026-07-30 04:57:38 +0000",
+      "minecraft:taiga": "2026-07-30 05:00:06 +0000",
+      "minecraft:deep_ocean": "2026-07-30 04:56:28 +0000",
+      "minecraft:river": "2026-07-30 04:57:34 +0000",
+      "minecraft:lush_caves": "2026-07-30 04:56:26 +0000",
+      "minecraft:old_growth_birch_forest": "2026-07-30 04:57:35 +0000",
+      "minecraft:sulfur_caves": "2026-07-30 04:55:41 +0000",
+      "minecraft:windswept_forest": "2026-07-30 04:56:15 +0000",
+      "minecraft:ocean": "2026-07-30 04:56:29 +0000",
+      "minecraft:swamp": "2026-07-30 05:00:08 +0000",
+      "minecraft:birch_forest": "2026-07-30 04:54:57 +0000",
+      "minecraft:old_growth_spruce_taiga": "2026-07-30 04:59:56 +0000"
+    },
+    "done": false
+  },
+  "minecraft:recipes/building_blocks/birch_wood": {
+    "criteria": {
+      "has_log": "2026-07-30 04:55:25 +0000"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/birch_planks": {
+    "criteria": {
+      "has_logs": "2026-07-30 04:55:25 +0000"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/charcoal": {
+    "criteria": {
+      "has_log": "2026-07-30 04:55:25 +0000"
+    },
+    "done": true
+  },
+  "minecraft:adventure/minecraft_trials_edition": {
+    "criteria": {
+      "minecraft_trials_edition": "2026-07-30 05:01:43 +0000"
+    },
+    "done": true
+  },
+  "DataVersion": 4903
+}

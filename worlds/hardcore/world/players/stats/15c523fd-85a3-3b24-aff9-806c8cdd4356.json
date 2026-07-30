@@ -1,36 +1,46 @@
 {
   "stats": {
-    "minecraft:custom": {
-      "minecraft:interact_with_crafting_table": 3,
-      "minecraft:time_since_rest": 8035,
-      "minecraft:walk_one_cm": 27452,
-      "minecraft:leave_game": 2,
-      "minecraft:walk_under_water_one_cm": 4375,
-      "minecraft:mob_kills": 1,
-      "minecraft:damage_taken": 45,
-      "minecraft:damage_dealt": 40,
-      "minecraft:play_time": 8035,
-      "minecraft:jump": 100,
-      "minecraft:time_since_death": 8035,
-      "minecraft:interact_with_furnace": 1,
-      "minecraft:sprint_one_cm": 32748,
-      "minecraft:fall_one_cm": 1540,
-      "minecraft:swim_one_cm": 2414,
-      "minecraft:total_world_time": 8035,
-      "minecraft:fly_one_cm": 17493,
-      "minecraft:walk_on_water_one_cm": 1703,
-      "minecraft:sneak_time": 70
+    "minecraft:mined": {
+      "minecraft:red_mushroom_block": 5,
+      "minecraft:oak_leaves": 1,
+      "minecraft:furnace": 1,
+      "minecraft:crafting_table": 1,
+      "minecraft:birch_log": 2,
+      "minecraft:leaf_litter": 1
+    },
+    "minecraft:crafted": {
+      "minecraft:iron_ingot": 7,
+      "minecraft:birch_planks": 8
+    },
+    "minecraft:killed_by": {
+      "minecraft:skeleton": 1
+    },
+    "minecraft:picked_up": {
+      "minecraft:egg": 1,
+      "minecraft:dirt": 6,
+      "minecraft:cobblestone": 1,
+      "minecraft:cooked_beef": 6,
+      "minecraft:feather": 3,
+      "minecraft:wildflowers": 11,
+      "minecraft:chicken": 1,
+      "minecraft:leather": 2,
+      "minecraft:cooked_porkchop": 6,
+      "minecraft:crafting_table": 1,
+      "minecraft:arrow": 1,
+      "minecraft:red_mushroom": 1,
+      "minecraft:cooked_chicken": 1,
+      "minecraft:leaf_litter": 2,
+      "minecraft:stone_pickaxe": 2,
+      "minecraft:stone_axe": 2,
+      "minecraft:furnace": 1,
+      "minecraft:birch_planks": 25,
+      "minecraft:birch_log": 2
     },
     "minecraft:killed": {
       "minecraft:chicken": 1
     },
-    "minecraft:mined": {
-      "minecraft:furnace": 1,
-      "minecraft:crafting_table": 1,
-      "minecraft:birch_log": 2
-    },
     "minecraft:used": {
-      "minecraft:stone_axe": 4,
+      "minecraft:stone_axe": 11,
       "minecraft:birch_planks": 21,
       "minecraft:crafting_table": 1,
       "minecraft:stone_pickaxe": 1,
@@ -38,27 +48,28 @@
       "minecraft:cooked_chicken": 1,
       "minecraft:cobblestone": 1
     },
-    "minecraft:crafted": {
-      "minecraft:iron_ingot": 7,
-      "minecraft:birch_planks": 8
-    },
-    "minecraft:picked_up": {
-      "minecraft:egg": 1,
-      "minecraft:dirt": 6,
-      "minecraft:cobblestone": 1,
-      "minecraft:cooked_beef": 3,
-      "minecraft:feather": 3,
-      "minecraft:wildflowers": 11,
-      "minecraft:chicken": 1,
-      "minecraft:leather": 2,
-      "minecraft:cooked_porkchop": 6,
-      "minecraft:crafting_table": 1,
-      "minecraft:cooked_chicken": 1,
-      "minecraft:stone_pickaxe": 1,
-      "minecraft:stone_axe": 2,
-      "minecraft:furnace": 1,
-      "minecraft:birch_planks": 25,
-      "minecraft:birch_log": 2
+    "minecraft:custom": {
+      "minecraft:interact_with_crafting_table": 3,
+      "minecraft:time_since_rest": 663,
+      "minecraft:walk_one_cm": 33505,
+      "minecraft:leave_game": 3,
+      "minecraft:walk_under_water_one_cm": 6127,
+      "minecraft:mob_kills": 1,
+      "minecraft:damage_taken": 255,
+      "minecraft:play_time": 11259,
+      "minecraft:damage_dealt": 40,
+      "minecraft:jump": 158,
+      "minecraft:time_since_death": 0,
+      "minecraft:interact_with_furnace": 1,
+      "minecraft:sprint_one_cm": 40493,
+      "minecraft:fall_one_cm": 3122,
+      "minecraft:total_world_time": 11259,
+      "minecraft:swim_one_cm": 2496,
+      "minecraft:fly_one_cm": 26908,
+      "minecraft:walk_on_water_one_cm": 3634,
+      "minecraft:crouch_one_cm": 7,
+      "minecraft:sneak_time": 82,
+      "minecraft:deaths": 1
     }
   },
   "DataVersion": 4903

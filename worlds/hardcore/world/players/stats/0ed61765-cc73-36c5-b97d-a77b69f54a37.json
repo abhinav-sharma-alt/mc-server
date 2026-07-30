@@ -1,0 +1,65 @@
+{
+  "stats": {
+    "minecraft:crafted": {
+      "minecraft:stick": 4,
+      "minecraft:copper_boots": 1,
+      "minecraft:copper_helmet": 2,
+      "minecraft:birch_planks": 56,
+      "minecraft:cooked_mutton": 6,
+      "minecraft:copper_pickaxe": 1,
+      "minecraft:air": 0
+    },
+    "minecraft:dropped": {
+      "minecraft:copper_helmet": 1
+    },
+    "minecraft:picked_up": {
+      "minecraft:wooden_pickaxe": 2,
+      "minecraft:birch_sapling": 1,
+      "minecraft:cooked_beef": 5,
+      "minecraft:torch": 1,
+      "minecraft:arrow": 1,
+      "minecraft:copper_chestplate": 1,
+      "minecraft:bone": 1,
+      "minecraft:copper_leggings": 1,
+      "minecraft:stone_pickaxe": 2,
+      "minecraft:copper_ingot": 17,
+      "minecraft:stone_axe": 1,
+      "minecraft:birch_log": 14,
+      "minecraft:gunpowder": 2
+    },
+    "minecraft:killed": {
+      "minecraft:skeleton": 1
+    },
+    "minecraft:custom": {
+      "minecraft:interact_with_crafting_table": 3,
+      "minecraft:time_since_rest": 190,
+      "minecraft:walk_one_cm": 55054,
+      "minecraft:leave_game": 3,
+      "minecraft:mob_kills": 1,
+      "minecraft:walk_under_water_one_cm": 1624,
+      "minecraft:damage_taken": 639,
+      "minecraft:damage_dealt": 221,
+      "minecraft:play_time": 14125,
+      "minecraft:jump": 209,
+      "minecraft:time_since_death": 74,
+      "minecraft:drop": 1,
+      "minecraft:interact_with_furnace": 10,
+      "minecraft:sprint_one_cm": 39728,
+      "minecraft:fall_one_cm": 4946,
+      "minecraft:swim_one_cm": 2214,
+      "minecraft:total_world_time": 14125,
+      "minecraft:fly_one_cm": 12587,
+      "minecraft:walk_on_water_one_cm": 834,
+      "minecraft:sneak_time": 3,
+      "minecraft:deaths": 1
+    },
+    "minecraft:used": {
+      "minecraft:stone_axe": 9,
+      "minecraft:birch_planks": 6,
+      "minecraft:cooked_beef": 2,
+      "minecraft:cooked_mutton": 3,
+      "minecraft:torch": 1
+    }
+  },
+  "DataVersion": 4903
+}
