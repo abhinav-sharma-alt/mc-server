@@ -1,2 +1,0 @@
-3465e373-3af4-4863-86b9-998591260172
-say keepInventory is set to: False
