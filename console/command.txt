@@ -1,2 +1,0 @@
-125c264b-859e-4ed7-a113-7d2a2751da09
-gamerule mobGriefing true
