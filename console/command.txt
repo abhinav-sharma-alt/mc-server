@@ -1,2 +1,0 @@
-8a216550-743e-46de-ae44-764c3ff2144b
-gamerule doMobGriefing true
