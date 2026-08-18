@@ -4198,18 +4198,6 @@
     },
     "done": true
   },
-  "minecraft:husbandry/place_dried_ghast_in_water": {
-    "criteria": {
-      "place_dried_ghast_in_water": "2026-08-18 10:16:20 +0000"
-    },
-    "done": true
-  },
-  "minecraft:recipes/decorations/pink_bed": {
-    "criteria": {
-      "has_pink_wool": "2026-08-18 10:26:29 +0000"
-    },
-    "done": true
-  },
   "minecraft:recipes/decorations/crimson_fence": {
     "criteria": {
       "has_planks": "2026-08-18 10:12:49 +0000"
@@ -4222,6 +4210,18 @@
     },
     "done": true
   },
+  "minecraft:husbandry/place_dried_ghast_in_water": {
+    "criteria": {
+      "place_dried_ghast_in_water": "2026-08-18 10:16:20 +0000"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/pink_bed": {
+    "criteria": {
+      "has_pink_wool": "2026-08-18 10:26:29 +0000"
+    },
+    "done": true
+  },
   "minecraft:recipes/decorations/pink_carpet": {
     "criteria": {
       "has_pink_wool": "2026-08-18 10:26:29 +0000"
@@ -4231,6 +4231,12 @@
   "minecraft:recipes/decorations/pink_banner": {
     "criteria": {
       "has_pink_wool": "2026-08-18 10:26:29 +0000"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/red_dye_from_rose_bush": {
+    "criteria": {
+      "has_rose_bush": "2026-08-18 19:34:30 +0000"
     },
     "done": true
   },
