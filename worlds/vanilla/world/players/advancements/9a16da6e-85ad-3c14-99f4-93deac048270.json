@@ -4278,6 +4278,12 @@
     },
     "done": true
   },
+  "minecraft:adventure/who_needs_rockets": {
+    "criteria": {
+      "who_needs_rockets": "2026-08-27 14:23:46 +0000"
+    },
+    "done": true
+  },
   "minecraft:recipes/decorations/stone_brick_wall": {
     "criteria": {
       "has_stone_bricks": "2026-08-27 14:31:17 +0000"
@@ -4314,9 +4320,33 @@
     },
     "done": true
   },
-  "minecraft:adventure/who_needs_rockets": {
+  "minecraft:nether/distract_piglin": {
     "criteria": {
-      "who_needs_rockets": "2026-08-27 14:23:46 +0000"
+      "distract_piglin": "2026-08-29 08:16:03 +0000"
+    },
+    "done": true
+  },
+  "minecraft:nether/obtain_crying_obsidian": {
+    "criteria": {
+      "crying_obsidian": "2026-08-29 08:17:22 +0000"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/respawn_anchor": {
+    "criteria": {
+      "has_obsidian": "2026-08-29 08:17:22 +0000"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/nether_bricks": {
+    "criteria": {
+      "has_nether_brick": "2026-08-29 08:17:35 +0000"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/iron_ingot_from_nuggets": {
+    "criteria": {
+      "has_iron_nugget": "2026-08-29 08:18:05 +0000"
     },
     "done": true
   },
