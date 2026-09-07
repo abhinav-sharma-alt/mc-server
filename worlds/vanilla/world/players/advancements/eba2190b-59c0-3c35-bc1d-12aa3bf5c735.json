@@ -2782,6 +2782,24 @@
     },
     "done": true
   },
+  "minecraft:recipes/decorations/oak_hanging_sign": {
+    "criteria": {
+      "has_stripped_log": "2026-08-29 15:55:31 +0000"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/oak_shelf": {
+    "criteria": {
+      "has_stripped_oak_log": "2026-08-29 15:55:31 +0000"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/stripped_oak_wood": {
+    "criteria": {
+      "has_log": "2026-08-29 15:55:31 +0000"
+    },
+    "done": true
+  },
   "minecraft:recipes/decorations/lime_stained_glass_pane_from_glass_pane": {
     "criteria": {
       "has_glass_pane": "2026-08-29 15:56:29 +0000"
@@ -2818,12 +2836,6 @@
     },
     "done": true
   },
-  "minecraft:recipes/decorations/oak_hanging_sign": {
-    "criteria": {
-      "has_stripped_log": "2026-08-29 15:55:31 +0000"
-    },
-    "done": true
-  },
   "minecraft:recipes/decorations/green_stained_glass_pane_from_glass_pane": {
     "criteria": {
       "has_glass_pane": "2026-08-29 15:56:29 +0000"
@@ -2839,12 +2851,6 @@
   "minecraft:recipes/decorations/white_stained_glass_pane_from_glass_pane": {
     "criteria": {
       "has_glass_pane": "2026-08-29 15:56:29 +0000"
-    },
-    "done": true
-  },
-  "minecraft:recipes/decorations/oak_shelf": {
-    "criteria": {
-      "has_stripped_oak_log": "2026-08-29 15:55:31 +0000"
     },
     "done": true
   },
@@ -2887,12 +2893,6 @@
   "minecraft:recipes/decorations/cyan_stained_glass_pane_from_glass_pane": {
     "criteria": {
       "has_glass_pane": "2026-08-29 15:56:29 +0000"
-    },
-    "done": true
-  },
-  "minecraft:recipes/building_blocks/stripped_oak_wood": {
-    "criteria": {
-      "has_log": "2026-08-29 15:55:31 +0000"
     },
     "done": true
   },
