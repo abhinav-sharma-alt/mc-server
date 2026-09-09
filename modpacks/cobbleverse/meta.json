@@ -1,0 +1,20 @@
+{
+  "java_version": "25",
+  "memory_gb": "10",
+  "server_jar": "server.jar",
+  "launch_mode": "jar",
+  "start_script": "start.sh",
+  "server_port": "25565",
+  "tunnel_address": "film-alaska.gl.joinmc.link",
+  "source_type": "mrpack",
+  "jar_url": "",
+  "is_zip": "true",
+  "mrpack_slug": "cobbleverse",
+  "mrpack_version": "",
+  "curseforge_project_id": "",
+  "curseforge_file_id": "",
+  "difficulty": "normal",
+  "gamemode": "survival",
+  "hardcore": "false",
+  "mc_version": "latest"
+}
