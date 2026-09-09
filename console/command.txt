@@ -1,2 +1,0 @@
-ec67b6fe-72b2-4cc6-91a9-ed14258e2a32
-gamerule keepTnventory true
