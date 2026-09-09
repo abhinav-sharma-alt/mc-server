@@ -1,0 +1,2 @@
+5c2e3d43-1e8d-4e43-aeaa-1573e44cb7f9
+gamerule keepinventory true
