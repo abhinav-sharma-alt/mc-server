@@ -1,0 +1,67 @@
+{
+  "uuid": "eba2190b-59c0-3c35-bc1d-12aa3bf5c735",
+  "starterPrompted": true,
+  "starterLocked": false,
+  "starterSelected": true,
+  "starterUUID": "6e84cee6-4ce4-4e5c-9cd6-59e65d140324",
+  "keyItems": [],
+  "battleTheme": "cobblemon:battle.pvp.default",
+  "extraData": {},
+  "advancementData": {
+    "totalCaptureCount": 4,
+    "totalEggsCollected": 0,
+    "totalEggsHatched": 0,
+    "totalEvolvedCount": 1,
+    "totalBattleVictoryCount": 21,
+    "totalPvPBattleVictoryCount": 0,
+    "totalPvWBattleVictoryCount": 16,
+    "totalPvNBattleVictoryCount": 5,
+    "totalShinyCaptureCount": 0,
+    "totalTradedCount": 0,
+    "totalTypeCaptureCounts": {
+      "fire": 1,
+      "flying": 1,
+      "water": 1,
+      "normal": 1,
+      "fighting": 1
+    },
+    "totalDefeatedCounts": {
+      "cobblemon:snubbull": 1,
+      "cobblemon:patrat": 1,
+      "cobblemon:ledyba": 2,
+      "cobblemon:meowth": 1,
+      "cobblemon:wingull": 1,
+      "cobblemon:combee": 2,
+      "cobblemon:remoraid": 1,
+      "cobblemon:pidove": 1,
+      "cobblemon:taillow": 1,
+      "cobblemon:lechonk": 1
+    },
+    "aspectsCollected": {
+      "cobblemon:fletchinder": [
+        "male",
+        "bucket-common"
+      ],
+      "cobblemon:magikarp": [
+        "female",
+        "bucket-common",
+        "magikarp-jump-standard",
+        "gyarados-eye-color-red"
+      ],
+      "cobblemon:eevee": [
+        "male",
+        "bucket-uncommon"
+      ],
+      "cobblemon:pancham": [
+        "female",
+        "bucket-common"
+      ],
+      "cobblemon:gyarados": [
+        "female",
+        "bucket-common",
+        "magikarp-jump-standard",
+        "gyarados-eye-color-red"
+      ]
+    }
+  }
+}

@@ -1,0 +1,104 @@
+{
+  "uuid": "bebd059b-604b-3532-bcfe-d7581f697fd2",
+  "starterPrompted": true,
+  "starterLocked": false,
+  "starterSelected": true,
+  "starterUUID": "fc6dd49c-35f4-4c2b-96b3-aa595a5eece1",
+  "keyItems": [],
+  "battleTheme": "cobblemon:battle.pvp.default",
+  "extraData": {},
+  "advancementData": {
+    "totalCaptureCount": 10,
+    "totalEggsCollected": 0,
+    "totalEggsHatched": 0,
+    "totalEvolvedCount": 3,
+    "totalBattleVictoryCount": 28,
+    "totalPvPBattleVictoryCount": 0,
+    "totalPvWBattleVictoryCount": 26,
+    "totalPvNBattleVictoryCount": 2,
+    "totalShinyCaptureCount": 0,
+    "totalTradedCount": 0,
+    "totalTypeCaptureCounts": {
+      "ground": 1,
+      "dark": 1,
+      "fire": 4,
+      "normal": 2,
+      "fairy": 1,
+      "steel": 1,
+      "flying": 2,
+      "water": 1,
+      "electric": 1
+    },
+    "totalDefeatedCounts": {
+      "cobblemon:ralts": 1,
+      "cobblemon:tinkatink": 1,
+      "cobblemon:taillow": 2,
+      "cobblemon:miltank": 1,
+      "cobblemon:meowth": 1,
+      "cobblemon:furret": 1,
+      "cobblemon:granbull": 1,
+      "cobblemon:butterfree": 1,
+      "cobblemon:spearow": 1,
+      "cobblemon:magikarp": 2,
+      "cobblemon:pidgey": 1,
+      "cobblemon:wooloo": 1,
+      "cobblemon:ledyba": 1,
+      "cobblemon:combee": 1,
+      "cobblemon:gimmighoul": 1
+    },
+    "aspectsCollected": {
+      "cobblemon:sandile": [
+        "female",
+        "bucket-common"
+      ],
+      "cobblemon:raboot": [
+        "male",
+        "bucket-ultra-rare"
+      ],
+      "cobblemon:cinderace": [
+        "male",
+        "bucket-ultra-rare"
+      ],
+      "cobblemon:eevee": [
+        "male",
+        "bucket-rare"
+      ],
+      "cobblemon:growlithe": [
+        "male",
+        "bucket-uncommon"
+      ],
+      "cobblemon:tinkatink": [
+        "female",
+        "bucket-common"
+      ],
+      "cobblemon:torchic": [
+        "female",
+        "bucket-ultra-rare"
+      ],
+      "cobblemon:taillow": [
+        "male",
+        "bucket-common"
+      ],
+      "cobblemon:swellow": [
+        "male",
+        "bucket-common"
+      ],
+      "cobblemon:buizel": [
+        "female",
+        "bucket-common"
+      ],
+      "cobblemon:tepig": [
+        "male",
+        "bucket-ultra-rare"
+      ],
+      "cobblemon:wattrel": [
+        "female",
+        "bucket-uncommon"
+      ],
+      "cobblemon:kilowattrel": [
+        "female",
+        "bucket-uncommon"
+      ]
+    }
+  }
+}

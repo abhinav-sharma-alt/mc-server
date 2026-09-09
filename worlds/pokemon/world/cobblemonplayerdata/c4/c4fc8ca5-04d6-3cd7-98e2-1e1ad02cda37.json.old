@@ -1,0 +1,55 @@
+{
+  "uuid": "c4fc8ca5-04d6-3cd7-98e2-1e1ad02cda37",
+  "starterPrompted": true,
+  "starterLocked": false,
+  "starterSelected": true,
+  "starterUUID": "149c7945-d150-43ae-bd5d-464593cd3dbf",
+  "keyItems": [],
+  "battleTheme": "cobblemon:battle.pvp.default",
+  "extraData": {},
+  "advancementData": {
+    "totalCaptureCount": 3,
+    "totalEggsCollected": 0,
+    "totalEggsHatched": 0,
+    "totalEvolvedCount": 1,
+    "totalBattleVictoryCount": 10,
+    "totalPvPBattleVictoryCount": 0,
+    "totalPvWBattleVictoryCount": 8,
+    "totalPvNBattleVictoryCount": 2,
+    "totalShinyCaptureCount": 0,
+    "totalTradedCount": 0,
+    "totalTypeCaptureCounts": {
+      "poison": 1,
+      "water": 1,
+      "psychic": 1,
+      "fairy": 1,
+      "normal": 1
+    },
+    "totalDefeatedCounts": {
+      "cobblemon:hippopotas": 1,
+      "cobblemon:ledyba": 1,
+      "cobblemon:meowth": 1,
+      "cobblemon:glameow": 1,
+      "cobblemon:bunnelby": 1
+    },
+    "aspectsCollected": {
+      "cobblemon:mareanie": [
+        "female",
+        "bucket-uncommon"
+      ],
+      "cobblemon:ralts": [
+        "male",
+        "bucket-rare"
+      ],
+      "cobblemon:eevee": [
+        "male",
+        "bucket-rare"
+      ],
+      "cobblemon:frogadier": [
+        "shiny",
+        "male",
+        "bucket-"
+      ]
+    }
+  }
+}
