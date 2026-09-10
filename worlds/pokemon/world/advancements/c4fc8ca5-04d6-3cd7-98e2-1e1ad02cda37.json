@@ -15,8 +15,10 @@
     "criteria": {
       "minecraft:cold_ocean": "2026-09-09 16:56:19 +0000",
       "minecraft:snowy_slopes": "2026-09-10 09:24:01 +0000",
+      "minecraft:old_growth_pine_taiga": "2026-09-10 16:53:04 +0000",
       "minecraft:forest": "2026-09-09 16:24:21 +0000",
       "minecraft:taiga": "2026-09-09 16:51:26 +0000",
+      "minecraft:lush_caves": "2026-09-10 17:13:03 +0000",
       "minecraft:ice_spikes": "2026-09-10 09:21:51 +0000",
       "minecraft:frozen_ocean": "2026-09-10 08:59:03 +0000",
       "minecraft:desert": "2026-09-09 15:20:03 +0000",
@@ -918,6 +920,7 @@
       "obtain_babiri_berry": "2026-09-10 07:43:18 +0000",
       "obtain_coba_berry": "2026-09-09 16:27:46 +0000",
       "obtain_oran_berry": "2026-09-09 15:30:47 +0000",
+      "obtain_wacan_berry": "2026-09-10 17:28:05 +0000",
       "obtain_wepear_berry": "2026-09-09 17:38:50 +0000"
     },
     "done": false
@@ -10342,6 +10345,7 @@
       "dive_ball": "2026-09-10 08:53:21 +0000",
       "level_ball": "2026-09-10 07:10:06 +0000",
       "friend_ball": "2026-09-09 17:36:12 +0000",
+      "sport_ball": "2026-09-10 17:28:08 +0000",
       "heavy_ball": "2026-09-10 08:25:17 +0000"
     },
     "done": false
@@ -25647,19 +25651,79 @@
     },
     "done": true
   },
-  "cobblemon:trade_pokemon": {
-    "criteria": {
-      "trade": "2026-09-10 09:50:21 +0000"
-    },
-    "done": true
-  },
   "minecraft:recipes/redstone/lectern": {
     "criteria": {
       "has_book": "2026-09-10 07:10:04 +0000"
     },
     "done": true
   },
+  "minecraft:recipes/decorations/chiseled_bookshelf": {
+    "criteria": {
+      "has_book": "2026-09-10 07:10:04 +0000"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/lectern": {
+    "criteria": {
+      "has_book": "2026-09-10 07:10:04 +0000"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/bookshelf": {
+    "criteria": {
+      "has_book": "2026-09-10 07:10:04 +0000"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/chiseled_bookshelf": {
+    "criteria": {
+      "has_book": "2026-09-10 07:10:04 +0000"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/bookshelf": {
+    "criteria": {
+      "has_book": "2026-09-10 07:10:04 +0000"
+    },
+    "done": true
+  },
+  "cobblemon:craft_ancient_balls": {
+    "criteria": {
+      "ancient_azure_ball": "2026-09-10 07:10:07 +0000"
+    },
+    "done": false
+  },
   "moarconcrete:recipes/building_blocks/white_concrete_stairs_from_white_concrete_stonecutting": {
+    "criteria": {
+      "has_white_concrete": "2026-09-10 07:14:27 +0000"
+    },
+    "done": true
+  },
+  "moarconcrete:recipes/building_blocks/white_concrete_panel_from_white_concrete_stonecutting": {
+    "criteria": {
+      "has_white_concrete": "2026-09-10 07:14:27 +0000"
+    },
+    "done": true
+  },
+  "moarconcrete:recipes/building_blocks/white_concrete_slab_from_white_concrete_stonecutting": {
+    "criteria": {
+      "has_white_concrete": "2026-09-10 07:14:27 +0000"
+    },
+    "done": true
+  },
+  "moarconcrete:recipes/building_blocks/white_concrete_bricks_from_white_concrete_stonecutting": {
+    "criteria": {
+      "has_white_concrete": "2026-09-10 07:14:27 +0000"
+    },
+    "done": true
+  },
+  "moarconcrete:recipes/building_blocks/white_concrete_wall_from_white_concrete_stonecutting": {
+    "criteria": {
+      "has_white_concrete": "2026-09-10 07:14:27 +0000"
+    },
+    "done": true
+  },
+  "moarconcrete:recipes/building_blocks/white_concrete_brick_slab_from_white_concrete_stonecutting": {
     "criteria": {
       "has_white_concrete": "2026-09-10 07:14:27 +0000"
     },
@@ -25671,27 +25735,9 @@
     },
     "done": true
   },
-  "minecraft:story/form_obsidian": {
-    "criteria": {
-      "obsidian": "2026-09-10 08:48:20 +0000"
-    },
-    "done": true
-  },
-  "minecraft:recipes/decorations/chiseled_bookshelf": {
-    "criteria": {
-      "has_book": "2026-09-10 07:10:04 +0000"
-    },
-    "done": true
-  },
   "moarconcrete:recipes/building_blocks/red_concrete_brick_slab_from_red_concrete_stonecutting": {
     "criteria": {
       "has_red_concrete": "2026-09-10 07:16:58 +0000"
-    },
-    "done": true
-  },
-  "minecraft:story/mine_diamond": {
-    "criteria": {
-      "diamond": "2026-09-10 09:42:21 +0000"
     },
     "done": true
   },
@@ -25701,87 +25747,15 @@
     },
     "done": true
   },
-  "minecraft:recipes/decorations/lectern": {
-    "criteria": {
-      "has_book": "2026-09-10 07:10:04 +0000"
-    },
-    "done": true
-  },
-  "cobbleverse:trainer/kanto/defeat_misty": {
-    "criteria": {
-      "leader_defeated": "2026-09-10 12:11:01 +0000"
-    },
-    "done": true
-  },
-  "cobblemonraiddens:join_raid": {
-    "criteria": {
-      "joined_raid": "2026-09-10 10:29:10 +0000"
-    },
-    "done": true
-  },
-  "cobblemon:full_party": {
-    "criteria": {
-      "full_party": "2026-09-10 08:08:03 +0000"
-    },
-    "done": true
-  },
-  "minecraft:recipes/building_blocks/bookshelf": {
-    "criteria": {
-      "has_book": "2026-09-10 07:10:04 +0000"
-    },
-    "done": true
-  },
-  "moarconcrete:recipes/building_blocks/white_concrete_panel_from_white_concrete_stonecutting": {
-    "criteria": {
-      "has_white_concrete": "2026-09-10 07:14:27 +0000"
-    },
-    "done": true
-  },
-  "minecraft:recipes/building_blocks/chiseled_bookshelf": {
-    "criteria": {
-      "has_book": "2026-09-10 07:10:04 +0000"
-    },
-    "done": true
-  },
-  "moarconcrete:recipes/building_blocks/white_concrete_slab_from_white_concrete_stonecutting": {
-    "criteria": {
-      "has_white_concrete": "2026-09-10 07:14:27 +0000"
-    },
-    "done": true
-  },
   "moarconcrete:recipes/building_blocks/red_concrete_stairs_from_red_concrete_stonecutting": {
     "criteria": {
       "has_red_concrete": "2026-09-10 07:16:58 +0000"
     },
     "done": true
   },
-  "moarconcrete:recipes/building_blocks/white_concrete_bricks_from_white_concrete_stonecutting": {
-    "criteria": {
-      "has_white_concrete": "2026-09-10 07:14:27 +0000"
-    },
-    "done": true
-  },
-  "cobblemon:craft_ancient_balls": {
-    "criteria": {
-      "ancient_azure_ball": "2026-09-10 07:10:07 +0000"
-    },
-    "done": false
-  },
   "moarconcrete:recipes/building_blocks/red_concrete_wall_from_red_concrete_stonecutting": {
     "criteria": {
       "has_red_concrete": "2026-09-10 07:16:58 +0000"
-    },
-    "done": true
-  },
-  "minecraft:recipes/decorations/bookshelf": {
-    "criteria": {
-      "has_book": "2026-09-10 07:10:04 +0000"
-    },
-    "done": true
-  },
-  "moarconcrete:recipes/building_blocks/white_concrete_wall_from_white_concrete_stonecutting": {
-    "criteria": {
-      "has_white_concrete": "2026-09-10 07:14:27 +0000"
     },
     "done": true
   },
@@ -25791,9 +25765,117 @@
     },
     "done": true
   },
-  "moarconcrete:recipes/building_blocks/white_concrete_brick_slab_from_white_concrete_stonecutting": {
+  "cobblemon:full_party": {
     "criteria": {
-      "has_white_concrete": "2026-09-10 07:14:27 +0000"
+      "full_party": "2026-09-10 08:08:03 +0000"
+    },
+    "done": true
+  },
+  "minecraft:story/form_obsidian": {
+    "criteria": {
+      "obsidian": "2026-09-10 08:48:20 +0000"
+    },
+    "done": true
+  },
+  "minecraft:story/mine_diamond": {
+    "criteria": {
+      "diamond": "2026-09-10 09:42:21 +0000"
+    },
+    "done": true
+  },
+  "cobblemon:trade_pokemon": {
+    "criteria": {
+      "trade": "2026-09-10 09:50:21 +0000"
+    },
+    "done": true
+  },
+  "cobblemonraiddens:join_raid": {
+    "criteria": {
+      "joined_raid": "2026-09-10 10:29:10 +0000"
+    },
+    "done": true
+  },
+  "cobbleverse:trainer/kanto/defeat_misty": {
+    "criteria": {
+      "leader_defeated": "2026-09-10 12:11:01 +0000"
+    },
+    "done": true
+  },
+  "minecraft:nether/explore_nether": {
+    "criteria": {
+      "minecraft:crimson_forest": "2026-09-10 18:08:17 +0000",
+      "minecraft:nether_wastes": "2026-09-10 18:13:58 +0000",
+      "minecraft:soul_sand_valley": "2026-09-10 18:14:11 +0000"
+    },
+    "done": false
+  },
+  "cobblemon:evolve_veevees": {
+    "criteria": {
+      "evolve_sylveon": "2026-09-10 17:23:26 +0000"
+    },
+    "done": false
+  },
+  "cobblemon:obtain_mint": {
+    "criteria": {
+      "check_inv": "2026-09-10 17:25:24 +0000"
+    },
+    "done": true
+  },
+  "cobblemon:obtain_all_mints": {
+    "criteria": {
+      "obtain_green_mint_leaf": "2026-09-10 17:25:24 +0000",
+      "obtain_cyan_mint_leaf": "2026-09-10 17:25:24 +0000",
+      "obtain_red_mint_leaf": "2026-09-10 17:32:07 +0000",
+      "obtain_blue_mint_leaf": "2026-09-10 17:32:33 +0000"
+    },
+    "done": false
+  },
+  "minecraft:story/obtain_armor": {
+    "criteria": {
+      "iron_helmet": "2026-09-10 18:16:33 +0000"
+    },
+    "done": true
+  },
+  "minecraft:story/enter_the_nether": {
+    "criteria": {
+      "entered_nether": "2026-09-10 18:08:17 +0000"
+    },
+    "done": true
+  },
+  "cobblemonraiddens:great_friend": {
+    "criteria": {
+      "defense_cheer": "2026-09-10 16:32:32 +0000",
+      "heal_cheer": "2026-09-10 16:33:02 +0000"
+    },
+    "done": false
+  },
+  "minecraft:husbandry/root": {
+    "criteria": {
+      "consumed_item": "2026-09-10 16:32:32 +0000"
+    },
+    "done": true
+  },
+  "cobblemon:ride_pokemon": {
+    "criteria": {
+      "check_inv": "2026-09-10 16:35:23 +0000"
+    },
+    "done": true
+  },
+  "minecraft:nether/root": {
+    "criteria": {
+      "entered_nether": "2026-09-10 18:08:17 +0000"
+    },
+    "done": true
+  },
+  "minecraft:nether/get_wither_skull": {
+    "criteria": {
+      "wither_skull": "2026-09-10 17:00:46 +0000"
+    },
+    "done": true
+  },
+  "mega_showdown:mega_showdown/dynamax/find_dynamax_structure": {
+    "criteria": {
+      "in_dynamax_structure": "2026-09-10 17:10:31 +0000"
     },
     "done": true
   },

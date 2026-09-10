@@ -1862,6 +1862,7 @@
   "cobblemon:craft_base_balls": {
     "criteria": {
       "roseate_ball": "2026-09-09 17:45:09 +0000",
+      "slate_ball": "2026-09-10 17:14:56 +0000",
       "poke_ball": "2026-09-09 15:25:00 +0000",
       "premier_ball": "2026-09-09 17:14:15 +0000",
       "azure_ball": "2026-09-09 17:02:23 +0000",
@@ -10492,6 +10493,7 @@
       "great_ball": "2026-09-09 17:14:14 +0000",
       "ancient_wing_ball": "2026-09-09 16:48:57 +0000",
       "timer_ball": "2026-09-09 17:17:53 +0000",
+      "slate_ball": "2026-09-10 17:14:56 +0000",
       "ancient_verdant_ball": "2026-09-09 17:01:39 +0000",
       "ancient_poke_ball": "2026-09-09 16:48:50 +0000",
       "poke_ball": "2026-09-09 15:25:00 +0000",
@@ -25590,6 +25592,60 @@
   "cobblemon:first_evolution": {
     "criteria": {
       "evolve": "2026-09-09 17:52:59 +0000"
+    },
+    "done": true
+  },
+  "cobblemon:recipes/campfire_pot/quick_candy": {
+    "criteria": {
+      "has_honeycomb": "2026-09-10 16:51:03 +0000"
+    },
+    "done": false
+  },
+  "cobblemon:recipes/campfire_pot/smart_candy": {
+    "criteria": {
+      "has_honeycomb": "2026-09-10 16:51:03 +0000"
+    },
+    "done": false
+  },
+  "cobblemon:recipes/campfire_pot/courage_candy": {
+    "criteria": {
+      "has_honeycomb": "2026-09-10 16:51:03 +0000"
+    },
+    "done": false
+  },
+  "cobblemon:recipes/campfire_pot/health_candy": {
+    "criteria": {
+      "has_honeycomb": "2026-09-10 16:51:03 +0000"
+    },
+    "done": false
+  },
+  "cobblemon:recipes/campfire_pot/mighty_candy": {
+    "criteria": {
+      "has_honeycomb": "2026-09-10 16:51:03 +0000"
+    },
+    "done": false
+  },
+  "cobblemon:recipes/campfire_pot/tough_candy": {
+    "criteria": {
+      "has_honeycomb": "2026-09-10 16:51:03 +0000"
+    },
+    "done": false
+  },
+  "minecraft:recipes/decorations/beehive": {
+    "criteria": {
+      "has_honeycomb": "2026-09-10 16:51:03 +0000"
+    },
+    "done": true
+  },
+  "cobblemon:ride_pokemon": {
+    "criteria": {
+      "check_inv": "2026-09-10 17:27:21 +0000"
+    },
+    "done": true
+  },
+  "cobbleverse:trainer/kanto/defeat_brock": {
+    "criteria": {
+      "leader_defeated": "2026-09-10 17:33:32 +0000"
     },
     "done": true
   },

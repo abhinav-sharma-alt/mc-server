@@ -8,31 +8,32 @@
   "battleTheme": "cobblemon:battle.pvp.default",
   "extraData": {},
   "advancementData": {
-    "totalCaptureCount": 28,
+    "totalCaptureCount": 33,
     "totalEggsCollected": 0,
     "totalEggsHatched": 0,
-    "totalEvolvedCount": 8,
-    "totalBattleVictoryCount": 65,
+    "totalEvolvedCount": 10,
+    "totalBattleVictoryCount": 71,
     "totalPvPBattleVictoryCount": 0,
-    "totalPvWBattleVictoryCount": 63,
-    "totalPvNBattleVictoryCount": 2,
+    "totalPvWBattleVictoryCount": 68,
+    "totalPvNBattleVictoryCount": 3,
     "totalShinyCaptureCount": 3,
     "totalTradedCount": 2,
     "totalTypeCaptureCounts": {
       "ground": 3,
       "dark": 2,
-      "fire": 5,
-      "normal": 6,
+      "fire": 6,
+      "normal": 8,
       "fairy": 2,
       "steel": 1,
-      "flying": 2,
+      "flying": 3,
       "water": 2,
       "electric": 3,
       "ice": 4,
-      "grass": 4,
+      "grass": 5,
       "dragon": 1,
       "bug": 1,
-      "psychic": 1
+      "psychic": 1,
+      "ghost": 1
     },
     "totalDefeatedCounts": {
       "cobblemon:ralts": 1,
@@ -59,7 +60,7 @@
       "cobblemon:sentret": 1,
       "cobblemon:zigzagoon": 1,
       "cobblemon:klefki": 1,
-      "cobblemon:bouffalant": 1,
+      "cobblemon:bouffalant": 2,
       "cobblemon:kirlia": 1
     },
     "aspectsCollected": {
@@ -212,6 +213,34 @@
       "cobblemon:krokorok": [
         "female",
         "bucket-common"
+      ],
+      "cobblemon:glameow": [
+        "female",
+        "bucket-common"
+      ],
+      "cobblemon:scorbunny": [
+        "male",
+        "bucket-ultra-rare"
+      ],
+      "cobblemon:gimmighoul": [
+        "genderless",
+        "bucket-"
+      ],
+      "cobblemon:rowlet": [
+        "male",
+        "bucket-ultra-rare"
+      ],
+      "cobblemon:munchlax": [
+        "male",
+        "bucket-rare"
+      ],
+      "cobblemon:alakazam": [
+        "male",
+        "bucket-rare"
+      ],
+      "cobblemon:espeon": [
+        "male",
+        "bucket-uncommon"
       ]
     }
   }

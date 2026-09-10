@@ -52,6 +52,7 @@
       "minecraft:snowy_taiga": "2026-09-10 07:16:20 +0000",
       "minecraft:old_growth_birch_forest": "2026-09-10 07:02:48 +0000",
       "minecraft:grove": "2026-09-10 09:44:01 +0000",
+      "minecraft:swamp": "2026-09-10 17:25:13 +0000",
       "minecraft:meadow": "2026-09-10 09:24:55 +0000",
       "minecraft:windswept_gravelly_hills": "2026-09-10 08:19:26 +0000",
       "minecraft:savanna": "2026-09-09 16:04:48 +0000",
@@ -3466,7 +3467,12 @@
       "azure_ball": "2026-09-09 16:10:20 +0000",
       "love_ball": "2026-09-09 16:09:20 +0000",
       "ancient_jet_ball": "2026-09-10 09:37:24 +0000",
+      "net_ball": "2026-09-10 16:45:35 +0000",
       "dive_ball": "2026-09-10 09:38:49 +0000",
+      "ancient_citrine_ball": "2026-09-10 17:40:56 +0000",
+      "level_ball": "2026-09-10 16:45:56 +0000",
+      "ancient_slate_ball": "2026-09-10 16:58:49 +0000",
+      "ancient_ultra_ball": "2026-09-10 16:58:45 +0000",
       "safari_ball": "2026-09-09 16:18:04 +0000",
       "heavy_ball": "2026-09-09 16:26:28 +0000",
       "dream_ball": "2026-09-09 16:16:16 +0000",
@@ -3474,6 +3480,7 @@
       "fast_ball": "2026-09-10 09:37:12 +0000",
       "ultra_ball": "2026-09-10 07:08:37 +0000",
       "heal_ball": "2026-09-09 16:24:45 +0000",
+      "ancient_wing_ball": "2026-09-10 16:55:02 +0000",
       "slate_ball": "2026-09-09 16:16:17 +0000",
       "ancient_verdant_ball": "2026-09-09 16:09:54 +0000",
       "ancient_feather_ball": "2026-09-10 09:38:36 +0000",
@@ -25599,13 +25606,14 @@
   "cobblemon:craft_apricorn_balls": {
     "criteria": {
       "lure_ball": "2026-09-09 16:10:14 +0000",
+      "level_ball": "2026-09-10 16:45:56 +0000",
       "friend_ball": "2026-09-09 16:18:03 +0000",
       "moon_ball": "2026-09-09 16:08:27 +0000",
       "heavy_ball": "2026-09-09 16:26:28 +0000",
       "love_ball": "2026-09-09 16:09:20 +0000",
       "fast_ball": "2026-09-10 09:37:12 +0000"
     },
-    "done": false
+    "done": true
   },
   "cobblemon:harvest_apricorn": {
     "criteria": {
@@ -25623,10 +25631,14 @@
     "criteria": {
       "ancient_ivory_ball": "2026-09-09 16:10:31 +0000",
       "ancient_gigaton_ball": "2026-09-09 16:09:27 +0000",
+      "ancient_citrine_ball": "2026-09-10 17:40:56 +0000",
+      "ancient_wing_ball": "2026-09-10 16:55:02 +0000",
+      "ancient_slate_ball": "2026-09-10 16:58:49 +0000",
       "ancient_verdant_ball": "2026-09-09 16:09:54 +0000",
       "ancient_feather_ball": "2026-09-10 09:38:36 +0000",
       "ancient_roseate_ball": "2026-09-09 16:23:11 +0000",
       "ancient_poke_ball": "2026-09-09 16:26:26 +0000",
+      "ancient_ultra_ball": "2026-09-10 16:58:45 +0000",
       "ancient_azure_ball": "2026-09-10 09:37:22 +0000",
       "ancient_jet_ball": "2026-09-10 09:37:24 +0000"
     },
@@ -25740,39 +25752,15 @@
     },
     "done": true
   },
-  "cobblemon:trade_pokemon": {
+  "minecraft:story/root": {
     "criteria": {
-      "trade": "2026-09-10 09:50:21 +0000"
-    },
-    "done": true
-  },
-  "cobblemon:obtain_tumblestone": {
-    "criteria": {
-      "check_inv": "2026-09-10 07:43:50 +0000"
+      "crafting_table": "2026-09-10 06:53:46 +0000"
     },
     "done": true
   },
   "moarconcrete:recipes/building_blocks/black_concrete_slab_from_black_concrete_stonecutting": {
     "criteria": {
       "has_black_concrete": "2026-09-10 07:09:16 +0000"
-    },
-    "done": true
-  },
-  "cobblemon:recipes/misc/relic_coin": {
-    "criteria": {
-      "has_pouch": "2026-09-10 07:55:36 +0000"
-    },
-    "done": true
-  },
-  "minecraft:story/lava_bucket": {
-    "criteria": {
-      "lava_bucket": "2026-09-10 11:13:42 +0000"
-    },
-    "done": true
-  },
-  "mega_showdown:mega_showdown/z/find_z_structure": {
-    "criteria": {
-      "in_z_structure": "2026-09-10 09:28:22 +0000"
     },
     "done": true
   },
@@ -25788,18 +25776,6 @@
     },
     "done": true
   },
-  "cobblemon:craft_remedy": {
-    "criteria": {
-      "check_inv": "2026-09-10 07:58:19 +0000"
-    },
-    "done": true
-  },
-  "cobblemonraiddens:join_raid": {
-    "criteria": {
-      "joined_raid": "2026-09-10 10:24:33 +0000"
-    },
-    "done": true
-  },
   "moarconcrete:recipes/building_blocks/black_concrete_brick_slab_from_black_concrete_stonecutting": {
     "criteria": {
       "has_black_concrete": "2026-09-10 07:09:16 +0000"
@@ -25809,31 +25785,6 @@
   "moarconcrete:recipes/building_blocks/black_concrete_wall_from_black_concrete_stonecutting": {
     "criteria": {
       "has_black_concrete": "2026-09-10 07:09:16 +0000"
-    },
-    "done": true
-  },
-  "cobblemonraiddens:great_friend": {
-    "criteria": {
-      "attack_cheer": "2026-09-10 10:29:46 +0000",
-      "defense_cheer": "2026-09-10 10:29:52 +0000"
-    },
-    "done": false
-  },
-  "cobblemonraiddens:raid_tera": {
-    "criteria": {
-      "completed_tera": "2026-09-10 10:30:22 +0000"
-    },
-    "done": true
-  },
-  "cobblemonraiddens:tier_three": {
-    "criteria": {
-      "completed_tier_three": "2026-09-10 10:30:22 +0000"
-    },
-    "done": true
-  },
-  "minecraft:husbandry/root": {
-    "criteria": {
-      "consumed_item": "2026-09-10 10:29:46 +0000"
     },
     "done": true
   },
@@ -25849,9 +25800,124 @@
     },
     "done": true
   },
-  "minecraft:story/root": {
+  "cobblemon:obtain_tumblestone": {
     "criteria": {
-      "crafting_table": "2026-09-10 06:53:46 +0000"
+      "check_inv": "2026-09-10 07:43:50 +0000"
+    },
+    "done": true
+  },
+  "cobblemon:recipes/misc/relic_coin": {
+    "criteria": {
+      "has_pouch": "2026-09-10 07:55:36 +0000"
+    },
+    "done": true
+  },
+  "cobblemon:craft_remedy": {
+    "criteria": {
+      "check_inv": "2026-09-10 07:58:19 +0000"
+    },
+    "done": true
+  },
+  "mega_showdown:mega_showdown/z/find_z_structure": {
+    "criteria": {
+      "in_z_structure": "2026-09-10 09:28:22 +0000"
+    },
+    "done": true
+  },
+  "cobblemon:trade_pokemon": {
+    "criteria": {
+      "trade": "2026-09-10 09:50:21 +0000"
+    },
+    "done": true
+  },
+  "cobblemonraiddens:join_raid": {
+    "criteria": {
+      "joined_raid": "2026-09-10 10:24:33 +0000"
+    },
+    "done": true
+  },
+  "cobblemonraiddens:great_friend": {
+    "criteria": {
+      "attack_cheer": "2026-09-10 10:29:46 +0000",
+      "defense_cheer": "2026-09-10 10:29:52 +0000"
+    },
+    "done": false
+  },
+  "minecraft:husbandry/root": {
+    "criteria": {
+      "consumed_item": "2026-09-10 10:29:46 +0000"
+    },
+    "done": true
+  },
+  "cobblemonraiddens:raid_tera": {
+    "criteria": {
+      "completed_tera": "2026-09-10 10:30:22 +0000"
+    },
+    "done": true
+  },
+  "cobblemonraiddens:tier_three": {
+    "criteria": {
+      "completed_tier_three": "2026-09-10 10:30:22 +0000"
+    },
+    "done": true
+  },
+  "minecraft:story/lava_bucket": {
+    "criteria": {
+      "lava_bucket": "2026-09-10 11:13:42 +0000"
+    },
+    "done": true
+  },
+  "cobblemon:recipes/consumables/vivichoke_dip": {
+    "criteria": {
+      "has_vivichoke": "2026-09-10 13:56:33 +0000"
+    },
+    "done": true
+  },
+  "minecraft:nether/explore_nether": {
+    "criteria": {
+      "minecraft:crimson_forest": "2026-09-10 18:08:15 +0000"
+    },
+    "done": false
+  },
+  "cobblemon:evolve_veevees": {
+    "criteria": {
+      "evolve_espeon": "2026-09-10 18:22:53 +0000"
+    },
+    "done": false
+  },
+  "cobbleverse:trainer/kanto/defeat_misty": {
+    "criteria": {
+      "leader_defeated": "2026-09-10 17:09:07 +0000"
+    },
+    "done": true
+  },
+  "minecraft:story/obtain_armor": {
+    "criteria": {
+      "iron_helmet": "2026-09-10 18:11:44 +0000"
+    },
+    "done": true
+  },
+  "minecraft:story/enter_the_nether": {
+    "criteria": {
+      "entered_nether": "2026-09-10 18:08:13 +0000"
+    },
+    "done": true
+  },
+  "minecraft:nether/root": {
+    "criteria": {
+      "entered_nether": "2026-09-10 18:08:13 +0000"
+    },
+    "done": true
+  },
+  "minecraft:nether/get_wither_skull": {
+    "criteria": {
+      "wither_skull": "2026-09-10 16:59:10 +0000"
+    },
+    "done": true
+  },
+  "minecraft:husbandry/obtain_netherite_hoe": {
+    "criteria": {
+      "netherite_hoe": "2026-09-10 17:41:28 +0000"
     },
     "done": true
   },
