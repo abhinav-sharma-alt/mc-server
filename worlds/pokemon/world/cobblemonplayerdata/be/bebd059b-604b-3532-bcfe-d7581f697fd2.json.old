@@ -8,32 +8,37 @@
   "battleTheme": "cobblemon:battle.pvp.default",
   "extraData": {},
   "advancementData": {
-    "totalCaptureCount": 10,
+    "totalCaptureCount": 28,
     "totalEggsCollected": 0,
     "totalEggsHatched": 0,
-    "totalEvolvedCount": 3,
-    "totalBattleVictoryCount": 28,
+    "totalEvolvedCount": 8,
+    "totalBattleVictoryCount": 65,
     "totalPvPBattleVictoryCount": 0,
-    "totalPvWBattleVictoryCount": 26,
+    "totalPvWBattleVictoryCount": 63,
     "totalPvNBattleVictoryCount": 2,
-    "totalShinyCaptureCount": 0,
-    "totalTradedCount": 0,
+    "totalShinyCaptureCount": 3,
+    "totalTradedCount": 2,
     "totalTypeCaptureCounts": {
-      "ground": 1,
-      "dark": 1,
-      "fire": 4,
-      "normal": 2,
-      "fairy": 1,
+      "ground": 3,
+      "dark": 2,
+      "fire": 5,
+      "normal": 6,
+      "fairy": 2,
       "steel": 1,
       "flying": 2,
-      "water": 1,
-      "electric": 1
+      "water": 2,
+      "electric": 3,
+      "ice": 4,
+      "grass": 4,
+      "dragon": 1,
+      "bug": 1,
+      "psychic": 1
     },
     "totalDefeatedCounts": {
       "cobblemon:ralts": 1,
       "cobblemon:tinkatink": 1,
       "cobblemon:taillow": 2,
-      "cobblemon:miltank": 1,
+      "cobblemon:miltank": 3,
       "cobblemon:meowth": 1,
       "cobblemon:furret": 1,
       "cobblemon:granbull": 1,
@@ -44,7 +49,18 @@
       "cobblemon:wooloo": 1,
       "cobblemon:ledyba": 1,
       "cobblemon:combee": 1,
-      "cobblemon:gimmighoul": 1
+      "cobblemon:gimmighoul": 6,
+      "cobblemon:shiftry": 1,
+      "cobblemon:minior": 1,
+      "cobblemon:happiny": 2,
+      "cobblemon:persian": 2,
+      "cobblemon:voltorb": 2,
+      "cobblemon:darumaka": 1,
+      "cobblemon:sentret": 1,
+      "cobblemon:zigzagoon": 1,
+      "cobblemon:klefki": 1,
+      "cobblemon:bouffalant": 1,
+      "cobblemon:kirlia": 1
     },
     "aspectsCollected": {
       "cobblemon:sandile": [
@@ -61,7 +77,8 @@
       ],
       "cobblemon:eevee": [
         "male",
-        "bucket-rare"
+        "bucket-rare",
+        "bucket-uncommon"
       ],
       "cobblemon:growlithe": [
         "male",
@@ -98,6 +115,103 @@
       "cobblemon:kilowattrel": [
         "female",
         "bucket-uncommon"
+      ],
+      "cobblemon:purrloin": [
+        "shiny",
+        "female",
+        "bucket-common"
+      ],
+      "cobblemon:tinkatuff": [
+        "female",
+        "bucket-common"
+      ],
+      "cobblemon:lapras": [
+        "male",
+        "bucket-uncommon"
+      ],
+      "cobblemon:tapubulu": [
+        "genderless",
+        "bucket-ultra-rare"
+      ],
+      "cobblemon:gible": [
+        "male",
+        "bucket-ultra-rare"
+      ],
+      "cobblemon:purugly": [
+        "shiny",
+        "female",
+        "bucket-common"
+      ],
+      "cobblemon:vulpix": [
+        "male",
+        "bucket-uncommon",
+        "alolan"
+      ],
+      "cobblemon:swinub": [
+        "shiny",
+        "female",
+        "bucket-common"
+      ],
+      "cobblemon:ditto": [
+        "genderless",
+        "bucket-rare"
+      ],
+      "cobblemon:joltik": [
+        "female",
+        "bucket-common"
+      ],
+      "cobblemon:grookey": [
+        "male",
+        "bucket-ultra-rare"
+      ],
+      "cobblemon:arcanine": [
+        "male",
+        "bucket-uncommon"
+      ],
+      "cobblemon:chimchar": [
+        "male",
+        "bucket-ultra-rare"
+      ],
+      "cobblemon:snorunt": [
+        "female",
+        "bucket-common"
+      ],
+      "cobblemon:ninetales": [
+        "male",
+        "bucket-uncommon",
+        "alolan"
+      ],
+      "cobblemon:kadabra": [
+        "male",
+        "bucket-rare"
+      ],
+      "cobblemon:ampharos": [
+        "female",
+        "bucket-common"
+      ],
+      "cobblemon:kangaskhan": [
+        "female",
+        "bucket-rare"
+      ],
+      "cobblemon:monferno": [
+        "male",
+        "bucket-"
+      ],
+      "cobblemon:lilligant": [
+        "female",
+        "bucket-common"
+      ],
+      "cobblemon:shroomish": [
+        "male",
+        "bucket-common"
+      ],
+      "cobblemon:breloom": [
+        "male",
+        "bucket-common"
+      ],
+      "cobblemon:krokorok": [
+        "female",
+        "bucket-common"
       ]
     }
   }
