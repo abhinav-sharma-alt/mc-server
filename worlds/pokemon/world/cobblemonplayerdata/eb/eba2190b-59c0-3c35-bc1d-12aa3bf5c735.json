@@ -8,22 +8,23 @@
   "battleTheme": "cobblemon:battle.pvp.default",
   "extraData": {},
   "advancementData": {
-    "totalCaptureCount": 4,
+    "totalCaptureCount": 5,
     "totalEggsCollected": 0,
     "totalEggsHatched": 0,
     "totalEvolvedCount": 1,
-    "totalBattleVictoryCount": 77,
+    "totalBattleVictoryCount": 85,
     "totalPvPBattleVictoryCount": 0,
-    "totalPvWBattleVictoryCount": 57,
-    "totalPvNBattleVictoryCount": 20,
+    "totalPvWBattleVictoryCount": 64,
+    "totalPvNBattleVictoryCount": 21,
     "totalShinyCaptureCount": 0,
     "totalTradedCount": 0,
     "totalTypeCaptureCounts": {
       "fire": 1,
       "flying": 1,
-      "water": 1,
+      "water": 2,
       "normal": 1,
-      "fighting": 1
+      "fighting": 1,
+      "bug": 1
     },
     "totalDefeatedCounts": {
       "cobblemon:snubbull": 1,
@@ -60,7 +61,12 @@
       "cobblemon:fidough": 1,
       "cobblemon:krabby": 2,
       "cobblemon:inkay": 1,
-      "cobblemon:mantyke": 2
+      "cobblemon:mantyke": 2,
+      "cobblemon:clauncher": 1,
+      "cobblemon:shedinja": 1,
+      "cobblemon:mankey": 2,
+      "cobblemon:timburr": 1,
+      "cobblemon:burmy": 1
     },
     "aspectsCollected": {
       "cobblemon:fletchinder": [
@@ -86,6 +92,10 @@
         "bucket-common",
         "magikarp-jump-standard",
         "gyarados-eye-color-red"
+      ],
+      "cobblemon:wimpod": [
+        "male",
+        "bucket-uncommon"
       ]
     }
   }

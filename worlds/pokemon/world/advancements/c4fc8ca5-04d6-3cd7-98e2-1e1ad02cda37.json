@@ -920,6 +920,7 @@
     "criteria": {
       "obtain_babiri_berry": "2026-09-10 07:43:18 +0000",
       "obtain_coba_berry": "2026-09-09 16:27:46 +0000",
+      "obtain_cheri_berry": "2026-09-11 11:02:07 +0000",
       "obtain_oran_berry": "2026-09-09 15:30:47 +0000",
       "obtain_wacan_berry": "2026-09-10 17:28:05 +0000",
       "obtain_wepear_berry": "2026-09-09 17:38:50 +0000"
@@ -1556,7 +1557,8 @@
       "slate_ball": "2026-09-10 10:49:52 +0000",
       "poke_ball": "2026-09-09 15:30:47 +0000",
       "azure_ball": "2026-09-11 04:29:12 +0000",
-      "citrine_ball": "2026-09-09 17:36:13 +0000"
+      "citrine_ball": "2026-09-09 17:36:13 +0000",
+      "verdant_ball": "2026-09-11 15:26:51 +0000"
     },
     "done": false
   },
@@ -10356,7 +10358,8 @@
       "ancient_ultra_ball": "2026-09-11 05:17:50 +0000",
       "safari_ball": "2026-09-11 05:21:48 +0000",
       "park_ball": "2026-09-11 07:58:25 +0000",
-      "heavy_ball": "2026-09-10 08:25:17 +0000"
+      "heavy_ball": "2026-09-10 08:25:17 +0000",
+      "verdant_ball": "2026-09-11 15:26:51 +0000"
     },
     "done": false
   },
@@ -25815,10 +25818,11 @@
   },
   "cobblemonraiddens:great_friend": {
     "criteria": {
+      "attack_cheer": "2026-09-11 14:55:39 +0000",
       "defense_cheer": "2026-09-10 16:32:32 +0000",
       "heal_cheer": "2026-09-10 16:33:02 +0000"
     },
-    "done": false
+    "done": true
   },
   "minecraft:husbandry/root": {
     "criteria": {
@@ -25948,6 +25952,24 @@
   "cobblemon:obtain_tumblestone": {
     "criteria": {
       "check_inv": "2026-09-11 08:51:41 +0000"
+    },
+    "done": true
+  },
+  "minecraft:story/shiny_gear": {
+    "criteria": {
+      "diamond_boots": "2026-09-11 10:35:59 +0000"
+    },
+    "done": true
+  },
+  "minecraft:adventure/root": {
+    "criteria": {
+      "killed_something": "2026-09-11 10:42:33 +0000"
+    },
+    "done": true
+  },
+  "cobblemon:first_battle_victory": {
+    "criteria": {
+      "win": "2026-09-11 15:47:25 +0000"
     },
     "done": true
   },

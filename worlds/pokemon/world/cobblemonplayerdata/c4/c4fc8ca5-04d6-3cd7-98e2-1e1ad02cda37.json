@@ -10,30 +10,30 @@
   "battleTheme": "cobblemon:battle.pvp.default",
   "extraData": {},
   "advancementData": {
-    "totalCaptureCount": 18,
+    "totalCaptureCount": 22,
     "totalEggsCollected": 0,
     "totalEggsHatched": 0,
-    "totalEvolvedCount": 7,
-    "totalBattleVictoryCount": 91,
-    "totalPvPBattleVictoryCount": 0,
-    "totalPvWBattleVictoryCount": 87,
+    "totalEvolvedCount": 8,
+    "totalBattleVictoryCount": 100,
+    "totalPvPBattleVictoryCount": 1,
+    "totalPvWBattleVictoryCount": 95,
     "totalPvNBattleVictoryCount": 4,
     "totalShinyCaptureCount": 0,
-    "totalTradedCount": 3,
+    "totalTradedCount": 5,
     "totalTypeCaptureCounts": {
       "poison": 1,
-      "water": 3,
+      "water": 4,
       "psychic": 1,
       "fairy": 1,
-      "normal": 3,
+      "normal": 5,
       "steel": 1,
       "ghost": 1,
       "ice": 3,
       "fire": 5,
       "bug": 1,
-      "flying": 3,
+      "flying": 4,
       "grass": 1,
-      "electric": 1
+      "electric": 2
     },
     "totalDefeatedCounts": {
       "cobblemon:hippopotas": 1,
@@ -43,7 +43,7 @@
       "cobblemon:bunnelby": 1,
       "cobblemon:audino": 1,
       "cobblemon:watchog": 2,
-      "cobblemon:miltank": 6,
+      "cobblemon:miltank": 8,
       "cobblemon:bouffalant": 2,
       "cobblemon:igglybuff": 1,
       "cobblemon:gimmighoul": 6,
@@ -57,7 +57,7 @@
       "cobblemon:zigzagoon": 1,
       "cobblemon:mareep": 2,
       "cobblemon:diggersby": 2,
-      "cobblemon:fidough": 2,
+      "cobblemon:fidough": 3,
       "cobblemon:voltorb": 2,
       "cobblemon:drowzee": 1,
       "cobblemon:farfetchd": 1,
@@ -73,7 +73,11 @@
       "cobblemon:drilbur": 2,
       "cobblemon:tauros": 3,
       "cobblemon:lickilicky": 1,
-      "cobblemon:quilava": 1
+      "cobblemon:quilava": 1,
+      "cobblemon:manectric": 1,
+      "cobblemon:ponyta": 1,
+      "cobblemon:purugly": 1,
+      "cobblemon:munna": 1
     },
     "aspectsCollected": {
       "cobblemon:mareanie": [
@@ -175,6 +179,30 @@
       ],
       "cobblemon:ceruledge": [
         "male",
+        "bucket-uncommon"
+      ],
+      "cobblemon:electabuzz": [
+        "female",
+        "bucket-uncommon"
+      ],
+      "cobblemon:tapubulu": [
+        "genderless",
+        "bucket-ultra-rare"
+      ],
+      "cobblemon:pidgeot": [
+        "female",
+        "bucket-common"
+      ],
+      "cobblemon:psyduck": [
+        "male",
+        "bucket-common"
+      ],
+      "cobblemon:raticate": [
+        "male",
+        "bucket-common"
+      ],
+      "cobblemon:toxapex": [
+        "female",
         "bucket-uncommon"
       ]
     }

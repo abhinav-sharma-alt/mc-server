@@ -25661,5 +25661,11 @@
     },
     "done": true
   },
+  "cobblemon:full_party": {
+    "criteria": {
+      "full_party": "2026-09-11 10:28:47 +0000"
+    },
+    "done": true
+  },
   "DataVersion": 3955
 }

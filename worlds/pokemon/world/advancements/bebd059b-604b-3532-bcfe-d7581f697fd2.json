@@ -25848,9 +25848,10 @@
   "cobblemonraiddens:great_friend": {
     "criteria": {
       "attack_cheer": "2026-09-10 10:29:46 +0000",
-      "defense_cheer": "2026-09-10 10:29:52 +0000"
+      "defense_cheer": "2026-09-10 10:29:52 +0000",
+      "heal_cheer": "2026-09-11 14:56:02 +0000"
     },
-    "done": false
+    "done": true
   },
   "minecraft:husbandry/root": {
     "criteria": {
