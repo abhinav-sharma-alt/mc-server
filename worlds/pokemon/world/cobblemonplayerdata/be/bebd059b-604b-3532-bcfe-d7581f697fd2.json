@@ -10,28 +10,28 @@
   "battleTheme": "cobblemon:battle.pvp.default",
   "extraData": {},
   "advancementData": {
-    "totalCaptureCount": 59,
+    "totalCaptureCount": 61,
     "totalEggsCollected": 0,
     "totalEggsHatched": 0,
-    "totalEvolvedCount": 13,
-    "totalBattleVictoryCount": 112,
+    "totalEvolvedCount": 16,
+    "totalBattleVictoryCount": 146,
     "totalPvPBattleVictoryCount": 0,
-    "totalPvWBattleVictoryCount": 109,
+    "totalPvWBattleVictoryCount": 143,
     "totalPvNBattleVictoryCount": 3,
-    "totalShinyCaptureCount": 5,
+    "totalShinyCaptureCount": 6,
     "totalTradedCount": 5,
     "totalTypeCaptureCounts": {
       "ground": 3,
       "dark": 4,
       "fire": 8,
       "normal": 13,
-      "fairy": 6,
+      "fairy": 7,
       "steel": 1,
       "flying": 6,
       "water": 3,
-      "electric": 3,
+      "electric": 4,
       "ice": 5,
-      "grass": 7,
+      "grass": 8,
       "dragon": 4,
       "bug": 3,
       "psychic": 3,
@@ -44,7 +44,7 @@
       "cobblemon:ralts": 1,
       "cobblemon:tinkatink": 1,
       "cobblemon:taillow": 2,
-      "cobblemon:miltank": 6,
+      "cobblemon:miltank": 13,
       "cobblemon:meowth": 2,
       "cobblemon:furret": 1,
       "cobblemon:granbull": 1,
@@ -65,7 +65,7 @@
       "cobblemon:sentret": 1,
       "cobblemon:zigzagoon": 1,
       "cobblemon:klefki": 1,
-      "cobblemon:bouffalant": 3,
+      "cobblemon:bouffalant": 7,
       "cobblemon:kirlia": 1,
       "cobblemon:shuppet": 2,
       "cobblemon:gastly": 1,
@@ -75,11 +75,27 @@
       "cobblemon:ironthorns": 1,
       "cobblemon:pikachu": 3,
       "cobblemon:machop": 2,
-      "cobblemon:maschiff": 1,
+      "cobblemon:maschiff": 2,
       "cobblemon:basculin": 1,
-      "cobblemon:audino": 1,
+      "cobblemon:audino": 3,
       "cobblemon:vivillon": 1,
-      "cobblemon:budew": 1
+      "cobblemon:budew": 1,
+      "cobblemon:claydol": 1,
+      "cobblemon:golduck": 1,
+      "cobblemon:tauros": 2,
+      "cobblemon:polteageist": 1,
+      "cobblemon:dachsbun": 2,
+      "cobblemon:drifblim": 1,
+      "cobblemon:delcatty": 1,
+      "cobblemon:medicham": 1,
+      "cobblemon:scovillain": 1,
+      "cobblemon:lickitung": 1,
+      "cobblemon:diggersby": 1,
+      "cobblemon:fidough": 1,
+      "cobblemon:roselia": 1,
+      "cobblemon:orbeetle": 1,
+      "cobblemon:oinkologne": 1,
+      "cobblemon:rapidash": 1
     },
     "aspectsCollected": {
       "cobblemon:sandile": [
@@ -367,6 +383,27 @@
       "cobblemon:sneasler": [
         "male",
         "bucket-uncommon"
+      ],
+      "cobblemon:voltorb": [
+        "shiny",
+        "genderless",
+        "bucket-common"
+      ],
+      "cobblemon:kirlia": [
+        "male",
+        "bucket-rare"
+      ],
+      "cobblemon:gallade": [
+        "male",
+        "bucket-rare"
+      ],
+      "cobblemon:whimsicott": [
+        "male",
+        "bucket-common"
+      ],
+      "cobblemon:tinkaton": [
+        "female",
+        "bucket-common"
       ]
     }
   }

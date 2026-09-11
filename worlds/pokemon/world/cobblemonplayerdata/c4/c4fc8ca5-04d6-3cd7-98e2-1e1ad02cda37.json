@@ -10,13 +10,13 @@
   "battleTheme": "cobblemon:battle.pvp.default",
   "extraData": {},
   "advancementData": {
-    "totalCaptureCount": 22,
+    "totalCaptureCount": 23,
     "totalEggsCollected": 0,
     "totalEggsHatched": 0,
     "totalEvolvedCount": 8,
-    "totalBattleVictoryCount": 100,
+    "totalBattleVictoryCount": 101,
     "totalPvPBattleVictoryCount": 1,
-    "totalPvWBattleVictoryCount": 95,
+    "totalPvWBattleVictoryCount": 96,
     "totalPvNBattleVictoryCount": 4,
     "totalShinyCaptureCount": 0,
     "totalTradedCount": 5,
@@ -32,8 +32,9 @@
       "fire": 5,
       "bug": 1,
       "flying": 4,
-      "grass": 1,
-      "electric": 2
+      "grass": 2,
+      "electric": 2,
+      "dragon": 1
     },
     "totalDefeatedCounts": {
       "cobblemon:hippopotas": 1,
@@ -204,6 +205,11 @@
       "cobblemon:toxapex": [
         "female",
         "bucket-uncommon"
+      ],
+      "cobblemon:exeggutor": [
+        "female",
+        "bucket-uncommon",
+        "alolan"
       ]
     }
   }
