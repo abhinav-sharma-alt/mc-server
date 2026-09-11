@@ -1,0 +1,65 @@
+{
+  "uuid": "1ae60644-507e-34bb-afc1-bf10427e7646",
+  "starterPrompted": true,
+  "starterLocked": false,
+  "starterSelected": true,
+  "starterUUID": "4d8d38c4-3bb9-4f4d-b106-bddd43904c10",
+  "keyItems": [],
+  "battleTheme": "cobblemon:battle.pvp.default",
+  "extraData": {},
+  "advancementData": {
+    "totalCaptureCount": 5,
+    "totalEggsCollected": 0,
+    "totalEggsHatched": 0,
+    "totalEvolvedCount": 2,
+    "totalBattleVictoryCount": 7,
+    "totalPvPBattleVictoryCount": 0,
+    "totalPvWBattleVictoryCount": 5,
+    "totalPvNBattleVictoryCount": 2,
+    "totalShinyCaptureCount": 0,
+    "totalTradedCount": 0,
+    "totalTypeCaptureCounts": {
+      "water": 2,
+      "fighting": 1,
+      "electric": 1,
+      "flying": 2,
+      "grass": 1
+    },
+    "totalDefeatedCounts": {},
+    "aspectsCollected": {
+      "cobblemon:charmeleon": [
+        "shiny",
+        "male",
+        "bucket-"
+      ],
+      "cobblemon:psyduck": [
+        "female",
+        "bucket-common"
+      ],
+      "cobblemon:magikarp": [
+        "female",
+        "bucket-common",
+        "magikarp-jump-standard",
+        "gyarados-eye-color-red"
+      ],
+      "cobblemon:gyarados": [
+        "female",
+        "bucket-common",
+        "magikarp-jump-standard",
+        "gyarados-eye-color-red"
+      ],
+      "cobblemon:pancham": [
+        "female",
+        "bucket-common"
+      ],
+      "cobblemon:kilowattrel": [
+        "female",
+        "bucket-uncommon"
+      ],
+      "cobblemon:tropius": [
+        "female",
+        "bucket-uncommon"
+      ]
+    }
+  }
+}

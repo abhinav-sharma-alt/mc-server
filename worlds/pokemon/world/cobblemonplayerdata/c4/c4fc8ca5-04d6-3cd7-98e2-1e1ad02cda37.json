@@ -4,33 +4,36 @@
   "starterLocked": false,
   "starterSelected": true,
   "starterUUID": "149c7945-d150-43ae-bd5d-464593cd3dbf",
-  "keyItems": [],
+  "keyItems": [
+    "cobblemon:key_stone"
+  ],
   "battleTheme": "cobblemon:battle.pvp.default",
   "extraData": {},
   "advancementData": {
-    "totalCaptureCount": 14,
+    "totalCaptureCount": 18,
     "totalEggsCollected": 0,
     "totalEggsHatched": 0,
-    "totalEvolvedCount": 6,
-    "totalBattleVictoryCount": 81,
+    "totalEvolvedCount": 7,
+    "totalBattleVictoryCount": 91,
     "totalPvPBattleVictoryCount": 0,
-    "totalPvWBattleVictoryCount": 78,
-    "totalPvNBattleVictoryCount": 3,
+    "totalPvWBattleVictoryCount": 87,
+    "totalPvNBattleVictoryCount": 4,
     "totalShinyCaptureCount": 0,
-    "totalTradedCount": 2,
+    "totalTradedCount": 3,
     "totalTypeCaptureCounts": {
       "poison": 1,
-      "water": 2,
+      "water": 3,
       "psychic": 1,
       "fairy": 1,
       "normal": 3,
       "steel": 1,
       "ghost": 1,
-      "ice": 1,
-      "fire": 4,
+      "ice": 3,
+      "fire": 5,
       "bug": 1,
-      "flying": 2,
-      "grass": 1
+      "flying": 3,
+      "grass": 1,
+      "electric": 1
     },
     "totalDefeatedCounts": {
       "cobblemon:hippopotas": 1,
@@ -40,10 +43,10 @@
       "cobblemon:bunnelby": 1,
       "cobblemon:audino": 1,
       "cobblemon:watchog": 2,
-      "cobblemon:miltank": 5,
+      "cobblemon:miltank": 6,
       "cobblemon:bouffalant": 2,
       "cobblemon:igglybuff": 1,
-      "cobblemon:gimmighoul": 5,
+      "cobblemon:gimmighoul": 6,
       "cobblemon:happiny": 5,
       "cobblemon:zorua": 1,
       "cobblemon:lillipup": 2,
@@ -68,7 +71,9 @@
       "cobblemon:stonjourner": 1,
       "cobblemon:banette": 1,
       "cobblemon:drilbur": 2,
-      "cobblemon:tauros": 2
+      "cobblemon:tauros": 3,
+      "cobblemon:lickilicky": 1,
+      "cobblemon:quilava": 1
     },
     "aspectsCollected": {
       "cobblemon:mareanie": [
@@ -151,6 +156,26 @@
       "cobblemon:raboot": [
         "male",
         "bucket-ultra-rare"
+      ],
+      "cobblemon:torchic": [
+        "male",
+        "bucket-ultra-rare"
+      ],
+      "cobblemon:snorunt": [
+        "female",
+        "bucket-uncommon"
+      ],
+      "cobblemon:lapras": [
+        "female",
+        "bucket-uncommon"
+      ],
+      "cobblemon:kilowattrel": [
+        "female",
+        "bucket-uncommon"
+      ],
+      "cobblemon:ceruledge": [
+        "male",
+        "bucket-uncommon"
       ]
     }
   }

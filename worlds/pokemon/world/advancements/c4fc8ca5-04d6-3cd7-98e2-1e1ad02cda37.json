@@ -25,6 +25,7 @@
       "minecraft:frozen_river": "2026-09-10 07:55:46 +0000",
       "minecraft:windswept_forest": "2026-09-09 17:27:13 +0000",
       "minecraft:ocean": "2026-09-10 10:23:10 +0000",
+      "minecraft:jungle": "2026-09-11 04:44:32 +0000",
       "minecraft:sunflower_plains": "2026-09-10 10:31:33 +0000",
       "minecraft:birch_forest": "2026-09-10 10:13:36 +0000",
       "minecraft:windswept_hills": "2026-09-09 17:39:28 +0000",
@@ -1551,8 +1552,10 @@
   },
   "cobblemon:craft_base_balls": {
     "criteria": {
+      "roseate_ball": "2026-09-11 05:19:52 +0000",
       "slate_ball": "2026-09-10 10:49:52 +0000",
       "poke_ball": "2026-09-09 15:30:47 +0000",
+      "azure_ball": "2026-09-11 04:29:12 +0000",
       "citrine_ball": "2026-09-09 17:36:13 +0000"
     },
     "done": false
@@ -10331,6 +10334,7 @@
   },
   "cobblemon:craft_all_balls": {
     "criteria": {
+      "luxury_ball": "2026-09-11 05:25:56 +0000",
       "heal_ball": "2026-09-09 16:33:14 +0000",
       "quick_ball": "2026-09-09 16:43:08 +0000",
       "great_ball": "2026-09-09 16:32:35 +0000",
@@ -10339,13 +10343,19 @@
       "moon_ball": "2026-09-10 08:25:52 +0000",
       "poke_ball": "2026-09-09 15:30:47 +0000",
       "repeat_ball": "2026-09-09 17:29:27 +0000",
+      "azure_ball": "2026-09-11 04:29:12 +0000",
       "citrine_ball": "2026-09-09 17:36:13 +0000",
       "ancient_azure_ball": "2026-09-10 07:10:07 +0000",
       "net_ball": "2026-09-09 17:32:38 +0000",
       "dive_ball": "2026-09-10 08:53:21 +0000",
+      "ancient_great_ball": "2026-09-11 08:14:36 +0000",
+      "roseate_ball": "2026-09-11 05:19:52 +0000",
       "level_ball": "2026-09-10 07:10:06 +0000",
       "friend_ball": "2026-09-09 17:36:12 +0000",
       "sport_ball": "2026-09-10 17:28:08 +0000",
+      "ancient_ultra_ball": "2026-09-11 05:17:50 +0000",
+      "safari_ball": "2026-09-11 05:21:48 +0000",
+      "park_ball": "2026-09-11 07:58:25 +0000",
       "heavy_ball": "2026-09-10 08:25:17 +0000"
     },
     "done": false
@@ -25689,6 +25699,8 @@
   },
   "cobblemon:craft_ancient_balls": {
     "criteria": {
+      "ancient_great_ball": "2026-09-11 08:14:36 +0000",
+      "ancient_ultra_ball": "2026-09-11 05:17:50 +0000",
       "ancient_azure_ball": "2026-09-10 07:10:07 +0000"
     },
     "done": false
@@ -25801,13 +25813,36 @@
     },
     "done": true
   },
-  "minecraft:nether/explore_nether": {
+  "cobblemonraiddens:great_friend": {
     "criteria": {
-      "minecraft:crimson_forest": "2026-09-10 18:08:17 +0000",
-      "minecraft:nether_wastes": "2026-09-10 18:13:58 +0000",
-      "minecraft:soul_sand_valley": "2026-09-10 18:14:11 +0000"
+      "defense_cheer": "2026-09-10 16:32:32 +0000",
+      "heal_cheer": "2026-09-10 16:33:02 +0000"
     },
     "done": false
+  },
+  "minecraft:husbandry/root": {
+    "criteria": {
+      "consumed_item": "2026-09-10 16:32:32 +0000"
+    },
+    "done": true
+  },
+  "cobblemon:ride_pokemon": {
+    "criteria": {
+      "check_inv": "2026-09-10 16:35:23 +0000"
+    },
+    "done": true
+  },
+  "minecraft:nether/get_wither_skull": {
+    "criteria": {
+      "wither_skull": "2026-09-10 17:00:46 +0000"
+    },
+    "done": true
+  },
+  "mega_showdown:mega_showdown/dynamax/find_dynamax_structure": {
+    "criteria": {
+      "in_dynamax_structure": "2026-09-10 17:10:31 +0000"
+    },
+    "done": true
   },
   "cobblemon:evolve_veevees": {
     "criteria": {
@@ -25830,34 +25865,17 @@
     },
     "done": false
   },
-  "minecraft:story/obtain_armor": {
+  "minecraft:nether/explore_nether": {
     "criteria": {
-      "iron_helmet": "2026-09-10 18:16:33 +0000"
+      "minecraft:crimson_forest": "2026-09-10 18:08:17 +0000",
+      "minecraft:nether_wastes": "2026-09-10 18:13:58 +0000",
+      "minecraft:soul_sand_valley": "2026-09-10 18:14:11 +0000"
     },
-    "done": true
+    "done": false
   },
   "minecraft:story/enter_the_nether": {
     "criteria": {
       "entered_nether": "2026-09-10 18:08:17 +0000"
-    },
-    "done": true
-  },
-  "cobblemonraiddens:great_friend": {
-    "criteria": {
-      "defense_cheer": "2026-09-10 16:32:32 +0000",
-      "heal_cheer": "2026-09-10 16:33:02 +0000"
-    },
-    "done": false
-  },
-  "minecraft:husbandry/root": {
-    "criteria": {
-      "consumed_item": "2026-09-10 16:32:32 +0000"
-    },
-    "done": true
-  },
-  "cobblemon:ride_pokemon": {
-    "criteria": {
-      "check_inv": "2026-09-10 16:35:23 +0000"
     },
     "done": true
   },
@@ -25867,15 +25885,69 @@
     },
     "done": true
   },
-  "minecraft:nether/get_wither_skull": {
+  "minecraft:story/obtain_armor": {
     "criteria": {
-      "wither_skull": "2026-09-10 17:00:46 +0000"
+      "iron_helmet": "2026-09-10 18:16:33 +0000"
     },
     "done": true
   },
-  "mega_showdown:mega_showdown/dynamax/find_dynamax_structure": {
+  "minecraft:husbandry/plant_seed": {
     "criteria": {
-      "in_dynamax_structure": "2026-09-10 17:10:31 +0000"
+      "wheat": "2026-09-11 04:17:58 +0000"
+    },
+    "done": true
+  },
+  "cobblemon:recipes/misc/relic_coin": {
+    "criteria": {
+      "has_pouch": "2026-09-11 07:30:29 +0000"
+    },
+    "done": true
+  },
+  "minecraft:adventure/minecraft_trials_edition": {
+    "criteria": {
+      "minecraft_trials_edition": "2026-09-11 07:56:38 +0000"
+    },
+    "done": true
+  },
+  "minecraft:adventure/under_lock_and_key": {
+    "criteria": {
+      "under_lock_and_key": "2026-09-11 07:58:20 +0000"
+    },
+    "done": true
+  },
+  "mega_showdown:mega_showdown/mega/find_mega_structure": {
+    "criteria": {
+      "in_mega_structure": "2026-09-11 08:27:26 +0000"
+    },
+    "done": true
+  },
+  "mega_showdown:mega_showdown/mega/find_keystone": {
+    "criteria": {
+      "obtained_keystone": "2026-09-11 08:33:39 +0000"
+    },
+    "done": true
+  },
+  "mega_showdown:mega_showdown/hidden/all_gimmick": {
+    "criteria": {
+      "bracelets": "2026-09-11 08:39:31 +0000"
+    },
+    "done": false
+  },
+  "mega_showdown:mega_showdown/mega/get_any_mega_bracelet": {
+    "criteria": {
+      "obtained_bracelets": "2026-09-11 08:39:31 +0000"
+    },
+    "done": true
+  },
+  "mega_showdown:mega_showdown/mega/craft_mega_accessories": {
+    "criteria": {
+      "archie_anchor": "2026-09-11 08:39:31 +0000"
+    },
+    "done": false
+  },
+  "cobblemon:obtain_tumblestone": {
+    "criteria": {
+      "check_inv": "2026-09-11 08:51:41 +0000"
     },
     "done": true
   },
