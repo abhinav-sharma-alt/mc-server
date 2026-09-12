@@ -726,7 +726,9 @@
       "obtain_babiri_berry": "2026-09-12 11:04:54 +0000",
       "obtain_oran_berry": "2026-09-09 15:26:40 +0000",
       "obtain_kebia_berry": "2026-09-10 09:39:29 +0000",
-      "obtain_kasib_berry": "2026-09-09 16:33:05 +0000"
+      "obtain_kasib_berry": "2026-09-09 16:33:05 +0000",
+      "obtain_roseli_berry": "2026-09-12 15:13:27 +0000",
+      "obtain_razz_berry": "2026-09-12 18:29:35 +0000"
     },
     "done": false
   },
@@ -26213,6 +26215,60 @@
   "cobbleverse:trainer/kanto/defeat_ltsurge": {
     "criteria": {
       "leader_defeated": "2026-09-12 10:49:06 +0000"
+    },
+    "done": true
+  },
+  "moarconcrete:recipes/building_blocks/red_concrete_slab_from_red_concrete_stonecutting": {
+    "criteria": {
+      "has_red_concrete": "2026-09-12 14:59:53 +0000"
+    },
+    "done": true
+  },
+  "moarconcrete:recipes/building_blocks/red_concrete_brick_slab_from_red_concrete_stonecutting": {
+    "criteria": {
+      "has_red_concrete": "2026-09-12 14:59:53 +0000"
+    },
+    "done": true
+  },
+  "moarconcrete:recipes/building_blocks/red_concrete_bricks_from_red_concrete_stonecutting": {
+    "criteria": {
+      "has_red_concrete": "2026-09-12 14:59:53 +0000"
+    },
+    "done": true
+  },
+  "moarconcrete:recipes/building_blocks/red_concrete_stairs_from_red_concrete_stonecutting": {
+    "criteria": {
+      "has_red_concrete": "2026-09-12 14:59:53 +0000"
+    },
+    "done": true
+  },
+  "moarconcrete:recipes/building_blocks/red_concrete_wall_from_red_concrete_stonecutting": {
+    "criteria": {
+      "has_red_concrete": "2026-09-12 14:59:53 +0000"
+    },
+    "done": true
+  },
+  "moarconcrete:recipes/building_blocks/red_concrete_panel_from_red_concrete_stonecutting": {
+    "criteria": {
+      "has_red_concrete": "2026-09-12 14:59:53 +0000"
+    },
+    "done": true
+  },
+  "sophisticatedbackpacks:recipes/misc/diamond_backpack": {
+    "criteria": {
+      "has_gold_backpack": "2026-09-12 17:38:48 +0000"
+    },
+    "done": true
+  },
+  "sophisticatedbackpacks:recipes/misc/netherite_backpack": {
+    "criteria": {
+      "has_diamond_backpack": "2026-09-12 17:38:57 +0000"
+    },
+    "done": true
+  },
+  "cobblemon:obtain_leek": {
+    "criteria": {
+      "check_inv": "2026-09-12 17:41:24 +0000"
     },
     "done": true
   },

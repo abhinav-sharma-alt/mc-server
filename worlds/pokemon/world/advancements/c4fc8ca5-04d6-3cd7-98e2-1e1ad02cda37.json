@@ -25877,16 +25877,18 @@
       "obtain_green_mint_leaf": "2026-09-10 17:25:24 +0000",
       "obtain_cyan_mint_leaf": "2026-09-10 17:25:24 +0000",
       "obtain_white_mint_leaf": "2026-09-12 10:10:06 +0000",
+      "obtain_pink_mint_leaf": "2026-09-12 17:31:01 +0000",
       "obtain_red_mint_leaf": "2026-09-10 17:32:07 +0000",
       "obtain_blue_mint_leaf": "2026-09-10 17:32:33 +0000"
     },
-    "done": false
+    "done": true
   },
   "minecraft:nether/explore_nether": {
     "criteria": {
       "minecraft:crimson_forest": "2026-09-10 18:08:17 +0000",
       "minecraft:nether_wastes": "2026-09-10 18:13:58 +0000",
-      "minecraft:soul_sand_valley": "2026-09-10 18:14:11 +0000"
+      "minecraft:soul_sand_valley": "2026-09-10 18:14:11 +0000",
+      "minecraft:basalt_deltas": "2026-09-12 16:48:28 +0000"
     },
     "done": false
   },
@@ -26043,6 +26045,66 @@
   "minecraft:nether/obtain_blaze_rod": {
     "criteria": {
       "blaze_rod": "2026-09-12 11:06:04 +0000"
+    },
+    "done": true
+  },
+  "minecraft:nether/find_fortress": {
+    "criteria": {
+      "fortress": "2026-09-12 16:44:41 +0000"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/oak_wood": {
+    "criteria": {
+      "has_oak_log": "2026-09-12 16:55:17 +0000"
+    },
+    "done": true
+  },
+  "sophisticatedstorage:recipes/misc/iron_chest": {
+    "criteria": {
+      "has_chest": "2026-09-12 17:15:15 +0000"
+    },
+    "done": true
+  },
+  "sophisticatedstorage:recipes/misc/shulker_from_chest": {
+    "criteria": {
+      "has_chest": "2026-09-12 17:15:15 +0000"
+    },
+    "done": true
+  },
+  "sophisticatedstorage:recipes/misc/copper_chest": {
+    "criteria": {
+      "has_chest": "2026-09-12 17:15:15 +0000"
+    },
+    "done": true
+  },
+  "sophisticatedstorage:recipes/misc/double_copper_chest": {
+    "criteria": {
+      "has_chest": "2026-09-12 17:15:15 +0000"
+    },
+    "done": true
+  },
+  "sophisticatedstorage:recipes/misc/double_iron_chest": {
+    "criteria": {
+      "has_chest": "2026-09-12 17:15:15 +0000"
+    },
+    "done": true
+  },
+  "sophisticatedstorage:recipes/misc/advanced_pickup_upgrade": {
+    "criteria": {
+      "has_pickup_upgrade": "2026-09-12 17:17:46 +0000"
+    },
+    "done": true
+  },
+  "sophisticatedstorage:recipes/misc/magnet_upgrade": {
+    "criteria": {
+      "has_pickup_upgrade": "2026-09-12 17:17:46 +0000"
+    },
+    "done": true
+  },
+  "sophisticatedstorage:recipes/misc/advanced_magnet_upgrade_from_basic": {
+    "criteria": {
+      "has_magnet_upgrade": "2026-09-12 17:20:07 +0000"
     },
     "done": true
   },
