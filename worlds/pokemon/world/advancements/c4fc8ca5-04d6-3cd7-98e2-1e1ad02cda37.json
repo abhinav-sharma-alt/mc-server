@@ -18,7 +18,9 @@
       "minecraft:old_growth_pine_taiga": "2026-09-10 16:53:04 +0000",
       "minecraft:forest": "2026-09-09 16:24:21 +0000",
       "minecraft:taiga": "2026-09-09 16:51:26 +0000",
+      "minecraft:deep_ocean": "2026-09-12 09:38:38 +0000",
       "minecraft:lush_caves": "2026-09-10 17:13:03 +0000",
+      "minecraft:deep_cold_ocean": "2026-09-12 09:39:40 +0000",
       "minecraft:ice_spikes": "2026-09-10 09:21:51 +0000",
       "minecraft:frozen_ocean": "2026-09-10 08:59:03 +0000",
       "minecraft:desert": "2026-09-09 15:20:03 +0000",
@@ -33,22 +35,29 @@
       "minecraft:snowy_beach": "2026-09-10 08:59:41 +0000",
       "minecraft:bamboo_jungle": "2026-09-10 10:16:53 +0000",
       "minecraft:windswept_savanna": "2026-09-09 16:25:29 +0000",
+      "minecraft:deep_lukewarm_ocean": "2026-09-12 08:22:39 +0000",
       "minecraft:badlands": "2026-09-09 15:14:50 +0000",
+      "minecraft:flower_forest": "2026-09-12 09:00:41 +0000",
+      "minecraft:savanna_plateau": "2026-09-12 07:52:46 +0000",
       "minecraft:beach": "2026-09-09 16:26:10 +0000",
       "minecraft:dark_forest": "2026-09-09 16:28:07 +0000",
+      "minecraft:stony_peaks": "2026-09-12 08:18:11 +0000",
       "minecraft:sparse_jungle": "2026-09-10 10:16:04 +0000",
       "minecraft:river": "2026-09-09 16:24:22 +0000",
       "minecraft:lukewarm_ocean": "2026-09-09 16:25:47 +0000",
       "minecraft:stony_shore": "2026-09-09 15:14:33 +0000",
       "minecraft:snowy_plains": "2026-09-09 17:03:11 +0000",
       "minecraft:snowy_taiga": "2026-09-10 07:55:59 +0000",
+      "minecraft:dripstone_caves": "2026-09-12 07:44:36 +0000",
       "minecraft:frozen_peaks": "2026-09-10 09:28:13 +0000",
       "minecraft:old_growth_birch_forest": "2026-09-09 16:27:18 +0000",
       "minecraft:deep_dark": "2026-09-10 09:44:20 +0000",
       "minecraft:grove": "2026-09-10 09:28:41 +0000",
+      "minecraft:meadow": "2026-09-12 08:28:45 +0000",
       "minecraft:windswept_gravelly_hills": "2026-09-10 08:02:16 +0000",
       "minecraft:savanna": "2026-09-09 16:23:27 +0000",
-      "minecraft:plains": "2026-09-09 16:24:37 +0000"
+      "minecraft:plains": "2026-09-09 16:24:37 +0000",
+      "minecraft:jagged_peaks": "2026-09-12 10:35:40 +0000"
     },
     "done": false
   },
@@ -10337,29 +10346,31 @@
   "cobblemon:craft_all_balls": {
     "criteria": {
       "luxury_ball": "2026-09-11 05:25:56 +0000",
-      "heal_ball": "2026-09-09 16:33:14 +0000",
       "quick_ball": "2026-09-09 16:43:08 +0000",
       "great_ball": "2026-09-09 16:32:35 +0000",
+      "dusk_ball": "2026-09-12 08:36:09 +0000",
       "timer_ball": "2026-09-09 16:32:46 +0000",
-      "slate_ball": "2026-09-10 10:49:52 +0000",
       "moon_ball": "2026-09-10 08:25:52 +0000",
-      "poke_ball": "2026-09-09 15:30:47 +0000",
+      "ancient_poke_ball": "2026-09-12 08:48:04 +0000",
       "repeat_ball": "2026-09-09 17:29:27 +0000",
       "azure_ball": "2026-09-11 04:29:12 +0000",
-      "citrine_ball": "2026-09-09 17:36:13 +0000",
-      "ancient_azure_ball": "2026-09-10 07:10:07 +0000",
       "net_ball": "2026-09-09 17:32:38 +0000",
       "dive_ball": "2026-09-10 08:53:21 +0000",
       "ancient_great_ball": "2026-09-11 08:14:36 +0000",
-      "roseate_ball": "2026-09-11 05:19:52 +0000",
       "level_ball": "2026-09-10 07:10:06 +0000",
-      "friend_ball": "2026-09-09 17:36:12 +0000",
       "sport_ball": "2026-09-10 17:28:08 +0000",
       "ancient_ultra_ball": "2026-09-11 05:17:50 +0000",
       "safari_ball": "2026-09-11 05:21:48 +0000",
-      "park_ball": "2026-09-11 07:58:25 +0000",
       "heavy_ball": "2026-09-10 08:25:17 +0000",
-      "verdant_ball": "2026-09-11 15:26:51 +0000"
+      "verdant_ball": "2026-09-11 15:26:51 +0000",
+      "heal_ball": "2026-09-09 16:33:14 +0000",
+      "slate_ball": "2026-09-10 10:49:52 +0000",
+      "poke_ball": "2026-09-09 15:30:47 +0000",
+      "citrine_ball": "2026-09-09 17:36:13 +0000",
+      "ancient_azure_ball": "2026-09-10 07:10:07 +0000",
+      "roseate_ball": "2026-09-11 05:19:52 +0000",
+      "friend_ball": "2026-09-09 17:36:12 +0000",
+      "park_ball": "2026-09-11 07:58:25 +0000"
     },
     "done": false
   },
@@ -25703,6 +25714,7 @@
   "cobblemon:craft_ancient_balls": {
     "criteria": {
       "ancient_great_ball": "2026-09-11 08:14:36 +0000",
+      "ancient_poke_ball": "2026-09-12 08:48:04 +0000",
       "ancient_ultra_ball": "2026-09-11 05:17:50 +0000",
       "ancient_azure_ball": "2026-09-10 07:10:07 +0000"
     },
@@ -25864,6 +25876,7 @@
     "criteria": {
       "obtain_green_mint_leaf": "2026-09-10 17:25:24 +0000",
       "obtain_cyan_mint_leaf": "2026-09-10 17:25:24 +0000",
+      "obtain_white_mint_leaf": "2026-09-12 10:10:06 +0000",
       "obtain_red_mint_leaf": "2026-09-10 17:32:07 +0000",
       "obtain_blue_mint_leaf": "2026-09-10 17:32:33 +0000"
     },
@@ -25973,15 +25986,63 @@
     },
     "done": true
   },
+  "cobblemonraiddens:tier_three": {
+    "criteria": {
+      "completed_tier_three": "2026-09-11 19:08:16 +0000"
+    },
+    "done": true
+  },
   "cobblemonraiddens:raid_tera": {
     "criteria": {
       "completed_tera": "2026-09-11 19:08:17 +0000"
     },
     "done": true
   },
-  "cobblemonraiddens:tier_three": {
+  "mega_showdown:mega_showdown/z/find_z_structure": {
     "criteria": {
-      "completed_tier_three": "2026-09-11 19:08:16 +0000"
+      "in_z_structure": "2026-09-12 07:54:10 +0000"
+    },
+    "done": true
+  },
+  "minecraft:story/lava_bucket": {
+    "criteria": {
+      "lava_bucket": "2026-09-12 08:19:30 +0000"
+    },
+    "done": true
+  },
+  "cobblemonraiddens:tier_two": {
+    "criteria": {
+      "completed_tier_two": "2026-09-12 08:35:45 +0000"
+    },
+    "done": true
+  },
+  "mega_showdown:mega_showdown/z/get_blank_move": {
+    "criteria": {
+      "obtained_blank_z": "2026-09-12 08:48:00 +0000"
+    },
+    "done": true
+  },
+  "cobblemon:medicinal_brew": {
+    "criteria": {
+      "check_inv": "2026-09-12 09:41:55 +0000"
+    },
+    "done": true
+  },
+  "cobblemon:use_pasture": {
+    "criteria": {
+      "use_pasture": "2026-09-12 10:24:55 +0000"
+    },
+    "done": true
+  },
+  "cobbleverse:trainer/kanto/defeat_ltsurge": {
+    "criteria": {
+      "leader_defeated": "2026-09-12 10:46:58 +0000"
+    },
+    "done": true
+  },
+  "minecraft:nether/obtain_blaze_rod": {
+    "criteria": {
+      "blaze_rod": "2026-09-12 11:06:04 +0000"
     },
     "done": true
   },
