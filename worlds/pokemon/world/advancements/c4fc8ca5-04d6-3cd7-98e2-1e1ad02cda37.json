@@ -29,6 +29,7 @@
       "minecraft:ocean": "2026-09-10 10:23:10 +0000",
       "minecraft:jungle": "2026-09-11 04:44:32 +0000",
       "minecraft:sunflower_plains": "2026-09-10 10:31:33 +0000",
+      "minecraft:cherry_grove": "2026-09-13 07:30:47 +0000",
       "minecraft:birch_forest": "2026-09-10 10:13:36 +0000",
       "minecraft:windswept_hills": "2026-09-09 17:39:28 +0000",
       "minecraft:old_growth_spruce_taiga": "2026-09-09 16:51:10 +0000",
@@ -26105,6 +26106,12 @@
   "sophisticatedstorage:recipes/misc/advanced_magnet_upgrade_from_basic": {
     "criteria": {
       "has_magnet_upgrade": "2026-09-12 17:20:07 +0000"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/stripped_oak_wood": {
+    "criteria": {
+      "has_stripped_oak_log": "2026-09-13 07:26:25 +0000"
     },
     "done": true
   },

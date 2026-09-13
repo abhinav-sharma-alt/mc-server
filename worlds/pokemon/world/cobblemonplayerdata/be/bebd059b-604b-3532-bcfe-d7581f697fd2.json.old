@@ -10,20 +10,20 @@
   "battleTheme": "cobblemon:battle.pvp.default",
   "extraData": {},
   "advancementData": {
-    "totalCaptureCount": 98,
+    "totalCaptureCount": 99,
     "totalEggsCollected": 25,
     "totalEggsHatched": 50,
-    "totalEvolvedCount": 37,
-    "totalBattleVictoryCount": 310,
+    "totalEvolvedCount": 38,
+    "totalBattleVictoryCount": 313,
     "totalPvPBattleVictoryCount": 0,
-    "totalPvWBattleVictoryCount": 303,
+    "totalPvWBattleVictoryCount": 306,
     "totalPvNBattleVictoryCount": 7,
     "totalShinyCaptureCount": 13,
     "totalTradedCount": 9,
     "totalTypeCaptureCounts": {
       "ground": 3,
       "dark": 7,
-      "fire": 11,
+      "fire": 12,
       "normal": 28,
       "fairy": 9,
       "steel": 1,
@@ -35,7 +35,7 @@
       "dragon": 4,
       "bug": 5,
       "psychic": 5,
-      "ghost": 8,
+      "ghost": 9,
       "poison": 4,
       "rock": 2,
       "fighting": 6
@@ -77,7 +77,7 @@
       "cobblemon:machop": 2,
       "cobblemon:maschiff": 3,
       "cobblemon:basculin": 1,
-      "cobblemon:audino": 3,
+      "cobblemon:audino": 4,
       "cobblemon:vivillon": 1,
       "cobblemon:budew": 1,
       "cobblemon:claydol": 1,
@@ -127,7 +127,8 @@
       "cobblemon:mrmime": 1,
       "cobblemon:gurdurr": 1,
       "cobblemon:aromatisse": 1,
-      "cobblemon:herdier": 1
+      "cobblemon:herdier": 1,
+      "cobblemon:koffing": 1
     },
     "aspectsCollected": {
       "cobblemon:sandile": [
@@ -576,6 +577,15 @@
       "cobblemon:terrakion": [
         "genderless",
         "bucket-ultra-rare"
+      ],
+      "cobblemon:glalie": [
+        "female",
+        "bucket-uncommon"
+      ],
+      "cobblemon:marowak": [
+        "male",
+        "bucket-common",
+        "alolan"
       ]
     }
   }
