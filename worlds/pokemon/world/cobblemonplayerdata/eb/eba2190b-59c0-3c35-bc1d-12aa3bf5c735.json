@@ -8,16 +8,16 @@
   "battleTheme": "cobblemon:battle.pvp.default",
   "extraData": {},
   "advancementData": {
-    "totalCaptureCount": 12,
+    "totalCaptureCount": 13,
     "totalEggsCollected": 0,
     "totalEggsHatched": 0,
     "totalEvolvedCount": 4,
-    "totalBattleVictoryCount": 154,
+    "totalBattleVictoryCount": 156,
     "totalPvPBattleVictoryCount": 0,
-    "totalPvWBattleVictoryCount": 123,
-    "totalPvNBattleVictoryCount": 31,
-    "totalShinyCaptureCount": 0,
-    "totalTradedCount": 2,
+    "totalPvWBattleVictoryCount": 124,
+    "totalPvNBattleVictoryCount": 32,
+    "totalShinyCaptureCount": 1,
+    "totalTradedCount": 3,
     "totalTypeCaptureCounts": {
       "fire": 2,
       "flying": 1,
@@ -29,7 +29,7 @@
       "ground": 2,
       "grass": 1,
       "ghost": 1,
-      "dark": 1,
+      "dark": 2,
       "ice": 1
     },
     "totalDefeatedCounts": {
@@ -170,6 +170,12 @@
       "cobblemon:swinub": [
         "female",
         "bucket-common"
+      ],
+      "cobblemon:meowth": [
+        "shiny",
+        "male",
+        "bucket-common",
+        "alolan"
       ]
     }
   }

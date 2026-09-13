@@ -10,16 +10,16 @@
   "battleTheme": "cobblemon:battle.pvp.default",
   "extraData": {},
   "advancementData": {
-    "totalCaptureCount": 31,
-    "totalEggsCollected": 13,
-    "totalEggsHatched": 18,
+    "totalCaptureCount": 33,
+    "totalEggsCollected": 16,
+    "totalEggsHatched": 28,
     "totalEvolvedCount": 15,
-    "totalBattleVictoryCount": 266,
+    "totalBattleVictoryCount": 274,
     "totalPvPBattleVictoryCount": 1,
-    "totalPvWBattleVictoryCount": 255,
-    "totalPvNBattleVictoryCount": 10,
+    "totalPvWBattleVictoryCount": 262,
+    "totalPvNBattleVictoryCount": 11,
     "totalShinyCaptureCount": 0,
-    "totalTradedCount": 7,
+    "totalTradedCount": 8,
     "totalTypeCaptureCounts": {
       "poison": 1,
       "water": 4,
@@ -28,10 +28,10 @@
       "normal": 9,
       "steel": 1,
       "ghost": 2,
-      "ice": 3,
+      "ice": 4,
       "fire": 6,
       "bug": 1,
-      "flying": 4,
+      "flying": 5,
       "grass": 2,
       "electric": 2,
       "dragon": 3,
@@ -48,7 +48,7 @@
       "cobblemon:audino": 3,
       "cobblemon:watchog": 2,
       "cobblemon:miltank": 10,
-      "cobblemon:bouffalant": 5,
+      "cobblemon:bouffalant": 6,
       "cobblemon:igglybuff": 2,
       "cobblemon:gimmighoul": 7,
       "cobblemon:happiny": 6,
@@ -89,7 +89,7 @@
       "cobblemon:maschiff": 2,
       "cobblemon:nickit": 2,
       "cobblemon:patrat": 7,
-      "cobblemon:wooloo": 10,
+      "cobblemon:wooloo": 12,
       "cobblemon:mudbray": 2,
       "cobblemon:taillow": 2,
       "cobblemon:lickitung": 1,
@@ -100,7 +100,7 @@
       "cobblemon:pawmo": 1,
       "cobblemon:hoppip": 2,
       "cobblemon:combee": 4,
-      "cobblemon:drifloon": 1,
+      "cobblemon:drifloon": 2,
       "cobblemon:lechonk": 3,
       "cobblemon:timburr": 2,
       "cobblemon:pachirisu": 1,
@@ -119,7 +119,8 @@
       "cobblemon:ditto": 1,
       "cobblemon:mudsdale": 1,
       "cobblemon:musharna": 1,
-      "cobblemon:butterfree": 1
+      "cobblemon:butterfree": 1,
+      "cobblemon:mabosstiff": 1
     },
     "aspectsCollected": {
       "cobblemon:mareanie": [
@@ -292,6 +293,15 @@
         "bucket-ultra-rare"
       ],
       "cobblemon:blaziken": [
+        "male",
+        "bucket-ultra-rare"
+      ],
+      "cobblemon:tornadus": [
+        "male",
+        "bucket-ultra-rare",
+        "incarnate-forme"
+      ],
+      "cobblemon:glaceon": [
         "male",
         "bucket-ultra-rare"
       ]
