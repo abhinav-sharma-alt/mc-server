@@ -10365,6 +10365,7 @@
       "safari_ball": "2026-09-11 05:21:48 +0000",
       "heavy_ball": "2026-09-10 08:25:17 +0000",
       "verdant_ball": "2026-09-11 15:26:51 +0000",
+      "dream_ball": "2026-09-14 11:56:37 +0000",
       "fast_ball": "2026-09-13 16:43:39 +0000",
       "ultra_ball": "2026-09-13 16:56:24 +0000",
       "heal_ball": "2026-09-09 16:33:14 +0000",
@@ -26126,9 +26127,9 @@
     },
     "done": true
   },
-  "cobbleverse:trainer/kanto/defeat_koga": {
+  "minecraft:recipes/building_blocks/warped_hyphae": {
     "criteria": {
-      "leader_defeated": "2026-09-14 09:29:21 +0000"
+      "has_warped_stem": "2026-09-14 08:37:18 +0000"
     },
     "done": true
   },
@@ -26150,15 +26151,45 @@
     },
     "done": true
   },
-  "minecraft:recipes/building_blocks/warped_hyphae": {
-    "criteria": {
-      "has_warped_stem": "2026-09-14 08:37:18 +0000"
-    },
-    "done": true
-  },
   "mega_showdown:mega_showdown/mega/mega_evolve": {
     "criteria": {
       "mega_evo_any": "2026-09-14 09:20:01 +0000"
+    },
+    "done": true
+  },
+  "cobbleverse:trainer/kanto/defeat_koga": {
+    "criteria": {
+      "leader_defeated": "2026-09-14 09:29:21 +0000"
+    },
+    "done": true
+  },
+  "cobbleverse:trainer/kanto/defeat_sabrina": {
+    "criteria": {
+      "leader_defeated": "2026-09-14 11:50:29 +0000"
+    },
+    "done": true
+  },
+  "cobbleverse:pokemon/catch_moltres": {
+    "criteria": {
+      "caught_moltres": "2026-09-14 12:20:44 +0000"
+    },
+    "done": true
+  },
+  "minecraft:nether/find_bastion": {
+    "criteria": {
+      "bastion": "2026-09-14 12:56:52 +0000"
+    },
+    "done": true
+  },
+  "minecraft:nether/loot_bastion": {
+    "criteria": {
+      "loot_bastion_hoglin_stable": "2026-09-14 12:57:13 +0000"
+    },
+    "done": true
+  },
+  "minecraft:nether/obtain_ancient_debris": {
+    "criteria": {
+      "ancient_debris": "2026-09-14 13:18:03 +0000"
     },
     "done": true
   },

@@ -10512,6 +10512,7 @@
     "criteria": {
       "luxury_ball": "2026-09-09 17:17:50 +0000",
       "ancient_gigaton_ball": "2026-09-09 17:14:12 +0000",
+      "heal_ball": "2026-09-14 15:29:46 +0000",
       "great_ball": "2026-09-09 17:14:14 +0000",
       "ancient_wing_ball": "2026-09-09 16:48:57 +0000",
       "timer_ball": "2026-09-09 17:17:53 +0000",
@@ -25755,17 +25756,47 @@
     },
     "done": true
   },
+  "minecraft:recipes/building_blocks/oak_wood": {
+    "criteria": {
+      "has_oak_log": "2026-09-14 08:40:11 +0000"
+    },
+    "done": true
+  },
+  "minecraft:story/root": {
+    "criteria": {
+      "crafting_table": "2026-09-14 08:40:30 +0000"
+    },
+    "done": true
+  },
   "mega_showdown:mega_showdown/mega/find_keystone": {
     "criteria": {
       "obtained_keystone": "2026-09-14 08:45:31 +0000"
     },
     "done": true
   },
-  "cobblemon:medicinal_brew": {
+  "minecraft:story/smelt_iron": {
     "criteria": {
-      "check_inv": "2026-09-14 09:11:56 +0000"
+      "iron": "2026-09-14 08:48:25 +0000"
     },
     "done": true
+  },
+  "mega_showdown:mega_showdown/hidden/all_gimmick": {
+    "criteria": {
+      "bracelets": "2026-09-14 08:49:41 +0000"
+    },
+    "done": false
+  },
+  "mega_showdown:mega_showdown/mega/get_any_mega_bracelet": {
+    "criteria": {
+      "obtained_bracelets": "2026-09-14 08:49:41 +0000"
+    },
+    "done": true
+  },
+  "mega_showdown:mega_showdown/mega/craft_mega_accessories": {
+    "criteria": {
+      "maxie_glasses": "2026-09-14 08:49:41 +0000"
+    },
+    "done": false
   },
   "mega_showdown:mega_showdown/mega/craft_mega_stones": {
     "criteria": {
@@ -25785,39 +25816,15 @@
     },
     "done": true
   },
-  "mega_showdown:mega_showdown/hidden/all_gimmick": {
+  "cobblemon:medicinal_brew": {
     "criteria": {
-      "bracelets": "2026-09-14 08:49:41 +0000"
-    },
-    "done": false
-  },
-  "mega_showdown:mega_showdown/mega/get_any_mega_bracelet": {
-    "criteria": {
-      "obtained_bracelets": "2026-09-14 08:49:41 +0000"
+      "check_inv": "2026-09-14 09:11:56 +0000"
     },
     "done": true
   },
-  "minecraft:recipes/building_blocks/oak_wood": {
+  "cobbleverse:trainer/kanto/defeat_erika": {
     "criteria": {
-      "has_oak_log": "2026-09-14 08:40:11 +0000"
-    },
-    "done": true
-  },
-  "mega_showdown:mega_showdown/mega/craft_mega_accessories": {
-    "criteria": {
-      "maxie_glasses": "2026-09-14 08:49:41 +0000"
-    },
-    "done": false
-  },
-  "minecraft:story/smelt_iron": {
-    "criteria": {
-      "iron": "2026-09-14 08:48:25 +0000"
-    },
-    "done": true
-  },
-  "minecraft:story/root": {
-    "criteria": {
-      "crafting_table": "2026-09-14 08:40:30 +0000"
+      "leader_defeated": "2026-09-14 15:23:50 +0000"
     },
     "done": true
   },
