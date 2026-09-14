@@ -54,6 +54,7 @@
       "minecraft:old_growth_birch_forest": "2026-09-09 16:27:18 +0000",
       "minecraft:deep_dark": "2026-09-10 09:44:20 +0000",
       "minecraft:grove": "2026-09-10 09:28:41 +0000",
+      "minecraft:swamp": "2026-09-14 07:32:52 +0000",
       "minecraft:meadow": "2026-09-12 08:28:45 +0000",
       "minecraft:windswept_gravelly_hills": "2026-09-10 08:02:16 +0000",
       "minecraft:savanna": "2026-09-09 16:23:27 +0000",
@@ -25892,9 +25893,10 @@
       "minecraft:crimson_forest": "2026-09-10 18:08:17 +0000",
       "minecraft:nether_wastes": "2026-09-10 18:13:58 +0000",
       "minecraft:soul_sand_valley": "2026-09-10 18:14:11 +0000",
-      "minecraft:basalt_deltas": "2026-09-12 16:48:28 +0000"
+      "minecraft:basalt_deltas": "2026-09-12 16:48:28 +0000",
+      "minecraft:warped_forest": "2026-09-14 08:36:34 +0000"
     },
-    "done": false
+    "done": true
   },
   "minecraft:story/enter_the_nether": {
     "criteria": {
@@ -26121,6 +26123,42 @@
   "cobbleverse:trainer/kanto/defeat_erika": {
     "criteria": {
       "leader_defeated": "2026-09-13 16:51:56 +0000"
+    },
+    "done": true
+  },
+  "cobbleverse:trainer/kanto/defeat_koga": {
+    "criteria": {
+      "leader_defeated": "2026-09-14 09:29:21 +0000"
+    },
+    "done": true
+  },
+  "mega_showdown:mega_showdown/mega/craft_mega_stones": {
+    "criteria": {
+      "mega_stone": "2026-09-14 08:52:45 +0000"
+    },
+    "done": false
+  },
+  "mega_showdown:recipes/misc/aggroniite": {
+    "criteria": {
+      "has_mega_stone": "2026-09-14 08:52:45 +0000"
+    },
+    "done": true
+  },
+  "mega_showdown:mega_showdown/mega/find_raw_megastone": {
+    "criteria": {
+      "obtained_raw_mega_stones": "2026-09-14 08:52:45 +0000"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/warped_hyphae": {
+    "criteria": {
+      "has_warped_stem": "2026-09-14 08:37:18 +0000"
+    },
+    "done": true
+  },
+  "mega_showdown:mega_showdown/mega/mega_evolve": {
+    "criteria": {
+      "mega_evo_any": "2026-09-14 09:20:01 +0000"
     },
     "done": true
   },

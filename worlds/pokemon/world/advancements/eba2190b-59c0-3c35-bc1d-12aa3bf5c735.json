@@ -10529,6 +10529,7 @@
       "roseate_ball": "2026-09-09 17:45:09 +0000",
       "ancient_citrine_ball": "2026-09-09 17:14:55 +0000",
       "sport_ball": "2026-09-09 17:50:25 +0000",
+      "ancient_ultra_ball": "2026-09-14 08:27:12 +0000",
       "premier_ball": "2026-09-09 17:14:15 +0000",
       "verdant_ball": "2026-09-09 17:14:48 +0000",
       "ultra_ball": "2026-09-09 16:50:20 +0000"
@@ -25562,7 +25563,8 @@
       "ancient_wing_ball": "2026-09-09 16:48:57 +0000",
       "ancient_verdant_ball": "2026-09-09 17:01:39 +0000",
       "ancient_feather_ball": "2026-09-12 08:21:27 +0000",
-      "ancient_poke_ball": "2026-09-09 16:48:50 +0000"
+      "ancient_poke_ball": "2026-09-09 16:48:50 +0000",
+      "ancient_ultra_ball": "2026-09-14 08:27:12 +0000"
     },
     "done": false
   },
@@ -25606,7 +25608,11 @@
   },
   "cobblemon:brew_all": {
     "criteria": {
-      "obtain_potion": "2026-09-09 17:15:03 +0000"
+      "obtain_ice_heal": "2026-09-14 09:11:51 +0000",
+      "obtain_burn_heal": "2026-09-14 08:27:17 +0000",
+      "obtain_potion": "2026-09-09 17:15:03 +0000",
+      "obtain_super_potion": "2026-09-14 05:26:13 +0000",
+      "obtain_hyper_potion": "2026-09-14 09:06:46 +0000"
     },
     "done": false
   },
@@ -25701,9 +25707,21 @@
     },
     "done": false
   },
-  "cobbleverse:trainer/kanto/defeat_ltsurge": {
+  "minecraft:story/enter_the_nether": {
     "criteria": {
-      "leader_defeated": "2026-09-13 21:03:51 +0000"
+      "entered_nether": "2026-09-13 18:54:27 +0000"
+    },
+    "done": true
+  },
+  "minecraft:nether/root": {
+    "criteria": {
+      "entered_nether": "2026-09-13 18:54:27 +0000"
+    },
+    "done": true
+  },
+  "mega_showdown:mega_showdown/mega/find_mega_structure": {
+    "criteria": {
+      "in_mega_structure": "2026-09-13 20:14:16 +0000"
     },
     "done": true
   },
@@ -25719,27 +25737,87 @@
     },
     "done": true
   },
-  "minecraft:story/enter_the_nether": {
+  "cobbleverse:trainer/kanto/defeat_ltsurge": {
     "criteria": {
-      "entered_nether": "2026-09-13 18:54:27 +0000"
-    },
-    "done": true
-  },
-  "mega_showdown:mega_showdown/mega/find_mega_structure": {
-    "criteria": {
-      "in_mega_structure": "2026-09-13 20:14:16 +0000"
-    },
-    "done": true
-  },
-  "minecraft:nether/root": {
-    "criteria": {
-      "entered_nether": "2026-09-13 18:54:27 +0000"
+      "leader_defeated": "2026-09-13 21:03:51 +0000"
     },
     "done": true
   },
   "cobblemon:first_shiny_catch": {
     "criteria": {
       "catch": "2026-09-13 21:06:12 +0000"
+    },
+    "done": true
+  },
+  "minecraft:story/mine_stone": {
+    "criteria": {
+      "get_stone": "2026-09-14 08:36:56 +0000"
+    },
+    "done": true
+  },
+  "mega_showdown:mega_showdown/mega/find_keystone": {
+    "criteria": {
+      "obtained_keystone": "2026-09-14 08:45:31 +0000"
+    },
+    "done": true
+  },
+  "cobblemon:medicinal_brew": {
+    "criteria": {
+      "check_inv": "2026-09-14 09:11:56 +0000"
+    },
+    "done": true
+  },
+  "mega_showdown:mega_showdown/mega/craft_mega_stones": {
+    "criteria": {
+      "mega_stone": "2026-09-14 08:51:22 +0000"
+    },
+    "done": false
+  },
+  "mega_showdown:recipes/misc/aggroniite": {
+    "criteria": {
+      "has_mega_stone": "2026-09-14 08:51:22 +0000"
+    },
+    "done": true
+  },
+  "mega_showdown:mega_showdown/mega/find_raw_megastone": {
+    "criteria": {
+      "obtained_raw_mega_stones": "2026-09-14 08:51:22 +0000"
+    },
+    "done": true
+  },
+  "mega_showdown:mega_showdown/hidden/all_gimmick": {
+    "criteria": {
+      "bracelets": "2026-09-14 08:49:41 +0000"
+    },
+    "done": false
+  },
+  "mega_showdown:mega_showdown/mega/get_any_mega_bracelet": {
+    "criteria": {
+      "obtained_bracelets": "2026-09-14 08:49:41 +0000"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/oak_wood": {
+    "criteria": {
+      "has_oak_log": "2026-09-14 08:40:11 +0000"
+    },
+    "done": true
+  },
+  "mega_showdown:mega_showdown/mega/craft_mega_accessories": {
+    "criteria": {
+      "maxie_glasses": "2026-09-14 08:49:41 +0000"
+    },
+    "done": false
+  },
+  "minecraft:story/smelt_iron": {
+    "criteria": {
+      "iron": "2026-09-14 08:48:25 +0000"
+    },
+    "done": true
+  },
+  "minecraft:story/root": {
+    "criteria": {
+      "crafting_table": "2026-09-14 08:40:30 +0000"
     },
     "done": true
   },

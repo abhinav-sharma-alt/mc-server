@@ -10,26 +10,26 @@
   "battleTheme": "cobblemon:battle.pvp.default",
   "extraData": {},
   "advancementData": {
-    "totalCaptureCount": 33,
+    "totalCaptureCount": 35,
     "totalEggsCollected": 16,
     "totalEggsHatched": 28,
     "totalEvolvedCount": 15,
-    "totalBattleVictoryCount": 274,
-    "totalPvPBattleVictoryCount": 1,
-    "totalPvWBattleVictoryCount": 262,
-    "totalPvNBattleVictoryCount": 11,
+    "totalBattleVictoryCount": 298,
+    "totalPvPBattleVictoryCount": 2,
+    "totalPvWBattleVictoryCount": 274,
+    "totalPvNBattleVictoryCount": 22,
     "totalShinyCaptureCount": 0,
     "totalTradedCount": 8,
     "totalTypeCaptureCounts": {
       "poison": 1,
       "water": 4,
-      "psychic": 1,
-      "fairy": 1,
+      "psychic": 2,
+      "fairy": 2,
       "normal": 9,
       "steel": 1,
       "ghost": 2,
       "ice": 4,
-      "fire": 6,
+      "fire": 7,
       "bug": 1,
       "flying": 5,
       "grass": 2,
@@ -47,8 +47,8 @@
       "cobblemon:bunnelby": 6,
       "cobblemon:audino": 3,
       "cobblemon:watchog": 2,
-      "cobblemon:miltank": 10,
-      "cobblemon:bouffalant": 6,
+      "cobblemon:miltank": 11,
+      "cobblemon:bouffalant": 7,
       "cobblemon:igglybuff": 2,
       "cobblemon:gimmighoul": 7,
       "cobblemon:happiny": 6,
@@ -59,7 +59,7 @@
       "cobblemon:snubbull": 7,
       "cobblemon:absol": 1,
       "cobblemon:zigzagoon": 9,
-      "cobblemon:mareep": 2,
+      "cobblemon:mareep": 3,
       "cobblemon:diggersby": 3,
       "cobblemon:fidough": 7,
       "cobblemon:voltorb": 5,
@@ -72,7 +72,7 @@
       "cobblemon:purrloin": 2,
       "cobblemon:furret": 3,
       "cobblemon:jigglypuff": 1,
-      "cobblemon:stonjourner": 3,
+      "cobblemon:stonjourner": 4,
       "cobblemon:banette": 1,
       "cobblemon:drilbur": 2,
       "cobblemon:tauros": 4,
@@ -120,7 +120,13 @@
       "cobblemon:mudsdale": 1,
       "cobblemon:musharna": 1,
       "cobblemon:butterfree": 1,
-      "cobblemon:mabosstiff": 1
+      "cobblemon:mabosstiff": 1,
+      "cobblemon:houndour": 1,
+      "cobblemon:zebstrika": 1,
+      "cobblemon:electrike": 1,
+      "cobblemon:tandemaus": 1,
+      "cobblemon:doublade": 1,
+      "cobblemon:crabrawler": 1
     },
     "aspectsCollected": {
       "cobblemon:mareanie": [
@@ -304,6 +310,14 @@
       "cobblemon:glaceon": [
         "male",
         "bucket-ultra-rare"
+      ],
+      "cobblemon:fidough": [
+        "female",
+        "bucket-common"
+      ],
+      "cobblemon:armarouge": [
+        "male",
+        "bucket-rare"
       ]
     }
   }
