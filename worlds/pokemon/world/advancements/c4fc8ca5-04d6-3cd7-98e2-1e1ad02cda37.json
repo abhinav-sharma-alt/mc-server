@@ -30,6 +30,7 @@
       "minecraft:beach": "2026-09-09 16:26:10 +0000",
       "minecraft:dark_forest": "2026-09-09 16:28:07 +0000",
       "minecraft:stony_peaks": "2026-09-12 08:18:11 +0000",
+      "minecraft:mangrove_swamp": "2026-09-15 11:58:44 +0000",
       "minecraft:sparse_jungle": "2026-09-10 10:16:04 +0000",
       "minecraft:river": "2026-09-09 16:24:22 +0000",
       "minecraft:lukewarm_ocean": "2026-09-09 16:25:47 +0000",
@@ -48,6 +49,7 @@
       "minecraft:frozen_ocean": "2026-09-10 08:59:03 +0000",
       "minecraft:desert": "2026-09-09 15:20:03 +0000",
       "minecraft:windswept_forest": "2026-09-09 17:27:13 +0000",
+      "minecraft:deep_frozen_ocean": "2026-09-15 11:51:42 +0000",
       "minecraft:ocean": "2026-09-10 10:23:10 +0000",
       "minecraft:jungle": "2026-09-11 04:44:32 +0000",
       "minecraft:old_growth_spruce_taiga": "2026-09-09 16:51:10 +0000",
@@ -10378,7 +10380,8 @@
       "ancient_azure_ball": "2026-09-10 07:10:07 +0000",
       "roseate_ball": "2026-09-11 05:19:52 +0000",
       "friend_ball": "2026-09-09 17:36:12 +0000",
-      "park_ball": "2026-09-11 07:58:25 +0000"
+      "park_ball": "2026-09-11 07:58:25 +0000",
+      "master_ball": "2026-09-15 15:58:07 +0000"
     },
     "done": false
   },
@@ -26247,6 +26250,24 @@
   "cobblemon:obtain_fossil": {
     "criteria": {
       "check_inv": "2026-09-15 06:50:34 +0000"
+    },
+    "done": true
+  },
+  "mega_showdown:mega_showdown/z/get_sparkling_stone": {
+    "criteria": {
+      "obtained_sparkling_stone": "2026-09-15 12:50:35 +0000"
+    },
+    "done": true
+  },
+  "cobbleverse:trainer/kanto/defeat_giovanni": {
+    "criteria": {
+      "leader_defeated": "2026-09-15 15:57:17 +0000"
+    },
+    "done": true
+  },
+  "cobbleverse:item/obtain_mew_dna": {
+    "criteria": {
+      "giovanni_defeated": "2026-09-15 15:57:20 +0000"
     },
     "done": true
   },

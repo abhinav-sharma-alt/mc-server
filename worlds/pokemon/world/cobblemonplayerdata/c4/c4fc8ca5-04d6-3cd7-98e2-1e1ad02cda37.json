@@ -10,14 +10,14 @@
   "battleTheme": "cobblemon:battle.pvp.default",
   "extraData": {},
   "advancementData": {
-    "totalCaptureCount": 43,
+    "totalCaptureCount": 44,
     "totalEggsCollected": 16,
     "totalEggsHatched": 28,
     "totalEvolvedCount": 15,
-    "totalBattleVictoryCount": 362,
+    "totalBattleVictoryCount": 371,
     "totalPvPBattleVictoryCount": 3,
-    "totalPvWBattleVictoryCount": 335,
-    "totalPvNBattleVictoryCount": 24,
+    "totalPvWBattleVictoryCount": 343,
+    "totalPvNBattleVictoryCount": 25,
     "totalShinyCaptureCount": 0,
     "totalTradedCount": 8,
     "totalTypeCaptureCounts": {
@@ -33,11 +33,11 @@
       "bug": 2,
       "flying": 6,
       "grass": 5,
-      "electric": 2,
+      "electric": 3,
       "dragon": 3,
       "ground": 2,
       "dark": 1,
-      "fighting": 4
+      "fighting": 5
     },
     "totalDefeatedCounts": {
       "cobblemon:hippopotas": 1,
@@ -50,11 +50,11 @@
       "cobblemon:miltank": 18,
       "cobblemon:bouffalant": 12,
       "cobblemon:igglybuff": 2,
-      "cobblemon:gimmighoul": 9,
+      "cobblemon:gimmighoul": 11,
       "cobblemon:happiny": 6,
       "cobblemon:zorua": 1,
       "cobblemon:lillipup": 6,
-      "cobblemon:murkrow": 1,
+      "cobblemon:murkrow": 2,
       "cobblemon:cyndaquil": 1,
       "cobblemon:snubbull": 7,
       "cobblemon:absol": 1,
@@ -128,7 +128,7 @@
       "cobblemon:doublade": 1,
       "cobblemon:crabrawler": 1,
       "cobblemon:lopunny": 1,
-      "cobblemon:castform": 1,
+      "cobblemon:castform": 2,
       "cobblemon:bramblin": 1,
       "cobblemon:houndoom": 1,
       "cobblemon:misdreavus": 1,
@@ -142,7 +142,10 @@
       "cobblemon:pyroar": 1,
       "cobblemon:dodrio": 1,
       "cobblemon:rhydon": 1,
-      "cobblemon:golduck": 1
+      "cobblemon:golduck": 1,
+      "cobblemon:sigilyph": 1,
+      "cobblemon:glastrier": 1,
+      "cobblemon:calyrex": 1
     },
     "aspectsCollected": {
       "cobblemon:mareanie": [
@@ -367,6 +370,10 @@
       "cobblemon:gossifleur": [
         "male",
         "bucket-common"
+      ],
+      "cobblemon:ironhands": [
+        "genderless",
+        "bucket-rare"
       ]
     }
   }
