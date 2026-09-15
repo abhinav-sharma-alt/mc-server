@@ -26141,7 +26141,11 @@
   },
   "mega_showdown:mega_showdown/mega/craft_mega_stones": {
     "criteria": {
-      "mega_stone": "2026-09-14 08:52:45 +0000"
+      "charizardite_y": "2026-09-15 18:56:09 +0000",
+      "venusaurite": "2026-09-15 18:54:48 +0000",
+      "mega_stone": "2026-09-14 08:52:45 +0000",
+      "charizardite_x": "2026-09-15 18:56:07 +0000",
+      "blastoisinite": "2026-09-15 18:55:31 +0000"
     },
     "done": false
   },
@@ -26268,6 +26272,54 @@
   "cobbleverse:item/obtain_mew_dna": {
     "criteria": {
       "giovanni_defeated": "2026-09-15 15:57:20 +0000"
+    },
+    "done": true
+  },
+  "minecraft:story/follow_ender_eye": {
+    "criteria": {
+      "in_stronghold": "2026-09-15 17:55:09 +0000"
+    },
+    "done": true
+  },
+  "minecraft:story/enter_the_end": {
+    "criteria": {
+      "entered_end": "2026-09-15 18:03:07 +0000"
+    },
+    "done": true
+  },
+  "minecraft:end/enter_end_gateway": {
+    "criteria": {
+      "entered_end_gateway": "2026-09-15 18:10:17 +0000"
+    },
+    "done": true
+  },
+  "minecraft:end/elytra": {
+    "criteria": {
+      "elytra": "2026-09-15 18:54:05 +0000"
+    },
+    "done": true
+  },
+  "mega_showdown:mega_showdown/mega/get_any_mega_stone": {
+    "criteria": {
+      "obtained_mega_stones": "2026-09-15 18:54:48 +0000"
+    },
+    "done": true
+  },
+  "minecraft:end/find_end_city": {
+    "criteria": {
+      "in_city": "2026-09-15 18:11:20 +0000"
+    },
+    "done": true
+  },
+  "cobblemon:first_shiny_catch": {
+    "criteria": {
+      "catch": "2026-09-15 18:04:27 +0000"
+    },
+    "done": true
+  },
+  "minecraft:end/root": {
+    "criteria": {
+      "entered_end": "2026-09-15 18:03:15 +0000"
     },
     "done": true
   },

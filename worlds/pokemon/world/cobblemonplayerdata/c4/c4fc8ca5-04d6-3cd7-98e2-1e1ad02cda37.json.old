@@ -10,20 +10,20 @@
   "battleTheme": "cobblemon:battle.pvp.default",
   "extraData": {},
   "advancementData": {
-    "totalCaptureCount": 44,
+    "totalCaptureCount": 47,
     "totalEggsCollected": 16,
     "totalEggsHatched": 28,
     "totalEvolvedCount": 15,
-    "totalBattleVictoryCount": 371,
+    "totalBattleVictoryCount": 403,
     "totalPvPBattleVictoryCount": 3,
-    "totalPvWBattleVictoryCount": 343,
+    "totalPvWBattleVictoryCount": 375,
     "totalPvNBattleVictoryCount": 25,
-    "totalShinyCaptureCount": 0,
+    "totalShinyCaptureCount": 1,
     "totalTradedCount": 8,
     "totalTypeCaptureCounts": {
       "poison": 1,
       "water": 5,
-      "psychic": 2,
+      "psychic": 4,
       "fairy": 2,
       "normal": 9,
       "steel": 2,
@@ -31,10 +31,10 @@
       "ice": 4,
       "fire": 9,
       "bug": 2,
-      "flying": 6,
+      "flying": 7,
       "grass": 5,
       "electric": 3,
-      "dragon": 3,
+      "dragon": 4,
       "ground": 2,
       "dark": 1,
       "fighting": 5
@@ -48,9 +48,9 @@
       "cobblemon:audino": 3,
       "cobblemon:watchog": 2,
       "cobblemon:miltank": 18,
-      "cobblemon:bouffalant": 12,
+      "cobblemon:bouffalant": 15,
       "cobblemon:igglybuff": 2,
-      "cobblemon:gimmighoul": 11,
+      "cobblemon:gimmighoul": 12,
       "cobblemon:happiny": 6,
       "cobblemon:zorua": 1,
       "cobblemon:lillipup": 6,
@@ -59,7 +59,7 @@
       "cobblemon:snubbull": 7,
       "cobblemon:absol": 1,
       "cobblemon:zigzagoon": 9,
-      "cobblemon:mareep": 3,
+      "cobblemon:mareep": 6,
       "cobblemon:diggersby": 4,
       "cobblemon:fidough": 7,
       "cobblemon:voltorb": 6,
@@ -89,7 +89,7 @@
       "cobblemon:maschiff": 2,
       "cobblemon:nickit": 2,
       "cobblemon:patrat": 7,
-      "cobblemon:wooloo": 12,
+      "cobblemon:wooloo": 13,
       "cobblemon:mudbray": 2,
       "cobblemon:taillow": 2,
       "cobblemon:lickitung": 1,
@@ -145,7 +145,11 @@
       "cobblemon:golduck": 1,
       "cobblemon:sigilyph": 1,
       "cobblemon:glastrier": 1,
-      "cobblemon:calyrex": 1
+      "cobblemon:calyrex": 1,
+      "cobblemon:skwovet": 1,
+      "cobblemon:unown": 18,
+      "cobblemon:duraludon": 1,
+      "cobblemon:porygon": 1
     },
     "aspectsCollected": {
       "cobblemon:mareanie": [
@@ -374,6 +378,19 @@
       "cobblemon:ironhands": [
         "genderless",
         "bucket-rare"
+      ],
+      "cobblemon:rayquaza": [
+        "shiny",
+        "genderless",
+        "bucket-"
+      ],
+      "cobblemon:cosmoem": [
+        "genderless",
+        "bucket-ultra-rare"
+      ],
+      "cobblemon:cosmog": [
+        "genderless",
+        "bucket-ultra-rare"
       ]
     }
   }

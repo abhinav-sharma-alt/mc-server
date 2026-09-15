@@ -10,15 +10,15 @@
   "battleTheme": "cobblemon:battle.pvp.default",
   "extraData": {},
   "advancementData": {
-    "totalCaptureCount": 105,
+    "totalCaptureCount": 107,
     "totalEggsCollected": 25,
     "totalEggsHatched": 52,
     "totalEvolvedCount": 39,
-    "totalBattleVictoryCount": 387,
+    "totalBattleVictoryCount": 391,
     "totalPvPBattleVictoryCount": 0,
-    "totalPvWBattleVictoryCount": 378,
-    "totalPvNBattleVictoryCount": 9,
-    "totalShinyCaptureCount": 13,
+    "totalPvWBattleVictoryCount": 381,
+    "totalPvNBattleVictoryCount": 10,
+    "totalShinyCaptureCount": 14,
     "totalTradedCount": 9,
     "totalTypeCaptureCounts": {
       "ground": 4,
@@ -28,15 +28,15 @@
       "fairy": 10,
       "steel": 1,
       "flying": 10,
-      "water": 10,
-      "electric": 4,
+      "water": 11,
+      "electric": 5,
       "ice": 5,
       "grass": 12,
       "dragon": 6,
       "bug": 5,
       "psychic": 5,
       "ghost": 9,
-      "poison": 4,
+      "poison": 5,
       "rock": 2,
       "fighting": 7
     },
@@ -58,7 +58,7 @@
       "cobblemon:gimmighoul": 9,
       "cobblemon:shiftry": 1,
       "cobblemon:minior": 2,
-      "cobblemon:happiny": 5,
+      "cobblemon:happiny": 6,
       "cobblemon:persian": 2,
       "cobblemon:voltorb": 6,
       "cobblemon:darumaka": 1,
@@ -185,7 +185,8 @@
       ],
       "cobblemon:buizel": [
         "female",
-        "bucket-common"
+        "bucket-common",
+        "shiny"
       ],
       "cobblemon:tepig": [
         "male",
@@ -628,6 +629,10 @@
       "cobblemon:piplup": [
         "male",
         "bucket-ultra-rare"
+      ],
+      "cobblemon:toxel": [
+        "female",
+        "bucket-common"
       ]
     }
   }
