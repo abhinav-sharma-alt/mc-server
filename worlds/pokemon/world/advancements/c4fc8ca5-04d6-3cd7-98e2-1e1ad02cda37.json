@@ -13,32 +13,19 @@
   },
   "minecraft:adventure/adventuring_time": {
     "criteria": {
-      "minecraft:cold_ocean": "2026-09-09 16:56:19 +0000",
       "minecraft:snowy_slopes": "2026-09-10 09:24:01 +0000",
       "minecraft:old_growth_pine_taiga": "2026-09-10 16:53:04 +0000",
-      "minecraft:forest": "2026-09-09 16:24:21 +0000",
       "minecraft:taiga": "2026-09-09 16:51:26 +0000",
       "minecraft:deep_ocean": "2026-09-12 09:38:38 +0000",
-      "minecraft:lush_caves": "2026-09-10 17:13:03 +0000",
-      "minecraft:deep_cold_ocean": "2026-09-12 09:39:40 +0000",
-      "minecraft:ice_spikes": "2026-09-10 09:21:51 +0000",
-      "minecraft:frozen_ocean": "2026-09-10 08:59:03 +0000",
-      "minecraft:desert": "2026-09-09 15:20:03 +0000",
+      "minecraft:eroded_badlands": "2026-09-15 07:43:18 +0000",
       "minecraft:frozen_river": "2026-09-10 07:55:46 +0000",
-      "minecraft:windswept_forest": "2026-09-09 17:27:13 +0000",
-      "minecraft:ocean": "2026-09-10 10:23:10 +0000",
-      "minecraft:jungle": "2026-09-11 04:44:32 +0000",
       "minecraft:sunflower_plains": "2026-09-10 10:31:33 +0000",
       "minecraft:cherry_grove": "2026-09-13 07:30:47 +0000",
       "minecraft:birch_forest": "2026-09-10 10:13:36 +0000",
       "minecraft:windswept_hills": "2026-09-09 17:39:28 +0000",
-      "minecraft:old_growth_spruce_taiga": "2026-09-09 16:51:10 +0000",
-      "minecraft:snowy_beach": "2026-09-10 08:59:41 +0000",
       "minecraft:bamboo_jungle": "2026-09-10 10:16:53 +0000",
-      "minecraft:windswept_savanna": "2026-09-09 16:25:29 +0000",
-      "minecraft:deep_lukewarm_ocean": "2026-09-12 08:22:39 +0000",
+      "minecraft:wooded_badlands": "2026-09-15 07:44:58 +0000",
       "minecraft:badlands": "2026-09-09 15:14:50 +0000",
-      "minecraft:flower_forest": "2026-09-12 09:00:41 +0000",
       "minecraft:savanna_plateau": "2026-09-12 07:52:46 +0000",
       "minecraft:beach": "2026-09-09 16:26:10 +0000",
       "minecraft:dark_forest": "2026-09-09 16:28:07 +0000",
@@ -50,16 +37,32 @@
       "minecraft:snowy_plains": "2026-09-09 17:03:11 +0000",
       "minecraft:snowy_taiga": "2026-09-10 07:55:59 +0000",
       "minecraft:dripstone_caves": "2026-09-12 07:44:36 +0000",
+      "minecraft:grove": "2026-09-10 09:28:41 +0000",
+      "minecraft:swamp": "2026-09-14 07:32:52 +0000",
+      "minecraft:jagged_peaks": "2026-09-12 10:35:40 +0000",
+      "minecraft:cold_ocean": "2026-09-09 16:56:19 +0000",
+      "minecraft:forest": "2026-09-09 16:24:21 +0000",
+      "minecraft:lush_caves": "2026-09-10 17:13:03 +0000",
+      "minecraft:deep_cold_ocean": "2026-09-12 09:39:40 +0000",
+      "minecraft:ice_spikes": "2026-09-10 09:21:51 +0000",
+      "minecraft:frozen_ocean": "2026-09-10 08:59:03 +0000",
+      "minecraft:desert": "2026-09-09 15:20:03 +0000",
+      "minecraft:windswept_forest": "2026-09-09 17:27:13 +0000",
+      "minecraft:ocean": "2026-09-10 10:23:10 +0000",
+      "minecraft:jungle": "2026-09-11 04:44:32 +0000",
+      "minecraft:old_growth_spruce_taiga": "2026-09-09 16:51:10 +0000",
+      "minecraft:snowy_beach": "2026-09-10 08:59:41 +0000",
+      "minecraft:windswept_savanna": "2026-09-09 16:25:29 +0000",
+      "minecraft:warm_ocean": "2026-09-15 07:42:59 +0000",
+      "minecraft:deep_lukewarm_ocean": "2026-09-12 08:22:39 +0000",
+      "minecraft:flower_forest": "2026-09-12 09:00:41 +0000",
       "minecraft:frozen_peaks": "2026-09-10 09:28:13 +0000",
       "minecraft:old_growth_birch_forest": "2026-09-09 16:27:18 +0000",
       "minecraft:deep_dark": "2026-09-10 09:44:20 +0000",
-      "minecraft:grove": "2026-09-10 09:28:41 +0000",
-      "minecraft:swamp": "2026-09-14 07:32:52 +0000",
       "minecraft:meadow": "2026-09-12 08:28:45 +0000",
       "minecraft:windswept_gravelly_hills": "2026-09-10 08:02:16 +0000",
       "minecraft:savanna": "2026-09-09 16:23:27 +0000",
-      "minecraft:plains": "2026-09-09 16:24:37 +0000",
-      "minecraft:jagged_peaks": "2026-09-12 10:35:40 +0000"
+      "minecraft:plains": "2026-09-09 16:24:37 +0000"
     },
     "done": false
   },
@@ -26196,6 +26199,54 @@
   "cobblemonraiddens:tier_four": {
     "criteria": {
       "completed_tier_four": "2026-09-14 17:43:04 +0000"
+    },
+    "done": true
+  },
+  "moarconcrete:recipes/building_blocks/black_concrete_slab_from_black_concrete_stonecutting": {
+    "criteria": {
+      "has_black_concrete": "2026-09-15 06:10:24 +0000"
+    },
+    "done": true
+  },
+  "moarconcrete:recipes/building_blocks/black_concrete_stairs_from_black_concrete_stonecutting": {
+    "criteria": {
+      "has_black_concrete": "2026-09-15 06:10:24 +0000"
+    },
+    "done": true
+  },
+  "moarconcrete:recipes/building_blocks/black_concrete_bricks_from_black_concrete_stonecutting": {
+    "criteria": {
+      "has_black_concrete": "2026-09-15 06:10:24 +0000"
+    },
+    "done": true
+  },
+  "moarconcrete:recipes/building_blocks/black_concrete_brick_slab_from_black_concrete_stonecutting": {
+    "criteria": {
+      "has_black_concrete": "2026-09-15 06:10:24 +0000"
+    },
+    "done": true
+  },
+  "moarconcrete:recipes/building_blocks/black_concrete_wall_from_black_concrete_stonecutting": {
+    "criteria": {
+      "has_black_concrete": "2026-09-15 06:10:24 +0000"
+    },
+    "done": true
+  },
+  "moarconcrete:recipes/building_blocks/black_concrete_panel_from_black_concrete_stonecutting": {
+    "criteria": {
+      "has_black_concrete": "2026-09-15 06:10:24 +0000"
+    },
+    "done": true
+  },
+  "cobbleverse:trainer/kanto/defeat_blaine": {
+    "criteria": {
+      "leader_defeated": "2026-09-15 06:27:15 +0000"
+    },
+    "done": true
+  },
+  "cobblemon:obtain_fossil": {
+    "criteria": {
+      "check_inv": "2026-09-15 06:50:34 +0000"
     },
     "done": true
   },
