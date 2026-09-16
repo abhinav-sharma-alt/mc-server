@@ -10,31 +10,31 @@
   "battleTheme": "cobblemon:battle.pvp.default",
   "extraData": {},
   "advancementData": {
-    "totalCaptureCount": 47,
-    "totalEggsCollected": 16,
-    "totalEggsHatched": 28,
-    "totalEvolvedCount": 15,
-    "totalBattleVictoryCount": 403,
+    "totalCaptureCount": 54,
+    "totalEggsCollected": 18,
+    "totalEggsHatched": 32,
+    "totalEvolvedCount": 19,
+    "totalBattleVictoryCount": 570,
     "totalPvPBattleVictoryCount": 3,
-    "totalPvWBattleVictoryCount": 375,
-    "totalPvNBattleVictoryCount": 25,
+    "totalPvWBattleVictoryCount": 538,
+    "totalPvNBattleVictoryCount": 29,
     "totalShinyCaptureCount": 1,
     "totalTradedCount": 8,
     "totalTypeCaptureCounts": {
       "poison": 1,
       "water": 5,
-      "psychic": 4,
+      "psychic": 7,
       "fairy": 2,
       "normal": 9,
-      "steel": 2,
-      "ghost": 2,
+      "steel": 4,
+      "ghost": 3,
       "ice": 4,
-      "fire": 9,
+      "fire": 10,
       "bug": 2,
       "flying": 7,
       "grass": 5,
-      "electric": 3,
-      "dragon": 4,
+      "electric": 4,
+      "dragon": 6,
       "ground": 2,
       "dark": 1,
       "fighting": 5
@@ -50,7 +50,7 @@
       "cobblemon:miltank": 18,
       "cobblemon:bouffalant": 15,
       "cobblemon:igglybuff": 2,
-      "cobblemon:gimmighoul": 12,
+      "cobblemon:gimmighoul": 14,
       "cobblemon:happiny": 6,
       "cobblemon:zorua": 1,
       "cobblemon:lillipup": 6,
@@ -147,9 +147,17 @@
       "cobblemon:glastrier": 1,
       "cobblemon:calyrex": 1,
       "cobblemon:skwovet": 1,
-      "cobblemon:unown": 18,
-      "cobblemon:duraludon": 1,
-      "cobblemon:porygon": 1
+      "cobblemon:unown": 152,
+      "cobblemon:duraludon": 4,
+      "cobblemon:porygon": 8,
+      "cobblemon:elgyem": 3,
+      "cobblemon:beheeyem": 1,
+      "cobblemon:metang": 1,
+      "cobblemon:espurr": 1,
+      "cobblemon:malamar": 1,
+      "cobblemon:duosion": 1,
+      "cobblemon:hoopa": 1,
+      "cobblemon:reuniclus": 1
     },
     "aspectsCollected": {
       "cobblemon:mareanie": [
@@ -391,6 +399,39 @@
       "cobblemon:cosmog": [
         "genderless",
         "bucket-ultra-rare"
+      ],
+      "cobblemon:lunala": [
+        "genderless",
+        "bucket-ultra-rare"
+      ],
+      "cobblemon:duraludon": [
+        "female",
+        "bucket-rare"
+      ],
+      "cobblemon:solgaleo": [
+        "genderless",
+        "bucket-ultra-rare"
+      ],
+      "cobblemon:tepig": [
+        "male",
+        "bucket-ultra-rare"
+      ],
+      "cobblemon:infernape": [
+        "male",
+        "bucket-"
+      ],
+      "cobblemon:archaludon": [
+        "female",
+        "bucket-rare"
+      ],
+      "cobblemon:necrozma": [
+        "genderless",
+        "bucket-ultra-rare"
+      ],
+      "cobblemon:pikachu": [
+        "female",
+        "bucket-rare",
+        "libre"
       ]
     }
   }

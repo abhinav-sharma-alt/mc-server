@@ -10375,6 +10375,7 @@
       "ultra_ball": "2026-09-13 16:56:24 +0000",
       "heal_ball": "2026-09-09 16:33:14 +0000",
       "slate_ball": "2026-09-10 10:49:52 +0000",
+      "beast_ball": "2026-09-16 05:57:25 +0000",
       "poke_ball": "2026-09-09 15:30:47 +0000",
       "citrine_ball": "2026-09-09 17:36:13 +0000",
       "ancient_azure_ball": "2026-09-10 07:10:07 +0000",
@@ -26287,9 +26288,27 @@
     },
     "done": true
   },
+  "minecraft:end/root": {
+    "criteria": {
+      "entered_end": "2026-09-15 18:03:15 +0000"
+    },
+    "done": true
+  },
+  "cobblemon:first_shiny_catch": {
+    "criteria": {
+      "catch": "2026-09-15 18:04:27 +0000"
+    },
+    "done": true
+  },
   "minecraft:end/enter_end_gateway": {
     "criteria": {
       "entered_end_gateway": "2026-09-15 18:10:17 +0000"
+    },
+    "done": true
+  },
+  "minecraft:end/find_end_city": {
+    "criteria": {
+      "in_city": "2026-09-15 18:11:20 +0000"
     },
     "done": true
   },
@@ -26305,21 +26324,27 @@
     },
     "done": true
   },
-  "minecraft:end/find_end_city": {
+  "cobbleverse:trainer/kanto/defeat_elite_lorelei": {
     "criteria": {
-      "in_city": "2026-09-15 18:11:20 +0000"
+      "elite_defeated": "2026-09-16 06:14:03 +0000"
     },
     "done": true
   },
-  "cobblemon:first_shiny_catch": {
+  "cobbleverse:trainer/kanto/defeat_elite_bruno": {
     "criteria": {
-      "catch": "2026-09-15 18:04:27 +0000"
+      "elite_defeated": "2026-09-16 06:17:57 +0000"
     },
     "done": true
   },
-  "minecraft:end/root": {
+  "cobbleverse:trainer/kanto/defeat_elite_agatha": {
     "criteria": {
-      "entered_end": "2026-09-15 18:03:15 +0000"
+      "elite_defeated": "2026-09-16 08:52:40 +0000"
+    },
+    "done": true
+  },
+  "cobbleverse:trainer/kanto/defeat_elite_lance": {
+    "criteria": {
+      "elite_defeated": "2026-09-16 09:02:12 +0000"
     },
     "done": true
   },
