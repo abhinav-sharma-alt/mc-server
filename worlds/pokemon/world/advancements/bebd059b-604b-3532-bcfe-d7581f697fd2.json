@@ -26336,5 +26336,17 @@
     },
     "done": true
   },
+  "minecraft:recipes/building_blocks/jungle_wood": {
+    "criteria": {
+      "has_jungle_log": "2026-09-16 12:19:21 +0000"
+    },
+    "done": true
+  },
+  "sophisticatedstorage:recipes/misc/advanced_compacting_upgrade": {
+    "criteria": {
+      "has_compacting_upgrade": "2026-09-16 13:00:21 +0000"
+    },
+    "done": true
+  },
   "DataVersion": 3955
 }

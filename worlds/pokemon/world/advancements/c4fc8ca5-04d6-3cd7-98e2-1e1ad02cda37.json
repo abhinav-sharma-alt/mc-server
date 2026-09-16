@@ -934,11 +934,64 @@
   },
   "cobblemon:obtain_all_berries": {
     "criteria": {
+      "obtain_spelon_berry": "2026-09-16 14:02:10 +0000",
+      "obtain_pinap_berry": "2026-09-16 14:03:35 +0000",
+      "obtain_pomeg_berry": "2026-09-16 15:11:14 +0000",
+      "obtain_payapa_berry": "2026-09-16 12:49:34 +0000",
+      "obtain_charti_berry": "2026-09-16 14:36:50 +0000",
+      "obtain_yache_berry": "2026-09-16 12:50:22 +0000",
+      "obtain_cornn_berry": "2026-09-16 12:51:01 +0000",
+      "obtain_ganlon_berry": "2026-09-16 14:07:20 +0000",
+      "obtain_maranga_berry": "2026-09-16 13:55:44 +0000",
+      "obtain_rawst_berry": "2026-09-16 14:38:59 +0000",
+      "obtain_kebia_berry": "2026-09-16 13:56:34 +0000",
+      "obtain_magost_berry": "2026-09-16 12:52:09 +0000",
+      "obtain_aspear_berry": "2026-09-16 13:56:21 +0000",
+      "obtain_rabuta_berry": "2026-09-16 12:50:56 +0000",
+      "obtain_belue_berry": "2026-09-16 14:02:51 +0000",
+      "obtain_sitrus_berry": "2026-09-16 12:49:31 +0000",
+      "obtain_nanab_berry": "2026-09-16 14:35:31 +0000",
+      "obtain_tamato_berry": "2026-09-16 14:38:55 +0000",
+      "obtain_liechi_berry": "2026-09-16 12:54:17 +0000",
+      "obtain_watmel_berry": "2026-09-16 14:38:14 +0000",
+      "obtain_hondew_berry": "2026-09-16 13:54:57 +0000",
       "obtain_babiri_berry": "2026-09-10 07:43:18 +0000",
+      "obtain_passho_berry": "2026-09-16 14:02:55 +0000",
+      "obtain_kee_berry": "2026-09-16 14:07:49 +0000",
+      "obtain_chesto_berry": "2026-09-16 14:02:43 +0000",
+      "obtain_roseli_berry": "2026-09-16 14:03:27 +0000",
+      "obtain_kasib_berry": "2026-09-16 14:08:22 +0000",
+      "obtain_lansat_berry": "2026-09-16 12:50:40 +0000",
       "obtain_coba_berry": "2026-09-09 16:27:46 +0000",
-      "obtain_cheri_berry": "2026-09-11 11:02:07 +0000",
+      "obtain_lum_berry": "2026-09-16 14:08:41 +0000",
+      "obtain_kelpsy_berry": "2026-09-16 14:46:19 +0000",
+      "obtain_touga_berry": "2026-09-16 14:03:39 +0000",
+      "obtain_qualot_berry": "2026-09-16 13:54:42 +0000",
+      "obtain_iapapa_berry": "2026-09-16 15:07:28 +0000",
+      "obtain_chilan_berry": "2026-09-16 13:56:31 +0000",
+      "obtain_micle_berry": "2026-09-16 13:56:05 +0000",
+      "obtain_persim_berry": "2026-09-16 12:49:40 +0000",
+      "obtain_rindo_berry": "2026-09-16 14:35:26 +0000",
+      "obtain_salac_berry": "2026-09-16 14:07:23 +0000",
+      "obtain_grepa_berry": "2026-09-16 14:02:27 +0000",
+      "obtain_hopo_berry": "2026-09-16 13:56:29 +0000",
+      "obtain_mago_berry": "2026-09-16 12:50:25 +0000",
+      "obtain_razz_berry": "2026-09-16 12:54:32 +0000",
+      "obtain_pecha_berry": "2026-09-16 14:02:59 +0000",
+      "obtain_apicot_berry": "2026-09-16 14:08:04 +0000",
+      "obtain_custap_berry": "2026-09-16 13:55:03 +0000",
       "obtain_oran_berry": "2026-09-09 15:30:47 +0000",
+      "obtain_haban_berry": "2026-09-16 13:56:13 +0000",
+      "obtain_bluk_berry": "2026-09-16 12:49:43 +0000",
+      "obtain_pamtre_berry": "2026-09-16 14:38:06 +0000",
+      "obtain_durin_berry": "2026-09-16 13:56:25 +0000",
+      "obtain_tanga_berry": "2026-09-16 14:38:07 +0000",
+      "obtain_jaboca_berry": "2026-09-16 14:02:35 +0000",
+      "obtain_figy_berry": "2026-09-16 13:55:54 +0000",
+      "obtain_cheri_berry": "2026-09-11 11:02:07 +0000",
+      "obtain_chople_berry": "2026-09-16 14:38:13 +0000",
       "obtain_wacan_berry": "2026-09-10 17:28:05 +0000",
+      "obtain_petaya_berry": "2026-09-16 12:54:24 +0000",
       "obtain_wepear_berry": "2026-09-09 17:38:50 +0000"
     },
     "done": false
@@ -26347,6 +26400,96 @@
       "elite_defeated": "2026-09-16 09:02:12 +0000"
     },
     "done": true
+  },
+  "cobblemon:recipes/campfire_pot/quick_candy": {
+    "criteria": {
+      "has_berry": "2026-09-16 14:38:55 +0000"
+    },
+    "done": false
+  },
+  "cobblemon:recipes/campfire_pot/smart_candy": {
+    "criteria": {
+      "has_berry": "2026-09-16 13:54:57 +0000"
+    },
+    "done": false
+  },
+  "cobblemon:recipes/campfire_pot/sickly_candy": {
+    "criteria": {
+      "has_berry": "2026-09-16 15:11:14 +0000"
+    },
+    "done": false
+  },
+  "cobblemon:recipes/campfire_pot/courage_candy": {
+    "criteria": {
+      "has_berry": "2026-09-16 14:02:27 +0000"
+    },
+    "done": false
+  },
+  "cobblemon:recipes/campfire_pot/health_candy": {
+    "criteria": {
+      "has_berry": "2026-09-16 15:11:14 +0000"
+    },
+    "done": false
+  },
+  "cobblemon:recipes/campfire_pot/numb_candy": {
+    "criteria": {
+      "has_berry": "2026-09-16 13:54:57 +0000"
+    },
+    "done": false
+  },
+  "cobblemon:recipes/campfire_pot/weak_candy": {
+    "criteria": {
+      "has_berry": "2026-09-16 14:46:19 +0000"
+    },
+    "done": false
+  },
+  "cobblemon:recipes/campfire_pot/mighty_candy": {
+    "criteria": {
+      "has_berry": "2026-09-16 14:46:19 +0000"
+    },
+    "done": false
+  },
+  "cobblemon:recipes/campfire_pot/slow_candy": {
+    "criteria": {
+      "has_berry": "2026-09-16 14:38:55 +0000"
+    },
+    "done": false
+  },
+  "cobblemon:recipes/campfire_pot/tough_candy": {
+    "criteria": {
+      "has_berry": "2026-09-16 13:54:42 +0000"
+    },
+    "done": false
+  },
+  "minecraft:adventure/revaulting": {
+    "criteria": {
+      "revaulting": "2026-09-16 13:20:45 +0000"
+    },
+    "done": true
+  },
+  "minecraft:story/enchant_item": {
+    "criteria": {
+      "enchanted_item": "2026-09-16 12:38:37 +0000"
+    },
+    "done": true
+  },
+  "cobblemon:obtain_mutated_berry": {
+    "criteria": {
+      "check_inv": "2026-09-16 12:49:31 +0000"
+    },
+    "done": true
+  },
+  "cobblemon:recipes/campfire_pot/coward_candy": {
+    "criteria": {
+      "has_berry": "2026-09-16 14:02:27 +0000"
+    },
+    "done": false
+  },
+  "cobblemon:recipes/campfire_pot/brittle_candy": {
+    "criteria": {
+      "has_berry": "2026-09-16 13:54:42 +0000"
+    },
+    "done": false
   },
   "DataVersion": 3955
 }

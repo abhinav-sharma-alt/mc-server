@@ -10,21 +10,21 @@
   "battleTheme": "cobblemon:battle.pvp.default",
   "extraData": {},
   "advancementData": {
-    "totalCaptureCount": 114,
+    "totalCaptureCount": 116,
     "totalEggsCollected": 29,
     "totalEggsHatched": 60,
     "totalEvolvedCount": 46,
-    "totalBattleVictoryCount": 441,
+    "totalBattleVictoryCount": 445,
     "totalPvPBattleVictoryCount": 0,
-    "totalPvWBattleVictoryCount": 427,
+    "totalPvWBattleVictoryCount": 431,
     "totalPvNBattleVictoryCount": 14,
     "totalShinyCaptureCount": 14,
-    "totalTradedCount": 9,
+    "totalTradedCount": 10,
     "totalTypeCaptureCounts": {
       "ground": 6,
       "dark": 7,
       "fire": 12,
-      "normal": 30,
+      "normal": 32,
       "fairy": 12,
       "steel": 1,
       "flying": 10,
@@ -38,13 +38,13 @@
       "ghost": 9,
       "poison": 6,
       "rock": 3,
-      "fighting": 7
+      "fighting": 8
     },
     "totalDefeatedCounts": {
       "cobblemon:ralts": 1,
       "cobblemon:tinkatink": 1,
       "cobblemon:taillow": 2,
-      "cobblemon:miltank": 50,
+      "cobblemon:miltank": 51,
       "cobblemon:meowth": 4,
       "cobblemon:furret": 4,
       "cobblemon:granbull": 3,
@@ -155,7 +155,8 @@
       "cobblemon:girafarig": 1,
       "cobblemon:liepard": 1,
       "cobblemon:musharna": 1,
-      "cobblemon:kangaskhan": 1
+      "cobblemon:kangaskhan": 1,
+      "cobblemon:rattata": 1
     },
     "aspectsCollected": {
       "cobblemon:sandile": [
@@ -679,6 +680,10 @@
         "male",
         "cosmetic_item-black_glasses",
         "bucket-ultra-rare"
+      ],
+      "cobblemon:audino": [
+        "female",
+        "bucket-rare"
       ]
     }
   }
