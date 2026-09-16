@@ -26401,9 +26401,33 @@
     },
     "done": true
   },
-  "cobblemon:recipes/campfire_pot/quick_candy": {
+  "minecraft:story/enchant_item": {
     "criteria": {
-      "has_berry": "2026-09-16 14:38:55 +0000"
+      "enchanted_item": "2026-09-16 12:38:37 +0000"
+    },
+    "done": true
+  },
+  "cobblemon:obtain_mutated_berry": {
+    "criteria": {
+      "check_inv": "2026-09-16 12:49:31 +0000"
+    },
+    "done": true
+  },
+  "minecraft:adventure/revaulting": {
+    "criteria": {
+      "revaulting": "2026-09-16 13:20:45 +0000"
+    },
+    "done": true
+  },
+  "cobblemon:recipes/campfire_pot/tough_candy": {
+    "criteria": {
+      "has_berry": "2026-09-16 13:54:42 +0000"
+    },
+    "done": false
+  },
+  "cobblemon:recipes/campfire_pot/brittle_candy": {
+    "criteria": {
+      "has_berry": "2026-09-16 13:54:42 +0000"
     },
     "done": false
   },
@@ -26413,9 +26437,9 @@
     },
     "done": false
   },
-  "cobblemon:recipes/campfire_pot/sickly_candy": {
+  "cobblemon:recipes/campfire_pot/numb_candy": {
     "criteria": {
-      "has_berry": "2026-09-16 15:11:14 +0000"
+      "has_berry": "2026-09-16 13:54:57 +0000"
     },
     "done": false
   },
@@ -26425,15 +26449,21 @@
     },
     "done": false
   },
-  "cobblemon:recipes/campfire_pot/health_candy": {
+  "cobblemon:recipes/campfire_pot/coward_candy": {
     "criteria": {
-      "has_berry": "2026-09-16 15:11:14 +0000"
+      "has_berry": "2026-09-16 14:02:27 +0000"
     },
     "done": false
   },
-  "cobblemon:recipes/campfire_pot/numb_candy": {
+  "cobblemon:recipes/campfire_pot/quick_candy": {
     "criteria": {
-      "has_berry": "2026-09-16 13:54:57 +0000"
+      "has_berry": "2026-09-16 14:38:55 +0000"
+    },
+    "done": false
+  },
+  "cobblemon:recipes/campfire_pot/slow_candy": {
+    "criteria": {
+      "has_berry": "2026-09-16 14:38:55 +0000"
     },
     "done": false
   },
@@ -26449,47 +26479,29 @@
     },
     "done": false
   },
-  "cobblemon:recipes/campfire_pot/slow_candy": {
+  "cobblemon:recipes/campfire_pot/sickly_candy": {
     "criteria": {
-      "has_berry": "2026-09-16 14:38:55 +0000"
+      "has_berry": "2026-09-16 15:11:14 +0000"
     },
     "done": false
   },
-  "cobblemon:recipes/campfire_pot/tough_candy": {
+  "cobblemon:recipes/campfire_pot/health_candy": {
     "criteria": {
-      "has_berry": "2026-09-16 13:54:42 +0000"
+      "has_berry": "2026-09-16 15:11:14 +0000"
     },
     "done": false
   },
-  "minecraft:adventure/revaulting": {
+  "mega_showdown:mega_showdown/bond/ash_greninja": {
     "criteria": {
-      "revaulting": "2026-09-16 13:20:45 +0000"
+      "ash_greninja": "2026-09-16 19:20:45 +0000"
     },
     "done": true
   },
-  "minecraft:story/enchant_item": {
+  "mega_showdown:mega_showdown/bond/ash_cap_bond": {
     "criteria": {
-      "enchanted_item": "2026-09-16 12:38:37 +0000"
+      "bond_any": "2026-09-16 19:19:40 +0000"
     },
     "done": true
-  },
-  "cobblemon:obtain_mutated_berry": {
-    "criteria": {
-      "check_inv": "2026-09-16 12:49:31 +0000"
-    },
-    "done": true
-  },
-  "cobblemon:recipes/campfire_pot/coward_candy": {
-    "criteria": {
-      "has_berry": "2026-09-16 14:02:27 +0000"
-    },
-    "done": false
-  },
-  "cobblemon:recipes/campfire_pot/brittle_candy": {
-    "criteria": {
-      "has_berry": "2026-09-16 13:54:42 +0000"
-    },
-    "done": false
   },
   "DataVersion": 3955
 }

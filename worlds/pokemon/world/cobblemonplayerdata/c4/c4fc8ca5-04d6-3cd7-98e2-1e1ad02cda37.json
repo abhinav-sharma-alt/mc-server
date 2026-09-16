@@ -10,16 +10,16 @@
   "battleTheme": "cobblemon:battle.pvp.default",
   "extraData": {},
   "advancementData": {
-    "totalCaptureCount": 56,
-    "totalEggsCollected": 18,
-    "totalEggsHatched": 32,
-    "totalEvolvedCount": 21,
-    "totalBattleVictoryCount": 631,
-    "totalPvPBattleVictoryCount": 3,
-    "totalPvWBattleVictoryCount": 599,
+    "totalCaptureCount": 57,
+    "totalEggsCollected": 20,
+    "totalEggsHatched": 34,
+    "totalEvolvedCount": 23,
+    "totalBattleVictoryCount": 652,
+    "totalPvPBattleVictoryCount": 4,
+    "totalPvWBattleVictoryCount": 619,
     "totalPvNBattleVictoryCount": 29,
     "totalShinyCaptureCount": 1,
-    "totalTradedCount": 9,
+    "totalTradedCount": 10,
     "totalTypeCaptureCounts": {
       "poison": 1,
       "water": 5,
@@ -33,7 +33,7 @@
       "bug": 2,
       "flying": 7,
       "grass": 5,
-      "electric": 4,
+      "electric": 5,
       "dragon": 6,
       "ground": 2,
       "dark": 1,
@@ -42,7 +42,7 @@
     "totalDefeatedCounts": {
       "cobblemon:hippopotas": 1,
       "cobblemon:ledyba": 8,
-      "cobblemon:meowth": 8,
+      "cobblemon:meowth": 9,
       "cobblemon:glameow": 11,
       "cobblemon:bunnelby": 6,
       "cobblemon:audino": 3,
@@ -102,7 +102,7 @@
       "cobblemon:combee": 4,
       "cobblemon:drifloon": 2,
       "cobblemon:lechonk": 3,
-      "cobblemon:timburr": 3,
+      "cobblemon:timburr": 4,
       "cobblemon:pachirisu": 2,
       "cobblemon:pawmi": 1,
       "cobblemon:fletchling": 1,
@@ -147,9 +147,9 @@
       "cobblemon:glastrier": 1,
       "cobblemon:calyrex": 1,
       "cobblemon:skwovet": 1,
-      "cobblemon:unown": 189,
+      "cobblemon:unown": 204,
       "cobblemon:duraludon": 5,
-      "cobblemon:porygon": 10,
+      "cobblemon:porygon": 12,
       "cobblemon:elgyem": 4,
       "cobblemon:beheeyem": 1,
       "cobblemon:metang": 2,
@@ -268,7 +268,8 @@
       ],
       "cobblemon:electabuzz": [
         "female",
-        "bucket-uncommon"
+        "bucket-uncommon",
+        "male"
       ],
       "cobblemon:tapubulu": [
         "genderless",
@@ -318,7 +319,8 @@
       ],
       "cobblemon:electivire": [
         "female",
-        "bucket-uncommon"
+        "bucket-uncommon",
+        "male"
       ],
       "cobblemon:meowth": [
         "female",
@@ -444,6 +446,10 @@
         "genderless",
         "bucket-ultra-rare",
         "confined"
+      ],
+      "cobblemon:elekid": [
+        "male",
+        "bucket-uncommon"
       ]
     }
   }
