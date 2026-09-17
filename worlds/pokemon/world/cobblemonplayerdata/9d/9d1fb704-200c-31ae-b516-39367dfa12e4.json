@@ -1,0 +1,62 @@
+{
+  "uuid": "9d1fb704-200c-31ae-b516-39367dfa12e4",
+  "starterPrompted": true,
+  "starterLocked": false,
+  "starterSelected": true,
+  "starterUUID": "b29dbc21-80f6-46bd-a427-6a6ce15df0d1",
+  "keyItems": [],
+  "battleTheme": "cobblemon:battle.pvp.default",
+  "extraData": {},
+  "advancementData": {
+    "totalCaptureCount": 6,
+    "totalEggsCollected": 0,
+    "totalEggsHatched": 0,
+    "totalEvolvedCount": 1,
+    "totalBattleVictoryCount": 5,
+    "totalPvPBattleVictoryCount": 0,
+    "totalPvWBattleVictoryCount": 5,
+    "totalPvNBattleVictoryCount": 0,
+    "totalShinyCaptureCount": 0,
+    "totalTradedCount": 1,
+    "totalTypeCaptureCounts": {
+      "fighting": 1,
+      "normal": 2,
+      "water": 1,
+      "grass": 1,
+      "fairy": 1,
+      "electric": 1
+    },
+    "totalDefeatedCounts": {},
+    "aspectsCollected": {
+      "cobblemon:crabrawler": [
+        "male",
+        "bucket-common"
+      ],
+      "cobblemon:meowth": [
+        "female",
+        "bucket-common"
+      ],
+      "cobblemon:psyduck": [
+        "male",
+        "bucket-common"
+      ],
+      "cobblemon:whimsicott": [
+        "male",
+        "bucket-common"
+      ],
+      "cobblemon:bouffalant": [
+        "female",
+        "bucket-common"
+      ],
+      "cobblemon:mareep": [
+        "male",
+        "bucket-common"
+      ],
+      "cobblemon:charmeleon": [
+        "shiny",
+        "male",
+        "bucket-"
+      ]
+    }
+  }
+}
