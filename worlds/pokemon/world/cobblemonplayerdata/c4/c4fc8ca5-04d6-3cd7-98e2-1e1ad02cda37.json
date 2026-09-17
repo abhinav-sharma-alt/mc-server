@@ -10,32 +10,32 @@
   "battleTheme": "cobblemon:battle.pvp.default",
   "extraData": {},
   "advancementData": {
-    "totalCaptureCount": 57,
-    "totalEggsCollected": 20,
-    "totalEggsHatched": 34,
-    "totalEvolvedCount": 23,
-    "totalBattleVictoryCount": 652,
+    "totalCaptureCount": 79,
+    "totalEggsCollected": 27,
+    "totalEggsHatched": 40,
+    "totalEvolvedCount": 30,
+    "totalBattleVictoryCount": 690,
     "totalPvPBattleVictoryCount": 4,
-    "totalPvWBattleVictoryCount": 619,
+    "totalPvWBattleVictoryCount": 657,
     "totalPvNBattleVictoryCount": 29,
     "totalShinyCaptureCount": 1,
-    "totalTradedCount": 10,
+    "totalTradedCount": 16,
     "totalTypeCaptureCounts": {
-      "poison": 1,
+      "poison": 4,
       "water": 5,
       "psychic": 9,
       "fairy": 2,
       "normal": 9,
       "steel": 4,
-      "ghost": 5,
+      "ghost": 17,
       "ice": 4,
       "fire": 10,
       "bug": 2,
       "flying": 7,
-      "grass": 5,
+      "grass": 6,
       "electric": 5,
-      "dragon": 6,
-      "ground": 2,
+      "dragon": 8,
+      "ground": 10,
       "dark": 1,
       "fighting": 5
     },
@@ -59,14 +59,14 @@
       "cobblemon:snubbull": 7,
       "cobblemon:absol": 1,
       "cobblemon:zigzagoon": 10,
-      "cobblemon:mareep": 6,
+      "cobblemon:mareep": 7,
       "cobblemon:diggersby": 4,
-      "cobblemon:fidough": 7,
+      "cobblemon:fidough": 8,
       "cobblemon:voltorb": 6,
       "cobblemon:drowzee": 1,
       "cobblemon:farfetchd": 1,
       "cobblemon:klefki": 1,
-      "cobblemon:pidgey": 3,
+      "cobblemon:pidgey": 4,
       "cobblemon:medicham": 13,
       "cobblemon:oddish": 1,
       "cobblemon:purrloin": 2,
@@ -88,10 +88,10 @@
       "cobblemon:skitty": 5,
       "cobblemon:maschiff": 2,
       "cobblemon:nickit": 2,
-      "cobblemon:patrat": 9,
+      "cobblemon:patrat": 10,
       "cobblemon:wooloo": 13,
       "cobblemon:mudbray": 2,
-      "cobblemon:taillow": 2,
+      "cobblemon:taillow": 3,
       "cobblemon:lickitung": 1,
       "cobblemon:linoone": 2,
       "cobblemon:oricorio": 1,
@@ -121,7 +121,7 @@
       "cobblemon:musharna": 3,
       "cobblemon:butterfree": 1,
       "cobblemon:mabosstiff": 1,
-      "cobblemon:houndour": 1,
+      "cobblemon:houndour": 2,
       "cobblemon:zebstrika": 1,
       "cobblemon:electrike": 1,
       "cobblemon:tandemaus": 1,
@@ -147,7 +147,7 @@
       "cobblemon:glastrier": 1,
       "cobblemon:calyrex": 1,
       "cobblemon:skwovet": 1,
-      "cobblemon:unown": 204,
+      "cobblemon:unown": 213,
       "cobblemon:duraludon": 5,
       "cobblemon:porygon": 12,
       "cobblemon:elgyem": 4,
@@ -162,7 +162,8 @@
       "cobblemon:growlithe": 1,
       "cobblemon:sneasel": 1,
       "cobblemon:shroomish": 1,
-      "cobblemon:kricketot": 1
+      "cobblemon:kricketot": 1,
+      "cobblemon:xurkitree": 1
     },
     "aspectsCollected": {
       "cobblemon:mareanie": [
@@ -325,7 +326,8 @@
       "cobblemon:meowth": [
         "female",
         "bucket-common",
-        "male"
+        "male",
+        "bucket-"
       ],
       "cobblemon:persian": [
         "male",
@@ -450,6 +452,43 @@
       "cobblemon:elekid": [
         "male",
         "bucket-uncommon"
+      ],
+      "cobblemon:naganadel": [
+        "genderless",
+        "bucket-ultra-rare"
+      ],
+      "cobblemon:cubone": [
+        "male",
+        "bucket-common",
+        "region-bias-alola",
+        "female"
+      ],
+      "cobblemon:gastly": [
+        "female",
+        "bucket-"
+      ],
+      "cobblemon:gimmighoul": [
+        "genderless",
+        "bucket-",
+        "bucket-common",
+        "roaming"
+      ],
+      "cobblemon:pecharunt": [
+        "genderless",
+        "bucket-ultra-rare"
+      ],
+      "cobblemon:flapple": [
+        "female",
+        "bucket-rare"
+      ],
+      "cobblemon:gholdengo": [
+        "genderless",
+        "bucket-common",
+        "netherite-coating-none"
+      ],
+      "cobblemon:geodude": [
+        "female",
+        "bucket-"
       ]
     }
   }

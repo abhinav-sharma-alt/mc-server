@@ -10,32 +10,32 @@
   "battleTheme": "cobblemon:battle.pvp.default",
   "extraData": {},
   "advancementData": {
-    "totalCaptureCount": 130,
-    "totalEggsCollected": 31,
-    "totalEggsHatched": 62,
-    "totalEvolvedCount": 51,
-    "totalBattleVictoryCount": 472,
+    "totalCaptureCount": 156,
+    "totalEggsCollected": 34,
+    "totalEggsHatched": 68,
+    "totalEvolvedCount": 54,
+    "totalBattleVictoryCount": 499,
     "totalPvPBattleVictoryCount": 0,
-    "totalPvWBattleVictoryCount": 456,
+    "totalPvWBattleVictoryCount": 483,
     "totalPvNBattleVictoryCount": 16,
-    "totalShinyCaptureCount": 17,
-    "totalTradedCount": 11,
+    "totalShinyCaptureCount": 20,
+    "totalTradedCount": 17,
     "totalTypeCaptureCounts": {
       "ground": 12,
       "dark": 7,
       "fire": 12,
-      "normal": 38,
-      "fairy": 13,
+      "normal": 39,
+      "fairy": 14,
       "steel": 3,
       "flying": 10,
       "water": 11,
-      "electric": 6,
+      "electric": 7,
       "ice": 5,
-      "grass": 13,
+      "grass": 15,
       "dragon": 7,
-      "bug": 6,
-      "psychic": 6,
-      "ghost": 9,
+      "bug": 7,
+      "psychic": 7,
+      "ghost": 29,
       "poison": 6,
       "rock": 7,
       "fighting": 8
@@ -156,7 +156,8 @@
       "cobblemon:liepard": 2,
       "cobblemon:musharna": 1,
       "cobblemon:kangaskhan": 1,
-      "cobblemon:rattata": 1
+      "cobblemon:rattata": 1,
+      "cobblemon:psyduck": 1
     },
     "aspectsCollected": {
       "cobblemon:sandile": [
@@ -321,7 +322,9 @@
       ],
       "cobblemon:gimmighoul": [
         "genderless",
-        "bucket-"
+        "bucket-",
+        "bucket-common",
+        "roaming"
       ],
       "cobblemon:rowlet": [
         "male",
@@ -347,7 +350,8 @@
       "cobblemon:gholdengo": [
         "genderless",
         "bucket-",
-        "netherite-coating-none"
+        "netherite-coating-none",
+        "bucket-common"
       ],
       "cobblemon:ironjugulis": [
         "genderless",
@@ -424,7 +428,8 @@
       "cobblemon:meowth": [
         "female",
         "bucket-common",
-        "male"
+        "male",
+        "shiny"
       ],
       "cobblemon:masquerain": [
         "female",
@@ -727,6 +732,30 @@
         "shiny",
         "female",
         "bucket-common"
+      ],
+      "cobblemon:pikachu": [
+        "female",
+        "bucket-rare",
+        "belle"
+      ],
+      "cobblemon:cottonee": [
+        "shiny",
+        "female",
+        "bucket-common"
+      ],
+      "cobblemon:wurmple": [
+        "shiny",
+        "male",
+        "bucket-common",
+        "cascoon-cocoon"
+      ],
+      "cobblemon:sprigatito": [
+        "male",
+        "bucket-ultra-rare"
+      ],
+      "cobblemon:hatenna": [
+        "female",
+        "bucket-uncommon"
       ]
     }
   }

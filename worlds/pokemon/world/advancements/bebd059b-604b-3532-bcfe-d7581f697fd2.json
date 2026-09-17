@@ -41,6 +41,7 @@
       "minecraft:dripstone_caves": "2026-09-12 09:41:15 +0000",
       "minecraft:grove": "2026-09-10 09:44:01 +0000",
       "minecraft:swamp": "2026-09-10 17:25:13 +0000",
+      "minecraft:jagged_peaks": "2026-09-17 09:32:57 +0000",
       "minecraft:cold_ocean": "2026-09-10 07:14:18 +0000",
       "minecraft:forest": "2026-09-09 16:26:10 +0000",
       "minecraft:deep_cold_ocean": "2026-09-10 08:00:21 +0000",
@@ -724,6 +725,8 @@
   "cobblemon:obtain_all_berries": {
     "criteria": {
       "obtain_babiri_berry": "2026-09-12 11:04:54 +0000",
+      "obtain_cheri_berry": "2026-09-17 10:28:59 +0000",
+      "obtain_grepa_berry": "2026-09-17 07:05:32 +0000",
       "obtain_occa_berry": "2026-09-15 16:30:59 +0000",
       "obtain_oran_berry": "2026-09-09 15:26:40 +0000",
       "obtain_bluk_berry": "2026-09-16 09:31:11 +0000",
@@ -25744,9 +25747,10 @@
   },
   "cobblemon:recipes/campfire_pot/courage_candy": {
     "criteria": {
-      "has_honeycomb": "2026-09-09 17:54:04 +0000"
+      "has_honeycomb": "2026-09-09 17:54:04 +0000",
+      "has_berry": "2026-09-17 07:05:32 +0000"
     },
-    "done": false
+    "done": true
   },
   "cobblemon:recipes/campfire_pot/health_candy": {
     "criteria": {
@@ -26346,6 +26350,60 @@
   "sophisticatedstorage:recipes/misc/advanced_compacting_upgrade": {
     "criteria": {
       "has_compacting_upgrade": "2026-09-16 13:00:21 +0000"
+    },
+    "done": true
+  },
+  "mega_showdown:mega_showdown/z/get_blank_move": {
+    "criteria": {
+      "obtained_blank_z": "2026-09-17 08:14:01 +0000"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/birch_wood": {
+    "criteria": {
+      "has_birch_log": "2026-09-17 09:37:14 +0000"
+    },
+    "done": true
+  },
+  "sophisticatedstorage:recipes/misc/double_iron_chest_from_copper_chest": {
+    "criteria": {
+      "has_copper_chest": "2026-09-17 07:35:21 +0000"
+    },
+    "done": true
+  },
+  "cobblemon:place_campfire_pot": {
+    "criteria": {
+      "place_pot": "2026-09-17 07:35:03 +0000"
+    },
+    "done": true
+  },
+  "cobblemon:obtain_mutated_berry": {
+    "criteria": {
+      "check_inv": "2026-09-17 07:05:32 +0000"
+    },
+    "done": true
+  },
+  "sophisticatedstorage:recipes/misc/iron_chest_from_copper_chest": {
+    "criteria": {
+      "has_copper_chest": "2026-09-17 07:35:21 +0000"
+    },
+    "done": true
+  },
+  "cobblemon:recipes/campfire_pot/coward_candy": {
+    "criteria": {
+      "has_berry": "2026-09-17 07:05:32 +0000"
+    },
+    "done": false
+  },
+  "sophisticatedstorage:recipes/misc/copper_shulker_from_copper_chest": {
+    "criteria": {
+      "has_copper_chest": "2026-09-17 07:35:21 +0000"
+    },
+    "done": true
+  },
+  "mega_showdown:mega_showdown/dynamax/find_wishing_star": {
+    "criteria": {
+      "obtained_wishing_star": "2026-09-17 10:53:45 +0000"
     },
     "done": true
   },

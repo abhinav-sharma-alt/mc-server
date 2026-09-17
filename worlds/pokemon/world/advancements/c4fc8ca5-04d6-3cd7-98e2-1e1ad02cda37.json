@@ -958,6 +958,7 @@
       "obtain_babiri_berry": "2026-09-10 07:43:18 +0000",
       "obtain_passho_berry": "2026-09-16 14:02:55 +0000",
       "obtain_kee_berry": "2026-09-16 14:07:49 +0000",
+      "obtain_colbur_berry": "2026-09-17 07:45:54 +0000",
       "obtain_chesto_berry": "2026-09-16 14:02:43 +0000",
       "obtain_roseli_berry": "2026-09-16 14:03:27 +0000",
       "obtain_kasib_berry": "2026-09-16 14:08:22 +0000",
@@ -26491,15 +26492,33 @@
     },
     "done": false
   },
+  "mega_showdown:mega_showdown/bond/ash_cap_bond": {
+    "criteria": {
+      "bond_any": "2026-09-16 19:19:40 +0000"
+    },
+    "done": true
+  },
   "mega_showdown:mega_showdown/bond/ash_greninja": {
     "criteria": {
       "ash_greninja": "2026-09-16 19:20:45 +0000"
     },
     "done": true
   },
-  "mega_showdown:mega_showdown/bond/ash_cap_bond": {
+  "minecraft:husbandry/place_dried_ghast_in_water": {
     "criteria": {
-      "bond_any": "2026-09-16 19:19:40 +0000"
+      "place_dried_ghast_on_water": "2026-09-17 06:44:12 +0000"
+    },
+    "done": true
+  },
+  "mega_showdown:mega_showdown/dynamax/find_wishing_star": {
+    "criteria": {
+      "obtained_wishing_star": "2026-09-17 07:35:16 +0000"
+    },
+    "done": true
+  },
+  "cobblemon:use_revive": {
+    "criteria": {
+      "use_revival_herb": "2026-09-17 08:10:01 +0000"
     },
     "done": true
   },
