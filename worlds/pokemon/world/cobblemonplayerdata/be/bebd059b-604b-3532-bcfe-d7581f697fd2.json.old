@@ -10,35 +10,35 @@
   "battleTheme": "cobblemon:battle.pvp.default",
   "extraData": {},
   "advancementData": {
-    "totalCaptureCount": 192,
+    "totalCaptureCount": 196,
     "totalEggsCollected": 45,
     "totalEggsHatched": 86,
     "totalEvolvedCount": 62,
-    "totalBattleVictoryCount": 667,
+    "totalBattleVictoryCount": 671,
     "totalPvPBattleVictoryCount": 0,
-    "totalPvWBattleVictoryCount": 648,
+    "totalPvWBattleVictoryCount": 652,
     "totalPvNBattleVictoryCount": 19,
     "totalShinyCaptureCount": 23,
-    "totalTradedCount": 31,
+    "totalTradedCount": 32,
     "totalTypeCaptureCounts": {
       "ground": 13,
       "dark": 7,
       "fire": 12,
       "normal": 46,
       "fairy": 14,
-      "steel": 5,
+      "steel": 8,
       "flying": 26,
       "water": 11,
       "electric": 9,
       "ice": 5,
       "grass": 18,
       "dragon": 9,
-      "bug": 25,
-      "psychic": 11,
+      "bug": 26,
+      "psychic": 14,
       "ghost": 30,
       "poison": 6,
       "rock": 7,
-      "fighting": 9
+      "fighting": 10
     },
     "totalDefeatedCounts": {
       "cobblemon:ralts": 1,
@@ -880,6 +880,19 @@
       "cobblemon:arboliva": [
         "female",
         "bucket-uncommon"
+      ],
+      "cobblemon:necrozma": [
+        "genderless",
+        "bucket-",
+        "dusk-fusion"
+      ],
+      "cobblemon:pheromosa": [
+        "genderless",
+        "bucket-ultra-rare"
+      ],
+      "cobblemon:solgaleo": [
+        "genderless",
+        "bucket-ultra-rare"
       ]
     }
   }

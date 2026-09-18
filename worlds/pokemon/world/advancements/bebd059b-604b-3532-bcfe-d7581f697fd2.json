@@ -25564,6 +25564,7 @@
   "cobblemon:brew_all": {
     "criteria": {
       "obtain_burn_heal": "2026-09-09 15:32:50 +0000",
+      "obtain_potion": "2026-09-18 14:09:56 +0000",
       "obtain_super_potion": "2026-09-09 16:00:52 +0000",
       "obtain_hyper_potion": "2026-09-11 05:06:31 +0000",
       "obtain_max_potion": "2026-09-09 16:08:09 +0000",
@@ -26299,7 +26300,9 @@
   "mega_showdown:mega_showdown/mega/craft_mega_stones": {
     "criteria": {
       "lucarionite": "2026-09-14 16:47:19 +0000",
-      "mega_stone": "2026-09-14 16:47:12 +0000"
+      "charizardite_y": "2026-09-18 14:20:57 +0000",
+      "mega_stone": "2026-09-14 16:47:12 +0000",
+      "blastoisinite": "2026-09-18 14:20:53 +0000"
     },
     "done": false
   },
@@ -26534,6 +26537,96 @@
   "minecraft:end/elytra": {
     "criteria": {
       "elytra": "2026-09-18 11:45:47 +0000"
+    },
+    "done": true
+  },
+  "moarconcrete:recipes/building_blocks/purple_concrete_stairs_from_purple_concrete_stonecutting": {
+    "criteria": {
+      "has_purple_concrete": "2026-09-18 15:03:39 +0000"
+    },
+    "done": true
+  },
+  "moarconcrete:recipes/building_blocks/pink_concrete_wall_from_pink_concrete_stonecutting": {
+    "criteria": {
+      "has_pink_concrete": "2026-09-18 15:06:37 +0000"
+    },
+    "done": true
+  },
+  "moarconcrete:recipes/building_blocks/pink_concrete_bricks_from_pink_concrete_stonecutting": {
+    "criteria": {
+      "has_pink_concrete": "2026-09-18 15:06:37 +0000"
+    },
+    "done": true
+  },
+  "moarconcrete:recipes/building_blocks/purple_concrete_wall_from_purple_concrete_stonecutting": {
+    "criteria": {
+      "has_purple_concrete": "2026-09-18 15:03:39 +0000"
+    },
+    "done": true
+  },
+  "moarconcrete:recipes/building_blocks/pink_concrete_slab_from_pink_concrete_stonecutting": {
+    "criteria": {
+      "has_pink_concrete": "2026-09-18 15:06:37 +0000"
+    },
+    "done": true
+  },
+  "cobblemon:brew_potion": {
+    "criteria": {
+      "check_inv": "2026-09-18 14:09:56 +0000"
+    },
+    "done": true
+  },
+  "moarconcrete:recipes/building_blocks/pink_concrete_panel_from_pink_concrete_stonecutting": {
+    "criteria": {
+      "has_pink_concrete": "2026-09-18 15:06:37 +0000"
+    },
+    "done": true
+  },
+  "moarconcrete:recipes/building_blocks/purple_concrete_panel_from_purple_concrete_stonecutting": {
+    "criteria": {
+      "has_purple_concrete": "2026-09-18 15:03:39 +0000"
+    },
+    "done": true
+  },
+  "moarconcrete:recipes/building_blocks/pink_concrete_stairs_from_pink_concrete_stonecutting": {
+    "criteria": {
+      "has_pink_concrete": "2026-09-18 15:06:37 +0000"
+    },
+    "done": true
+  },
+  "moarconcrete:recipes/building_blocks/pink_concrete_brick_slab_from_pink_concrete_stonecutting": {
+    "criteria": {
+      "has_pink_concrete": "2026-09-18 15:06:37 +0000"
+    },
+    "done": true
+  },
+  "minecraft:end/levitate": {
+    "criteria": {
+      "levitated": "2026-09-18 13:35:28 +0000"
+    },
+    "done": true
+  },
+  "minecraft:end/dragon_breath": {
+    "criteria": {
+      "dragon_breath": "2026-09-18 15:16:28 +0000"
+    },
+    "done": true
+  },
+  "moarconcrete:recipes/building_blocks/purple_concrete_brick_slab_from_purple_concrete_stonecutting": {
+    "criteria": {
+      "has_purple_concrete": "2026-09-18 15:03:39 +0000"
+    },
+    "done": true
+  },
+  "moarconcrete:recipes/building_blocks/purple_concrete_bricks_from_purple_concrete_stonecutting": {
+    "criteria": {
+      "has_purple_concrete": "2026-09-18 15:03:39 +0000"
+    },
+    "done": true
+  },
+  "moarconcrete:recipes/building_blocks/purple_concrete_slab_from_purple_concrete_stonecutting": {
+    "criteria": {
+      "has_purple_concrete": "2026-09-18 15:03:39 +0000"
     },
     "done": true
   },

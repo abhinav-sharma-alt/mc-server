@@ -10,30 +10,30 @@
   "battleTheme": "cobblemon:battle.pvp.default",
   "extraData": {},
   "advancementData": {
-    "totalCaptureCount": 80,
+    "totalCaptureCount": 83,
     "totalEggsCollected": 30,
     "totalEggsHatched": 50,
     "totalEvolvedCount": 43,
-    "totalBattleVictoryCount": 742,
+    "totalBattleVictoryCount": 751,
     "totalPvPBattleVictoryCount": 4,
-    "totalPvWBattleVictoryCount": 708,
+    "totalPvWBattleVictoryCount": 717,
     "totalPvNBattleVictoryCount": 30,
     "totalShinyCaptureCount": 1,
-    "totalTradedCount": 29,
+    "totalTradedCount": 30,
     "totalTypeCaptureCounts": {
       "poison": 5,
       "water": 5,
-      "psychic": 9,
+      "psychic": 10,
       "fairy": 2,
       "normal": 9,
       "steel": 4,
-      "ghost": 17,
+      "ghost": 18,
       "ice": 4,
       "fire": 10,
       "bug": 2,
       "flying": 7,
       "grass": 6,
-      "electric": 5,
+      "electric": 7,
       "dragon": 9,
       "ground": 10,
       "dark": 1,
@@ -59,7 +59,7 @@
       "cobblemon:snubbull": 7,
       "cobblemon:absol": 1,
       "cobblemon:zigzagoon": 10,
-      "cobblemon:mareep": 7,
+      "cobblemon:mareep": 8,
       "cobblemon:diggersby": 4,
       "cobblemon:fidough": 8,
       "cobblemon:voltorb": 6,
@@ -147,10 +147,10 @@
       "cobblemon:glastrier": 1,
       "cobblemon:calyrex": 1,
       "cobblemon:skwovet": 1,
-      "cobblemon:unown": 259,
+      "cobblemon:unown": 261,
       "cobblemon:duraludon": 5,
-      "cobblemon:porygon": 13,
-      "cobblemon:elgyem": 5,
+      "cobblemon:porygon": 14,
+      "cobblemon:elgyem": 6,
       "cobblemon:beheeyem": 1,
       "cobblemon:metang": 2,
       "cobblemon:espurr": 1,
@@ -164,7 +164,8 @@
       "cobblemon:shroomish": 1,
       "cobblemon:kricketot": 1,
       "cobblemon:xurkitree": 1,
-      "cobblemon:cinccino": 1
+      "cobblemon:cinccino": 1,
+      "cobblemon:porygonz": 1
     },
     "aspectsCollected": {
       "cobblemon:mareanie": [
@@ -440,7 +441,9 @@
       ],
       "cobblemon:necrozma": [
         "genderless",
-        "bucket-ultra-rare"
+        "bucket-ultra-rare",
+        "bucket-",
+        "dawn-fusion"
       ],
       "cobblemon:pikachu": [
         "female",
@@ -503,6 +506,14 @@
       "cobblemon:milcery": [
         "female",
         "bucket-common"
+      ],
+      "cobblemon:happiny": [
+        "female",
+        "bucket-"
+      ],
+      "cobblemon:xurkitree": [
+        "genderless",
+        "bucket-ultra-rare"
       ]
     }
   }
