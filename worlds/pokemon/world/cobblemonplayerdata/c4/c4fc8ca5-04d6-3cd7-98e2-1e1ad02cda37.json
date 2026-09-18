@@ -10,18 +10,18 @@
   "battleTheme": "cobblemon:battle.pvp.default",
   "extraData": {},
   "advancementData": {
-    "totalCaptureCount": 79,
-    "totalEggsCollected": 29,
-    "totalEggsHatched": 44,
-    "totalEvolvedCount": 30,
-    "totalBattleVictoryCount": 691,
+    "totalCaptureCount": 80,
+    "totalEggsCollected": 30,
+    "totalEggsHatched": 50,
+    "totalEvolvedCount": 43,
+    "totalBattleVictoryCount": 742,
     "totalPvPBattleVictoryCount": 4,
-    "totalPvWBattleVictoryCount": 657,
+    "totalPvWBattleVictoryCount": 708,
     "totalPvNBattleVictoryCount": 30,
     "totalShinyCaptureCount": 1,
-    "totalTradedCount": 16,
+    "totalTradedCount": 29,
     "totalTypeCaptureCounts": {
-      "poison": 4,
+      "poison": 5,
       "water": 5,
       "psychic": 9,
       "fairy": 2,
@@ -34,7 +34,7 @@
       "flying": 7,
       "grass": 6,
       "electric": 5,
-      "dragon": 8,
+      "dragon": 9,
       "ground": 10,
       "dark": 1,
       "fighting": 5
@@ -89,7 +89,7 @@
       "cobblemon:maschiff": 2,
       "cobblemon:nickit": 2,
       "cobblemon:patrat": 10,
-      "cobblemon:wooloo": 13,
+      "cobblemon:wooloo": 14,
       "cobblemon:mudbray": 2,
       "cobblemon:taillow": 3,
       "cobblemon:lickitung": 1,
@@ -147,10 +147,10 @@
       "cobblemon:glastrier": 1,
       "cobblemon:calyrex": 1,
       "cobblemon:skwovet": 1,
-      "cobblemon:unown": 213,
+      "cobblemon:unown": 259,
       "cobblemon:duraludon": 5,
-      "cobblemon:porygon": 12,
-      "cobblemon:elgyem": 4,
+      "cobblemon:porygon": 13,
+      "cobblemon:elgyem": 5,
       "cobblemon:beheeyem": 1,
       "cobblemon:metang": 2,
       "cobblemon:espurr": 1,
@@ -163,7 +163,8 @@
       "cobblemon:sneasel": 1,
       "cobblemon:shroomish": 1,
       "cobblemon:kricketot": 1,
-      "cobblemon:xurkitree": 1
+      "cobblemon:xurkitree": 1,
+      "cobblemon:cinccino": 1
     },
     "aspectsCollected": {
       "cobblemon:mareanie": [
@@ -270,7 +271,8 @@
       "cobblemon:electabuzz": [
         "female",
         "bucket-uncommon",
-        "male"
+        "male",
+        "bucket-"
       ],
       "cobblemon:tapubulu": [
         "genderless",
@@ -321,7 +323,8 @@
       "cobblemon:electivire": [
         "female",
         "bucket-uncommon",
-        "male"
+        "male",
+        "bucket-"
       ],
       "cobblemon:meowth": [
         "female",
@@ -489,6 +492,17 @@
       "cobblemon:geodude": [
         "female",
         "bucket-"
+      ],
+      "cobblemon:alcremie": [
+        "female",
+        "bucket-common",
+        "cream-ruby",
+        "decoration-clover",
+        "decoration-strawberry"
+      ],
+      "cobblemon:milcery": [
+        "female",
+        "bucket-common"
       ]
     }
   }

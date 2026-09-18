@@ -10,35 +10,35 @@
   "battleTheme": "cobblemon:battle.pvp.default",
   "extraData": {},
   "advancementData": {
-    "totalCaptureCount": 161,
-    "totalEggsCollected": 34,
-    "totalEggsHatched": 68,
-    "totalEvolvedCount": 54,
-    "totalBattleVictoryCount": 582,
+    "totalCaptureCount": 192,
+    "totalEggsCollected": 45,
+    "totalEggsHatched": 86,
+    "totalEvolvedCount": 62,
+    "totalBattleVictoryCount": 667,
     "totalPvPBattleVictoryCount": 0,
-    "totalPvWBattleVictoryCount": 563,
+    "totalPvWBattleVictoryCount": 648,
     "totalPvNBattleVictoryCount": 19,
     "totalShinyCaptureCount": 23,
-    "totalTradedCount": 18,
+    "totalTradedCount": 31,
     "totalTypeCaptureCounts": {
-      "ground": 12,
+      "ground": 13,
       "dark": 7,
       "fire": 12,
-      "normal": 40,
+      "normal": 46,
       "fairy": 14,
-      "steel": 3,
-      "flying": 13,
+      "steel": 5,
+      "flying": 26,
       "water": 11,
-      "electric": 8,
+      "electric": 9,
       "ice": 5,
-      "grass": 15,
-      "dragon": 8,
-      "bug": 8,
-      "psychic": 7,
-      "ghost": 29,
+      "grass": 18,
+      "dragon": 9,
+      "bug": 25,
+      "psychic": 11,
+      "ghost": 30,
       "poison": 6,
       "rock": 7,
-      "fighting": 8
+      "fighting": 9
     },
     "totalDefeatedCounts": {
       "cobblemon:ralts": 1,
@@ -178,7 +178,12 @@
       "cobblemon:skiploom": 1,
       "cobblemon:spritzee": 1,
       "cobblemon:pawmo": 1,
-      "cobblemon:ribombee": 1
+      "cobblemon:ribombee": 1,
+      "cobblemon:porygon": 4,
+      "cobblemon:unown": 49,
+      "cobblemon:leafeon": 1,
+      "cobblemon:elgyem": 1,
+      "cobblemon:beheeyem": 1
     },
     "aspectsCollected": {
       "cobblemon:sandile": [
@@ -273,7 +278,8 @@
       ],
       "cobblemon:ditto": [
         "genderless",
-        "bucket-rare"
+        "bucket-rare",
+        "bucket-ultra-rare"
       ],
       "cobblemon:joltik": [
         "female",
@@ -353,7 +359,8 @@
       ],
       "cobblemon:munchlax": [
         "male",
-        "bucket-rare"
+        "bucket-rare",
+        "female"
       ],
       "cobblemon:alakazam": [
         "male",
@@ -450,7 +457,8 @@
         "female",
         "bucket-common",
         "male",
-        "shiny"
+        "shiny",
+        "bucket-"
       ],
       "cobblemon:masquerain": [
         "female",
@@ -592,7 +600,9 @@
       ],
       "cobblemon:electabuzz": [
         "female",
-        "bucket-uncommon"
+        "bucket-uncommon",
+        "male",
+        "bucket-"
       ],
       "cobblemon:froakie": [
         "male",
@@ -802,6 +812,74 @@
         "shiny",
         "genderless",
         "bucket-"
+      ],
+      "cobblemon:cosmog": [
+        "genderless",
+        "bucket-ultra-rare"
+      ],
+      "cobblemon:electivire": [
+        "male",
+        "bucket-"
+      ],
+      "cobblemon:combee": [
+        "male",
+        "bucket-common",
+        "has_nectar",
+        "female"
+      ],
+      "cobblemon:furret": [
+        "female",
+        "bucket-common"
+      ],
+      "cobblemon:blipbug": [
+        "female",
+        "bucket-common"
+      ],
+      "cobblemon:burmy": [
+        "male",
+        "bucket-common",
+        "plant-cloak"
+      ],
+      "cobblemon:skwovet": [
+        "male",
+        "bucket-common"
+      ],
+      "cobblemon:tarountula": [
+        "male",
+        "bucket-common"
+      ],
+      "cobblemon:heracross": [
+        "female",
+        "bucket-rare"
+      ],
+      "cobblemon:druddigon": [
+        "female",
+        "bucket-rare"
+      ],
+      "cobblemon:vespiquen": [
+        "female",
+        "bucket-common"
+      ],
+      "cobblemon:beldum": [
+        "genderless",
+        "bucket-rare"
+      ],
+      "cobblemon:farigiraf": [
+        "male",
+        "bucket-common"
+      ],
+      "cobblemon:sandyshocks": [
+        "genderless",
+        "bucket-rare"
+      ],
+      "cobblemon:aegislash": [
+        "female",
+        "bucket-uncommon",
+        "blade-forme"
+      ],
+      "cobblemon:arboliva": [
+        "female",
+        "bucket-uncommon"
       ]
     }
   }

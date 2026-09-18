@@ -3507,6 +3507,7 @@
       "slate_ball": "2026-09-09 16:16:17 +0000",
       "ancient_verdant_ball": "2026-09-09 16:09:54 +0000",
       "ancient_feather_ball": "2026-09-10 09:38:36 +0000",
+      "beast_ball": "2026-09-18 11:45:57 +0000",
       "poke_ball": "2026-09-09 15:26:40 +0000",
       "citrine_ball": "2026-09-09 16:10:36 +0000",
       "ancient_azure_ball": "2026-09-10 09:37:22 +0000",
@@ -26503,6 +26504,36 @@
   "minecraft:end/root": {
     "criteria": {
       "entered_end": "2026-09-17 13:47:52 +0000"
+    },
+    "done": true
+  },
+  "minecraft:end/find_end_city": {
+    "criteria": {
+      "in_city": "2026-09-18 07:40:52 +0000"
+    },
+    "done": true
+  },
+  "sophisticatedstorage:recipes/misc/shulker_box_from_vanilla_shulker_box": {
+    "criteria": {
+      "has_shulker_box": "2026-09-18 10:31:53 +0000"
+    },
+    "done": true
+  },
+  "cobblemon:interact_with_pokemon": {
+    "criteria": {
+      "bottle_interactable_pokemon": "2026-09-18 10:39:12 +0000"
+    },
+    "done": true
+  },
+  "cobblemon:cook_snack": {
+    "criteria": {
+      "cook_snack": "2026-09-18 10:49:09 +0000"
+    },
+    "done": true
+  },
+  "minecraft:end/elytra": {
+    "criteria": {
+      "elytra": "2026-09-18 11:45:47 +0000"
     },
     "done": true
   },

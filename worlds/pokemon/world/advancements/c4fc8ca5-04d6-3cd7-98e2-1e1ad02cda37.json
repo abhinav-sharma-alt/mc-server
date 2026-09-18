@@ -26522,5 +26522,35 @@
     },
     "done": true
   },
+  "sophisticatedstorage:recipes/misc/shulker_box_from_vanilla_shulker_box": {
+    "criteria": {
+      "has_shulker_box": "2026-09-18 10:31:08 +0000"
+    },
+    "done": true
+  },
+  "sophisticatedstorage:recipes/misc/yellow_shulker_box_to_sophisticated": {
+    "criteria": {
+      "has_yellow_shulker_box": "2026-09-18 10:38:57 +0000"
+    },
+    "done": true
+  },
+  "sophisticatedstorage:recipes/misc/red_shulker_box_to_sophisticated": {
+    "criteria": {
+      "has_red_shulker_box": "2026-09-18 10:39:01 +0000"
+    },
+    "done": true
+  },
+  "sophisticatedstorage:recipes/misc/orange_shulker_box_to_sophisticated": {
+    "criteria": {
+      "has_orange_shulker_box": "2026-09-18 10:39:05 +0000"
+    },
+    "done": true
+  },
+  "sophisticatedstorage:recipes/misc/light_gray_shulker_box_to_sophisticated": {
+    "criteria": {
+      "has_light_gray_shulker_box": "2026-09-18 11:23:41 +0000"
+    },
+    "done": true
+  },
   "DataVersion": 3955
 }
