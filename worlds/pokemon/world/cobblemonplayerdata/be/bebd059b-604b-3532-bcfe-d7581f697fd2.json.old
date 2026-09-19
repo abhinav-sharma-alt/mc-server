@@ -5,19 +5,21 @@
   "starterSelected": true,
   "starterUUID": "fc6dd49c-35f4-4c2b-96b3-aa595a5eece1",
   "keyItems": [
-    "cobblemon:key_stone"
+    "cobblemon:key_stone",
+    "cobblemon:tera_orb",
+    "cobblemon:z_ring"
   ],
   "battleTheme": "cobblemon:battle.pvp.default",
   "extraData": {},
   "advancementData": {
-    "totalCaptureCount": 196,
-    "totalEggsCollected": 45,
-    "totalEggsHatched": 86,
-    "totalEvolvedCount": 62,
-    "totalBattleVictoryCount": 671,
+    "totalCaptureCount": 197,
+    "totalEggsCollected": 48,
+    "totalEggsHatched": 92,
+    "totalEvolvedCount": 64,
+    "totalBattleVictoryCount": 718,
     "totalPvPBattleVictoryCount": 0,
-    "totalPvWBattleVictoryCount": 652,
-    "totalPvNBattleVictoryCount": 19,
+    "totalPvWBattleVictoryCount": 654,
+    "totalPvNBattleVictoryCount": 64,
     "totalShinyCaptureCount": 23,
     "totalTradedCount": 32,
     "totalTypeCaptureCounts": {
@@ -29,7 +31,7 @@
       "steel": 8,
       "flying": 26,
       "water": 11,
-      "electric": 9,
+      "electric": 10,
       "ice": 5,
       "grass": 18,
       "dragon": 9,
@@ -55,7 +57,7 @@
       "cobblemon:wooloo": 7,
       "cobblemon:ledyba": 3,
       "cobblemon:combee": 1,
-      "cobblemon:gimmighoul": 10,
+      "cobblemon:gimmighoul": 11,
       "cobblemon:shiftry": 1,
       "cobblemon:minior": 2,
       "cobblemon:happiny": 7,
@@ -892,6 +894,18 @@
       ],
       "cobblemon:solgaleo": [
         "genderless",
+        "bucket-ultra-rare"
+      ],
+      "cobblemon:xurkitree": [
+        "genderless",
+        "bucket-ultra-rare"
+      ],
+      "cobblemon:fraxure": [
+        "female",
+        "bucket-ultra-rare"
+      ],
+      "cobblemon:haxorus": [
+        "female",
         "bucket-ultra-rare"
       ]
     }

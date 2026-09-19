@@ -5,7 +5,9 @@
   "starterSelected": true,
   "starterUUID": "149c7945-d150-43ae-bd5d-464593cd3dbf",
   "keyItems": [
-    "cobblemon:key_stone"
+    "cobblemon:key_stone",
+    "cobblemon:tera_orb",
+    "cobblemon:z_ring"
   ],
   "battleTheme": "cobblemon:battle.pvp.default",
   "extraData": {},
@@ -14,10 +16,10 @@
     "totalEggsCollected": 30,
     "totalEggsHatched": 50,
     "totalEvolvedCount": 43,
-    "totalBattleVictoryCount": 751,
+    "totalBattleVictoryCount": 764,
     "totalPvPBattleVictoryCount": 4,
-    "totalPvWBattleVictoryCount": 717,
-    "totalPvNBattleVictoryCount": 30,
+    "totalPvWBattleVictoryCount": 727,
+    "totalPvNBattleVictoryCount": 33,
     "totalShinyCaptureCount": 1,
     "totalTradedCount": 30,
     "totalTypeCaptureCounts": {
@@ -50,7 +52,7 @@
       "cobblemon:miltank": 18,
       "cobblemon:bouffalant": 16,
       "cobblemon:igglybuff": 2,
-      "cobblemon:gimmighoul": 14,
+      "cobblemon:gimmighoul": 15,
       "cobblemon:happiny": 6,
       "cobblemon:zorua": 1,
       "cobblemon:lillipup": 7,
@@ -147,16 +149,16 @@
       "cobblemon:glastrier": 1,
       "cobblemon:calyrex": 1,
       "cobblemon:skwovet": 1,
-      "cobblemon:unown": 261,
+      "cobblemon:unown": 262,
       "cobblemon:duraludon": 5,
-      "cobblemon:porygon": 14,
-      "cobblemon:elgyem": 6,
-      "cobblemon:beheeyem": 1,
+      "cobblemon:porygon": 17,
+      "cobblemon:elgyem": 7,
+      "cobblemon:beheeyem": 2,
       "cobblemon:metang": 2,
       "cobblemon:espurr": 1,
       "cobblemon:malamar": 1,
       "cobblemon:duosion": 1,
-      "cobblemon:hoopa": 1,
+      "cobblemon:hoopa": 2,
       "cobblemon:reuniclus": 2,
       "cobblemon:metagross": 1,
       "cobblemon:growlithe": 1,
@@ -165,7 +167,8 @@
       "cobblemon:kricketot": 1,
       "cobblemon:xurkitree": 1,
       "cobblemon:cinccino": 1,
-      "cobblemon:porygonz": 1
+      "cobblemon:porygonz": 2,
+      "cobblemon:throh": 1
     },
     "aspectsCollected": {
       "cobblemon:mareanie": [

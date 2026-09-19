@@ -26016,6 +26016,9 @@
   },
   "mega_showdown:mega_showdown/hidden/all_gimmick": {
     "criteria": {
+      "tera_orb": "2026-09-19 10:22:15 +0000",
+      "z_ring": "2026-09-19 10:19:48 +0000",
+      "dynamax_band": "2026-09-19 10:18:06 +0000",
       "bracelets": "2026-09-11 08:39:31 +0000"
     },
     "done": false
@@ -26555,6 +26558,57 @@
   "minecraft:end/levitate": {
     "criteria": {
       "levitated": "2026-09-18 14:54:17 +0000"
+    },
+    "done": true
+  },
+  "cobbleverse:trainer/kanto/defeat_champion_blue": {
+    "criteria": {
+      "champion_defeated": "2026-09-19 10:06:47 +0000"
+    },
+    "done": true
+  },
+  "mega_showdown:mega_showdown/dynamax/get_dynamax_band": {
+    "criteria": {
+      "obtained_dynamax_band": "2026-09-19 10:18:06 +0000"
+    },
+    "done": true
+  },
+  "mega_showdown:mega_showdown/z/get_z_ring": {
+    "criteria": {
+      "obtained_z_ring": "2026-09-19 10:19:48 +0000"
+    },
+    "done": true
+  },
+  "mega_showdown:mega_showdown/tera/get_tera_orb": {
+    "criteria": {
+      "obtained_tera_orb": "2026-09-19 10:22:15 +0000"
+    },
+    "done": true
+  },
+  "mega_showdown:mega_showdown/z/get_all_z_move": {
+    "criteria": {
+      "ultranecrozium_z": "2026-09-19 10:31:47 +0000",
+      "solganium_z": "2026-09-19 10:31:44 +0000",
+      "lunalium_z": "2026-09-19 10:31:41 +0000",
+      "psychium_z": "2026-09-19 10:31:36 +0000"
+    },
+    "done": false
+  },
+  "mega_showdown:mega_showdown/z/get_z_move": {
+    "criteria": {
+      "obtained_z_moves": "2026-09-19 10:31:36 +0000"
+    },
+    "done": true
+  },
+  "cobblemon:resurrect_pokemon": {
+    "criteria": {
+      "resurrected_pokemon": "2026-09-19 11:23:19 +0000"
+    },
+    "done": true
+  },
+  "cobbleverse:pokemon/revive_mewtwo": {
+    "criteria": {
+      "revived_mewtwo": "2026-09-19 11:23:19 +0000"
     },
     "done": true
   },
