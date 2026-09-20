@@ -12,13 +12,13 @@
   "battleTheme": "cobblemon:battle.pvp.default",
   "extraData": {},
   "advancementData": {
-    "totalCaptureCount": 83,
+    "totalCaptureCount": 84,
     "totalEggsCollected": 30,
     "totalEggsHatched": 50,
     "totalEvolvedCount": 43,
-    "totalBattleVictoryCount": 764,
+    "totalBattleVictoryCount": 766,
     "totalPvPBattleVictoryCount": 4,
-    "totalPvWBattleVictoryCount": 727,
+    "totalPvWBattleVictoryCount": 729,
     "totalPvNBattleVictoryCount": 33,
     "totalShinyCaptureCount": 1,
     "totalTradedCount": 30,
@@ -33,8 +33,8 @@
       "ice": 4,
       "fire": 10,
       "bug": 2,
-      "flying": 7,
-      "grass": 6,
+      "flying": 8,
+      "grass": 7,
       "electric": 7,
       "dragon": 9,
       "ground": 10,
@@ -148,7 +148,7 @@
       "cobblemon:sigilyph": 1,
       "cobblemon:glastrier": 1,
       "cobblemon:calyrex": 1,
-      "cobblemon:skwovet": 1,
+      "cobblemon:skwovet": 2,
       "cobblemon:unown": 262,
       "cobblemon:duraludon": 5,
       "cobblemon:porygon": 17,
@@ -517,6 +517,11 @@
       "cobblemon:xurkitree": [
         "genderless",
         "bucket-ultra-rare"
+      ],
+      "cobblemon:rowlet": [
+        "male",
+        "bucket-ultra-rare",
+        "region-bias-hisui"
       ]
     }
   }

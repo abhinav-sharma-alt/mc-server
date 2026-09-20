@@ -12,35 +12,35 @@
   "battleTheme": "cobblemon:battle.pvp.default",
   "extraData": {},
   "advancementData": {
-    "totalCaptureCount": 197,
+    "totalCaptureCount": 211,
     "totalEggsCollected": 48,
     "totalEggsHatched": 92,
     "totalEvolvedCount": 64,
-    "totalBattleVictoryCount": 718,
+    "totalBattleVictoryCount": 732,
     "totalPvPBattleVictoryCount": 0,
-    "totalPvWBattleVictoryCount": 654,
-    "totalPvNBattleVictoryCount": 64,
+    "totalPvWBattleVictoryCount": 666,
+    "totalPvNBattleVictoryCount": 66,
     "totalShinyCaptureCount": 23,
     "totalTradedCount": 32,
     "totalTypeCaptureCounts": {
       "ground": 13,
       "dark": 7,
-      "fire": 12,
-      "normal": 46,
+      "fire": 13,
+      "normal": 48,
       "fairy": 14,
       "steel": 8,
-      "flying": 26,
+      "flying": 29,
       "water": 11,
-      "electric": 10,
+      "electric": 11,
       "ice": 5,
-      "grass": 18,
+      "grass": 22,
       "dragon": 9,
-      "bug": 26,
-      "psychic": 14,
-      "ghost": 30,
-      "poison": 6,
+      "bug": 30,
+      "psychic": 15,
+      "ghost": 31,
+      "poison": 9,
       "rock": 7,
-      "fighting": 10
+      "fighting": 11
     },
     "totalDefeatedCounts": {
       "cobblemon:ralts": 1,
@@ -835,7 +835,8 @@
       ],
       "cobblemon:blipbug": [
         "female",
-        "bucket-common"
+        "bucket-common",
+        "male"
       ],
       "cobblemon:burmy": [
         "male",
@@ -907,6 +908,56 @@
       "cobblemon:haxorus": [
         "female",
         "bucket-ultra-rare"
+      ],
+      "cobblemon:pidgey": [
+        "female",
+        "bucket-common"
+      ],
+      "cobblemon:slugma": [
+        "male",
+        "bucket-common"
+      ],
+      "cobblemon:caterpie": [
+        "male",
+        "bucket-common",
+        "valencian"
+      ],
+      "cobblemon:croagunk": [
+        "female",
+        "bucket-common"
+      ],
+      "cobblemon:oricorio": [
+        "male",
+        "bucket-uncommon",
+        "sensu-style"
+      ],
+      "cobblemon:bellsprout": [
+        "male",
+        "bucket-common"
+      ],
+      "cobblemon:oddish": [
+        "female",
+        "bucket-common"
+      ],
+      "cobblemon:skitty": [
+        "female",
+        "bucket-common"
+      ],
+      "cobblemon:bounsweet": [
+        "female",
+        "bucket-common"
+      ],
+      "cobblemon:grubbin": [
+        "female",
+        "bucket-common"
+      ],
+      "cobblemon:exeggcute": [
+        "male",
+        "bucket-common"
+      ],
+      "cobblemon:yamper": [
+        "male",
+        "bucket-common"
       ]
     }
   }

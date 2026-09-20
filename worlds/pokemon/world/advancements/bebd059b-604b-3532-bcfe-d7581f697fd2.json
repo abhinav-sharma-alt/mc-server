@@ -26662,15 +26662,9 @@
     },
     "done": true
   },
-  "cobbleverse:trainer/kanto/defeat_elite_lance": {
+  "mega_showdown:mega_showdown/tera/terastallized": {
     "criteria": {
-      "elite_defeated": "2026-09-19 12:00:16 +0000"
-    },
-    "done": true
-  },
-  "cobbleverse:trainer/kanto/defeat_elite_lorelei": {
-    "criteria": {
-      "elite_defeated": "2026-09-19 11:36:41 +0000"
+      "terra_any": "2026-09-19 10:14:05 +0000"
     },
     "done": true
   },
@@ -26680,9 +26674,9 @@
     },
     "done": true
   },
-  "cobbleverse:gen_2": {
+  "cobbleverse:trainer/kanto/defeat_elite_lorelei": {
     "criteria": {
-      "started_gen2": "2026-09-19 12:13:06 +0000"
+      "elite_defeated": "2026-09-19 11:36:41 +0000"
     },
     "done": true
   },
@@ -26698,15 +26692,33 @@
     },
     "done": true
   },
-  "mega_showdown:mega_showdown/tera/terastallized": {
+  "cobbleverse:trainer/kanto/defeat_elite_lance": {
     "criteria": {
-      "terra_any": "2026-09-19 10:14:05 +0000"
+      "elite_defeated": "2026-09-19 12:00:16 +0000"
+    },
+    "done": true
+  },
+  "cobbleverse:gen_2": {
+    "criteria": {
+      "started_gen2": "2026-09-19 12:13:06 +0000"
     },
     "done": true
   },
   "cobbleverse:trainer/kanto/defeat_champion_blue": {
     "criteria": {
       "champion_defeated": "2026-09-19 12:13:06 +0000"
+    },
+    "done": true
+  },
+  "cobblemon:resurrect_pokemon": {
+    "criteria": {
+      "resurrected_pokemon": "2026-09-20 08:51:36 +0000"
+    },
+    "done": true
+  },
+  "cobbleverse:pokemon/revive_mewtwo": {
+    "criteria": {
+      "revived_mewtwo": "2026-09-20 08:51:36 +0000"
     },
     "done": true
   },
