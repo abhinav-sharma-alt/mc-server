@@ -12,35 +12,35 @@
   "battleTheme": "cobblemon:battle.pvp.default",
   "extraData": {},
   "advancementData": {
-    "totalCaptureCount": 212,
+    "totalCaptureCount": 214,
     "totalEggsCollected": 48,
     "totalEggsHatched": 92,
     "totalEvolvedCount": 64,
-    "totalBattleVictoryCount": 733,
+    "totalBattleVictoryCount": 741,
     "totalPvPBattleVictoryCount": 0,
-    "totalPvWBattleVictoryCount": 667,
+    "totalPvWBattleVictoryCount": 675,
     "totalPvNBattleVictoryCount": 66,
     "totalShinyCaptureCount": 23,
     "totalTradedCount": 32,
     "totalTypeCaptureCounts": {
       "ground": 13,
-      "dark": 7,
+      "dark": 8,
       "fire": 13,
       "normal": 49,
       "fairy": 14,
       "steel": 8,
-      "flying": 29,
+      "flying": 30,
       "water": 11,
       "electric": 11,
       "ice": 5,
       "grass": 22,
-      "dragon": 9,
+      "dragon": 10,
       "bug": 30,
       "psychic": 15,
       "ghost": 31,
       "poison": 9,
       "rock": 7,
-      "fighting": 11
+      "fighting": 12
     },
     "totalDefeatedCounts": {
       "cobblemon:ralts": 1,
@@ -100,11 +100,11 @@
       "cobblemon:rapidash": 3,
       "cobblemon:skitty": 9,
       "cobblemon:squawkabilly": 1,
-      "cobblemon:purugly": 7,
+      "cobblemon:purugly": 8,
       "cobblemon:krabby": 1,
       "cobblemon:whimsicott": 1,
       "cobblemon:furfrou": 2,
-      "cobblemon:munna": 2,
+      "cobblemon:munna": 3,
       "cobblemon:glameow": 6,
       "cobblemon:mareep": 4,
       "cobblemon:timburr": 5,
@@ -159,7 +159,7 @@
       "cobblemon:musharna": 1,
       "cobblemon:kangaskhan": 1,
       "cobblemon:rattata": 2,
-      "cobblemon:psyduck": 1,
+      "cobblemon:psyduck": 2,
       "cobblemon:yungoos": 1,
       "cobblemon:lechonk": 2,
       "cobblemon:yamper": 1,
@@ -185,7 +185,8 @@
       "cobblemon:unown": 49,
       "cobblemon:leafeon": 1,
       "cobblemon:elgyem": 1,
-      "cobblemon:beheeyem": 1
+      "cobblemon:beheeyem": 1,
+      "cobblemon:bombirdier": 3
     },
     "aspectsCollected": {
       "cobblemon:sandile": [
@@ -958,6 +959,14 @@
       "cobblemon:yamper": [
         "male",
         "bucket-common"
+      ],
+      "cobblemon:bombirdier": [
+        "female",
+        "bucket-uncommon"
+      ],
+      "cobblemon:koraidon": [
+        "genderless",
+        "bucket-ultra-rare"
       ]
     }
   }
