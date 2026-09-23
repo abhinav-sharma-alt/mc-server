@@ -26724,5 +26724,35 @@
     },
     "done": true
   },
+  "mega_showdown:mega_showdown/z/get_all_z_move": {
+    "criteria": {
+      "buginium_z": "2026-09-22 19:52:10 +0000"
+    },
+    "done": false
+  },
+  "minecraft:adventure/minecraft_trials_edition": {
+    "criteria": {
+      "minecraft_trials_edition": "2026-09-22 19:40:14 +0000"
+    },
+    "done": true
+  },
+  "minecraft:adventure/under_lock_and_key": {
+    "criteria": {
+      "under_lock_and_key": "2026-09-22 19:47:48 +0000"
+    },
+    "done": true
+  },
+  "minecraft:adventure/revaulting": {
+    "criteria": {
+      "revaulting": "2026-09-22 19:41:42 +0000"
+    },
+    "done": true
+  },
+  "mega_showdown:mega_showdown/z/get_z_move": {
+    "criteria": {
+      "obtained_z_moves": "2026-09-22 19:52:10 +0000"
+    },
+    "done": true
+  },
   "DataVersion": 3955
 }
