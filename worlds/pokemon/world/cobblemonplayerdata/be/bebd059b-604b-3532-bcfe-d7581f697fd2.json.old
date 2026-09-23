@@ -12,32 +12,32 @@
   "battleTheme": "cobblemon:battle.pvp.default",
   "extraData": {},
   "advancementData": {
-    "totalCaptureCount": 214,
+    "totalCaptureCount": 219,
     "totalEggsCollected": 48,
     "totalEggsHatched": 92,
     "totalEvolvedCount": 64,
-    "totalBattleVictoryCount": 741,
+    "totalBattleVictoryCount": 763,
     "totalPvPBattleVictoryCount": 0,
-    "totalPvWBattleVictoryCount": 675,
-    "totalPvNBattleVictoryCount": 66,
+    "totalPvWBattleVictoryCount": 691,
+    "totalPvNBattleVictoryCount": 72,
     "totalShinyCaptureCount": 23,
-    "totalTradedCount": 32,
+    "totalTradedCount": 34,
     "totalTypeCaptureCounts": {
       "ground": 13,
       "dark": 8,
       "fire": 13,
-      "normal": 49,
+      "normal": 50,
       "fairy": 14,
       "steel": 8,
       "flying": 30,
-      "water": 11,
-      "electric": 11,
+      "water": 12,
+      "electric": 12,
       "ice": 5,
-      "grass": 22,
-      "dragon": 10,
+      "grass": 23,
+      "dragon": 12,
       "bug": 30,
       "psychic": 15,
-      "ghost": 31,
+      "ghost": 33,
       "poison": 9,
       "rock": 7,
       "fighting": 12
@@ -62,7 +62,7 @@
       "cobblemon:minior": 2,
       "cobblemon:happiny": 7,
       "cobblemon:persian": 3,
-      "cobblemon:voltorb": 6,
+      "cobblemon:voltorb": 7,
       "cobblemon:darumaka": 1,
       "cobblemon:sentret": 3,
       "cobblemon:zigzagoon": 7,
@@ -104,7 +104,7 @@
       "cobblemon:krabby": 1,
       "cobblemon:whimsicott": 1,
       "cobblemon:furfrou": 2,
-      "cobblemon:munna": 3,
+      "cobblemon:munna": 4,
       "cobblemon:glameow": 6,
       "cobblemon:mareep": 4,
       "cobblemon:timburr": 5,
@@ -159,7 +159,7 @@
       "cobblemon:musharna": 1,
       "cobblemon:kangaskhan": 1,
       "cobblemon:rattata": 2,
-      "cobblemon:psyduck": 2,
+      "cobblemon:psyduck": 3,
       "cobblemon:yungoos": 1,
       "cobblemon:lechonk": 2,
       "cobblemon:yamper": 1,
@@ -186,7 +186,11 @@
       "cobblemon:leafeon": 1,
       "cobblemon:elgyem": 1,
       "cobblemon:beheeyem": 1,
-      "cobblemon:bombirdier": 3
+      "cobblemon:bombirdier": 3,
+      "cobblemon:murkrow": 2,
+      "cobblemon:swanna": 1,
+      "cobblemon:magnezone": 4,
+      "cobblemon:kingler": 1
     },
     "aspectsCollected": {
       "cobblemon:sandile": [
@@ -967,6 +971,27 @@
       "cobblemon:koraidon": [
         "genderless",
         "bucket-ultra-rare"
+      ],
+      "cobblemon:dragapult": [
+        "female",
+        "bucket-ultra-rare"
+      ],
+      "cobblemon:exeggutor": [
+        "female",
+        "bucket-uncommon",
+        "alolan"
+      ],
+      "cobblemon:dewott": [
+        "male",
+        "bucket-ultra-rare"
+      ],
+      "cobblemon:cursola": [
+        "female",
+        "bucket-uncommon"
+      ],
+      "cobblemon:heliolisk": [
+        "female",
+        "bucket-rare"
       ]
     }
   }

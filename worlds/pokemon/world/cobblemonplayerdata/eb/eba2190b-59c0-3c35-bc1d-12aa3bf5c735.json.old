@@ -10,20 +10,20 @@
   "battleTheme": "cobblemon:battle.pvp.default",
   "extraData": {},
   "advancementData": {
-    "totalCaptureCount": 18,
+    "totalCaptureCount": 21,
     "totalEggsCollected": 0,
     "totalEggsHatched": 0,
-    "totalEvolvedCount": 6,
-    "totalBattleVictoryCount": 222,
+    "totalEvolvedCount": 7,
+    "totalBattleVictoryCount": 231,
     "totalPvPBattleVictoryCount": 0,
-    "totalPvWBattleVictoryCount": 150,
-    "totalPvNBattleVictoryCount": 72,
+    "totalPvWBattleVictoryCount": 158,
+    "totalPvNBattleVictoryCount": 73,
     "totalShinyCaptureCount": 1,
-    "totalTradedCount": 3,
+    "totalTradedCount": 5,
     "totalTypeCaptureCounts": {
       "fire": 3,
       "flying": 1,
-      "water": 3,
+      "water": 5,
       "normal": 3,
       "fighting": 1,
       "bug": 3,
@@ -33,9 +33,10 @@
       "ghost": 1,
       "dark": 2,
       "ice": 2,
-      "electric": 1,
+      "electric": 2,
       "fairy": 1,
-      "steel": 1
+      "steel": 1,
+      "dragon": 1
     },
     "totalDefeatedCounts": {
       "cobblemon:snubbull": 1,
@@ -77,7 +78,7 @@
       "cobblemon:shedinja": 1,
       "cobblemon:mankey": 2,
       "cobblemon:timburr": 2,
-      "cobblemon:burmy": 2,
+      "cobblemon:burmy": 3,
       "cobblemon:audino": 1,
       "cobblemon:hoppip": 1,
       "cobblemon:sinistea": 1,
@@ -114,7 +115,11 @@
       "cobblemon:stonjourner": 4,
       "cobblemon:dubwool": 1,
       "cobblemon:galvantula": 1,
-      "cobblemon:electabuzz": 1
+      "cobblemon:electabuzz": 1,
+      "cobblemon:geodude": 1,
+      "cobblemon:yanmega": 1,
+      "cobblemon:musharna": 1,
+      "cobblemon:starmie": 1
     },
     "aspectsCollected": {
       "cobblemon:fletchinder": [
@@ -220,6 +225,26 @@
       "cobblemon:larvesta": [
         "female",
         "bucket-uncommon"
+      ],
+      "cobblemon:corvisquire": [
+        "male",
+        "bucket-common"
+      ],
+      "cobblemon:breloom": [
+        "male",
+        "bucket-common"
+      ],
+      "cobblemon:brionne": [
+        "male",
+        "bucket-ultra-rare"
+      ],
+      "cobblemon:oshawott": [
+        "male",
+        "bucket-ultra-rare"
+      ],
+      "cobblemon:miraidon": [
+        "genderless",
+        "bucket-ultra-rare"
       ]
     }
   }

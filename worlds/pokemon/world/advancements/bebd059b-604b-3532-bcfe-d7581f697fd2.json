@@ -44,6 +44,7 @@
       "minecraft:jagged_peaks": "2026-09-17 09:32:57 +0000",
       "minecraft:cold_ocean": "2026-09-10 07:14:18 +0000",
       "minecraft:forest": "2026-09-09 16:26:10 +0000",
+      "minecraft:lush_caves": "2026-09-23 09:10:08 +0000",
       "minecraft:deep_cold_ocean": "2026-09-10 08:00:21 +0000",
       "minecraft:ice_spikes": "2026-09-10 07:33:35 +0000",
       "minecraft:frozen_ocean": "2026-09-10 07:26:58 +0000",
@@ -66,7 +67,7 @@
       "minecraft:savanna": "2026-09-09 16:04:48 +0000",
       "minecraft:plains": "2026-09-09 16:07:54 +0000"
     },
-    "done": false
+    "done": true
   },
   "minecraft:recipes/decorations/ladder": {
     "criteria": {
@@ -724,6 +725,8 @@
   },
   "cobblemon:obtain_all_berries": {
     "criteria": {
+      "obtain_sitrus_berry": "2026-09-23 08:05:51 +0000",
+      "obtain_liechi_berry": "2026-09-23 08:06:05 +0000",
       "obtain_kelpsy_berry": "2026-09-17 11:53:59 +0000",
       "obtain_oran_berry": "2026-09-09 15:26:40 +0000",
       "obtain_bluk_berry": "2026-09-16 09:31:11 +0000",
@@ -735,7 +738,10 @@
       "obtain_cheri_berry": "2026-09-17 10:28:59 +0000",
       "obtain_grepa_berry": "2026-09-17 07:05:32 +0000",
       "obtain_occa_berry": "2026-09-15 16:30:59 +0000",
+      "obtain_maranga_berry": "2026-09-23 08:06:19 +0000",
+      "obtain_wacan_berry": "2026-09-23 08:15:00 +0000",
       "obtain_kebia_berry": "2026-09-10 09:39:29 +0000",
+      "obtain_petaya_berry": "2026-09-23 08:06:03 +0000",
       "obtain_kasib_berry": "2026-09-09 16:33:05 +0000",
       "obtain_roseli_berry": "2026-09-12 15:13:27 +0000",
       "obtain_razz_berry": "2026-09-12 18:29:35 +0000",
@@ -26724,21 +26730,9 @@
     },
     "done": true
   },
-  "mega_showdown:mega_showdown/z/get_all_z_move": {
-    "criteria": {
-      "buginium_z": "2026-09-22 19:52:10 +0000"
-    },
-    "done": false
-  },
   "minecraft:adventure/minecraft_trials_edition": {
     "criteria": {
       "minecraft_trials_edition": "2026-09-22 19:40:14 +0000"
-    },
-    "done": true
-  },
-  "minecraft:adventure/under_lock_and_key": {
-    "criteria": {
-      "under_lock_and_key": "2026-09-22 19:47:48 +0000"
     },
     "done": true
   },
@@ -26748,9 +26742,29 @@
     },
     "done": true
   },
+  "minecraft:adventure/under_lock_and_key": {
+    "criteria": {
+      "under_lock_and_key": "2026-09-22 19:47:48 +0000"
+    },
+    "done": true
+  },
+  "mega_showdown:mega_showdown/z/get_all_z_move": {
+    "criteria": {
+      "fairium_z": "2026-09-23 09:20:30 +0000",
+      "groundium_z": "2026-09-23 07:09:12 +0000",
+      "buginium_z": "2026-09-22 19:52:10 +0000"
+    },
+    "done": false
+  },
   "mega_showdown:mega_showdown/z/get_z_move": {
     "criteria": {
       "obtained_z_moves": "2026-09-22 19:52:10 +0000"
+    },
+    "done": true
+  },
+  "minecraft:adventure/trade": {
+    "criteria": {
+      "traded": "2026-09-23 06:19:52 +0000"
     },
     "done": true
   },

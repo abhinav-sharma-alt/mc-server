@@ -10512,28 +10512,29 @@
     "criteria": {
       "luxury_ball": "2026-09-09 17:17:50 +0000",
       "ancient_gigaton_ball": "2026-09-09 17:14:12 +0000",
-      "heal_ball": "2026-09-14 15:29:46 +0000",
       "great_ball": "2026-09-09 17:14:14 +0000",
-      "ancient_wing_ball": "2026-09-09 16:48:57 +0000",
       "timer_ball": "2026-09-09 17:17:53 +0000",
-      "slate_ball": "2026-09-10 17:14:56 +0000",
-      "ancient_verdant_ball": "2026-09-09 17:01:39 +0000",
-      "ancient_feather_ball": "2026-09-12 08:21:27 +0000",
       "ancient_poke_ball": "2026-09-09 16:48:50 +0000",
       "moon_ball": "2026-09-12 08:23:21 +0000",
-      "poke_ball": "2026-09-09 15:25:00 +0000",
       "azure_ball": "2026-09-09 17:02:23 +0000",
       "love_ball": "2026-09-09 17:16:12 +0000",
-      "ancient_ivory_ball": "2026-09-09 17:01:39 +0000",
       "dive_ball": "2026-09-11 08:21:04 +0000",
-      "lure_ball": "2026-09-09 17:14:47 +0000",
-      "roseate_ball": "2026-09-09 17:45:09 +0000",
       "ancient_citrine_ball": "2026-09-09 17:14:55 +0000",
       "sport_ball": "2026-09-09 17:50:25 +0000",
       "ancient_ultra_ball": "2026-09-14 08:27:12 +0000",
-      "premier_ball": "2026-09-09 17:14:15 +0000",
       "verdant_ball": "2026-09-09 17:14:48 +0000",
-      "ultra_ball": "2026-09-09 16:50:20 +0000"
+      "dream_ball": "2026-09-23 09:36:06 +0000",
+      "ultra_ball": "2026-09-09 16:50:20 +0000",
+      "heal_ball": "2026-09-14 15:29:46 +0000",
+      "ancient_wing_ball": "2026-09-09 16:48:57 +0000",
+      "slate_ball": "2026-09-10 17:14:56 +0000",
+      "ancient_verdant_ball": "2026-09-09 17:01:39 +0000",
+      "ancient_feather_ball": "2026-09-12 08:21:27 +0000",
+      "poke_ball": "2026-09-09 15:25:00 +0000",
+      "ancient_ivory_ball": "2026-09-09 17:01:39 +0000",
+      "lure_ball": "2026-09-09 17:14:47 +0000",
+      "roseate_ball": "2026-09-09 17:45:09 +0000",
+      "premier_ball": "2026-09-09 17:14:15 +0000"
     },
     "done": false
   },
@@ -25825,6 +25826,54 @@
   "cobbleverse:trainer/kanto/defeat_erika": {
     "criteria": {
       "leader_defeated": "2026-09-14 15:23:50 +0000"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/acacia_wood": {
+    "criteria": {
+      "has_acacia_log": "2026-09-23 08:37:49 +0000"
+    },
+    "done": true
+  },
+  "minecraft:adventure/minecraft_trials_edition": {
+    "criteria": {
+      "minecraft_trials_edition": "2026-09-23 08:40:25 +0000"
+    },
+    "done": true
+  },
+  "minecraft:adventure/under_lock_and_key": {
+    "criteria": {
+      "under_lock_and_key": "2026-09-23 08:49:21 +0000"
+    },
+    "done": true
+  },
+  "minecraft:story/shiny_gear": {
+    "criteria": {
+      "diamond_chestplate": "2026-09-23 08:54:42 +0000"
+    },
+    "done": true
+  },
+  "minecraft:husbandry/root": {
+    "criteria": {
+      "consumed_item": "2026-09-23 09:01:21 +0000"
+    },
+    "done": true
+  },
+  "minecraft:adventure/revaulting": {
+    "criteria": {
+      "revaulting": "2026-09-23 09:02:01 +0000"
+    },
+    "done": true
+  },
+  "cobblemon:cook_snack": {
+    "criteria": {
+      "cook_snack": "2026-09-23 09:38:37 +0000"
+    },
+    "done": true
+  },
+  "minecraft:story/lava_bucket": {
+    "criteria": {
+      "lava_bucket": "2026-09-23 09:46:00 +0000"
     },
     "done": true
   },
