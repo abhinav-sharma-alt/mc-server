@@ -357,6 +357,12 @@ jobs:
             cp "worlds/${{ github.event.inputs.modpack }}/server.properties" server/server.properties
           fi
 
+      - name: Report world size
+        run: |
+          du -sh server/world || true
+          du -sh server/world/* 2>/dev/null | sort -h | tail -8
+          du -sh .git
+
       - name: Enforce configured server-port in server.properties
         run: |
           SERVER_PORT="${{ steps.modpack_meta.outputs.server_port }}"
