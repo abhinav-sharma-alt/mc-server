@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       modpack:
-        description: 'Which server setup to launch: "vanilla" or a modpack name from modpacks/<name>/ (created via /modpack create)'
+        description: 'Which server setup to launch: "vanilla" or a modpack name from modpacks/<n>/ (created via /modpack create)'
         required: true
         default: 'vanilla'
 
@@ -23,6 +23,7 @@ jobs:
     env:
       GH_TOKEN: ${{ github.token }}
       GH_REPO: ${{ github.repository }}
+      MIGRATE_FROM_REPO: 'false'   # default; restore step overrides via $GITHUB_ENV
 
     steps:
       - name: Checkout scripts and modpack config only (no world)
@@ -329,16 +330,32 @@ jobs:
         run: |
           MODPACK="${{ github.event.inputs.modpack }}"
           TAG="world-$MODPACK"
-          mkdir -p server
+          mkdir -p server /tmp/worldparts
 
-          if gh release download "$TAG" --pattern world.tar.zst --dir /tmp 2>/dev/null; then
-            echo "Restoring world from release $TAG"
+          # New format: world.tar.zst.part-000, -001, ... (each < 2 GiB, GitHub's per-asset limit)
+          if gh release download "$TAG" --pattern 'world.tar.zst.part-*' --dir /tmp/worldparts 2>/dev/null \
+             && ls /tmp/worldparts/world.tar.zst.part-* >/dev/null 2>&1; then
+            echo "Restoring world from release $TAG (split parts)"
+            ls -lh /tmp/worldparts/
             rm -rf server/world
-            tar --zstd -xf /tmp/world.tar.zst -C server
+            cat /tmp/worldparts/world.tar.zst.part-* | tar --zstd -xf - -C server
+            rm -rf /tmp/worldparts
             rm -f server/world/session.lock
             if [ -f server/server.properties.saved ]; then
               mv server/server.properties.saved server/server.properties
             fi
+
+          # Legacy format: single world.tar.zst (only possible for worlds < 2 GiB)
+          elif gh release download "$TAG" --pattern world.tar.zst --dir /tmp 2>/dev/null; then
+            echo "Restoring world from release $TAG (legacy single file)"
+            rm -rf server/world
+            tar --zstd -xf /tmp/world.tar.zst -C server
+            rm -f /tmp/world.tar.zst
+            rm -f server/world/session.lock
+            if [ -f server/server.properties.saved ]; then
+              mv server/server.properties.saved server/server.properties
+            fi
+
           else
             echo "No release '$TAG' yet - checking main for an old repo-stored world..."
             git sparse-checkout add "worlds/$MODPACK" || true
@@ -439,12 +456,30 @@ jobs:
 
           rm -f server/world/session.lock
           cp server/server.properties server/server.properties.saved
-          tar --zstd -cf /tmp/world.tar.zst -C server world server.properties.saved
-          ls -lh /tmp/world.tar.zst
+
+          # Stream tar -> split into <2 GiB parts (GitHub release asset limit is 2 GiB).
+          # 1900M leaves a safe margin. Streaming avoids writing a second 4+ GB file to disk.
+          rm -f /tmp/world.tar.zst.part-*
+          tar --zstd -cf - -C server world server.properties.saved \
+            | split -b 1900M -d -a 3 - /tmp/world.tar.zst.part-
+          ls -lh /tmp/world.tar.zst.part-*
 
           gh release view "$TAG" >/dev/null 2>&1 || \
             gh release create "$TAG" --title "$TAG" --notes "World snapshot (auto-updated each session)"
-          gh release upload "$TAG" /tmp/world.tar.zst --clobber
+
+          # Upload new parts FIRST so a failed upload never destroys the last good snapshot
+          gh release upload "$TAG" /tmp/world.tar.zst.part-* --clobber
+
+          # Only after a successful upload, delete stale assets
+          # (legacy single world.tar.zst + any leftover higher-numbered parts)
+          NEW=$(ls /tmp/world.tar.zst.part-* | xargs -n1 basename)
+          for a in $(gh release view "$TAG" --json assets -q '.assets[].name' | grep '^world\.tar\.zst'); do
+            if ! echo "$NEW" | grep -qx "$a"; then
+              echo "Deleting stale asset: $a"
+              gh release delete-asset "$TAG" "$a" -y
+            fi
+          done
+
           echo "uploaded=true" >> "$GITHUB_OUTPUT"
 
       - name: Remove old world from repo (only after a successful migration upload)
