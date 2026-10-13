@@ -8,6 +8,11 @@ on:
         required: true
         default: 'vanilla'
 
+# Never run two sessions of the same modpack at once (they would overwrite each other's world)
+concurrency:
+  group: mc-${{ github.event.inputs.modpack }}
+  cancel-in-progress: false
+
 jobs:
   run-server:
     runs-on: ubuntu-latest
@@ -15,20 +20,19 @@ jobs:
     permissions:
       contents: write
 
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
+
     steps:
-      - name: Checkout repo (includes saved world)
+      - name: Checkout scripts and modpack config only (no world)
         uses: actions/checkout@v4
-        # NOTE: if `git status` ever shows server/server.properties or other
-        # live server/ files as tracked, run this once locally and push it:
-        #   git rm --cached server/server.properties
-        #   echo "server/" >> .gitignore
-        #   git add .gitignore && git commit -m "untrack live server/ dir"
-        # The source of truth for properties is worlds/<modpack>/server.properties,
-        # which is already copied in/out below.
-        #
-        # Mod/jar/resourcepack binaries are never committed (GitHub hard-rejects
-        # files >100MB). modpacks/<name>/meta.json only records where to fetch
-        # them from; they're downloaded fresh below on this ephemeral runner.
+        with:
+          fetch-depth: 1
+          sparse-checkout: |
+            modpacks
+            scripts
+            console
 
       - name: Read modpack config (java version / memory / source)
         id: modpack_meta
@@ -321,47 +325,49 @@ jobs:
         if: github.event.inputs.modpack == 'vanilla'
         run: echo "eula=true" > server/eula.txt
 
-      - name: Debug - inspect world dir origin
-        if: github.event.inputs.modpack != 'vanilla'
+      - name: Restore saved world (release, or one-time migration from repo)
+        run: |
+          MODPACK="${{ github.event.inputs.modpack }}"
+          TAG="world-$MODPACK"
+          mkdir -p server
+
+          if gh release download "$TAG" --pattern world.tar.zst --dir /tmp 2>/dev/null; then
+            echo "Restoring world from release $TAG"
+            rm -rf server/world
+            tar --zstd -xf /tmp/world.tar.zst -C server
+            rm -f server/world/session.lock
+            if [ -f server/server.properties.saved ]; then
+              mv server/server.properties.saved server/server.properties
+            fi
+          else
+            echo "No release '$TAG' yet - checking main for an old repo-stored world..."
+            git sparse-checkout add "worlds/$MODPACK" || true
+            if [ -d "worlds/$MODPACK/world" ]; then
+              echo "Found worlds/$MODPACK/world in repo - will migrate it to the release at save time."
+              rm -rf server/world
+              cp -r "worlds/$MODPACK/world" server/world
+              rm -f server/world/session.lock
+              if [ -f "worlds/$MODPACK/server.properties" ]; then
+                cp "worlds/$MODPACK/server.properties" server/server.properties
+              fi
+              echo "MIGRATE_FROM_REPO=true" >> "$GITHUB_ENV"
+            else
+              echo "No saved world anywhere - server will generate a new one."
+              # a world dir here would just be a template from mrpack overrides
+              rm -rf server/world
+            fi
+          fi
+
+      - name: Debug - inspect world dir
         run: |
           echo "=== server/ top level ==="
           ls -la server/
-          echo "=== server/world (if exists) ==="
           if [ -d server/world ]; then
-            find server/world -maxdepth 2
-            if [ -f server/world/level.dat ]; then
-              echo "level.dat size:"
-              stat -c%s server/world/level.dat
-            fi
+            du -sh server/world
+            find server/world -maxdepth 1
           else
             echo "no server/world at this point"
           fi
-
-      - name: Ensure clean world dir if no real saved world exists (modpacks only)
-        if: github.event.inputs.modpack != 'vanilla'
-        run: |
-          if [ -d server/world ] && [ ! -d "worlds/${{ github.event.inputs.modpack }}/world" ]; then
-            echo "No real saved world for ${{ github.event.inputs.modpack }} yet — server/world is likely a template from mrpack overrides. Clearing it so the server generates a real one."
-            rm -rf server/world
-          fi
-
-      - name: Restore saved world for this modpack (if it exists)
-        run: |
-          mkdir -p "worlds/${{ github.event.inputs.modpack }}"
-          if [ -d "worlds/${{ github.event.inputs.modpack }}/world" ]; then
-            rm -rf server/world
-            cp -r "worlds/${{ github.event.inputs.modpack }}/world" server/world
-            rm -f server/world/session.lock
-          fi
-          if [ -f "worlds/${{ github.event.inputs.modpack }}/server.properties" ]; then
-            cp "worlds/${{ github.event.inputs.modpack }}/server.properties" server/server.properties
-          fi
-
-      - name: Report world size
-        run: |
-          du -sh server/world || true
-          du -sh server/world/* 2>/dev/null | sort -h | tail -8
-          du -sh .git
 
       - name: Enforce configured server-port in server.properties
         run: |
@@ -420,62 +426,41 @@ jobs:
           if-no-files-found: ignore
           retention-days: 7
 
-      - name: Commit updated world back to repo
+      - name: Save world to release
+        id: save_world
         if: always()
         run: |
-          git config user.name "minecraft-bot"
-          git config user.email "actions@github.com"
-          if [ -d "server/world" ]; then
-            mkdir -p "worlds/${{ github.event.inputs.modpack }}"
-            rm -rf "worlds/${{ github.event.inputs.modpack }}/world"
-            cp -r server/world "worlds/${{ github.event.inputs.modpack }}/world"
-            rm -f "worlds/${{ github.event.inputs.modpack }}/world/session.lock"
-            cp server/server.properties "worlds/${{ github.event.inputs.modpack }}/server.properties"
-            # Stage only the world data and console signal files (the latter
-            # in case the console poller left command.txt/stop.txt
-            # modified-but-uncommitted when it was stopped).
-            # NEVER "git add -A" here — server/ contains freshly-downloaded
-            # mod jars/resourcepacks (can be 100MB+) that must never be
-            # committed; GitHub hard-rejects pushes with files over 100MB.
-            git add "worlds/${{ github.event.inputs.modpack }}" console/
-            git diff --staged --quiet || git commit -m "Update ${{ github.event.inputs.modpack }} world state after session"
+          MODPACK="${{ github.event.inputs.modpack }}"
+          TAG="world-$MODPACK"
+          if [ ! -d server/world ]; then
+            echo "No server/world directory found — server likely never started successfully. Skipping save."
+            exit 0
+          fi
 
-            # Retry push a few times in case something else pushed to main
-            # while this session was running (another /console command's
-            # signal-file commit, a /modpack configure, a manual push, etc).
-            # We must NEVER silently drop the world update here — on a
-            # rebase conflict we always keep THIS session's worlds/console
-            # changes and defer to remote for everything else, then retry.
-            PUSHED=false
+          rm -f server/world/session.lock
+          cp server/server.properties server/server.properties.saved
+          tar --zstd -cf /tmp/world.tar.zst -C server world server.properties.saved
+          ls -lh /tmp/world.tar.zst
+
+          gh release view "$TAG" >/dev/null 2>&1 || \
+            gh release create "$TAG" --title "$TAG" --notes "World snapshot (auto-updated each session)"
+          gh release upload "$TAG" /tmp/world.tar.zst --clobber
+          echo "uploaded=true" >> "$GITHUB_OUTPUT"
+
+      - name: Remove old world from repo (only after a successful migration upload)
+        if: always() && env.MIGRATE_FROM_REPO == 'true' && steps.save_world.outputs.uploaded == 'true'
+        run: |
+          MODPACK="${{ github.event.inputs.modpack }}"
+          if [ -d "worlds/$MODPACK" ]; then
+            git rm -r -q "worlds/$MODPACK"
+            git commit -q -m "Move $MODPACK world to release world-$MODPACK"
             for attempt in 1 2 3 4 5; do
               if git push origin HEAD:main --quiet 2>/dev/null; then
-                PUSHED=true
-                break
+                echo "Removed worlds/$MODPACK from main."
+                exit 0
               fi
-              echo "Push attempt $attempt failed (remote moved) — rebasing onto latest main..."
               git fetch origin main --quiet
-              if git rebase origin/main --quiet 2>/dev/null; then
-                continue
-              fi
-              echo "Rebase hit a conflict — keeping this session's world/console data, taking remote's version of everything else..."
-              for f in $(git diff --name-only --diff-filter=U); do
-                case "$f" in
-                  worlds/*|console/*) git checkout --ours -- "$f" ;;
-                  *) git checkout --theirs -- "$f" ;;
-                esac
-                git add "$f"
-              done
-              if ! GIT_EDITOR=true git rebase --continue --quiet; then
-                git rebase --abort
-                echo "::error::Could not auto-resolve a rebase conflict while saving the world."
-                break
-              fi
+              git rebase origin/main --quiet || { git rebase --abort; break; }
             done
-
-            if [ "$PUSHED" != "true" ]; then
-              echo "::error::Failed to push the world update for ${{ github.event.inputs.modpack }} after retries. The data is NOT lost yet — it exists in this run's git history — but was not saved to the repo. Check this log and push worlds/${{ github.event.inputs.modpack }} manually, or re-run and avoid pushing to main while a session is active."
-              exit 1
-            fi
-          else
-            echo "No server/world directory found — server likely never started successfully. Skipping commit."
+            echo "::warning::Could not remove worlds/$MODPACK from main. The world IS safely in release $TAG - delete the folder manually."
           fi

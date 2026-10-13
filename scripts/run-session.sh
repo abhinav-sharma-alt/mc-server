@@ -289,6 +289,6 @@ fi
 
 if [ -n "$DISCORD_WEBHOOK" ]; then
   curl -H "Content-Type: application/json" \
-    -d "{\"content\": \"🔴 **Minecraft server is DOWN**\\nSession ended (was: \`$TUNNEL_ADDRESS\`)\\nWorld has been saved back to the repo.\"}" \
+    -d "{\"content\": \"🔴 **Minecraft server is DOWN**\\nSession ended (was: \`$TUNNEL_ADDRESS\`)\\nWorld is being saved to the world-${MODPACK} release now - wait for the run to finish before starting it again.\"}" \
     "$DISCORD_WEBHOOK"
 fi

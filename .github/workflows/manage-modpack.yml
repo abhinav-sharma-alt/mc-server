@@ -75,7 +75,7 @@ on:
         description: 'Script filename for script mode, e.g. start.sh (create: defaults to start.sh if blank. configure: leave blank to keep current value)'
         required: false
       delete_world:
-        description: 'Also delete the saved world data? (delete only)'
+        description: 'Also delete the saved world (the world-<name> release)? (delete only)'
         required: false
         type: boolean
         default: false
@@ -432,6 +432,9 @@ jobs:
       # ---------------- DELETE ----------------
       - name: Delete - remove files
         if: github.event.inputs.action == 'delete'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
         run: |
           NAME="${{ github.event.inputs.modpack_name }}"
           if [ ! -d "modpacks/$NAME" ]; then
@@ -440,8 +443,16 @@ jobs:
           fi
           git rm -r --quiet "modpacks/$NAME"
 
-          if [ "${{ github.event.inputs.delete_world }}" = "true" ] && [ -d "worlds/$NAME" ]; then
-            git rm -r --quiet "worlds/$NAME"
+          if [ "${{ github.event.inputs.delete_world }}" = "true" ]; then
+            # legacy location (only exists if this modpack was never migrated)
+            if [ -d "worlds/$NAME" ]; then
+              git rm -r --quiet "worlds/$NAME"
+            fi
+            # current location: the world-<name> release holding world.tar.zst
+            if gh release view "world-$NAME" >/dev/null 2>&1; then
+              gh release delete "world-$NAME" --cleanup-tag --yes
+              echo "Deleted world release world-$NAME"
+            fi
           fi
 
       - name: Delete - commit
