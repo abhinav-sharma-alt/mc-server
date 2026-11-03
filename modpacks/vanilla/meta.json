@@ -5,10 +5,16 @@
   "launch_mode": "jar",
   "start_script": "start.sh",
   "server_port": "25565",
-  "tunnel_address": "significant-surpass.gl.joinmc.link",
+  "tunnel_address": "shrimp-excuses.tun.ply.gg",
   "source_type": "jar",
   "jar_url": "",
   "is_zip": "false",
   "mrpack_slug": "",
-  "mrpack_version": ""
+  "mrpack_version": "",
+  "curseforge_project_id": "",
+  "curseforge_file_id": "",
+  "difficulty": "normal",
+  "gamemode": "survival",
+  "hardcore": "false",
+  "mc_version": "latest"
 }
