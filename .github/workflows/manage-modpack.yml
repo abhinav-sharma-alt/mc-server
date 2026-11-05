@@ -1,18 +1,5 @@
 name: Manage Modpack
 
-# Create, reconfigure, or delete a modpack definition under modpacks/<name>/.
-# Triggered by the Discord bot's /modpack command (authored-user only — enforced
-# in the bot, not here, so don't expose this workflow_dispatch to anyone else
-# with repo write access without adding your own guard).
-#
-# IMPORTANT: this workflow does NOT download mods/jars/resourcepacks and does
-# NOT commit them to the repo. GitHub hard-rejects any file >100MB (and warns
-# above 50MB), and modpacks like Cobbleverse blow way past that. Instead this
-# workflow only records *where* to get the modpack (jar_url / mrpack_slug /
-# curseforge_project_id) in
-# modpacks/<name>/meta.json. The actual download/build happens fresh on every
-# run in start-server.yml, on the ephemeral runner, and is never committed.
-
 on:
   workflow_dispatch:
     inputs:
@@ -108,11 +95,23 @@ on:
           - 'true'
           - 'false'
       mc_version:
-        description: 'Vanilla only: Minecraft version to pin (e.g. 26.2), or "latest" for the current release (create: defaults to latest if blank. configure: leave blank to keep current value)'
+        description: 'Vanilla and Paper only: Minecraft version to pin (e.g. 26.2), or "latest" for the current release (create: defaults to latest if blank. configure: leave blank to keep current value)'
+        required: false
+      server_type:
+        description: 'create/configure: set to paper to run PaperMC (plugin support) instead of a jar/mrpack/curseforge source. It counts as the source on create, so leave jar_url, mrpack_slug and curseforge_project_id blank. Blank on configure keeps the current value.'
+        required: false
+        type: choice
+        options:
+          - ''
+          - paper
+      plugins:
+        description: 'Paper only: comma-separated plugins. Entries: modrinth:<slug>, modrinth:<slug>@<version_number>, or a direct https://...jar URL. Replaces the whole list; blank on configure keeps the current list, a single - clears it.'
         required: false
       version:
-        description: 'update only: version to pin - MC version for vanilla, Modrinth version id for mrpack, CurseForge file id for curseforge. Leave blank to snap to latest for any of these.'
+        description: 'update only: version to pin - MC version for vanilla/paper, Modrinth version id for mrpack, CurseForge file id for curseforge. Leave blank to snap to latest for any of these.'
         required: false
+
+run-name: Manage ${{ github.event.inputs.action }} ${{ github.event.inputs.modpack_name }}
 
 jobs:
   manage:
@@ -131,9 +130,12 @@ jobs:
           git config core.fileMode false
 
       - name: Validate modpack name
+        env:
+          NAME: ${{ github.event.inputs.modpack_name }}
+          ACTION: ${{ github.event.inputs.action }}
+          SERVER_TYPE: ${{ github.event.inputs.server_type }}
+          PLUGINS: ${{ github.event.inputs.plugins }}
         run: |
-          NAME="${{ github.event.inputs.modpack_name }}"
-          ACTION="${{ github.event.inputs.action }}"
           if ! [[ "$NAME" =~ ^[a-z0-9][a-z0-9_-]*$ ]]; then
             echo "::error::modpack_name must be lowercase alphanumeric (with - or _), got: $NAME"
             exit 1
@@ -142,8 +144,16 @@ jobs:
             echo "::error::'vanilla' has dynamic version-download logic baked into start-server.yml — it can't be created or deleted this way. 'configure' (memory/java) is fine."
             exit 1
           fi
+          if [ "$NAME" = "vanilla" ] && { [ -n "$SERVER_TYPE" ] || [ -n "$PLUGINS" ]; }; then
+            echo "::error::'vanilla' is the plain Mojang jar. Create a separate pack for Paper + plugins, e.g. name: paper server_type: paper."
+            exit 1
+          fi
+          PLUGIN_RE='^[A-Za-z0-9:@._,/%?=&+~#[:space:]-]*$'
+          if ! [[ "$PLUGINS" =~ $PLUGIN_RE ]]; then
+            echo "::error::plugins contains characters that are not allowed. Use modrinth:<slug>, modrinth:<slug>@<version>, or https://...jar URLs separated by commas."
+            exit 1
+          fi
 
-      # ---------------- CREATE ----------------
       - name: Create - validate source inputs
         if: github.event.inputs.action == 'create'
         run: |
@@ -151,6 +161,7 @@ jobs:
           JAR_URL="${{ github.event.inputs.jar_url }}"
           MRPACK_SLUG="${{ github.event.inputs.mrpack_slug }}"
           CURSEFORGE_PROJECT_ID="${{ github.event.inputs.curseforge_project_id }}"
+          SERVER_TYPE="${{ github.event.inputs.server_type }}"
 
           if [ -d "modpacks/$NAME" ]; then
             echo "::error::modpacks/$NAME already exists. Use 'configure' to change it, or delete it first."
@@ -161,13 +172,14 @@ jobs:
           [ -n "$JAR_URL" ] && SOURCE_COUNT=$((SOURCE_COUNT + 1))
           [ -n "$MRPACK_SLUG" ] && SOURCE_COUNT=$((SOURCE_COUNT + 1))
           [ -n "$CURSEFORGE_PROJECT_ID" ] && SOURCE_COUNT=$((SOURCE_COUNT + 1))
+          [ -n "$SERVER_TYPE" ] && SOURCE_COUNT=$((SOURCE_COUNT + 1))
 
           if [ "$SOURCE_COUNT" -eq 0 ]; then
-            echo "::error::Provide one of jar_url, mrpack_slug, or curseforge_project_id for 'create'."
+            echo "::error::Provide one of jar_url, mrpack_slug, curseforge_project_id, or server_type: paper for 'create'."
             exit 1
           fi
           if [ "$SOURCE_COUNT" -gt 1 ]; then
-            echo "::error::Provide only one of jar_url, mrpack_slug, or curseforge_project_id, not more than one."
+            echo "::error::Provide only one of jar_url, mrpack_slug, curseforge_project_id, or server_type: paper, not more than one."
             exit 1
           fi
 
@@ -184,7 +196,6 @@ jobs:
           EOF
           fi
 
-      # ---------------- CREATE + CONFIGURE (shared meta.json step) ----------------
       - name: Write meta.json
         if: github.event.inputs.action == 'create' || github.event.inputs.action == 'configure'
         run: |
@@ -198,7 +209,6 @@ jobs:
           fi
           mkdir -p "modpacks/$NAME"
 
-          # Start from existing meta.json if present (configure), else hardcoded defaults (create)
           if [ -f "$META" ]; then
             CUR_JAVA=$(jq -r '.java_version // "25"' "$META")
             CUR_MEM=$(jq -r '.memory_gb // "10"' "$META")
@@ -217,7 +227,8 @@ jobs:
             CUR_DIFFICULTY=$(jq -r '.difficulty // "normal"' "$META")
             CUR_GAMEMODE=$(jq -r '.gamemode // "survival"' "$META")
             CUR_HARDCORE=$(jq -r '.hardcore // "false"' "$META")
-            CUR_MC_VERSION=$(jq -r '.mc_version // "latest"' "$META")
+            CUR_MC_VERSION=$(jq -r '.mc_version // ""' "$META")
+            CUR_PLUGINS=$(jq -r '.plugins // ""' "$META")
           else
             CUR_JAVA="25"
             CUR_MEM="10"
@@ -236,10 +247,13 @@ jobs:
             CUR_DIFFICULTY="normal"
             CUR_GAMEMODE="survival"
             CUR_HARDCORE="false"
-            CUR_MC_VERSION="latest"
+            CUR_MC_VERSION=""
+            CUR_PLUGINS=""
+          fi
+          if [ -z "$CUR_MC_VERSION" ]; then
+            if [ "$NAME" = "vanilla" ]; then CUR_MC_VERSION="26.2"; else CUR_MC_VERSION="latest"; fi
           fi
 
-          # Only override a field if the corresponding input was actually provided
           IN_JAVA="${{ github.event.inputs.java_version }}"
           IN_MEM="${{ github.event.inputs.memory_gb }}"
           IN_JAR="${{ github.event.inputs.server_jar }}"
@@ -257,6 +271,8 @@ jobs:
           IN_GAMEMODE="${{ github.event.inputs.gamemode }}"
           IN_HARDCORE="${{ github.event.inputs.hardcore }}"
           IN_MC_VERSION="${{ github.event.inputs.mc_version }}"
+          IN_SERVER_TYPE="${{ github.event.inputs.server_type }}"
+          IN_PLUGINS="${{ github.event.inputs.plugins }}"
 
           FINAL_JAVA="${IN_JAVA:-$CUR_JAVA}"
           FINAL_MEM="${IN_MEM:-$CUR_MEM}"
@@ -269,19 +285,36 @@ jobs:
           FINAL_GAMEMODE="${IN_GAMEMODE:-$CUR_GAMEMODE}"
           FINAL_HARDCORE="${IN_HARDCORE:-$CUR_HARDCORE}"
           FINAL_MC_VERSION="${IN_MC_VERSION:-$CUR_MC_VERSION}"
+          case "$IN_PLUGINS" in
+            "")  FINAL_PLUGINS="$CUR_PLUGINS" ;;
+            "-") FINAL_PLUGINS="" ;;
+            *)   FINAL_PLUGINS="$IN_PLUGINS" ;;
+          esac
 
-          # is_zip is only meaningful/settable at create time (boolean inputs
-          # can't distinguish "not provided" from "false" on configure).
           if [ "$ACTION" = "create" ]; then
             FINAL_IS_ZIP="$IN_IS_ZIP"
           else
             FINAL_IS_ZIP="$CUR_IS_ZIP"
           fi
 
-          # Resolve source: mrpack_slug, jar_url, and curseforge_project_id
-          # are mutually exclusive. On configure, whichever one the user just
-          # provided wins and clears the other two.
-          if [ -n "$IN_MRPACK_SLUG" ]; then
+          PROVIDED=0
+          [ -n "$IN_SERVER_TYPE" ] && PROVIDED=$((PROVIDED + 1))
+          [ -n "$IN_MRPACK_SLUG" ] && PROVIDED=$((PROVIDED + 1))
+          [ -n "$IN_JAR_URL" ] && PROVIDED=$((PROVIDED + 1))
+          [ -n "$IN_CURSEFORGE_PROJECT_ID" ] && PROVIDED=$((PROVIDED + 1))
+          if [ "$PROVIDED" -gt 1 ]; then
+            echo "::error::Provide only one of server_type, mrpack_slug, jar_url, curseforge_project_id."
+            exit 1
+          fi
+
+          if [ "$IN_SERVER_TYPE" = "paper" ]; then
+            FINAL_SOURCE_TYPE="paper"
+            FINAL_JAR_URL=""
+            FINAL_MRPACK_SLUG=""
+            FINAL_MRPACK_VERSION=""
+            FINAL_CURSEFORGE_PROJECT_ID=""
+            FINAL_CURSEFORGE_FILE_ID=""
+          elif [ -n "$IN_MRPACK_SLUG" ]; then
             FINAL_SOURCE_TYPE="mrpack"
             FINAL_MRPACK_SLUG="$IN_MRPACK_SLUG"
             FINAL_MRPACK_VERSION="${IN_MRPACK_VERSION:-$CUR_MRPACK_VERSION}"
@@ -311,15 +344,6 @@ jobs:
             FINAL_CURSEFORGE_FILE_ID="$CUR_CURSEFORGE_FILE_ID"
           fi
 
-          # Ports no longer need to be globally unique: each modpack runs on
-          # its own isolated GitHub Actions runner per session, and routing
-          # is done by tunnel_address, not by port. The port only needs to
-          # match whatever local port you pointed this modpack's tunnel at
-          # in the playit.gg dashboard.
-
-          # Guard against two modpacks accidentally sharing a tunnel_address,
-          # since a shared playit.gg address would route traffic to whichever
-          # modpack happens to bind it first.
           if [ -n "$FINAL_TUNNEL_ADDRESS" ]; then
             TUNNEL_CLASH=$(for f in modpacks/*/meta.json; do
               [ -f "$f" ] || continue
@@ -336,29 +360,28 @@ jobs:
             fi
           fi
 
-          cat > "$META" <<EOF
-          {
-            "java_version": "$FINAL_JAVA",
-            "memory_gb": "$FINAL_MEM",
-            "server_jar": "$FINAL_JAR",
-            "launch_mode": "$FINAL_MODE",
-            "start_script": "$FINAL_SCRIPT",
-            "server_port": "$FINAL_PORT",
-            "tunnel_address": "$FINAL_TUNNEL_ADDRESS",
-            "source_type": "$FINAL_SOURCE_TYPE",
-            "jar_url": "$FINAL_JAR_URL",
-            "is_zip": "$FINAL_IS_ZIP",
-            "mrpack_slug": "$FINAL_MRPACK_SLUG",
-            "mrpack_version": "$FINAL_MRPACK_VERSION",
-            "curseforge_project_id": "$FINAL_CURSEFORGE_PROJECT_ID",
-            "curseforge_file_id": "$FINAL_CURSEFORGE_FILE_ID",
-            "difficulty": "$FINAL_DIFFICULTY",
-            "gamemode": "$FINAL_GAMEMODE",
-            "hardcore": "$FINAL_HARDCORE",
-            "mc_version": "$FINAL_MC_VERSION"
-          }
-          EOF
-          echo "meta.json for $NAME -> source=$FINAL_SOURCE_TYPE java=$FINAL_JAVA mem=${FINAL_MEM}GB mode=$FINAL_MODE jar=$FINAL_JAR script=$FINAL_SCRIPT port=$FINAL_PORT tunnel=${FINAL_TUNNEL_ADDRESS:-<none set>} difficulty=$FINAL_DIFFICULTY gamemode=$FINAL_GAMEMODE hardcore=$FINAL_HARDCORE mc_version=$FINAL_MC_VERSION"
+          jq -n \
+            --arg java_version "$FINAL_JAVA" \
+            --arg memory_gb "$FINAL_MEM" \
+            --arg server_jar "$FINAL_JAR" \
+            --arg launch_mode "$FINAL_MODE" \
+            --arg start_script "$FINAL_SCRIPT" \
+            --arg server_port "$FINAL_PORT" \
+            --arg tunnel_address "$FINAL_TUNNEL_ADDRESS" \
+            --arg source_type "$FINAL_SOURCE_TYPE" \
+            --arg jar_url "$FINAL_JAR_URL" \
+            --arg is_zip "$FINAL_IS_ZIP" \
+            --arg mrpack_slug "$FINAL_MRPACK_SLUG" \
+            --arg mrpack_version "$FINAL_MRPACK_VERSION" \
+            --arg curseforge_project_id "$FINAL_CURSEFORGE_PROJECT_ID" \
+            --arg curseforge_file_id "$FINAL_CURSEFORGE_FILE_ID" \
+            --arg difficulty "$FINAL_DIFFICULTY" \
+            --arg gamemode "$FINAL_GAMEMODE" \
+            --arg hardcore "$FINAL_HARDCORE" \
+            --arg mc_version "$FINAL_MC_VERSION" \
+            --arg plugins "$FINAL_PLUGINS" \
+            '$ARGS.named' > "$META"
+          echo "meta.json for $NAME -> source=$FINAL_SOURCE_TYPE java=$FINAL_JAVA mem=${FINAL_MEM}GB mode=$FINAL_MODE jar=$FINAL_JAR script=$FINAL_SCRIPT port=$FINAL_PORT tunnel=${FINAL_TUNNEL_ADDRESS:-<none set>} difficulty=$FINAL_DIFFICULTY gamemode=$FINAL_GAMEMODE hardcore=$FINAL_HARDCORE mc_version=$FINAL_MC_VERSION plugins=${FINAL_PLUGINS:-<none>}"
           if [ "$ACTION" = "create" ] && [ -z "$FINAL_TUNNEL_ADDRESS" ]; then
             echo "::warning::No tunnel_address set for '$NAME'. Set up a playit.gg tunnel for port $FINAL_PORT and add it with /modpack configure name: $NAME tunnel_address: <address>, or players won't know where to connect."
           fi
@@ -372,7 +395,6 @@ jobs:
           git pull --rebase --autostash --quiet
           git push origin HEAD:main
 
-      # ---------------- CONFIGURE ----------------
       - name: Configure - commit
         if: github.event.inputs.action == 'configure'
         run: |
@@ -383,13 +405,6 @@ jobs:
           git pull --rebase --autostash --quiet
           git push origin HEAD:main
 
-      # ---------------- UPDATE ----------------
-      # Unlike 'configure' (where a blank version input means "keep current
-      # pin"), 'update' always overwrites the relevant version field —
-      # blank here means "snap to latest" instead of "leave alone". This is
-      # the only way to move a modpack/vanilla off a previously pinned
-      # version, since configure has no way to distinguish "don't touch
-      # this" from "clear this".
       - name: Update - bump to a new/latest version
         if: github.event.inputs.action == 'update'
         run: |
@@ -408,6 +423,10 @@ jobs:
             NEW_MC_VERSION="${VERSION:-latest}"
             jq --arg v "$NEW_MC_VERSION" '.mc_version = $v' "$META" > "$META.tmp" && mv "$META.tmp" "$META"
             echo "Vanilla mc_version -> $NEW_MC_VERSION (takes effect on next /start)"
+          elif [ "$SOURCE_TYPE" = "paper" ]; then
+            NEW_MC_VERSION="${VERSION:-latest}"
+            jq --arg v "$NEW_MC_VERSION" '.mc_version = $v' "$META" > "$META.tmp" && mv "$META.tmp" "$META"
+            echo "Paper mc_version -> $NEW_MC_VERSION (takes effect on next /start; a world upgraded to a newer Minecraft version can't be downgraded)"
           elif [ "$SOURCE_TYPE" = "mrpack" ]; then
             jq --arg v "$VERSION" '.mrpack_version = $v' "$META" > "$META.tmp" && mv "$META.tmp" "$META"
             echo "mrpack_version -> ${VERSION:-<latest>} (takes effect on next /start)"
@@ -429,7 +448,6 @@ jobs:
           git pull --rebase --autostash --quiet
           git push origin HEAD:main
 
-      # ---------------- DELETE ----------------
       - name: Delete - remove files
         if: github.event.inputs.action == 'delete'
         env:
@@ -444,11 +462,9 @@ jobs:
           git rm -r --quiet "modpacks/$NAME"
 
           if [ "${{ github.event.inputs.delete_world }}" = "true" ]; then
-            # legacy location (only exists if this modpack was never migrated)
             if [ -d "worlds/$NAME" ]; then
               git rm -r --quiet "worlds/$NAME"
             fi
-            # current location: the world-<name> release holding world.tar.zst
             if gh release view "world-$NAME" >/dev/null 2>&1; then
               gh release delete "world-$NAME" --cleanup-tag --yes
               echo "Deleted world release world-$NAME"

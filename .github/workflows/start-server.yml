@@ -8,24 +8,35 @@ on:
         required: true
         default: 'vanilla'
 
-# Never run two sessions of the same modpack at once (they would overwrite each other's world)
 concurrency:
   group: mc-${{ github.event.inputs.modpack }}
   cancel-in-progress: false
 
+run-name: Start ${{ github.event.inputs.modpack }}
+
 jobs:
   run-server:
     runs-on: ubuntu-latest
-    timeout-minutes: 350   # ~5h50m, safely under the 6h hard limit
+    timeout-minutes: 355
     permissions:
       contents: write
 
     env:
       GH_TOKEN: ${{ github.token }}
       GH_REPO: ${{ github.repository }}
-      MIGRATE_FROM_REPO: 'false'   # default; restore step overrides via $GITHUB_ENV
+      MIGRATE_FROM_REPO: 'false'
 
     steps:
+      - name: Validate input and record job start time
+        env:
+          MODPACK: ${{ github.event.inputs.modpack }}
+        run: |
+          if ! [[ "$MODPACK" =~ ^[a-z0-9][a-z0-9_-]*$ ]]; then
+            echo "::error::modpack must be lowercase alphanumeric (with - or _), got: $MODPACK"
+            exit 1
+          fi
+          echo "JOB_START_EPOCH=$(date +%s)" >> "$GITHUB_ENV"
+
       - name: Checkout scripts and modpack config only (no world)
         uses: actions/checkout@v4
         with:
@@ -37,6 +48,8 @@ jobs:
 
       - name: Read modpack config (java version / memory / source)
         id: modpack_meta
+        env:
+          MODPACK: ${{ github.event.inputs.modpack }}
         run: |
           META="modpacks/${{ github.event.inputs.modpack }}/meta.json"
           if [ -f "$META" ]; then
@@ -56,6 +69,8 @@ jobs:
             HARDCORE=$(jq -r '.hardcore // "false"' "$META")
             DIFFICULTY=$(jq -r '.difficulty // "normal"' "$META")
             GAMEMODE=$(jq -r '.gamemode // "survival"' "$META")
+            MC_VERSION=$(jq -r '.mc_version // ""' "$META")
+            PLUGINS=$(jq -r '.plugins // ""' "$META")
           else
             JAVA_VERSION="25"
             MEMORY_GB="10"
@@ -73,6 +88,11 @@ jobs:
             HARDCORE="false"
             DIFFICULTY="normal"
             GAMEMODE="survival"
+            MC_VERSION=""
+            PLUGINS=""
+          fi
+          if [ -z "$MC_VERSION" ]; then
+            if [ "$MODPACK" = "vanilla" ]; then MC_VERSION="26.2"; else MC_VERSION="latest"; fi
           fi
           if [ -z "$TUNNEL_ADDRESS" ]; then
             echo "::warning::No tunnel_address configured for '${{ github.event.inputs.modpack }}'. Set one with /modpack configure name: ${{ github.event.inputs.modpack }} tunnel_address: <your-playit-address>."
@@ -93,6 +113,8 @@ jobs:
           echo "hardcore=$HARDCORE" >> "$GITHUB_OUTPUT"
           echo "difficulty=$DIFFICULTY" >> "$GITHUB_OUTPUT"
           echo "gamemode=$GAMEMODE" >> "$GITHUB_OUTPUT"
+          echo "mc_version=$MC_VERSION" >> "$GITHUB_OUTPUT"
+          echo "plugins=$PLUGINS" >> "$GITHUB_OUTPUT"
 
       - name: Announce tunnel address
         run: |
@@ -109,22 +131,31 @@ jobs:
           distribution: temurin
           java-version: '${{ steps.modpack_meta.outputs.java_version }}'
 
-      - name: Download vanilla server jar (pinned version)
+      - name: Download vanilla server jar (version from meta.json)
         if: github.event.inputs.modpack == 'vanilla'
         env:
-          MC_VERSION: "26.2"
+          MC_VERSION: ${{ steps.modpack_meta.outputs.mc_version }}
         run: |
-          VERSION_MANIFEST=$(curl -s https://launchermeta.mojang.com/mc/game/version_manifest.json)
-          VERSION_URL=$(echo "$VERSION_MANIFEST" | jq -r ".versions[] | select(.id==\"$MC_VERSION\") | .url")
-          SERVER_URL=$(curl -s "$VERSION_URL" | jq -r '.downloads.server.url')
+          MANIFEST=$(curl -fsS --retry 3 https://launchermeta.mojang.com/mc/game/version_manifest.json)
+          if [ -z "$MC_VERSION" ] || [ "$MC_VERSION" = "latest" ]; then
+            MC_VERSION=$(echo "$MANIFEST" | jq -r '.latest.release')
+          fi
+          VERSION_URL=$(echo "$MANIFEST" | jq -r --arg v "$MC_VERSION" '.versions[] | select(.id==$v) | .url')
+          if [ -z "$VERSION_URL" ]; then
+            echo "::error::Minecraft version '$MC_VERSION' not found in Mojang's version manifest."
+            exit 1
+          fi
+          SERVER_URL=$(curl -fsS --retry 3 "$VERSION_URL" | jq -r '.downloads.server.url')
           mkdir -p server
-          curl -o server/server.jar "$SERVER_URL"
+          curl -fSL --retry 3 -o server/server.jar "$SERVER_URL"
+          echo "Vanilla Minecraft $MC_VERSION" | tee -a "$GITHUB_STEP_SUMMARY"
 
       - name: Build server directory for modpack (fetch fresh — nothing is committed)
         id: build_modpack
         if: github.event.inputs.modpack != 'vanilla'
         env:
           CURSEFORGE_API_KEY: ${{ secrets.CURSEFORGE_API_KEY }}
+          MC_VERSION_WANTED: ${{ steps.modpack_meta.outputs.mc_version }}
         run: |
           MODPACK="${{ github.event.inputs.modpack }}"
           if [ ! -d "modpacks/$MODPACK" ]; then
@@ -141,7 +172,6 @@ jobs:
           SERVER_JAR="${{ steps.modpack_meta.outputs.server_jar }}"
 
           mkdir -p server
-          # small tracked config (server.properties template etc), never the mods
           cp -r "modpacks/$MODPACK"/* server/ 2>/dev/null || true
 
           RESOLVED_JAR="$SERVER_JAR"
@@ -152,7 +182,7 @@ jobs:
                 echo "::error::meta.json has source_type=jar but no jar_url set. Fix with /modpack configure."
                 exit 1
               fi
-              curl -L -o "server/$SERVER_JAR" "$JAR_URL"
+              curl -fSL --retry 3 -o "server/$SERVER_JAR" "$JAR_URL"
               ;;
 
             zip)
@@ -160,9 +190,8 @@ jobs:
                 echo "::error::meta.json has source_type=zip but no jar_url set. Fix with /modpack configure."
                 exit 1
               fi
-              curl -L -o /tmp/pack.zip "$JAR_URL"
+              curl -fSL --retry 3 -o /tmp/pack.zip "$JAR_URL"
               unzip -q /tmp/pack.zip -d server
-              # Server packs often nest one level deep - flatten if so
               INNER=$(find server -mindepth 1 -maxdepth 1 -type d | head -n1)
               if [ -n "$INNER" ] && [ -z "$(find server -mindepth 1 -maxdepth 1 -type f)" ]; then
                 mv "$INNER"/* server/
@@ -176,13 +205,13 @@ jobs:
                 exit 1
               fi
               echo "Downloading mrpack-install..."
-              MRPACK_URL=$(curl -s https://api.github.com/repos/nothub/mrpack-install/releases/latest \
+              MRPACK_URL=$(curl -fsS -H "Authorization: Bearer $GH_TOKEN" https://api.github.com/repos/nothub/mrpack-install/releases/latest \
                 | jq -r '.assets[] | select(.name | test("linux"; "i")) | .browser_download_url' | head -n1)
               if [ -z "$MRPACK_URL" ]; then
                 echo "::error::Could not find a Linux mrpack-install asset in the latest release."
                 exit 1
               fi
-              curl -sSL -o /tmp/mrpack-install "$MRPACK_URL"
+              curl -fsSL --retry 3 -o /tmp/mrpack-install "$MRPACK_URL"
               chmod +x /tmp/mrpack-install
 
               echo "Running mrpack-install for $MRPACK_SLUG ${MRPACK_VERSION:+(version $MRPACK_VERSION)}..."
@@ -192,10 +221,6 @@ jobs:
                 /tmp/mrpack-install "$MRPACK_SLUG" --server-dir server
               fi
 
-              # mrpack-install names the runnable jar differently depending on loader
-              # (e.g. fabric-server-launch.jar, forge server jar with a version suffix,
-              # etc). Prefer the configured server_jar if it happens to exist; otherwise
-              # auto-detect.
               if [ ! -f "server/$SERVER_JAR" ]; then
                 DETECTED_JAR=$(find server -maxdepth 1 -name "*.jar" ! -iname "*installer*" | head -n1 | xargs -r basename)
                 if [ -n "$DETECTED_JAR" ]; then
@@ -229,8 +254,6 @@ jobs:
                 fi
               fi
 
-              # Prefer the dedicated server pack file if this file has one —
-              # the main file is usually the client pack and won't run headless.
               FILE_INFO=$(curl -s "${CF_AUTH[@]}" "https://api.curseforge.com/v1/mods/$CURSEFORGE_PROJECT_ID/files/$RESOLVED_FILE_ID")
               SERVER_PACK_ID=$(echo "$FILE_INFO" | jq -r '.data.serverPackFileId // empty')
               DOWNLOAD_FILE_ID="$RESOLVED_FILE_ID"
@@ -249,18 +272,14 @@ jobs:
                 exit 1
               fi
 
-              curl -L -o /tmp/pack.zip "$DOWNLOAD_URL"
+              curl -fSL --retry 3 -o /tmp/pack.zip "$DOWNLOAD_URL"
               unzip -q /tmp/pack.zip -d server
-              # Server packs often nest one level deep - flatten if so
               INNER=$(find server -mindepth 1 -maxdepth 1 -type d | head -n1)
               if [ -n "$INNER" ] && [ -z "$(find server -mindepth 1 -maxdepth 1 -type f)" ]; then
                 mv "$INNER"/* server/
                 rmdir "$INNER"
               fi
 
-              # Forge/NeoForge CurseForge server packs commonly ship an
-              # installer jar instead of a ready-to-run server — run it once
-              # to generate the real launch files before we look for a jar/script.
               INSTALLER_JAR=$(find server -maxdepth 1 -iname "*installer*.jar" | head -n1)
               if [ -n "$INSTALLER_JAR" ]; then
                 echo "Found installer jar $(basename "$INSTALLER_JAR") — running it to generate the server..."
@@ -274,6 +293,37 @@ jobs:
                   RESOLVED_JAR="$DETECTED_JAR"
                 fi
               fi
+              ;;
+
+            paper)
+              UA="mc-server-actions/1.0 (https://github.com/${GITHUB_REPOSITORY})"
+              API="https://fill.papermc.io/v3/projects/paper"
+              if [ -n "$MC_VERSION_WANTED" ] && [ "$MC_VERSION_WANTED" != "latest" ]; then
+                CANDIDATES="$MC_VERSION_WANTED"
+              else
+                CANDIDATES=$(curl -fsS --retry 3 -A "$UA" "$API" | jq -r '.versions | to_entries[] | .value[]' | sort -V -r)
+              fi
+              PAPER_URL=""
+              for V in $CANDIDATES; do
+                BUILDS=$(curl -fsS --retry 3 -A "$UA" "$API/versions/$V/builds") || continue
+                PAPER_URL=$(echo "$BUILDS" | jq -r 'first(.[] | select(.channel=="STABLE") | .downloads."server:default".url) // empty')
+                PAPER_SHA=$(echo "$BUILDS" | jq -r 'first(.[] | select(.channel=="STABLE") | .downloads."server:default".checksums.sha256) // empty')
+                if [ -n "$PAPER_URL" ]; then
+                  RESOLVED_MC_VERSION="$V"
+                  break
+                fi
+              done
+              if [ -z "$PAPER_URL" ]; then
+                echo "::error::No STABLE Paper build found for Minecraft '${MC_VERSION_WANTED:-latest}'. Pin a different version with /modpack update."
+                exit 1
+              fi
+              echo "Paper: Minecraft $RESOLVED_MC_VERSION -> $PAPER_URL"
+              curl -fSL --retry 3 -A "$UA" -o server/paper.jar "$PAPER_URL"
+              if [ -n "$PAPER_SHA" ]; then
+                echo "$PAPER_SHA  server/paper.jar" | sha256sum -c -
+              fi
+              RESOLVED_JAR="paper.jar"
+              echo "### Paper — Minecraft $RESOLVED_MC_VERSION" >> "$GITHUB_STEP_SUMMARY"
               ;;
 
             *)
@@ -296,6 +346,7 @@ jobs:
           fi
 
           echo "resolved_server_jar=$RESOLVED_JAR" >> "$GITHUB_OUTPUT"
+          echo "resolved_mc_version=${RESOLVED_MC_VERSION:-}" >> "$GITHUB_OUTPUT"
 
           LAUNCH_MODE="${{ steps.modpack_meta.outputs.launch_mode }}"
           if [ "$LAUNCH_MODE" = "script" ]; then
@@ -322,39 +373,151 @@ jobs:
             fi
           fi
 
+      - name: Install plugins (Paper)
+        if: steps.modpack_meta.outputs.source_type == 'paper'
+        env:
+          PLUGINS: ${{ steps.modpack_meta.outputs.plugins }}
+          MC_VERSION: ${{ steps.build_modpack.outputs.resolved_mc_version }}
+        run: |
+          set -o pipefail
+          UA="mc-server-actions/1.0 (https://github.com/${GITHUB_REPOSITORY})"
+          mkdir -p server/plugins
+          if [ -z "$PLUGINS" ]; then
+            echo "No plugins configured."
+            exit 0
+          fi
+          echo "### Plugins (Minecraft $MC_VERSION)" >> "$GITHUB_STEP_SUMMARY"
+
+          fetch_modrinth() {
+            local slug="$1" want="$2" versions pick url fname sha512 vnum
+            versions=$(curl -fsS --retry 3 -A "$UA" -G "https://api.modrinth.com/v2/project/$slug/version" \
+              --data-urlencode 'loaders=["paper","spigot","bukkit","purpur"]' \
+              --data-urlencode "game_versions=[\"$MC_VERSION\"]") \
+              || { echo "::error::Modrinth lookup failed for '$slug' (wrong slug?)"; return 1; }
+            pick=$(echo "$versions" | jq -c --arg want "$want" '
+              (if $want != "" then map(select(.version_number == $want))
+               else (map(select(.version_type == "release")) + .) end) | .[0] // empty')
+            if [ -z "$pick" ]; then
+              echo "::error::No Modrinth build of '$slug'${want:+ (version $want)} for Paper on Minecraft $MC_VERSION. The plugin may not support this Minecraft version yet."
+              return 1
+            fi
+            url=$(echo "$pick" | jq -r '.files | (map(select(.primary)) + .) | .[0].url')
+            fname=$(basename "$(echo "$pick" | jq -r '.files | (map(select(.primary)) + .) | .[0].filename')")
+            sha512=$(echo "$pick" | jq -r '.files | (map(select(.primary)) + .) | .[0].hashes.sha512 // empty')
+            vnum=$(echo "$pick" | jq -r '.version_number')
+            curl -fSL --retry 3 -A "$UA" -o "server/plugins/$fname" "$url" || return 1
+            if [ -n "$sha512" ]; then
+              echo "$sha512  server/plugins/$fname" | sha512sum -c - >/dev/null \
+                || { echo "::error::Checksum mismatch for $fname"; return 1; }
+            fi
+            echo "Installed $fname"
+            echo "- $slug $vnum ($fname)" >> "$GITHUB_STEP_SUMMARY"
+          }
+
+          fetch_url() {
+            local url="$1" fname
+            fname=$(basename "${url%%\?*}")
+            case "$fname" in *.jar) ;; *) fname="plugin-$RANDOM.jar" ;; esac
+            curl -fSL --retry 3 -A "$UA" -o "server/plugins/$fname" "$url" \
+              || { echo "::error::Download failed: $url"; return 1; }
+            unzip -tq "server/plugins/$fname" >/dev/null \
+              || { echo "::error::$fname is not a valid jar (bad URL?)"; return 1; }
+            echo "Installed $fname"
+            echo "- $url ($fname)" >> "$GITHUB_STEP_SUMMARY"
+          }
+
+          install_item() {
+            local item="$1" spec slug ver=""
+            case "$item" in
+              https://*) fetch_url "$item"; return ;;
+              http://*)  echo "::error::Plugin URL must be https: $item"; return 1 ;;
+            esac
+            spec="${item#modrinth:}"   # a bare "luckperms" means modrinth:luckperms
+            slug="${spec%%@*}"
+            case "$spec" in *@*) ver="${spec#*@}" ;; esac
+            fetch_modrinth "$slug" "$ver"
+          }
+
+          IFS=',' read -ra ITEMS <<< "$PLUGINS"
+          for raw in "${ITEMS[@]}"; do
+            item=$(echo "$raw" | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')
+            [ -z "$item" ] && continue
+            install_item "$item" || exit 1
+          done
+          ls -la server/plugins
+
       - name: Accept EULA (vanilla)
         if: github.event.inputs.modpack == 'vanilla'
         run: echo "eula=true" > server/eula.txt
 
       - name: Restore saved world (release, or one-time migration from repo)
+        id: restore_world
         run: |
+          set -o pipefail
           MODPACK="${{ github.event.inputs.modpack }}"
           TAG="world-$MODPACK"
           mkdir -p server /tmp/worldparts
 
-          # New format: world.tar.zst.part-000, -001, ... (each < 2 GiB, GitHub's per-asset limit)
-          if gh release download "$TAG" --pattern 'world.tar.zst.part-*' --dir /tmp/worldparts 2>/dev/null \
-             && ls /tmp/worldparts/world.tar.zst.part-* >/dev/null 2>&1; then
-            echo "Restoring world from release $TAG (split parts)"
+          if OUT=$(gh release view "$TAG" --json assets -q '.assets[].name' 2>&1); then
+            ASSETS="$OUT"
+          elif echo "$OUT" | grep -qi "not found"; then
+            ASSETS=""
+          else
+            echo "::error::Could not read release $TAG (refusing to treat this as 'no world'): $OUT"
+            exit 1
+          fi
+
+          GEN=$(echo "$ASSETS" | sed -n 's/^world\.\([0-9][0-9]*\)\.done$/\1/p' | sort -n | tail -n1)
+
+          download() {
+            local n
+            for n in 1 2 3; do
+              rm -rf /tmp/worldparts && mkdir -p /tmp/worldparts
+              if gh release download "$TAG" --pattern "$1" --dir /tmp/worldparts; then return 0; fi
+              echo "Download attempt $n failed, retrying..."
+              sleep 5
+            done
+            return 1
+          }
+          drop_old_world() { rm -rf server/world server/world_nether server/world_the_end; }
+          finish_restore() {
+            rm -f server/world/session.lock
+            if [ -f server/server.properties.saved ]; then
+              mv server/server.properties.saved server/server.properties
+            fi
+          }
+
+          if [ -n "$GEN" ]; then
+            echo "Restoring world snapshot $GEN from release $TAG"
+            download "world.$GEN.*" || { echo "::error::Could not download snapshot $GEN of $TAG"; exit 1; }
+            EXPECTED=$(cat "/tmp/worldparts/world.$GEN.done")
+            HAVE=$(ls /tmp/worldparts/world.$GEN.tar.zst.part-* | wc -l)
+            if [ "$EXPECTED" != "$HAVE" ]; then
+              echo "::error::Snapshot $GEN should have $EXPECTED parts but $HAVE were downloaded."
+              exit 1
+            fi
             ls -lh /tmp/worldparts/
-            rm -rf server/world
+            drop_old_world
+            cat /tmp/worldparts/world.$GEN.tar.zst.part-* | tar --zstd -xf - -C server
+            rm -rf /tmp/worldparts
+            finish_restore
+
+          elif echo "$ASSETS" | grep -q '^world\.tar\.zst\.part-'; then
+            echo "Restoring world from release $TAG (legacy split parts)"
+            download "world.tar.zst.part-*" || { echo "::error::Could not download legacy parts of $TAG"; exit 1; }
+            ls -lh /tmp/worldparts/
+            drop_old_world
             cat /tmp/worldparts/world.tar.zst.part-* | tar --zstd -xf - -C server
             rm -rf /tmp/worldparts
-            rm -f server/world/session.lock
-            if [ -f server/server.properties.saved ]; then
-              mv server/server.properties.saved server/server.properties
-            fi
+            finish_restore
 
-          # Legacy format: single world.tar.zst (only possible for worlds < 2 GiB)
-          elif gh release download "$TAG" --pattern world.tar.zst --dir /tmp 2>/dev/null; then
+          elif echo "$ASSETS" | grep -qx 'world.tar.zst'; then
             echo "Restoring world from release $TAG (legacy single file)"
-            rm -rf server/world
-            tar --zstd -xf /tmp/world.tar.zst -C server
-            rm -f /tmp/world.tar.zst
-            rm -f server/world/session.lock
-            if [ -f server/server.properties.saved ]; then
-              mv server/server.properties.saved server/server.properties
-            fi
+            download "world.tar.zst" || { echo "::error::Could not download legacy world.tar.zst of $TAG"; exit 1; }
+            drop_old_world
+            tar --zstd -xf /tmp/worldparts/world.tar.zst -C server
+            rm -rf /tmp/worldparts
+            finish_restore
 
           else
             echo "No release '$TAG' yet - checking main for an old repo-stored world..."
@@ -370,10 +533,16 @@ jobs:
               echo "MIGRATE_FROM_REPO=true" >> "$GITHUB_ENV"
             else
               echo "No saved world anywhere - server will generate a new one."
-              # a world dir here would just be a template from mrpack overrides
               rm -rf server/world
             fi
           fi
+
+      - name: Re-apply repo files over restored state (Paper)
+        if: steps.modpack_meta.outputs.source_type == 'paper'
+        run: |
+          MODPACK="${{ github.event.inputs.modpack }}"
+          cp -r "modpacks/$MODPACK"/. server/
+          rm -f server/meta.json
 
       - name: Debug - inspect world dir
         run: |
@@ -428,6 +597,7 @@ jobs:
           START_SCRIPT: ${{ steps.modpack_meta.outputs.start_script }}
           SERVER_PORT: ${{ steps.modpack_meta.outputs.server_port }}
           TUNNEL_ADDRESS: ${{ steps.modpack_meta.outputs.tunnel_address }}
+          SOURCE_TYPE: ${{ steps.modpack_meta.outputs.source_type }}
         run: |
           chmod +x scripts/run-session.sh
           ./scripts/run-session.sh
@@ -445,8 +615,9 @@ jobs:
 
       - name: Save world to release
         id: save_world
-        if: always()
+        if: always() && steps.restore_world.outcome == 'success'
         run: |
+          set -o pipefail
           MODPACK="${{ github.event.inputs.modpack }}"
           TAG="world-$MODPACK"
           if [ ! -d server/world ]; then
@@ -457,27 +628,45 @@ jobs:
           rm -f server/world/session.lock
           cp server/server.properties server/server.properties.saved
 
-          # Stream tar -> split into <2 GiB parts (GitHub release asset limit is 2 GiB).
-          # 1900M leaves a safe margin. Streaming avoids writing a second 4+ GB file to disk.
-          rm -f /tmp/world.tar.zst.part-*
-          tar --zstd -cf - -C server world server.properties.saved \
-            | split -b 1900M -d -a 3 - /tmp/world.tar.zst.part-
-          ls -lh /tmp/world.tar.zst.part-*
+          STATE=()
+          for p in world world_nether world_the_end ops.json whitelist.json \
+                   banned-players.json banned-ips.json server.properties.saved plugins; do
+            if [ -e "server/$p" ]; then STATE+=("$p"); fi
+          done
+          echo "Saving: ${STATE[*]}"
+
+          GEN=$(date +%s)
+          rm -f /tmp/world.*.tar.zst.part-* /tmp/world.*.done
+          tar --zstd --no-wildcards-match-slash \
+              --exclude='plugins/*.jar' --exclude='plugins/.paper-remapped' \
+              -cf - -C server "${STATE[@]}" \
+            | split -b 1900M -d -a 3 - "/tmp/world.$GEN.tar.zst.part-"
+          ls -lh /tmp/world.$GEN.tar.zst.part-*
+          PARTS=$(ls /tmp/world.$GEN.tar.zst.part-* | wc -l)
 
           gh release view "$TAG" >/dev/null 2>&1 || \
             gh release create "$TAG" --title "$TAG" --notes "World snapshot (auto-updated each session)"
 
-          # Upload new parts FIRST so a failed upload never destroys the last good snapshot
-          gh release upload "$TAG" /tmp/world.tar.zst.part-* --clobber
+          for attempt in 1 2 3; do
+            if gh release upload "$TAG" /tmp/world.$GEN.tar.zst.part-* --clobber; then break; fi
+            if [ "$attempt" = 3 ]; then echo "::error::World upload failed; previous snapshot is untouched."; exit 1; fi
+            sleep 10
+          done
+          echo "$PARTS" > "/tmp/world.$GEN.done"
+          gh release upload "$TAG" "/tmp/world.$GEN.done" --clobber
 
-          # Only after a successful upload, delete stale assets
-          # (legacy single world.tar.zst + any leftover higher-numbered parts)
-          NEW=$(ls /tmp/world.tar.zst.part-* | xargs -n1 basename)
-          for a in $(gh release view "$TAG" --json assets -q '.assets[].name' | grep '^world\.tar\.zst'); do
-            if ! echo "$NEW" | grep -qx "$a"; then
-              echo "Deleting stale asset: $a"
-              gh release delete-asset "$TAG" "$a" -y
+          ASSETS=$(gh release view "$TAG" --json assets -q '.assets[].name')
+          PREV_GEN=$(echo "$ASSETS" | sed -n 's/^world\.\([0-9][0-9]*\)\.done$/\1/p' | grep -vx "$GEN" | sort -n | tail -n1 || true)
+          for a in $ASSETS; do
+            case "$a" in world.*) ;; *) continue ;; esac
+            case "$a" in world."$GEN".*) continue ;; esac
+            if [ -n "$PREV_GEN" ]; then
+              case "$a" in world."$PREV_GEN".*) continue ;; esac
+            else
+              case "$a" in world.tar.zst*) continue ;; esac
             fi
+            echo "Deleting old asset: $a"
+            gh release delete-asset "$TAG" "$a" -y
           done
 
           echo "uploaded=true" >> "$GITHUB_OUTPUT"

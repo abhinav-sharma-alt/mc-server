@@ -1,16 +1,14 @@
 #!/bin/bash
 
-# Ignore file-mode-only changes (e.g. chmod +x on this script) so they never
-# count as a "dirty tree" diff and block a git pull --rebase later.
 git config core.fileMode false
 
-SESSION_MINUTES=345   # 5h45m — leaves buffer for the commit step after this
-INTENTIONAL_STOP=false   # set true only when we deliberately ask the server to stop (time's up / stop signal). Lets us tell a clean shutdown apart from a crash/OOM.
+JOB_DEADLINE_MINUTES="${JOB_DEADLINE_MINUTES:-335}"
+if [ -z "$JOB_START_EPOCH" ]; then JOB_START_EPOCH=$(date +%s); JOB_DEADLINE_MINUTES=345; fi
+DEADLINE_EPOCH=$((JOB_START_EPOCH + JOB_DEADLINE_MINUTES * 60))
 
-# Small retrying push for the console/ signal-file commits made throughout
-# this script. These files are ephemeral (not world data), so on conflict we
-# always just take our own version of console/* and retry — never worth
-# aborting a running session over a signal-file race.
+STOP_MARKER=/tmp/mc_intentional_stop
+rm -f "$STOP_MARKER"
+
 push_console_state() {
   for attempt in 1 2 3; do
     if git push origin HEAD:main --quiet 2>/dev/null; then
@@ -56,12 +54,6 @@ echo "--- end logs ---"
 
 SERVER_PORT="${SERVER_PORT:-25565}"
 
-# The tunnel address comes from modpacks/<name>/meta.json (set via
-# /modpack configure name: X tunnel_address: <address>), passed in as the
-# TUNNEL_ADDRESS env var by start-server.yml. It just needs to be pointed at
-# local port $SERVER_PORT in the playit.gg dashboard for this agent — it does
-# NOT need to be globally unique across modpacks, since each session runs on
-# its own isolated GitHub Actions runner.
 if [ -z "$TUNNEL_ADDRESS" ]; then
   echo "ERROR: No tunnel_address configured for this modpack."
   echo "Set one with: /modpack configure name: <modpack> tunnel_address: <address playit gave you>"
@@ -69,20 +61,20 @@ if [ -z "$TUNNEL_ADDRESS" ]; then
   exit 1
 fi
 echo "Using tunnel address: $TUNNEL_ADDRESS -> local port $SERVER_PORT"
+SESSION_LEFT_MIN=$(( (DEADLINE_EPOCH - $(date +%s)) / 60 ))
+SESSION_HM="$((SESSION_LEFT_MIN / 60))h$((SESSION_LEFT_MIN % 60))m"
 
 if [ -n "$DISCORD_WEBHOOK" ]; then
   curl -H "Content-Type: application/json" \
-    -d "{\"content\": \"🟢 **Minecraft server is UP**\\nConnect at: \`$TUNNEL_ADDRESS\`\\nSession will run for ~5h45m.\\nRun log: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID\"}" \
+    -d "{\"content\": \"🟢 **Minecraft server is UP**\\nConnect at: \`$TUNNEL_ADDRESS\`\\nSession will run for ~${SESSION_HM}.\\nRun log: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID\"}" \
     "$DISCORD_WEBHOOK"
 fi
 
 echo "Starting Minecraft server..."
 cd server
 
-# Remove RCON config if present from earlier attempts — not used anymore
 sed -i '/^enable-rcon=/d; /^rcon.port=/d; /^rcon.password=/d' server.properties 2>/dev/null
 
-# Set up a FIFO so we can feed console commands into the server's stdin
 mkfifo /tmp/mc_console 2>/dev/null || true
 exec 3<>/tmp/mc_console
 
@@ -90,23 +82,11 @@ MEMORY_GB="${MEMORY_GB:-10}"
 SERVER_JAR="${SERVER_JAR:-server.jar}"
 LAUNCH_MODE="${LAUNCH_MODE:-jar}"
 START_SCRIPT="${START_SCRIPT:-start.sh}"
-LOG_FILE="server/logs/latest.log"   # standard log4j location for vanilla/Paper/Forge/Fabric; path is relative to the repo root, since callers run from there after the cd .. below
+LOG_FILE="server/logs/latest.log"
 
-# Sends the real in-game "stop" command through stdin (not an OS signal) and
-# waits for the process to exit. This is what actually persists things like
-# gamerules (fallDamage, keepInventory, ...) which live in level.dat and are
-# only guaranteed to be flushed by a clean in-game shutdown.
-#
-# We deliberately do NOT rely on kill -SIGTERM as the primary mechanism: in
-# `script` launch_mode, $MC_PID is the wrapper script's PID, and if that
-# wrapper doesn't `exec` into java (many Forge/NeoForge start.sh scripts spawn
-# java as a child instead), SIGTERM kills the wrapper without ever reaching
-# the actual server process — so it never saves, and the world gets copied
-# out mid-write on the next commit. Typing "stop" into stdin has no such
-# problem: every launcher forwards stdin to the real server process.
 graceful_stop() {
   local wait_seconds="${1:-60}"
-  INTENTIONAL_STOP=true
+  touch "$STOP_MARKER"
   echo "Sending 'stop' to the server console and waiting up to ${wait_seconds}s..."
   echo "stop" >&3 2>/dev/null || true
 
@@ -127,21 +107,28 @@ graceful_stop() {
 }
 
 if [ "$LAUNCH_MODE" = "script" ]; then
-  # Forge-style packs often read memory from user_jvm_args.txt rather than
-  # taking -Xmx as a start.sh argument. If that file exists, rewrite its
-  # -Xmx line (or add one) so MEMORY_GB actually takes effect.
   if [ -f "user_jvm_args.txt" ]; then
     sed -i '/-Xmx/d' user_jvm_args.txt
     echo "-Xmx${MEMORY_GB}G" >> user_jvm_args.txt
   fi
   ./"$START_SCRIPT" nogui <&3 &
 else
-  java -Xmx${MEMORY_GB}G -Xms1G -jar "$SERVER_JAR" nogui <&3 &
+  if [ "$SOURCE_TYPE" = "paper" ]; then
+    JAVA_OPTS=(-Xms${MEMORY_GB}G -Xmx${MEMORY_GB}G -XX:+UseG1GC -XX:+ParallelRefProcEnabled
+      -XX:MaxGCPauseMillis=200 -XX:+UnlockExperimentalVMOptions -XX:+DisableExplicitGC
+      -XX:+AlwaysPreTouch -XX:G1NewSizePercent=30 -XX:G1MaxNewSizePercent=40
+      -XX:G1HeapRegionSize=8M -XX:G1ReservePercent=20 -XX:G1HeapWastePercent=5
+      -XX:G1MixedGCCountTarget=4 -XX:InitiatingHeapOccupancyPercent=15
+      -XX:G1MixedGCLiveThresholdPercent=90 -XX:G1RSetUpdatingPauseTimePercent=5
+      -XX:SurvivorRatio=32 -XX:+PerfDisableSharedMem -XX:MaxTenuringThreshold=1)
+  else
+    JAVA_OPTS=(-Xmx${MEMORY_GB}G -Xms1G)
+  fi
+  java "${JAVA_OPTS[@]}" -jar "$SERVER_JAR" nogui <&3 &
 fi
 MC_PID=$!
 cd ..
 
-# Make sure the console command/stop files exist and start CLEAR for this session
 mkdir -p console
 echo -n "" > console/command.txt
 echo -n "" > console/stop.txt
@@ -149,22 +136,11 @@ git add console/command.txt console/stop.txt
 git commit -m "console: reset signal files for new session" --quiet 2>/dev/null || true
 push_console_state || true
 
-# Background loop: poll GitHub for new console commands AND a stop signal
 poll_console() {
-  sleep 20   # give the server time to fully boot before accepting any signals
+  sleep 20
   LAST_EXECUTED_ID=""
   while kill -0 "$MC_PID" 2>/dev/null; do
     git fetch origin main --quiet
-    # Advance local history to match origin WITHOUT touching unrelated
-    # working-tree files. We deliberately do NOT use `git reset --hard` here:
-    # that unconditionally rewrites every tracked file to match origin, and
-    # if server/ files were ever accidentally left tracked in this repo (see
-    # the checkout step's note above), a hard reset running every ~5s during
-    # a live session could tear a write to server/world/level.dat out from
-    # under the running Minecraft process mid-save — producing exactly a
-    # corrupted/empty level.dat. A fast-forward-only merge only touches files
-    # that actually changed in the new commits (in practice just the
-    # console/ signal files), so it can't touch server/ at all.
     git merge --ff-only origin/main --quiet 2>/dev/null || true
 
     if [ -s console/command.txt ]; then
@@ -172,8 +148,6 @@ poll_console() {
       CMD=$(sed -n '2p' console/command.txt)
 
       if [ "$CMD_ID" = "$LAST_EXECUTED_ID" ]; then
-        # Same command id we already ran — our clear of this file just
-        # hasn't landed on origin yet (push race). Do NOT re-execute it.
         :
       else
         echo "Executing console command: $CMD"
@@ -188,10 +162,6 @@ poll_console() {
         git commit -m "console: executed command" --quiet 2>/dev/null
         push_console_state || true
 
-        # Give the server a moment to process the command and write its
-        # response to the log, then relay any new lines back to Discord.
-        # Note: slow/async commands (e.g. big worldgen ops) may log after
-        # this window and won't be captured — this covers typical commands.
         sleep 2
         if [ -n "$DISCORD_WEBHOOK" ]; then
           if [ -f "$LOG_FILE" ]; then
@@ -229,16 +199,15 @@ poll_console() {
 poll_console &
 POLL_PID=$!
 
-echo "Session running for up to $SESSION_MINUTES minutes (or until a graceful stop is triggered)..."
-END_TIME=$((SECONDS + SESSION_MINUTES * 60))
-while kill -0 "$MC_PID" 2>/dev/null && [ $SECONDS -lt $END_TIME ]; do
+echo "Session running until $(date -u -d "@$DEADLINE_EPOCH" +%H:%M:%SZ) (about $(( (DEADLINE_EPOCH - $(date +%s)) / 60 )) minutes), or until a graceful stop is triggered..."
+while kill -0 "$MC_PID" 2>/dev/null && [ "$(date +%s)" -lt "$DEADLINE_EPOCH" ]; do
   sleep 5
 done
 
 if kill -0 "$MC_PID" 2>/dev/null; then
   echo "Time's up — stopping server gracefully..."
   graceful_stop 60
-elif [ "$INTENTIONAL_STOP" != "true" ]; then
+elif [ ! -f "$STOP_MARKER" ]; then
   echo "::warning::Minecraft server process exited on its own before any stop was requested — this looks like a crash or OOM kill, not a clean shutdown. The world may not have saved properly this session. Check server/crash-reports and server/logs in the uploaded artifact for the cause (e.g. -Xmx${MEMORY_GB}G may be too large for this runner's available memory)."
   if [ -n "$DISCORD_WEBHOOK" ]; then
     curl -s -H "Content-Type: application/json" \
@@ -255,9 +224,6 @@ else
   echo "server/world/level.dat does not exist at shutdown."
 fi
 
-# Stop the console poller gracefully instead of hard-killing it, so it isn't
-# caught mid-write/mid-commit on a tracked file (which left the working tree
-# dirty and broke the final "git pull --rebase" step in the workflow).
 if [ -n "$POLL_PID" ] && kill -0 "$POLL_PID" 2>/dev/null; then
   echo "Stopping console poller (pid $POLL_PID)..."
   kill -TERM "$POLL_PID" 2>/dev/null || true
@@ -276,10 +242,6 @@ exec 3>&- 2>/dev/null || true
 docker stop playit-agent || true
 docker rm playit-agent || true
 
-# Safety net: if the poller left any tracked console files modified but
-# uncommitted (e.g. it was interrupted between writing and committing),
-# clean that up now so the workflow's later "git pull --rebase" step
-# doesn't fail on a dirty tree.
 if [ -n "$(git status --porcelain console/ 2>/dev/null)" ]; then
   echo "Cleaning up leftover console file state..."
   git add console/

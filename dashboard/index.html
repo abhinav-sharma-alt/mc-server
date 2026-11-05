@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MC Server Control</title>
+<style>
+:root{--bg:#0e1116;--panel:#161b22;--panel2:#1c232c;--line:#2a323d;--text:#e6edf3;--muted:#8b97a5;--accent:#3fb950;--accent2:#2ea043;--warn:#d29922;--bad:#f85149;--blue:#58a6ff}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:14px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+header{display:flex;align-items:center;gap:12px;padding:12px 20px;border-bottom:1px solid var(--line);background:var(--panel);position:sticky;top:0;z-index:5}
+header h1{font-size:16px;margin:0;font-weight:600}
+header .sp{flex:1}
+.wrap{display:grid;grid-template-columns:260px 1fr;min-height:calc(100vh - 53px)}
+aside{border-right:1px solid var(--line);padding:14px;background:var(--panel)}
+main{padding:22px;max-width:980px;width:100%}
+@media(max-width:760px){.wrap{grid-template-columns:1fr}aside{border-right:0;border-bottom:1px solid var(--line)}}
+.pack{display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:8px;cursor:pointer;border:1px solid transparent}
+.pack:hover{background:var(--panel2)}
+.pack.sel{background:var(--panel2);border-color:var(--line)}
+.pack b{font-weight:600}
+.pack small{color:var(--muted);display:block}
+.dot{width:9px;height:9px;border-radius:50%;background:var(--muted);flex:none}
+.dot.on{background:var(--accent);box-shadow:0 0 0 3px rgba(63,185,80,.2)}
+.dot.q{background:var(--warn)}
+button,.btn{font:inherit;color:var(--text);background:var(--panel2);border:1px solid var(--line);border-radius:7px;padding:6px 12px;cursor:pointer}
+button:hover{border-color:#3b4553}
+button.pri,a.btn.pri{background:var(--accent2);border-color:var(--accent2);color:#fff}
+button.pri:hover,a.btn.pri:hover{background:var(--accent)}
+a.btn{display:inline-block;text-decoration:none}
+button.dng{color:var(--bad)}
+button.dng:hover{border-color:var(--bad)}
+button:disabled{opacity:.5;cursor:not-allowed}
+input,select,textarea{font:inherit;color:var(--text);background:var(--bg);border:1px solid var(--line);border-radius:7px;padding:7px 9px;width:100%}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--blue)}
+label{display:block;color:var(--muted);font-size:12px;margin:0 0 4px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px;margin-bottom:16px}
+.card h2{font-size:14px;margin:0 0 12px;font-weight:600}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.tabs{display:flex;gap:4px;border-bottom:1px solid var(--line);margin-bottom:18px;flex-wrap:wrap}
+.tab{padding:8px 14px;cursor:pointer;color:var(--muted);border-bottom:2px solid transparent}
+.tab.on{color:var(--text);border-color:var(--accent)}
+.badge{font-size:11px;padding:2px 8px;border-radius:99px;background:var(--panel2);border:1px solid var(--line);color:var(--muted)}
+.badge.ok{color:var(--accent);border-color:rgba(63,185,80,.4)}
+.badge.bad{color:var(--bad);border-color:rgba(248,81,73,.4)}
+.badge.warn{color:var(--warn);border-color:rgba(210,153,34,.4)}
+.top{display:flex;align-items:center;gap:12px;margin-bottom:16px;flex-wrap:wrap}
+.top h2{margin:0;font-size:20px}
+.top .sp{flex:1}
+table{width:100%;border-collapse:collapse}
+td,th{text-align:left;padding:8px 6px;border-bottom:1px solid var(--line);font-size:13px}
+th{color:var(--muted);font-weight:500}
+a{color:var(--blue);text-decoration:none}
+a:hover{text-decoration:underline}
+.res{display:flex;gap:12px;padding:10px;border:1px solid var(--line);border-radius:8px;margin-bottom:8px;background:var(--bg)}
+.res img{width:44px;height:44px;border-radius:8px;background:var(--panel2);flex:none;object-fit:cover}
+.res .t{flex:1;min-width:0}
+.res .t p{margin:2px 0 0;color:var(--muted);font-size:12px}
+.chip{display:inline-flex;align-items:center;gap:6px;background:var(--panel2);border:1px solid var(--line);border-radius:7px;padding:4px 6px 4px 10px;margin:0 6px 6px 0;font-family:ui-monospace,Menlo,monospace;font-size:12px}
+.chip button{padding:0 6px;border:0;background:none;color:var(--muted)}
+.chip button:hover{color:var(--bad)}
+.muted{color:var(--muted)}
+.hint{color:var(--muted);font-size:12px;margin-top:6px}
+#toast{position:fixed;bottom:20px;right:20px;display:flex;flex-direction:column;gap:8px;z-index:20}
+.t1{background:var(--panel2);border:1px solid var(--line);border-left:3px solid var(--accent);padding:10px 14px;border-radius:8px;max-width:360px}
+.t1.err{border-left-color:var(--bad)}
+.hide{display:none!important}
+.login{max-width:420px;margin:80px auto}
+.check{display:flex;align-items:center;gap:8px;margin-top:22px}
+.check input{width:auto}
+</style>
+</head>
+<body>
+<header>
+  <h1>MC Server Control</h1>
+  <span class="sp"></span>
+  <span id="userLabel" class="muted hide"></span>
+  <button id="refreshBtn" class="hide">Refresh</button>
+  <a id="logoutBtn" class="btn hide" href="/api/auth?action=logout">Sign out</a>
+</header>
+
+<div id="loginView" class="login hide">
+  <div class="card">
+    <h2>Sign in</h2>
+    <p class="muted" style="margin-top:0">Use the Discord account that has console and modpack access to your server.</p>
+    <a class="btn pri" href="/api/auth?action=login">Sign in with Discord</a>
+    <p id="loginErr" class="hint"></p>
+  </div>
+</div>
+
+<div id="appView" class="wrap hide">
+  <aside>
+    <div class="row" style="justify-content:space-between;margin-bottom:10px">
+      <b>Servers</b>
+      <button id="newBtn">+ New</button>
+    </div>
+    <div id="packList"></div>
+    <hr style="border:0;border-top:1px solid var(--line);margin:14px 0">
+    <div class="pack" id="navActivity"><div><b>Activity</b><small>Recent workflow runs</small></div></div>
+  </aside>
+  <main id="main"></main>
+</div>
+<div id="toast"></div>
+
+<script>
+const $ = (s, r = document) => r.querySelector(s)
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]))
+
+const S = { me: null, packs: [], runs: [], sel: null, view: 'home', tab: 'settings', plugins: [], results: [], busy: false, timer: null }
+
+const KINDS = { paper: 'Paper', mrpack: 'Modrinth modpack', curseforge: 'CurseForge modpack', jar: 'Server jar', zip: 'Server pack zip', vanilla: 'Vanilla' }
+
+function toast(msg, err) {
+  const d = document.createElement('div')
+  d.className = 't1' + (err ? ' err' : '')
+  d.textContent = msg
+  $('#toast').appendChild(d)
+  setTimeout(() => d.remove(), err ? 7000 : 3500)
+}
+
+async function call(path, body) {
+  const r = await fetch(path, body
+    ? { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) }
+    : { cache: 'no-store' })
+  if (r.status === 401) {
+    showLogin()
+    throw new Error('Signed out')
+  }
+  let j = {}
+  try { j = await r.json() } catch (e) {}
+  if (!r.ok) throw new Error(j.error || 'Request failed (' + r.status + ')')
+  return j
+}
+
+async function dispatch(workflow, inputs) {
+  await call('/api/action', { type: 'dispatch', workflow: workflow.startsWith('start') ? 'start' : 'manage', inputs })
+  setTimeout(loadRuns, 4000)
+}
+
+async function loadPacks() {
+  const j = await call('/api/state')
+  S.packs = j.packs
+  S.runs = j.runs
+  S.me = j.me
+}
+
+async function loadRuns() {
+  try {
+    const j = await call('/api/state?runs=1')
+    S.runs = j.runs
+    renderList()
+    if (S.view === 'activity' || (S.view === 'pack' && S.tab === 'overview')) renderMain()
+  } catch (e) {}
+}
+
+const active = r => ['in_progress', 'queued', 'waiting', 'pending', 'requested'].includes(r.status)
+const isStart = r => /start-server/.test(r.path || '')
+
+function runningFor(name) {
+  return S.runs.find(r => isStart(r) && active(r) && r.display_title === 'Start ' + name)
+}
+
+function kindOf(p) {
+  if (p.name === 'vanilla') return 'vanilla'
+  return p.meta.source_type || 'jar'
+}
+
+function renderList() {
+  $('#packList').innerHTML = S.packs.map(p => {
+    const run = runningFor(p.name)
+    const dot = run ? (run.status === 'in_progress' ? 'on' : 'q') : ''
+    return `<div class="pack ${S.view === 'pack' && S.sel === p.name ? 'sel' : ''}" data-pack="${esc(p.name)}">
+      <span class="dot ${dot}"></span><div><b>${esc(p.name)}</b><small>${esc(KINDS[kindOf(p)] || kindOf(p))}${run ? ' · ' + (run.status === 'in_progress' ? 'running' : 'starting') : ''}</small></div></div>`
+  }).join('')
+}
+
+function field(id, label, val, extra = '') {
+  return `<div><label for="${id}">${label}</label><input id="${id}" value="${esc(val)}" ${extra}></div>`
+}
+
+function selectField(id, label, val, opts) {
+  return `<div><label for="${id}">${label}</label><select id="${id}">${opts.map(o => `<option value="${esc(o)}" ${o === val ? 'selected' : ''}>${esc(o)}</option>`).join('')}</select></div>`
+}
+
+function selPack() { return S.packs.find(p => p.name === S.sel) }
+
+function renderMain() {
+  const m = $('#main')
+  if (S.view === 'new') return renderNew(m)
+  if (S.view === 'activity') return renderActivity(m)
+  if (S.view === 'pack' && selPack()) return renderPack(m)
+  m.innerHTML = `<div class="card"><h2>Welcome</h2><p class="muted">Pick a server on the left, or create a new one. Everything here runs your existing GitHub Actions workflows.</p></div>`
+}
+
+function renderPack(m) {
+  const p = selPack(), k = kindOf(p), meta = p.meta, run = runningFor(p.name)
+  const isPaper = k === 'paper'
+  const tabs = [['settings', 'Settings'], ...(isPaper ? [['plugins', 'Plugins']] : []), ['console', 'Console'], ['overview', 'Sessions']]
+  if (!tabs.some(t => t[0] === S.tab)) S.tab = 'settings'
+  m.innerHTML = `
+    <div class="top">
+      <h2>${esc(p.name)}</h2>
+      <span class="badge">${esc(KINDS[k] || k)}</span>
+      ${run ? `<span class="badge ok">${run.status === 'in_progress' ? 'running' : 'starting'}</span>` : '<span class="badge">stopped</span>'}
+      <span class="sp"></span>
+      <button class="pri" data-act="start" ${run ? 'disabled' : ''}>Start</button>
+      <button data-act="stop" ${run ? '' : 'disabled'}>Stop</button>
+    </div>
+    ${meta.tunnel_address ? `<p class="muted" style="margin-top:-6px">Connect at <b style="color:var(--text)">${esc(meta.tunnel_address)}</b></p>` : '<p class="muted" style="margin-top:-6px">No tunnel address set yet.</p>'}
+    <div class="tabs">${tabs.map(t => `<div class="tab ${S.tab === t[0] ? 'on' : ''}" data-tab="${t[0]}">${t[1]}</div>`).join('')}</div>
+    <div id="tabBody"></div>`
+  const b = $('#tabBody')
+  if (S.tab === 'settings') tabSettings(b, p, k)
+  if (S.tab === 'plugins') tabPlugins(b, p)
+  if (S.tab === 'console') tabConsole(b, run)
+  if (S.tab === 'overview') tabSessions(b, p)
+}
+
+function tabSettings(b, p, k) {
+  const m = p.meta
+  const hasVer = ['paper', 'vanilla', 'mrpack', 'curseforge'].includes(k)
+  const verLabel = k === 'mrpack' ? 'Modrinth version id (blank = latest)' : k === 'curseforge' ? 'CurseForge file id (blank = latest)' : 'Minecraft version (blank = latest)'
+  const verVal = k === 'mrpack' ? m.mrpack_version : k === 'curseforge' ? m.curseforge_file_id : (m.mc_version || (k === 'vanilla' ? '26.2' : 'latest'))
+  b.innerHTML = `
+    <div class="card"><h2>Server</h2>
+      <div class="grid">
+        ${field('f_tunnel', 'Tunnel address (playit.gg)', m.tunnel_address)}
+        ${field('f_port', 'Server port', m.server_port || '25565')}
+        ${field('f_mem', 'Memory (GB)', m.memory_gb || '10')}
+        ${field('f_java', 'Java version', m.java_version || '25')}
+        ${selectField('f_diff', 'Difficulty', m.difficulty || 'normal', ['peaceful', 'easy', 'normal', 'hard'])}
+        ${selectField('f_mode', 'Gamemode', m.gamemode || 'survival', ['survival', 'creative', 'adventure', 'spectator'])}
+        ${selectField('f_hc', 'Hardcore', m.hardcore || 'false', ['false', 'true'])}
+        ${k === 'paper' || k === 'vanilla' ? field('f_mcv', 'Minecraft version', m.mc_version || (k === 'vanilla' ? '26.2' : 'latest')) : ''}
+        ${k === 'jar' || k === 'zip' || k === 'mrpack' || k === 'curseforge' ? selectField('f_lm', 'Launch mode', m.launch_mode || 'jar', ['jar', 'script']) : ''}
+        ${k === 'jar' || k === 'zip' || k === 'mrpack' || k === 'curseforge' ? field('f_ss', 'Start script', m.start_script || 'start.sh') : ''}
+        ${k === 'jar' || k === 'zip' ? field('f_jar', 'Server jar filename', m.server_jar || 'server.jar') : ''}
+      </div>
+      <div class="row" style="margin-top:14px"><button class="pri" data-act="save">Save settings</button></div>
+      <p class="hint">Saving runs the Manage Modpack workflow (configure). Changes apply on the next start.</p>
+    </div>
+    <div class="card"><h2>Source</h2>
+      <p class="muted" style="margin:0 0 10px">${k === 'mrpack' ? 'Modrinth modpack: <b>' + esc(m.mrpack_slug) + '</b>' : k === 'curseforge' ? 'CurseForge project <b>' + esc(m.curseforge_project_id) + '</b>' : k === 'paper' ? 'PaperMC stable builds' : k === 'vanilla' ? 'Mojang server jar' : esc(m.jar_url || '')}</p>
+      ${hasVer && k !== 'vanilla' && k !== 'paper' ? `<div style="max-width:360px">${field('f_ver', verLabel, verVal)}</div>` : ''}
+      ${hasVer ? `<div class="row" style="margin-top:12px">
+        <button data-act="latest">Snap to latest</button>
+        ${k === 'paper' || k === 'vanilla' ? '<span class="muted">or set the Minecraft version above and save</span>' : '<button data-act="pin">Pin version</button>'}
+      </div>` : '<p class="hint">Fixed URL sources have no versions. Delete and recreate to change the source.</p>'}
+    </div>
+    ${k === 'vanilla' ? '' : `<div class="card"><h2>Danger zone</h2>
+      <div class="row"><label class="check" style="margin:0"><input type="checkbox" id="f_delw"> also delete the saved world</label><button class="dng" data-act="delete">Delete server</button></div></div>`}`
+}
+
+function tabPlugins(b, p) {
+  const mc = p.meta.mc_version && p.meta.mc_version !== 'latest' ? p.meta.mc_version : ''
+  b.innerHTML = `
+    <div class="card"><h2>Installed plugins</h2>
+      <div id="plList"></div>
+      <div class="row" style="margin-top:10px">
+        <input id="plManual" placeholder="modrinth:slug, modrinth:slug@1.2.3 or https://…/plugin.jar" style="flex:1;min-width:240px">
+        <button id="plAddManual">Add</button>
+      </div>
+      <div class="row" style="margin-top:14px"><button class="pri" data-act="savePlugins">Save plugin list</button><button data-act="resetPlugins">Discard changes</button></div>
+      <p class="hint">Plugins are downloaded fresh on every start. A plugin with no build for your Minecraft version makes the start fail on purpose. Plugin data is kept between sessions.</p>
+    </div>
+    <div class="card"><h2>Find plugins on Modrinth</h2>
+      <div class="row"><input id="plQ" placeholder="Search e.g. luckperms, essentials, worldedit" style="flex:1;min-width:220px"><button id="plSearch" class="pri">Search</button></div>
+      <p class="hint">${mc ? 'Filtering for Minecraft ' + esc(mc) + '.' : 'No Minecraft version pinned, so results are not filtered by version.'}</p>
+      <div id="plRes" style="margin-top:12px"></div>
+    </div>`
+  drawPluginChips()
+  drawResults()
+}
+
+function drawPluginChips() {
+  const el = $('#plList')
+  if (!el) return
+  el.innerHTML = S.plugins.length
+    ? S.plugins.map((x, i) => `<span class="chip">${esc(x)}<button data-rm="${i}" title="Remove">✕</button></span>`).join('')
+    : '<span class="muted">No plugins yet.</span>'
+}
+
+function drawResults() {
+  const el = $('#plRes')
+  if (!el) return
+  el.innerHTML = S.results.map(h => {
+    const id = 'modrinth:' + h.slug
+    const has = S.plugins.includes(id)
+    return `<div class="res"><img src="${esc(h.icon_url || '')}" alt=""><div class="t"><b>${esc(h.title)}</b> <span class="muted">${esc(h.slug)}</span><p>${esc(h.description)}</p><p>${Number(h.downloads).toLocaleString()} downloads</p></div><div><button data-add="${esc(h.slug)}" ${has ? 'disabled' : ''}>${has ? 'Added' : 'Add'}</button></div></div>`
+  }).join('')
+}
+
+async function searchPlugins() {
+  const q = $('#plQ').value.trim()
+  const mc = selPack().meta.mc_version
+  const facets = [['categories:paper', 'categories:spigot', 'categories:bukkit', 'categories:purpur']]
+  if (mc && mc !== 'latest') facets.push(['versions:' + mc])
+  const url = 'https://api.modrinth.com/v2/search?limit=12&index=' + (q ? 'relevance' : 'downloads') + '&query=' + encodeURIComponent(q) + '&facets=' + encodeURIComponent(JSON.stringify(facets))
+  try {
+    const r = await fetch(url)
+    if (!r.ok) throw new Error('Modrinth ' + r.status)
+    S.results = (await r.json()).hits
+    drawResults()
+    if (!S.results.length) $('#plRes').innerHTML = '<span class="muted">No results.</span>'
+  } catch (e) { toast(e.message, true) }
+}
+
+function tabConsole(b, run) {
+  b.innerHTML = `<div class="card"><h2>Send a console command</h2>
+    <div class="row"><input id="cmd" placeholder="say hello   /   op Steve   /   whitelist add Alex" style="flex:1;min-width:240px" ${run ? '' : 'disabled'}><button class="pri" data-act="cmd" ${run ? '' : 'disabled'}>Send</button></div>
+    <p class="hint">${run ? 'Commands are committed to console/command.txt and picked up by the running session within a few seconds. Output is posted to your Discord webhook, if you set one.' : 'The server isn’t running.'}</p></div>`
+}
+
+function tabSessions(b, p) {
+  const rows = S.runs.filter(r => (isStart(r) && r.display_title === 'Start ' + p.name) || (!isStart(r) && r.display_title.endsWith(' ' + p.name)))
+  b.innerHTML = `<div class="card"><h2>Recent runs</h2>${runTable(rows)}</div>`
+}
+
+function runTable(rows) {
+  if (!rows.length) return '<span class="muted">Nothing yet.</span>'
+  return `<table><tr><th>Run</th><th>Status</th><th>Started</th></tr>${rows.map(r => {
+    const cls = active(r) ? 'warn' : r.conclusion === 'success' ? 'ok' : r.conclusion === 'cancelled' ? '' : 'bad'
+    return `<tr><td><a href="${esc(r.html_url)}" target="_blank" rel="noopener">${esc(r.display_title)}</a></td><td><span class="badge ${cls}">${esc(active(r) ? r.status : r.conclusion)}</span></td><td class="muted">${new Date(r.created_at).toLocaleString()}</td></tr>`
+  }).join('')}</table>`
+}
+
+function renderActivity(m) {
+  m.innerHTML = `<div class="top"><h2>Activity</h2></div><div class="card">${runTable(S.runs)}</div>`
+}
+
+function renderNew(m) {
+  m.innerHTML = `<div class="top"><h2>New server</h2></div>
+    <div class="card"><h2>Basics</h2><div class="grid">
+      ${field('n_name', 'Short id (lowercase, no spaces)', '', 'placeholder="survival"')}
+      ${selectField('n_kind', 'Server type', 'paper', ['paper', 'mrpack', 'curseforge', 'jar', 'zip'])}
+      ${field('n_tunnel', 'Tunnel address', '', 'placeholder="name.playit.gg:12345"')}
+      ${field('n_port', 'Server port', '25565')}
+      ${field('n_mem', 'Memory (GB)', '10')}
+      ${field('n_java', 'Java version', '25')}
+      ${selectField('n_diff', 'Difficulty', 'normal', ['peaceful', 'easy', 'normal', 'hard'])}
+      ${selectField('n_mode', 'Gamemode', 'survival', ['survival', 'creative', 'adventure', 'spectator'])}
+      ${selectField('n_hc', 'Hardcore', 'false', ['false', 'true'])}
+    </div></div>
+    <div class="card"><h2>Source</h2><div class="grid" id="srcFields"></div></div>
+    <div class="row"><button class="pri" data-act="create">Create server</button><button data-act="cancelNew">Cancel</button></div>`
+  const draw = () => {
+    const k = $('#n_kind').value
+    $('#srcFields').innerHTML = {
+      paper: field('n_mcv', 'Minecraft version (blank = latest)', '') + `<div style="grid-column:1/-1"><label for="n_plugins">Plugins (comma separated)</label><textarea id="n_plugins" rows="2" placeholder="modrinth:luckperms, modrinth:essentialsx"></textarea></div>`,
+      mrpack: field('n_slug', 'Modrinth modpack slug or id', '', 'placeholder="cobbleverse"') + field('n_mrv', 'Version (blank = latest)', ''),
+      curseforge: field('n_cfp', 'CurseForge project id', '') + field('n_cff', 'File id (blank = latest)', '') + selectField('n_lm', 'Launch mode', 'jar', ['jar', 'script']),
+      jar: field('n_url', 'Direct jar URL', '') + field('n_jar', 'Jar filename', 'server.jar'),
+      zip: field('n_url', 'Server pack .zip URL', '') + selectField('n_lm', 'Launch mode', 'script', ['jar', 'script']) + field('n_ss', 'Start script', 'start.sh') + field('n_jar', 'Jar filename (jar mode)', 'server.jar')
+    }[k]
+  }
+  $('#n_kind').onchange = draw
+  draw()
+}
+
+const v = id => { const e = document.getElementById(id); return e ? e.value.trim() : '' }
+
+async function guard(fn) {
+  if (S.busy) return
+  S.busy = true
+  try { await fn() } catch (e) { toast(e.message, true) } finally { S.busy = false }
+}
+
+const ACTIONS = {
+  async start() {
+    const p = selPack()
+    if (!p.meta.tunnel_address && !confirm('No tunnel address is set for this server. Start anyway?')) return
+    await dispatch('start-server.yml', { modpack: p.name })
+    toast('Start requested for ' + p.name)
+  },
+  async stop() {
+    await call('/api/action', { type: 'stop' })
+    toast('Stop signal sent. The server saves, then the world uploads.')
+  },
+  async cmd() {
+    const c = v('cmd')
+    if (!c) return
+    await call('/api/action', { type: 'command', command: c })
+    $('#cmd').value = ''
+    toast('Command queued')
+  },
+  async save() {
+    const p = selPack(), m = p.meta
+    const map = { f_tunnel: ['tunnel_address', m.tunnel_address || ''], f_port: ['server_port', m.server_port || '25565'], f_mem: ['memory_gb', m.memory_gb || '10'], f_java: ['java_version', m.java_version || '25'], f_diff: ['difficulty', m.difficulty || 'normal'], f_mode: ['gamemode', m.gamemode || 'survival'], f_hc: ['hardcore', m.hardcore || 'false'], f_mcv: ['mc_version', m.mc_version || (p.name === 'vanilla' ? '26.2' : 'latest')], f_lm: ['launch_mode', m.launch_mode || 'jar'], f_ss: ['start_script', m.start_script || 'start.sh'], f_jar: ['server_jar', m.server_jar || 'server.jar'] }
+    const inputs = { action: 'configure', modpack_name: p.name }
+    let n = 0
+    for (const [id, [key, cur]] of Object.entries(map)) {
+      if (!document.getElementById(id)) continue
+      const val = v(id)
+      if (val !== cur && val !== '') { inputs[key] = val; n++ }
+    }
+    if (!n) return toast('Nothing changed')
+    await dispatch('manage-modpack.yml', inputs)
+    toast('Saving settings…')
+    setTimeout(refreshPacks, 25000)
+  },
+  async latest() {
+    const p = selPack()
+    await dispatch('manage-modpack.yml', { action: 'update', modpack_name: p.name })
+    toast('Snapping to latest…')
+    setTimeout(refreshPacks, 25000)
+  },
+  async pin() {
+    const p = selPack()
+    const ver = v('f_ver')
+    if (!ver) return toast('Enter a version first', true)
+    await dispatch('manage-modpack.yml', { action: 'update', modpack_name: p.name, version: ver })
+    toast('Pinning ' + ver + '…')
+    setTimeout(refreshPacks, 25000)
+  },
+  async delete() {
+    const p = selPack(), w = $('#f_delw').checked
+    if (!confirm('Delete "' + p.name + '"' + (w ? ' AND its saved world' : '') + '? This cannot be undone.')) return
+    await dispatch('manage-modpack.yml', { action: 'delete', modpack_name: p.name, delete_world: w ? 'true' : 'false' })
+    toast('Deleting…')
+    S.view = 'home'
+    S.sel = null
+    renderMain()
+    setTimeout(refreshPacks, 25000)
+  },
+  async savePlugins() {
+    const p = selPack()
+    await dispatch('manage-modpack.yml', { action: 'configure', modpack_name: p.name, plugins: S.plugins.length ? S.plugins.join(',') : '-' })
+    toast('Saving plugin list…')
+    setTimeout(refreshPacks, 25000)
+  },
+  async resetPlugins() {
+    S.plugins = pluginsOf(selPack())
+    drawPluginChips()
+    drawResults()
+  },
+  async create() {
+    const k = v('n_kind'), name = v('n_name')
+    if (!/^[a-z0-9][a-z0-9_-]*$/.test(name)) return toast('Id must be lowercase letters, digits, - or _', true)
+    const i = { action: 'create', modpack_name: name, tunnel_address: v('n_tunnel'), server_port: v('n_port'), memory_gb: v('n_mem'), java_version: v('n_java'), difficulty: v('n_diff'), gamemode: v('n_mode'), hardcore: v('n_hc') }
+    if (k === 'paper') { i.server_type = 'paper'; i.mc_version = v('n_mcv'); i.plugins = v('n_plugins') }
+    if (k === 'mrpack') { if (!v('n_slug')) return toast('Enter a modpack slug', true); i.mrpack_slug = v('n_slug'); i.mrpack_version = v('n_mrv') }
+    if (k === 'curseforge') { if (!v('n_cfp')) return toast('Enter a project id', true); i.curseforge_project_id = v('n_cfp'); i.curseforge_file_id = v('n_cff'); i.launch_mode = v('n_lm') }
+    if (k === 'jar' || k === 'zip') {
+      if (!v('n_url')) return toast('Enter a URL', true)
+      i.jar_url = v('n_url'); i.server_jar = v('n_jar'); i.is_zip = k === 'zip' ? 'true' : 'false'
+      if (k === 'zip') { i.launch_mode = v('n_lm'); i.start_script = v('n_ss') }
+    }
+    await dispatch('manage-modpack.yml', i)
+    toast('Creating ' + name + '…')
+    S.view = 'activity'
+    renderList()
+    renderMain()
+    setTimeout(async () => { await refreshPacks(); select(name) }, 25000)
+  },
+  async cancelNew() { S.view = 'home'; renderList(); renderMain() }
+}
+
+const pluginsOf = p => (p.meta.plugins || '').split(',').map(x => x.trim()).filter(Boolean)
+
+async function refreshPacks() {
+  try {
+    await loadPacks()
+    renderList()
+    if (S.view === 'pack' && !selPack()) S.view = 'home'
+    if (S.tab !== 'plugins' || !S.plugins.length) renderMain()
+  } catch (e) { toast(e.message, true) }
+}
+
+function select(name) {
+  S.sel = name
+  S.view = 'pack'
+  S.tab = 'settings'
+  const p = selPack()
+  S.plugins = p ? pluginsOf(p) : []
+  S.results = []
+  renderList()
+  renderMain()
+}
+
+document.addEventListener('click', e => {
+  const t = e.target.closest('[data-pack],[data-tab],[data-act],[data-rm],[data-add],#plAddManual,#plSearch,#newBtn,#navActivity')
+  if (!t) return
+  if (t.dataset.pack) return select(t.dataset.pack)
+  if (t.dataset.tab) { S.tab = t.dataset.tab; return renderMain() }
+  if (t.dataset.rm) { S.plugins.splice(+t.dataset.rm, 1); drawPluginChips(); return drawResults() }
+  if (t.dataset.add) { S.plugins.push('modrinth:' + t.dataset.add); drawPluginChips(); return drawResults() }
+  if (t.id === 'plAddManual') {
+    const x = v('plManual')
+    if (x && !S.plugins.includes(x)) S.plugins.push(x)
+    $('#plManual').value = ''
+    return drawPluginChips()
+  }
+  if (t.id === 'plSearch') return searchPlugins()
+  if (t.id === 'newBtn') { S.view = 'new'; renderList(); return renderMain() }
+  if (t.id === 'navActivity') { S.view = 'activity'; renderList(); return renderMain() }
+  if (t.dataset.act) return guard(ACTIONS[t.dataset.act])
+})
+
+document.addEventListener('keydown', e => {
+  if (e.key !== 'Enter') return
+  if (e.target.id === 'plQ') searchPlugins()
+  if (e.target.id === 'cmd') guard(ACTIONS.cmd)
+  if (e.target.id === 'plManual') $('#plAddManual').click()
+})
+
+const ERRORS = {
+  not_authorized: 'That Discord account isn’t authorized. Ask the owner to run /access add for you.',
+  state: 'Sign-in expired or was tampered with. Please try again.',
+  discord: 'Discord rejected the sign-in. Please try again.',
+  server: 'The server hit an error during sign-in. Check its environment variables.'
+}
+
+function showLogin() {
+  clearInterval(S.timer)
+  $('#appView').classList.add('hide')
+  for (const id of ['refreshBtn', 'logoutBtn', 'userLabel']) $('#' + id).classList.add('hide')
+  $('#loginView').classList.remove('hide')
+  const err = new URLSearchParams(location.search).get('err')
+  $('#loginErr').textContent = ERRORS[err] || ''
+}
+
+async function enter() {
+  await loadPacks()
+  $('#loginView').classList.add('hide')
+  $('#appView').classList.remove('hide')
+  for (const id of ['refreshBtn', 'logoutBtn', 'userLabel']) $('#' + id).classList.remove('hide')
+  $('#userLabel').textContent = S.me.name
+  renderList()
+  renderMain()
+  clearInterval(S.timer)
+  S.timer = setInterval(loadRuns, 20000)
+}
+
+$('#refreshBtn').onclick = () => guard(async () => { await refreshPacks(); toast('Refreshed') })
+
+enter().catch(e => { if (e.message !== 'Signed out') { showLogin(); toast(e.message, true) } })
+</script>
+</body>
+</html>
