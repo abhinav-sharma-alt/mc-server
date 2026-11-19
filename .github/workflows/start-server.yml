@@ -71,6 +71,7 @@ jobs:
             GAMEMODE=$(jq -r '.gamemode // "survival"' "$META")
             MC_VERSION=$(jq -r '.mc_version // ""' "$META")
             PLUGINS=$(jq -r '.plugins // ""' "$META")
+            EXTRA_MODS=$(jq -r '.extra_mods // ""' "$META")
           else
             JAVA_VERSION="25"
             MEMORY_GB="10"
@@ -90,6 +91,7 @@ jobs:
             GAMEMODE="survival"
             MC_VERSION=""
             PLUGINS=""
+            EXTRA_MODS=""
           fi
           if [ -z "$MC_VERSION" ]; then
             if [ "$MODPACK" = "vanilla" ]; then MC_VERSION="26.2"; else MC_VERSION="latest"; fi
@@ -115,6 +117,7 @@ jobs:
           echo "gamemode=$GAMEMODE" >> "$GITHUB_OUTPUT"
           echo "mc_version=$MC_VERSION" >> "$GITHUB_OUTPUT"
           echo "plugins=$PLUGINS" >> "$GITHUB_OUTPUT"
+          echo "extra_mods=$EXTRA_MODS" >> "$GITHUB_OUTPUT"
 
       - name: Announce tunnel address
         run: |
@@ -394,6 +397,66 @@ jobs:
               exit 1
             fi
           fi
+
+      - name: Install extra mods (Fabric, from Modrinth)
+        if: github.event.inputs.modpack != 'vanilla' && steps.modpack_meta.outputs.extra_mods != ''
+        env:
+          EXTRA_MODS: ${{ steps.modpack_meta.outputs.extra_mods }}
+          MC_VERSION_META: ${{ steps.modpack_meta.outputs.mc_version }}
+        run: |
+          set -o pipefail
+          UA="mc-server-actions/1.0 (https://github.com/${GITHUB_REPOSITORY})"
+          mkdir -p server/mods
+
+          MC_VERSION="$MC_VERSION_META"
+          if [ -z "$MC_VERSION" ] || [ "$MC_VERSION" = "latest" ]; then
+            MC_VERSION=$(ls server | sed -n 's/.*mc\.\([0-9][0-9.]*\)-loader.*/\1/p' | head -n1)
+          fi
+          if [ -z "$MC_VERSION" ]; then
+            echo "::error::Cannot work out the Minecraft version for extra_mods. Set mc_version in meta.json (e.g. 1.21.1)."
+            exit 1
+          fi
+          echo "### Extra mods (Fabric, Minecraft $MC_VERSION)" >> "$GITHUB_STEP_SUMMARY"
+
+          fetch_mod() {
+            local slug="$1" want="$2" versions pick url fname sha512 vnum
+            versions=$(curl -fsS --retry 3 -A "$UA" -G "https://api.modrinth.com/v2/project/$slug/version" \
+              --data-urlencode 'loaders=["fabric"]' \
+              --data-urlencode "game_versions=[\"$MC_VERSION\"]") \
+              || { echo "::error::Modrinth lookup failed for '$slug' (wrong slug?)"; return 1; }
+            pick=$(echo "$versions" | jq -c --arg want "$want" '
+              (if $want != "" then map(select(.version_number == $want))
+               else (map(select(.version_type == "release")) + .) end) | .[0] // empty')
+            if [ -z "$pick" ]; then
+              echo "::error::No Fabric build of '$slug'${want:+ (version $want)} for Minecraft $MC_VERSION on Modrinth."
+              return 1
+            fi
+            url=$(echo "$pick" | jq -r '.files | (map(select(.primary)) + .) | .[0].url')
+            fname=$(basename "$(echo "$pick" | jq -r '.files | (map(select(.primary)) + .) | .[0].filename')")
+            sha512=$(echo "$pick" | jq -r '.files | (map(select(.primary)) + .) | .[0].hashes.sha512 // empty')
+            vnum=$(echo "$pick" | jq -r '.version_number')
+            # drop any older copy of the same mod so two versions never load together
+            rm -f server/mods/"${slug}"*.jar
+            curl -fSL --retry 3 -A "$UA" -o "server/mods/$fname" "$url" || return 1
+            if [ -n "$sha512" ]; then
+              echo "$sha512  server/mods/$fname" | sha512sum -c - >/dev/null \
+                || { echo "::error::Checksum mismatch for $fname"; return 1; }
+            fi
+            echo "Installed $fname"
+            echo "- $slug $vnum ($fname)" >> "$GITHUB_STEP_SUMMARY"
+          }
+
+          IFS=',' read -ra ITEMS <<< "$EXTRA_MODS"
+          for raw in "${ITEMS[@]}"; do
+            item=$(echo "$raw" | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')
+            [ -z "$item" ] && continue
+            spec="${item#modrinth:}"
+            slug="${spec%%@*}"
+            ver=""
+            case "$spec" in *@*) ver="${spec#*@}" ;; esac
+            fetch_mod "$slug" "$ver" || exit 1
+          done
+          ls -la server/mods | head -n 5
 
       - name: Install plugins (Paper)
         if: steps.modpack_meta.outputs.source_type == 'paper'
