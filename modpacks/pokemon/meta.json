@@ -1,6 +1,8 @@
 {
-  "java_version": "21",
+  "java_version": "25",
   "memory_gb": "10",
+  "mc_version": "1.21.1",
+  "extra_mods": "athena-ctm,fusion-connected-textures",
   "server_jar": "server.jar",
   "launch_mode": "jar",
   "start_script": "start.sh",
