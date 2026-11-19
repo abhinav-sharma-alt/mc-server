@@ -209,22 +209,29 @@ jobs:
               echo "Available assets:"
               echo "$RELEASE_JSON" | jq -r '.assets[].name'
 
-              # Prefer the exact amd64 Linux binary; fall back to any linux asset that isn't an arm build, package, or checksum
+              # Release assets are archives (e.g. mrpack-install_0.23.0_linux_amd64.tar.gz), not bare binaries
               MRPACK_URL=$(echo "$RELEASE_JSON" | jq -r '
-                (.assets | map(select(.name | test("^mrpack-install-linux$"; "i"))) | .[0].browser_download_url) //
-                (.assets | map(select(.name | test("linux"; "i") and (test("arm|aarch|\\.deb$|\\.rpm$|\\.apk$|\\.sha|\\.txt$|\\.sig$|\\.pem$"; "i") | not))) | .[0].browser_download_url) //
-                empty')
+                .assets | map(select(.name | test("linux_amd64\\.tar\\.gz$"; "i"))) | .[0].browser_download_url // empty')
               if [ -z "$MRPACK_URL" ]; then
-                echo "::error::Could not find an amd64 Linux mrpack-install asset in the latest release."
+                echo "::error::Could not find a linux_amd64 .tar.gz mrpack-install asset in the latest release."
                 exit 1
               fi
               echo "Using asset: $MRPACK_URL"
-              curl -fsSL --retry 3 -o /tmp/mrpack-install "$MRPACK_URL"
+              curl -fsSL --retry 3 -o /tmp/mrpack-install.tar.gz "$MRPACK_URL"
+              rm -rf /tmp/mrpack-extract && mkdir -p /tmp/mrpack-extract
+              tar -xzf /tmp/mrpack-install.tar.gz -C /tmp/mrpack-extract
+              MRPACK_BIN=$(find /tmp/mrpack-extract -type f -name 'mrpack-install' | head -n1)
+              if [ -z "$MRPACK_BIN" ]; then
+                echo "::error::mrpack-install binary not found inside the archive. Contents:"
+                find /tmp/mrpack-extract -type f
+                exit 1
+              fi
+              cp "$MRPACK_BIN" /tmp/mrpack-install
               chmod +x /tmp/mrpack-install
 
-              # Sanity check: must be an ELF binary, not an archive or HTML error page
+              # Sanity check: must be an ELF binary
               if ! head -c 4 /tmp/mrpack-install | grep -q 'ELF'; then
-                echo "::error::Downloaded mrpack-install is not an ELF binary. Details:"
+                echo "::error::Extracted mrpack-install is not an ELF binary. Details:"
                 file /tmp/mrpack-install || true
                 exit 1
               fi
