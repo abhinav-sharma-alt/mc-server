@@ -72,6 +72,7 @@ jobs:
             MC_VERSION=$(jq -r '.mc_version // ""' "$META")
             PLUGINS=$(jq -r '.plugins // ""' "$META")
             EXTRA_MODS=$(jq -r '.extra_mods // ""' "$META")
+            REMOVE_MODS=$(jq -r '.remove_mods // ""' "$META")
           else
             JAVA_VERSION="25"
             MEMORY_GB="10"
@@ -92,6 +93,7 @@ jobs:
             MC_VERSION=""
             PLUGINS=""
             EXTRA_MODS=""
+            REMOVE_MODS=""
           fi
           if [ -z "$MC_VERSION" ]; then
             if [ "$MODPACK" = "vanilla" ]; then MC_VERSION="26.2"; else MC_VERSION="latest"; fi
@@ -118,6 +120,7 @@ jobs:
           echo "mc_version=$MC_VERSION" >> "$GITHUB_OUTPUT"
           echo "plugins=$PLUGINS" >> "$GITHUB_OUTPUT"
           echo "extra_mods=$EXTRA_MODS" >> "$GITHUB_OUTPUT"
+          echo "remove_mods=$REMOVE_MODS" >> "$GITHUB_OUTPUT"
 
       - name: Announce tunnel address
         run: |
@@ -457,6 +460,28 @@ jobs:
             fetch_mod "$slug" "$ver" || exit 1
           done
           ls -la server/mods | head -n 5
+
+      - name: Remove unwanted mods (remove_mods in meta.json)
+        if: github.event.inputs.modpack != 'vanilla' && steps.modpack_meta.outputs.remove_mods != ''
+        env:
+          REMOVE_MODS: ${{ steps.modpack_meta.outputs.remove_mods }}
+        run: |
+          mkdir -p server/mods
+          IFS=',' read -ra ITEMS <<< "$REMOVE_MODS"
+          for raw in "${ITEMS[@]}"; do
+            item=$(echo "$raw" | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')
+            [ -z "$item" ] && continue
+            FOUND=$(find server/mods -maxdepth 1 -type f -iname "*${item}*.jar")
+            if [ -z "$FOUND" ]; then
+              echo "::warning::remove_mods: no jar matching '*${item}*' in server/mods"
+              continue
+            fi
+            echo "$FOUND" | while read -r f; do
+              echo "Removing $f"
+              rm -f "$f"
+              echo "- removed $(basename "$f")" >> "$GITHUB_STEP_SUMMARY"
+            done
+          done
 
       - name: Install plugins (Paper)
         if: steps.modpack_meta.outputs.source_type == 'paper'
