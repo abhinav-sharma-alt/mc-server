@@ -411,7 +411,8 @@ jobs:
           UA="mc-server-actions/1.0 (https://github.com/${GITHUB_REPOSITORY})"
           mkdir -p server/mods
 
-          MC_VERSION="$MC_VERSION_META"
+          # keep only the first word, in case extra text got pasted into the field
+          MC_VERSION="${MC_VERSION_META%% *}"
           if [ -z "$MC_VERSION" ] || [ "$MC_VERSION" = "latest" ]; then
             MC_VERSION=$(ls server | sed -n 's/.*mc\.\([0-9][0-9.]*\)-loader.*/\1/p' | head -n1)
           fi
