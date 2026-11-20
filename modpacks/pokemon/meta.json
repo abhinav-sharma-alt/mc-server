@@ -16,7 +16,7 @@
   "difficulty": "normal",
   "gamemode": "survival",
   "hardcore": "false",
-  "mc_version": "1.21.1 extra_mods: athena-ctm,fusion-connected-textures remove_mods: c2me-opts-natives-math",
+  "mc_version": "1.21.1",
   "extra_mods": "athena-ctm,fusion-connected-textures",
-  "remove_mods": ""
+  "remove_mods": "c2me-opts-natives-math"
 }
