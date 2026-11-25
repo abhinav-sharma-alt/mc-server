@@ -1,0 +1,2 @@
+7e60fd7a-b591-40f1-b763-b82fd46013a4
+give TRIPATHI minecraft:torch 10
