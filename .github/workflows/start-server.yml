@@ -713,6 +713,16 @@ jobs:
           chmod +x scripts/run-session.sh
           ./scripts/run-session.sh
 
+      - name: Dump raid configs to summary
+        if: always() && github.event.inputs.modpack != 'vanilla'
+        run: |
+          {
+            echo "### Raid config files"
+            for f in $(find server/config -type f -ipath '*raid*' | head -20); do
+              echo "#### $f"; echo '```json'; head -c 6000 "$f"; echo; echo '```'
+            done
+          } >> "$GITHUB_STEP_SUMMARY"
+          
       - name: Upload crash reports and logs (for debugging failed starts)
         if: always()
         uses: actions/upload-artifact@v4
