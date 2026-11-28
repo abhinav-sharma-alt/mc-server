@@ -1,2 +1,0 @@
-9204e29a-80ce-402a-900d-450e1979df09
-gamerule doWeatherCycle false
